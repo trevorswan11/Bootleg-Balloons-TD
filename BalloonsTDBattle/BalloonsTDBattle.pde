@@ -8,14 +8,16 @@ int MODE = ADD;
 int round = 1;
 
 void mouseClicked() {
-  text("" + mouseX + ", " + mouseY, 20, 20);   
+  println("" + mouseX + ", " + mouseY); 
 }
 
 void setup() {
-  size(1000,1000);
+  size(775,572);
   map = loadImage("snow_map.jpg");
 }
 
 void draw() {
   image(map, 0, 0);
+  Balloon red = new Balloon();
+  red.display();
 }
