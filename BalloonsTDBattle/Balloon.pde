@@ -2,7 +2,8 @@ public class Balloon {
   PImage image;
   int health;
   int speed;
-  float currentX = 390;
+  int directionsIndex = 0;
+  float currentX = 400;
   float currentY = 3;
   
   public Balloon() {
@@ -14,6 +15,7 @@ public class Balloon {
   
   public Balloon(String color_, int health_, int speed_) {
     image = loadImage(color_ + "_balloon.png");
+    image.resize(25, 25);
     health = health_;
     speed = speed_;
   }
@@ -21,8 +23,17 @@ public class Balloon {
   void display() {
     image(image, currentX, currentY);       
   }
-
-  void move() {
   
+  void move() {
+    
   }
+  
+  void followMap() {
+    while (directionsIndex < map.getDirectionsSize()) {
+      move();
+      directionsIndex++;
+    }
+  }
+  
+  
 }
