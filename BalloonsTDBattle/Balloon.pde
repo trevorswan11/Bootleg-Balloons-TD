@@ -25,7 +25,12 @@ public class Balloon {
   }
   
   void move() {
+    int[] nextCords = map.getDirection(directionsIndex);
+    float distanceX = currentX-nextCords[0];
+    float distanceY = currentY-nextCords[1];
     
+    currentX += distanceX;
+    currentY += distanceY;
   }
   
   void followMap() {
