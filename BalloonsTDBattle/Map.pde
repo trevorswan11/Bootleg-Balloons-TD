@@ -34,11 +34,23 @@ public class Map {
      east = 255;
    } else if (prevY < y) {
      north = 255;
-   } else {
+   } else if (prevY > y) {
      south = 255;
    }
    
-
+   int[] cords = new int[2];
+   
+   if (north == 0) {
+     cords = new int[]{x, y-interval};  
+   } else if (east == 0) {
+     cords = new int[]{x+interval, y};
+   } else if (south == 0) {
+     cords = new int[]{x, y+interval};
+   } else if (west == 0) {
+     cords = new int[]{x-interval, y};
+   }
+   
+   return cords;
    
    //println("" + north + " " + east + " " + south + " " + west);
  }
