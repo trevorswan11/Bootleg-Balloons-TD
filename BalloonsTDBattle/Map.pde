@@ -3,6 +3,7 @@ public class Map {
  final int EAST = 1;
  final int SOUTH = 2;
  final int WEST = 3;
+ final int INTERVAL = 10;
  PImage image;
  PImage path; 
  int[][] directions = new int[13][2];
@@ -21,18 +22,18 @@ public class Map {
  }
    
  void calculateDirections(int currentX, int currentY, int prevX, int prevY) {
-   int compass = compass(currentX, currentY, prevX, prevY);
-   
+   int currentCompass = compass(currentX, currentY, prevX, prevY);
+   int newCompass = currentCompass;
    for (int index = 0; index < directions.length; index++) {
-     
-     int[] newCords = getOneDirection(currentX, currentY, prevX, prevY, 10);
+     while (currentCompass != newCompass) {
          
-     
+     }
    }
+ }
    
    //int index = 1;
-   //while (currentX < width-10 && currentY < height-10) {
-   //  directions.add(getOneDirection(currentX, currentY, prevX, prevY, 10));
+   //while (currentX < width-INTERVAL && currentY < height-INTERVAL) {
+   //  directions.add(getOneDirection(currentX, currentY, prevX, prevY, INTERVAL));
    //  prevX = currentX;
    //  prevY = currentY;     
    //  currentX = directions.get(index)[0];
@@ -42,9 +43,17 @@ public class Map {
  }
  
  int compass(int currentX, int currentY, int prevX, int prevY) {
-   
+   if (prevX < currentX) {
+     return EAST;
+   } else if (prevX > currentX) {
+     return WEST;
+   } else if (prevY < currentY) {
+     return SOUTH;
+   } else {
+     return NORTH;
+   }
  }
- 
+  
  int[] getOneDirection(int x, int y, int prevX, int prevY, int interval) {
    color north = path.get(x, y+interval);
    color east = path.get(x+interval, y);
