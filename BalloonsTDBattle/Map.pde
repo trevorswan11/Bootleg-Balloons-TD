@@ -1,7 +1,12 @@
 public class Map {
+ final int NORTH = 0;
+ final int EAST = 1;
+ final int SOUTH = 2;
+ final int WEST = 3;
  PImage image;
  PImage path; 
- ArrayList<int[]> directions;
+ int[][] directions = new int[13][2];
+ //ArrayList<int[]> directions = new ArrayList<int[]>();
  
  public Map() {
    image = loadImage("snow_map.jpg");  
@@ -9,21 +14,35 @@ public class Map {
    path = loadImage("snow_map_path.jpg");
    path.resize(800,600);
    int[] start = new int[]{400, 0};
-   directions.add(start);
+   //directions.add(start);
+   directions = new int[13][2];
+   directions[0] = start;
    calculateDirections(400, 0, 400, 10);
  }
    
  void calculateDirections(int currentX, int currentY, int prevX, int prevY) {
-   directions = new ArrayList<int[]>();
-   int index = 1;
-   while (currentX < width-10 && currentY < height-10) {
-     directions.add(getOneDirection(currentX, currentY, prevX, prevY, 10));
-     prevX = currentX;
-     prevY = currentY;     
-     currentX = directions.get(index)[0];
-     currentY = directions.get(index)[1];
-     index++;
+   int compass = compass(currentX, currentY, prevX, prevY);
+   
+   for (int index = 0; index < directions.length; index++) {
+     
+     int[] newCords = getOneDirection(currentX, currentY, prevX, prevY, 10);
+         
+     
    }
+   
+   //int index = 1;
+   //while (currentX < width-10 && currentY < height-10) {
+   //  directions.add(getOneDirection(currentX, currentY, prevX, prevY, 10));
+   //  prevX = currentX;
+   //  prevY = currentY;     
+   //  currentX = directions.get(index)[0];
+   //  currentY = directions.get(index)[1];
+   //  index++;
+   //}
+ }
+ 
+ int compass(int currentX, int currentY, int prevX, int prevY) {
+   
  }
  
  int[] getOneDirection(int x, int y, int prevX, int prevY, int interval) {
@@ -57,6 +76,22 @@ public class Map {
    return cords;
    
    //println("" + north + " " + east + " " + south + " " + west);
+ }
+ 
+ //int[] getDirection(int index) {
+ //  return directions.get(index);  
+ //}
+ 
+ //int getDirectionsSize() {
+ //  return directions.size();  
+ //}
+ 
+ int[] getDirection(int index) {
+   return directions[index];  
+ }
+ 
+ int getDirectionsSize() {
+   return directions.length;  
  }
   
  PImage getImage() {
