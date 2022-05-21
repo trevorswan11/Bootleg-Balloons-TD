@@ -28,7 +28,17 @@ public class Map {
    color south = path.get(x, y-interval);
    color west = path.get(x-interval, y);
    
+   if (prevX < x) {
+     west = 255;
+   } else if (prevX > x) {
+     east = 255;
+   } else if (prevY < y) {
+     north = 255;
+   } else {
+     south = 255;
+   }
    
+
    
    //println("" + north + " " + east + " " + south + " " + west);
  }
