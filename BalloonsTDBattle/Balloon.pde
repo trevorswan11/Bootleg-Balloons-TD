@@ -31,6 +31,7 @@ public class Balloon {
     
     currentX += distanceX;
     currentY += distanceY;
+    //println("" + distanceX + " " + distanceY);
   }
   
   void followMap() {

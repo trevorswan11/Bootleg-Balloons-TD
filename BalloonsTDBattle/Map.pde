@@ -16,18 +16,28 @@ public class Map {
    image.resize(800,600);
    path = loadImage("snow_map_path.jpg");
    path.resize(800,600);
-   int[] start = new int[]{400, 0};
+   int[] start = new int[]{410, 10};
    //directions.add(start);
    directions = new int[13][2];
    directions[0] = start;
-   calculateDirections(400, 0, 400, 10);
+   calculateDirections(410, 10, 410, 0);
+ }
+ 
+ void printDirections() {
+   for (int i = 0; i < directions.length; i++) {
+     print("current " + i + ":");
+     for (int j = 0; j < directions[i].length; j++) {
+       print(" " + directions[i][j]);   
+     }
+     println(" ");
+   }
  }
    
  void calculateDirections(int currentX, int currentY, int prevX, int prevY) {
    int currentCompass = compass(currentX, currentY, prevX, prevY);
-   int newCompass = currentCompass;
-   for (int index = 0; index < directions.length; index++) {
-     while (currentCompass != newCompass) {
+   for (int index = 1; index < directions.length; index++) {
+     int nextCompass = currentCompass;
+     while (currentCompass == nextCompass) {
        //if (currentCompass == NORTH) {
        //  prevY = currentY;
        //  currentY = currentY-INTERVAL;
@@ -44,10 +54,11 @@ public class Map {
        
        prevX = currentX;
        prevY = currentY;
-       currentX = currentX+nesw[currentCompass][0];
-       currentY = currentY+nesw[currentCompass][1];
+       currentX = currentX+(nesw[currentCompass][0]);
+       currentY = currentY+(nesw[currentCompass][1]);
      
        color c = path.get(currentX, currentY);
+       println(red(c));
        if (red(c) == 255) {
          if (currentCompass % 2 == 0) {
            color east = path.get(prevX+nesw[EAST][0],prevY+nesw[EAST][1]);
@@ -55,32 +66,30 @@ public class Map {
            if (red(east) == 0) {
              currentX = prevX+nesw[EAST][0];
              currentY = prevY+nesw[EAST][1];
-             directions[index] = new int[]{currentX, currentY};
-             newCompass = EAST;
+             nextCompass = EAST;
            } else {
              currentX = prevX+nesw[WEST][0];
              currentY = prevY+nesw[WEST][1];
-             directions[index] = new int[]{currentX, currentY};
-             newCompass = WEST;  
+             nextCompass = WEST;  
            }
          } else {
-           color north = path.get(prevX+nesw[SOUTH][0],prevY+nesw[EAST][1]);
-           color south = path.get(prevX+nesw[SOUTH][0],prevY+nesw[WEST][1]);
+           color north = path.get(prevX+nesw[NORTH][0],prevY+nesw[NORTH][1]);
+           color south = path.get(prevX+nesw[SOUTH][0],prevY+nesw[SOUTH][1]);
            if (red(north) == 0) {
              currentX = prevX+nesw[NORTH][0];
              currentY = prevY+nesw[NORTH][1];
-             directions[index] = new int[]{currentX, currentY};
-             newCompass = NORTH;
+             nextCompass = NORTH;
            } else {
              currentX = prevX+nesw[SOUTH][0];
              currentY = prevY+nesw[SOUTH][1];
-             directions[index] = new int[]{currentX, currentY};
-             newCompass = SOUTH;
+             currentCompass = SOUTH;
            }
          }
+         directions[index] = new int[]{prevX, prevY};
        }
 
      }
+     println("currentCompass: " + currentCompass);
    }
    
    //int index = 1;
@@ -106,38 +115,38 @@ public class Map {
    }
  }
   
- int[] getOneDirection(int x, int y, int prevX, int prevY, int interval) {
-   color north = path.get(x, y+interval);
-   color east = path.get(x+interval, y);
-   color south = path.get(x, y-interval);
-   color west = path.get(x-interval, y);
+ //int[] getOneDirection(int x, int y, int prevX, int prevY, int interval) {
+ //  color north = path.get(x, y+interval);
+ //  color east = path.get(x+interval, y);
+ //  color south = path.get(x, y-interval);
+ //  color west = path.get(x-interval, y);
    
-   if (prevX < x) {
-     west = 255;
-   } else if (prevX > x) {
-     east = 255;
-   } else if (prevY < y) {
-     north = 255;
-   } else if (prevY > y) {
-     south = 255;
-   }
+ //  if (prevX < x) {
+ //    west = 255;
+ //  } else if (prevX > x) {
+ //    east = 255;
+ //  } else if (prevY < y) {
+ //    north = 255;
+ //  } else if (prevY > y) {
+ //    south = 255;
+ //  }
    
-   int[] cords = new int[2];
+ //  int[] cords = new int[2];
    
-   if (north == 0) {
-     cords = new int[]{x, y-interval};  
-   } else if (east == 0) {
-     cords = new int[]{x+interval, y};
-   } else if (south == 0) {
-     cords = new int[]{x, y+interval};
-   } else if (west == 0) {
-     cords = new int[]{x-interval, y};
-   }
+ //  if (north == 0) {
+ //    cords = new int[]{x, y-interval};  
+ //  } else if (east == 0) {
+ //    cords = new int[]{x+interval, y};
+ //  } else if (south == 0) {
+ //    cords = new int[]{x, y+interval};
+ //  } else if (west == 0) {
+ //    cords = new int[]{x-interval, y};
+ //  }
    
-   return cords;
+ //  return cords;
    
-   //println("" + north + " " + east + " " + south + " " + west);
- }
+ //  //println("" + north + " " + east + " " + south + " " + west);
+ //}
  
  //int[] getDirection(int index) {
  //  return directions.get(index);  
@@ -173,6 +182,13 @@ public class Map {
  
  void displayPath(int x, int y) {
    image(path, x, y);  
+ }
+ 
+ void showDirections() {
+   stroke(#76FF00);
+   for (int i = 0; i < directions.length-1; i++) {
+     line(directions[i][0],directions[i][1],directions[i+1][0],directions[i+1][1]);  
+   }
  }
 
   
