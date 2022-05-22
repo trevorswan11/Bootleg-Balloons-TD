@@ -49,7 +49,14 @@ public class Map {
      
        color c = path.get(currentX, currentY);
        if (c == 255) {
-         
+         if (currentCompass % 2 == 0) {
+           color east = path.get((prevX+nesw[EAST][0]),(prevY+nesw[EAST][1];
+           color west = path.get((prevX+nesw[WEST][0],(prevY+nesw[WEST][1];
+         } else {
+           color north = path.get((prevX+nesw[SOUTH][0]),(prevY+nesw[EAST][1];
+           color south = path.get((prevX+nesw[SOUTH][0],(prevY+nesw[WEST][1];
+
+         }
        }
 
      }
