@@ -44,24 +44,36 @@ public class Map {
        
        prevX = currentX;
        prevY = currentY;
-       currentX = current+nesw[currentCompass][0];
-       currentY = current+nesw[currentCompass][1];
+       currentX = currentX+nesw[currentCompass][0];
+       currentY = currentY+nesw[currentCompass][1];
      
        color c = path.get(currentX, currentY);
-       if (c == 255) {
+       if (red(c) == 255) {
          if (currentCompass % 2 == 0) {
-           color east = path.get((prevX+nesw[EAST][0]),(prevY+nesw[EAST][1];
-           color west = path.get((prevX+nesw[WEST][0],(prevY+nesw[WEST][1];
+           color east = path.get(prevX+nesw[EAST][0],prevY+nesw[EAST][1]);
+           color west = path.get(prevX+nesw[WEST][0],prevY+nesw[WEST][1]);
+           if (red(east) == 0) {
+             currentX = prevX+nesw[EAST][0]
+             currentY = prevY+nesw[EAST][1];
+             newCompass = EAST;
+           } else {
+             currentX = prevX+nesw[WEST][0]
+             currentY = prevY+nesw[WEST][1];
+             newCompass = WEST;  
+           }
          } else {
-           color north = path.get((prevX+nesw[SOUTH][0]),(prevY+nesw[EAST][1];
-           color south = path.get((prevX+nesw[SOUTH][0],(prevY+nesw[WEST][1];
-
+           color north = path.get(prevX+nesw[SOUTH][0],prevY+nesw[EAST][1]);
+           color south = path.get(prevX+nesw[SOUTH][0],prevY+nesw[WEST][1]);
+           if (red(north) == 0) {
+            
+           } else {
+             
+           }
          }
        }
 
      }
    }
- }
    
    //int index = 1;
    //while (currentX < width-INTERVAL && currentY < height-INTERVAL) {
