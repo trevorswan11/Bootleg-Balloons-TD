@@ -3,7 +3,9 @@ public class Map {
  final int EAST = 1;
  final int SOUTH = 2;
  final int WEST = 3;
+ 
  final int INTERVAL = 10;
+ final int[][] nesw = new int[][]{{0, INTERVAL*-1},{INTERVAL,0},{0,INTERVAL},{INTERVAL*-1,0}};
  PImage image;
  PImage path; 
  int[][] directions = new int[13][2];
@@ -26,7 +28,25 @@ public class Map {
    int newCompass = currentCompass;
    for (int index = 0; index < directions.length; index++) {
      while (currentCompass != newCompass) {
+       if (currentCompass == NORTH) {
+         prevY = currentY;
+         currentY = currentY-INTERVAL;
+       } else if (currentCompass == EAST) {
+         prevX = currentX;
+         currentX = currentX+INTERVAL;
+       } else if (currentCompass == SOUTH) {
+         prevY = currentY;
+         currentY = currentY+INTERVAL;
+       } else {
+         prevX = currentX;
+         prevX = currentX-INTERVAL;
+       }
+     
+       color c = path.get(currentX, currentY);
+       if (c == 255) {
          
+       }
+
      }
    }
  }
