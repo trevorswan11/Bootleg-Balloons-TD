@@ -28,19 +28,24 @@ public class Map {
    int newCompass = currentCompass;
    for (int index = 0; index < directions.length; index++) {
      while (currentCompass != newCompass) {
-       if (currentCompass == NORTH) {
-         prevY = currentY;
-         currentY = currentY-INTERVAL;
-       } else if (currentCompass == EAST) {
-         prevX = currentX;
-         currentX = currentX+INTERVAL;
-       } else if (currentCompass == SOUTH) {
-         prevY = currentY;
-         currentY = currentY+INTERVAL;
-       } else {
-         prevX = currentX;
-         prevX = currentX-INTERVAL;
-       }
+       //if (currentCompass == NORTH) {
+       //  prevY = currentY;
+       //  currentY = currentY-INTERVAL;
+       //} else if (currentCompass == EAST) {
+       //  prevX = currentX;
+       //  currentX = currentX+INTERVAL;
+       //} else if (currentCompass == SOUTH) {
+       //  prevY = currentY;
+       //  currentY = currentY+INTERVAL;
+       //} else {
+       //  prevX = currentX;
+       //  prevX = currentX-INTERVAL;
+       //}
+       
+       prevX = currentX;
+       prevY = currentY;
+       currentX = current+nesw[currentCompass][0];
+       currentY = current+nesw[currentCompass][1];
      
        color c = path.get(currentX, currentY);
        if (c == 255) {
