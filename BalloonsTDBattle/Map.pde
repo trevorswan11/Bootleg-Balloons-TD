@@ -53,21 +53,29 @@ public class Map {
            color east = path.get(prevX+nesw[EAST][0],prevY+nesw[EAST][1]);
            color west = path.get(prevX+nesw[WEST][0],prevY+nesw[WEST][1]);
            if (red(east) == 0) {
-             currentX = prevX+nesw[EAST][0]
+             currentX = prevX+nesw[EAST][0];
              currentY = prevY+nesw[EAST][1];
+             directions[index] = new int[]{currentX, currentY};
              newCompass = EAST;
            } else {
-             currentX = prevX+nesw[WEST][0]
+             currentX = prevX+nesw[WEST][0];
              currentY = prevY+nesw[WEST][1];
+             directions[index] = new int[]{currentX, currentY};
              newCompass = WEST;  
            }
          } else {
            color north = path.get(prevX+nesw[SOUTH][0],prevY+nesw[EAST][1]);
            color south = path.get(prevX+nesw[SOUTH][0],prevY+nesw[WEST][1]);
            if (red(north) == 0) {
-            
+             currentX = prevX+nesw[NORTH][0];
+             currentY = prevY+nesw[NORTH][1];
+             directions[index] = new int[]{currentX, currentY};
+             newCompass = NORTH;
            } else {
-             
+             currentX = prevX+nesw[SOUTH][0];
+             currentY = prevY+nesw[SOUTH][1];
+             directions[index] = new int[]{currentX, currentY};
+             newCompass = SOUTH;
            }
          }
        }
