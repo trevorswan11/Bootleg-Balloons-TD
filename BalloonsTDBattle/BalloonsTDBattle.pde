@@ -6,9 +6,13 @@ int MODE = ADD;
 int round = 1;
 
 void setup() {
-    
+  size(1000, 800);
 }
 
 void draw() {
-  
+  display();
+}
+void mouseClicked() {
+  Monkey M = new Monkey(mouseX, mouseY);
+  M.display();
 }

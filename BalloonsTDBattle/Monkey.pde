@@ -6,6 +6,8 @@ public class Monkey {
   int x; // The coordinates of the monkey
   int y;
   public Monkey(int xcoord, int ycoord) {
+    //Default values for monkey stats except for x and y since those have to be determiend
+    //by mouseClicked()
     attackSpeed = 10;
     attackRange = 10;
     attackStrength = 10;
@@ -18,5 +20,9 @@ public class Monkey {
     attackStrength = strength;
     x = xcoord;
     y = ycoord;
+  }
+  void display() {
+    image = loadImage("monkey.jpg");
+    image(image,x,y);
   }
 }
