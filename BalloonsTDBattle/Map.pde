@@ -4,7 +4,7 @@ public class Map {
  final int SOUTH = 2;
  final int WEST = 3;
  
- final int INTERVAL = 10;
+ final int INTERVAL = 40;
  final int[][] nesw = new int[][]{{0, INTERVAL*-1},{INTERVAL,0},{0,INTERVAL},{INTERVAL*-1,0}};
  PImage image;
  PImage path; 
@@ -54,8 +54,8 @@ public class Map {
        
        prevX = currentX;
        prevY = currentY;
-       currentX = currentX+(nesw[currentCompass][0]);
-       currentY = currentY+(nesw[currentCompass][1]);
+       currentX = (int)(currentX+(nesw[currentCompass][0])*1.25);
+       currentY = (int)(currentY+(nesw[currentCompass][1])*1.25);
      
        color c = path.get(currentX, currentY);
        println(red(c));
