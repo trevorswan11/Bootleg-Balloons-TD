@@ -24,34 +24,12 @@ public class Balloon {
     image(image, currentX, currentY);       
   }
   
-  void move() {
-    int[] nextCords = map.getDirection(directionsIndex);
-    float distanceX = nextCords[0]-currentX;
-    float distanceY = nextCords[1]-currentY;
-    
-    while (distanceX > 0) {
-      currentX += speed;
-      distanceX -= speed;
-      //println(distanceX);
-    }
-    while (distanceY > 0) {
-      currentY += speed;
-      distanceY -= speed;
-      //println(distanceY);
-    }
-    
-    //currentX += distanceX;
-    //currentY += distanceY;
-    //println("" + distanceX + " " + distanceY);
+  int getDirectionsIndex() {
+    return directionsIndex;  
   }
   
-  void followMap() {
-    while (directionsIndex < map.getDirectionsSize()) {
-      move();
-      display();
-      directionsIndex++;
-    }
+  int addDirectionsIndex() {
+    directionsIndex ++;
+    return directionsIndex;
   }
-  
-  
 }
