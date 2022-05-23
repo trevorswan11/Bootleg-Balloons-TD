@@ -25,7 +25,13 @@ public class Monkey {
     x = xcoord;
     y = ycoord;
   }
+  public int getX() {
+    return x;
+  }
+  public int getY() {
+    return y;
+  }
   void display() {
-    image(image,x,y);
+    image(image, x, y);
   }
 }

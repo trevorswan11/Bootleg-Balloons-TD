@@ -1,6 +1,7 @@
 final int ADD = 0;
 final int DELETE = 1;
 final int UPGRADE = 2;
+MonkeyList monkeys;
 
 int MODE = ADD;
 int round = 1;
@@ -10,9 +11,9 @@ void setup() {
 }
 
 void draw() {
-  //M.display();
+  //monkeys.display();
 }
 void mouseClicked() {
-  Monkey M = new Monkey(mouseX, mouseY);
-  M.display();
+  monkeys.add(new Monkey(mouseX, mouseY));
+  monkeys.display();
 }
