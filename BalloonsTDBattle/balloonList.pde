@@ -1,15 +1,17 @@
 public class balloonList {
-  Balloon first, last;
+  balloonNode first, last;
   
   balloonList() {
-    first = new Balloon();
-    last = new Balloon();
+    first = null;
+    last = null;
     
     first.next = last;
     last.prev = first;
   }
   
-  void add(Balloon balloon) {
+  //add to the end of the list
+  void add(Balloon b) { 
+    balloonNode balloon= new balloonNode(b);
     balloon.prev = last;
     balloon.next.prev = balloon;
     last.next = balloon;
@@ -28,6 +30,17 @@ public class balloonList {
       current = current.next;
     }
     return answer;
+  }
+  
+  void delete(Balloon target) {
+    if(target != null && target != first && target != last) {
+      target.prev.next = target.next;
+      target.next.prev = target.prev;
+    }
+  }
+  
+  Boolean isEmpty() {
+    return (last == null && first == null);  
   }
   
   
