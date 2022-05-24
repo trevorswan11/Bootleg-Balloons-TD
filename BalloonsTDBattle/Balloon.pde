@@ -2,20 +2,19 @@ public class Balloon {
   PImage image;
   int health;
   float speed;
-  int directionsIndex = 1;
+  int directionsIndex = 0;
   float currentX = 400;
-  float currentY = 3;
+  float currentY = 0;
   
-  int[] nextCords = map.getDirection(0);
+  int[] nextCords = map.getDirection(1);
   float distanceX = nextCords[0]-currentX;
   float distanceY = nextCords[1]-currentY;
 
-  
   public Balloon() {
     image = loadImage("red_balloon.png");
     image.resize(25, 25);
     health = 1;
-    speed = .05;
+    speed = 1;
   }
   
   public Balloon(String color_, int health_, float speed_) {
@@ -31,30 +30,16 @@ public class Balloon {
   
   void followMap() {
     if (directionsIndex < map.getDirectionsSize()) {
+      //println(directionsIndex);
       if (distanceX > 0 && distanceY > 0) {
         move();
       } else {
+        directionsIndex++;
         nextCords = map.getDirection(directionsIndex);
         distanceX = nextCords[0]-currentX;
         distanceY = nextCords[1]-currentY;
-        directionsIndex++;
       }
     }
-
-    //if (distanceX > 0) {
-    //  currentX += speed;
-    //  distanceX -= speed;
-    //  //println(currentX);
-    //}
-    //if (distanceY > 0) {
-    //  currentY += speed;
-    //  distanceY -= speed;
-    //  //println(currentY);
-    //}
-    
-    //currentX += distanceX;
-    //currentY += distanceY;
-    //println("" + distanceX + " " + distanceY);
   }
   
   void move() {
