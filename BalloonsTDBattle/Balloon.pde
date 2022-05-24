@@ -16,7 +16,7 @@ public class Balloon {
     image = loadImage("red_balloon.png");
     image.resize(size, size);
     health = 1;
-    speed = 5;
+    speed = 4;
   }
   
   public Balloon(Balloon balloon) {
@@ -39,9 +39,9 @@ public class Balloon {
   
   void followMap() {
     if (directionsIndex < map.getDirectionsSize()) {
-      //println(directionsIndex);
       move();
       if (distanceX == 0 && distanceY == 0) {
+        println("myles was here");
         if (directionsIndex != 13) {
           directionsIndex++;
           nextCords = map.getDirection(directionsIndex);
@@ -54,13 +54,21 @@ public class Balloon {
   
   void move() {
     if (distanceX != 0) {
+      float sign = distanceSign(distanceX);
       currentX += speed*distanceSign(distanceX);
       distanceX -= speed*distanceSign(distanceX);
-      println("X: " + currentX + " distance: " + distanceX);
+      if (sign != distanceSign(distanceX)) {
+        distanceX = 0;  
+        currentX = nextCords[0];
+      }
     } else if (distanceY != 0) {
+      float sign = distanceSign(distanceY);
       currentY += speed*distanceSign(distanceY);
       distanceY -= speed*distanceSign(distanceY);
-      println("Y: " + currentY + " distance: " + distanceY);
+      if (sign != distanceSign(distanceY)) {
+        distanceY = 0;  
+        currentY = nextCords[1];
+      }
     }
   }
   
