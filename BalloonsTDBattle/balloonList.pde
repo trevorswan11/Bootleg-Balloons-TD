@@ -8,4 +8,14 @@ public class balloonList {
     first.next = last;
     last.prev = first;
   }
+  
+  void add(Balloon balloon) {
+    balloon.prev = last;
+    balloon.next.prev = balloon;
+    last.next = balloon;
+    balloon.prev = first; 
+    
+  }
+  
+  
 }
