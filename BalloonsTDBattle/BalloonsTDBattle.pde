@@ -3,6 +3,7 @@ final int DELETE = 1;
 final int UPGRADE = 2;
 
 Map map;
+Balloon balloon;
 
 int MODE = ADD;
 int round = 1;
@@ -19,11 +20,18 @@ void keyPressed() {
 void setup() {
   size(800,600);
   map = new Map();
+  map.calculateDirections(410,10,410,0);
+  map.printDirections();
+  balloon = new Balloon();
+  
 }
 
 void draw() {
   map.displayPath();
-  map.display();
-  Balloon red = new Balloon("red", 1, 5);
-  red.display();
+  //map.display();
+  balloon.display();
+  map.showDirections();
+  //balloon.move();
+  balloon.followMap();
+  balloon.changeX(5);
 }
