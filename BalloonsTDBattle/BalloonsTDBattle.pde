@@ -20,7 +20,7 @@ void keyPressed() {
 void setup() {
   size(800,600);
   map = new Map();
-  map.calculateDirections(410,10,410,0);
+  //map.calculateDirections(410,10,410,0);
   map.printDirections();
   balloon = new Balloon();
   
@@ -28,10 +28,9 @@ void setup() {
 
 void draw() {
   map.displayPath();
-  //map.display();
+  map.display();
   balloon.display();
   map.showDirections();
   //balloon.move();
   balloon.followMap();
-  balloon.changeX(5);
 }
