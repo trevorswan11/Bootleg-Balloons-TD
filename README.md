@@ -10,3 +10,4 @@ Our project is a bootleg version of the popular mini-game, Bloons TD Battle. The
 **April Li**
 * 5/21/22: I set up the Map and Balloon classes and displayed them. I tried to make the Balloon follow the path based on colors but it seems to go in the wrong direction.
 * 5/24/22: I tested different INTERVALs for calculateDirections() and changed move() and followMap() into if statements and declared variables used in these functions as global variables
+* 5/24/22: I removed calculate directions and just inputted corner points into a variable. Got my move() and followMap() functions to work for any speed. Started working on my ballonList.
