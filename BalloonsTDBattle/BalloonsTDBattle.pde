@@ -1,13 +1,15 @@
 final int ADD = 0;
 final int DELETE = 1;
 final int UPGRADE = 2;
-MonkeyList monkeys;
+MonkeyList monkeys = new MonkeyList();
+Monkey m;
 
 int MODE = ADD;
 int round = 1;
 
 void setup() {
   size(1000, 800);
+  
 }
 
 void draw() {
