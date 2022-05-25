@@ -5,6 +5,7 @@ final int UPGRADE = 2;
 Map map;
 Balloon balloon;
 
+boolean roundStart = false;
 int MODE = ADD;
 int round = 1;
 
@@ -13,7 +14,7 @@ void mouseClicked() {
 }
 
 void keyPressed() {
-
+    
 } 
 
 void setup() {
@@ -26,7 +27,5 @@ void setup() {
 void draw() {
   map.display();
   balloon.display();
-  map.showDirections();
-  //balloon.move();
   balloon.followMap();
 }
