@@ -8,3 +8,4 @@ Our project is a bootleg version of the popular mini-game, Bloons TD Battle. The
 
 **Development Log:**
 * **April Li(5/21/22):** I set up the Map and Balloon classes and displayed them. I tried to make the Balloon follow the path based on colors but it seems to go in the wrong direction.
+* **Nicole Liu(5/23/22):** I set up the Monkey and MonkeyList class. Monkey Class can display but MonkeyList is having some trouble.
