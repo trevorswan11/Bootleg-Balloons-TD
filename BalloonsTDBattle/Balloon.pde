@@ -6,7 +6,6 @@ public class Balloon {
   float currentX = 410;
   float currentY = 0;
   int size = 25;
-  Balloon next, prev;
   
   int[] nextCords = map.getDirection(1);
   float distanceX = nextCords[0]-currentX;
@@ -34,14 +33,13 @@ public class Balloon {
   }
 
   void display() {
-    image(image, currentX, currentY);       
+    image(image, currentX-size/2, currentY-size/2);       
   }
   
   void followMap() {
     if (directionsIndex < map.getDirectionsSize()) {
       move();
       if (distanceX == 0 && distanceY == 0) {
-        println("myles was here");
         if (directionsIndex != 13) {
           directionsIndex++;
           nextCords = map.getDirection(directionsIndex);
