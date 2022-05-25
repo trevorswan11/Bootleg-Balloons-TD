@@ -1,29 +1,85 @@
 public class Balloon {
   PImage image;
   int health;
-  int speed;
-  int directionsIndex = 0;
-  float currentX = 400;
-  float currentY = 3;
+  float speed;
+  int directionsIndex = 1;
+  float currentX = 410;
+  float currentY = 0;
+  int size = 25;
   
+  int[] nextCords = map.getDirection(1);
+  float distanceX = nextCords[0]-currentX;
+  float distanceY = nextCords[1]-currentY;
+
   public Balloon() {
     image = loadImage("red_balloon.png");
-    image.resize(25, 25);
+    image.resize(size, size);
     health = 1;
-    speed = 5;
+    speed = 4;
   }
   
-  public Balloon(String color_, int health_, int speed_) {
+  public Balloon(Balloon balloon) {
+    image = balloon.image;  
+    image.resize(size,size);
+    health = balloon.health;
+    speed = balloon.speed;
+  }
+  
+  public Balloon(String color_, int health_, float speed_) {
     image = loadImage(color_ + "_balloon.png");
-    image.resize(25, 25);
+    image.resize(size, size);
     health = health_;
     speed = speed_;
   }
 
   void display() {
-    image(image, currentX, currentY);       
+    image(image, currentX-size/2, currentY-size/2);       
   }
   
+  void followMap() {
+    if (directionsIndex < map.getDirectionsSize()) {
+      move();
+      if (distanceX == 0 && distanceY == 0) {
+        if (directionsIndex != 13) {
+          directionsIndex++;
+          nextCords = map.getDirection(directionsIndex);
+          distanceX = nextCords[0]-currentX;
+          distanceY = nextCords[1]-currentY;
+        }
+      }
+    }
+  }
+  
+  void move() {
+    if (distanceX != 0) {
+      float sign = distanceSign(distanceX);
+      currentX += speed*distanceSign(distanceX);
+      distanceX -= speed*distanceSign(distanceX);
+      if (sign != distanceSign(distanceX)) {
+        distanceX = 0;  
+        currentX = nextCords[0];
+      }
+    } else if (distanceY != 0) {
+      float sign = distanceSign(distanceY);
+      currentY += speed*distanceSign(distanceY);
+      distanceY -= speed*distanceSign(distanceY);
+      if (sign != distanceSign(distanceY)) {
+        distanceY = 0;  
+        currentY = nextCords[1];
+      }
+    }
+  }
+  
+  float distanceSign(float n) {
+    if (n == 0) {
+      return 0;  
+    } else if (n > 0) {
+      return 1;
+    } else {
+      return -1;
+    }
+  }
+      
   int getDirectionsIndex() {
     return directionsIndex;  
   }
@@ -31,5 +87,29 @@ public class Balloon {
   int addDirectionsIndex() {
     directionsIndex ++;
     return directionsIndex;
+  }
+  
+  float changeX(int change) {
+    currentX += change;
+    return currentX;
+  }
+  float changeY(int change) {
+    currentY += change;
+    return currentY;
+  }
+  float getCurrentX() {
+    return currentX;  
+  }
+  float getCurrentY() {
+    return currentY;
+  }
+  PImage getImage() {
+    return image;  
+  }
+  int getHealth() {
+    return health;
+  }
+  float getSpeed() {
+    return speed;
   }
 }
