@@ -6,6 +6,7 @@ public class Balloon {
   float currentX = 410;
   float currentY = 0;
   int size = 25;
+  Boolean atEnd = false;
   
   int[] nextCords = map.getDirection(1);
   float distanceX = nextCords[0]-currentX;
@@ -33,7 +34,9 @@ public class Balloon {
   }
 
   void display() {
-    image(image, currentX-size/2, currentY-size/2);       
+    if (health > 0 && !atEnd) {
+      image(image, currentX-size/2, currentY-size/2);
+    }
   }
   
   void followMap() {
@@ -45,6 +48,8 @@ public class Balloon {
           nextCords = map.getDirection(directionsIndex);
           distanceX = nextCords[0]-currentX;
           distanceY = nextCords[1]-currentY;
+        } else {
+          atEnd = true;  
         }
       }
     }
@@ -79,16 +84,10 @@ public class Balloon {
       return -1;
     }
   }
-      
+        
   int getDirectionsIndex() {
     return directionsIndex;  
   }
-  
-  int addDirectionsIndex() {
-    directionsIndex ++;
-    return directionsIndex;
-  }
-  
   float changeX(int change) {
     currentX += change;
     return currentX;
