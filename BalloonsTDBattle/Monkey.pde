@@ -20,7 +20,6 @@ public class Monkey {
     image = loadImage("monkey.png");
     image.resize(25, 25);
     attackSpeed = speed;
-    attackRange = range;
     attackStrength = strength;
     x = xcoord;
     y = ycoord;
