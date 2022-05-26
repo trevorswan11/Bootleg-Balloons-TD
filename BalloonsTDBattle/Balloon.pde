@@ -80,6 +80,20 @@ public class Balloon {
       return -1;
     }
   }
+   
+  int[] getFuture(int attackSpeed) {
+    float x_ = currentX;
+    float y_ = currentY;
+    int directionsIndex_ = directionsIndex;
+    
+    int[] nextCords = map.getDirection(directionsIndex);
+    float distanceX = nextCords[0]-x_;
+    float distanceY = nextCords[1]-y_;
+    int maxTime = attackSpeed; //some calculation based on attackSpeed and balloonSpeed
+    for (int i = 0; i < attackSpeed; i++) {
+      
+    }
+  }
         
   int getDirectionsIndex() {
     return directionsIndex;  
