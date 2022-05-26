@@ -50,7 +50,7 @@ void draw() {
     text("MODE: Add", 20, 30);
   }
   if (MODE == DELETE) {
-    text("MODE: Remove", 20, 30);
+    text("MODE: Delete", 20, 30);
   }
 
   monkeys.display();

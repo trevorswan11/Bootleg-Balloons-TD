@@ -42,6 +42,9 @@ public class Monkey {
   public PImage getImage(){
     return image;
   }
+  Balloon findBalloon(){
+    
+  }
   void display() {
     image(image, x, y);
   }
