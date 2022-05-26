@@ -31,6 +31,13 @@ public class balloonList {
     }
     return -1;
   }
+
+  void remove(int targetIndex) {
+    if (balloons.get(targetIndex) != null) {
+      balloons.remove(targetIndex);
+    }
+  }
+
   
   
 }
