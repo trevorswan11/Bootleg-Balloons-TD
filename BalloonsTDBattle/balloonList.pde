@@ -17,8 +17,13 @@ public class balloonList {
   
   void processAll() {
     for (int index = 0; index < balloons.size(); index++) {
-      balloons.get(index).followMap();  
+      balloons.get(index).followMap();
+      if (balloons.get(index).atEnd) {
+        balloons.remove(index);
+        index--;
+      }
     }
+
   }
   
   int getBalloonAt(int x, int y) {
