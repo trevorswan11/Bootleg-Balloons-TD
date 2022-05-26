@@ -20,7 +20,6 @@ public class Monkey {
     image = loadImage("monkey.png");
     image.resize(25, 25);
     attackSpeed = speed;
-    attackRange = range;
     attackStrength = strength;
     x = xcoord;
     y = ycoord;
@@ -30,6 +29,21 @@ public class Monkey {
   }
   public int getY() {
     return y;
+  }
+  public int getAttackSpeed(){
+    return attackSpeed;
+  }
+  public int getAttackRange(){
+    return attackRange;
+  }
+  public int getAttackStrength(){
+    return attackStrength;
+  }
+  public PImage getImage(){
+    return image;
+  }
+  Balloon findBalloon(){
+    for(int i = 
   }
   void display() {
     image(image, x, y);
