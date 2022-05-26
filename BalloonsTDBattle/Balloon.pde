@@ -5,7 +5,6 @@ public class Balloon {
   int directionsIndex = 1;
   float currentX = 410;
   float currentY = 0;
-  int size = 25;
   Boolean atEnd = false;
   
   int[] nextCords = map.getDirection(1);
@@ -13,29 +12,26 @@ public class Balloon {
   float distanceY = nextCords[1]-currentY;
 
   public Balloon() {
-    image = loadImage("red_balloon.png");
-    image.resize(size, size);
+    image = redBalloon;
     health = 1;
-    speed = 4;
+    speed = 2;
   }
   
   public Balloon(Balloon balloon) {
     image = balloon.image;  
-    image.resize(size,size);
     health = balloon.health;
     speed = balloon.speed;
   }
   
-  public Balloon(String color_, int health_, float speed_) {
-    image = loadImage(color_ + "_balloon.png");
-    image.resize(size, size);
+  public Balloon(PImage image_, int health_, float speed_) {
+    image = image_;
     health = health_;
     speed = speed_;
   }
 
   void display() {
     if (health > 0 && !atEnd) {
-      image(image, currentX-size/2, currentY-size/2);
+      image(image, currentX-balloonSize/2, currentY-balloonSize/2);
     }
   }
   

@@ -24,7 +24,7 @@ public class balloonList {
   int getBalloonAt(int x, int y) {
     for (int index = 0; index < balloons.size(); index++) {
       float distance_ = dist(x, y, balloons.get(index).currentX, balloons.get(index).currentY);
-      float size_ = balloons.get(index).getSize();
+      float size_ = balloonSize;
       if (distance_ - size_ <= 0) {
         return index;
       }

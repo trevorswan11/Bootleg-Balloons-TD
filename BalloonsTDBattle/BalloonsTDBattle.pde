@@ -9,6 +9,10 @@ balloonList balloons = new balloonList();
 Monkey m;
 Map map;
 Balloon balloon;
+int balloonSize = 25;
+
+
+PImage redBalloon;
 
 boolean roundStart = false;
 int MODE = ADD;
@@ -18,6 +22,10 @@ void setup() {
   size(800,600);
   map = new Map();
   map.printDirections();
+  
+  //images
+  redBalloon = loadImage("red_balloon.png");
+  redBalloon.resize(balloonSize, balloonSize);
 }
 
 void mouseClicked() {
