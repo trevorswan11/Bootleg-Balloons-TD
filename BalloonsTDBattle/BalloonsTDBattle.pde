@@ -29,7 +29,7 @@ void mouseClicked() {
     monkeys.remove(mouseX, mouseY);
   }
 
-  //println("" + mouseX + ", " + mouseY);
+  println("" + mouseX + ", " + mouseY);
 }
 
 void keyPressed() {
@@ -43,7 +43,9 @@ void keyPressed() {
 
 
 void draw() {
-  background(255);
+  map.display();
+  balloon.display();
+  balloon.followMap();
   if (MODE == ADD) {
     text("MODE: Add", 20, 30);
   }
@@ -52,8 +54,4 @@ void draw() {
   }
 
   monkeys.display();
-
-  //map.display();
-  //balloon.display();
-  //balloon.followMap();
 }
