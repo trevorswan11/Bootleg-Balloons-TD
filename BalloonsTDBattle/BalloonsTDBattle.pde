@@ -21,7 +21,6 @@ int round = 1;
 void setup() {
   size(800,600);
   map = new Map();
-  map.printDirections();
   
   //images
   redBalloon = loadImage("red_balloon.png");
