@@ -42,6 +42,10 @@ public class balloonList {
       balloons.remove(targetIndex);
     }
   }
+  
+  Balloon get(int index) {
+    return balloons.get(index);  
+  }
 
   
   
