@@ -15,4 +15,10 @@ public class balloonList {
     }
   }
   
+  void processAll() {
+    for (int index = 0; index < balloons.size(); index++) {
+      balloons.get(index).followMap();  
+    }
+  }  
+  
 }
