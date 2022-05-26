@@ -4,6 +4,11 @@ public class MonkeyList {
     monke = new ArrayList<Monkey>();
   }
   void set(Monkey oldMonkey, Monkey newMonkey){
+    for(int i = 0; i < monke.size(); i++){
+      if(monke.get(i) == oldMonkey){
+        monke.set(i, newMonkey);
+      }
+    }
   }
   void add(Monkey toBeAdded) {
     monke.add(toBeAdded);

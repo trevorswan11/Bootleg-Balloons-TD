@@ -31,6 +31,18 @@ public class Monkey {
   public int getY() {
     return y;
   }
+  public int getAttackSpeed(){
+    return attackSpeed;
+  }
+  public int getAttackRange(){
+    return attackRange;
+  }
+  public int getAttackStrength(){
+    return attackStrength;
+  }
+  public PImage getImage(){
+    return image;
+  }
   void display() {
     image(image, x, y);
   }
