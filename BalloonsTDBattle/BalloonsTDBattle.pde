@@ -2,9 +2,11 @@ final int ADD = 0;
 final int DELETE = 1;
 final int UPGRADE = 2;
 MonkeyList monkeys = new MonkeyList();
-Monkey m;
+balloonList balloons = new balloonList();
+
 //Change image display by loading in the setup so you only have to set up once
 
+Monkey m;
 Map map;
 Balloon balloon;
 
@@ -16,18 +18,30 @@ void setup() {
   size(800,600);
   map = new Map();
   map.printDirections();
-  balloon = new Balloon();
 }
 
 void mouseClicked() {
-  monkeys.add(new Monkey(mouseX, mouseY));
-  monkeys.display();
-  println("" + mouseX + ", " + mouseY); 
+  if (MODE == ADD) {
+    monkeys.add(new Monkey(mouseX, mouseY));
+  } else if (MODE == DELETE) {
+    monkeys.remove(mouseX, mouseY);
+  }
+}
+
+void keyPressed() {
+  if (key == ' ') {
+    if (MODE == DELETE) {
+      MODE = ADD;  
+    } else {
+      MODE++;  
+    }
+  }
 }
 
 
 void draw() {
   map.display();
-  balloon.display();
-  balloon.followMap();
+  //balloon.display();
+  //balloon.followMap();
+  monkeys.display();
 }
