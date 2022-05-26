@@ -22,9 +22,9 @@ public class balloonList {
   }
   
   int getBalloonAt(int x, int y) {
-    for (int index = 0; index < map.getDirectionsSize(); index++) {
+    for (int index = 0; index < balloons.size(); index++) {
       float distance_ = dist(x, y, balloons.get(index).currentX, balloons.get(index).currentY);
-      float size_ = balloon.size;
+      float size_ = balloons.get(index).getSize();
       if (distance_ - size_ <= 0) {
         return index;
       }
@@ -33,7 +33,7 @@ public class balloonList {
   }
 
   void remove(int targetIndex) {
-    if (balloons.get(targetIndex) != null) {
+    if (targetIndex >= 0 && balloons.get(targetIndex) != null) {
       balloons.remove(targetIndex);
     }
   }

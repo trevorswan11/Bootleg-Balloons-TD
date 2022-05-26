@@ -21,11 +21,12 @@ void setup() {
 }
 
 void mouseClicked() {
-  if (MODE == ADD) {
-    monkeys.add(new Monkey(mouseX, mouseY));
-  } else if (MODE == DELETE) {
-    monkeys.remove(mouseX, mouseY);
-  }
+  //if (MODE == ADD) {
+  //  monkeys.add(new Monkey(mouseX, mouseY));
+  //} else if (MODE == DELETE) {
+  //  monkeys.remove(mouseX, mouseY);
+  //}
+  balloons.remove(balloons.getBalloonAt(mouseX,mouseY));
 }
 
 void keyPressed() {
@@ -36,12 +37,15 @@ void keyPressed() {
       MODE++;  
     }
   }
+  if (key == 'b') {
+    balloons.add(new Balloon());  
+  }
 }
 
 
 void draw() {
   map.display();
-  //balloon.display();
-  //balloon.followMap();
+  balloons.display();
+  balloons.processAll();
   monkeys.display();
 }
