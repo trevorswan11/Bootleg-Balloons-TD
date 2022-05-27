@@ -9,6 +9,10 @@ public class Player {
     income = 650;
   }
   
+  Boolean isDead() {
+    return health<=0;  
+  }
+  
   int changeIncome(int change) {
     income = income + change; 
     return income;
@@ -16,15 +20,23 @@ public class Player {
   
  int decreaseHealth() {
    health --;  
+   if (health < 0) {
+     return 0;  
+   }
    return health;
  }
  
  int decreaseHealth(int change) {
    health = health - change;
+   if (health < 0) {
+     return 0;  
+   }
    return health;
  }
+ 
+ int roundIncome() {
+   income = income+round*100;  
+   return income;
+ }
   
-  public timeIncome() {
-    
-  }
 }
