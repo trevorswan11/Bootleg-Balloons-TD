@@ -67,4 +67,5 @@ void draw() {
   balloons.display();
   balloons.processAll();
   monkeys.display();
+  monkeys.processAll();
 }

@@ -3,13 +3,15 @@ public class Monkey {
   int attackSpeed;
   int attackRange;
   int attackStrength;
-  int x; // The coordinates of the monkey
-  int y;
-  public Monkey(int xcoord, int ycoord) {
+  Weapons weapon;
+  float x; // The coordinates of the monkey
+  float y;
+  public Monkey(float xcoord, float ycoord) {
     //Default values for monkey stats except for x and y since those have to be determiend
     //by mouseClicked()
     image = loadImage("monkey.png");
     image.resize(25, 25);
+    weapon = new Weapons(xcoord, ycoord);
     attackSpeed = 10;
     attackRange = 10;
     attackStrength = 10;
@@ -37,11 +39,20 @@ public class Monkey {
     return coord;
   }
   
-  public int getX() {
+  public float getX() {
     return x;
   }
-  public int getY() {
+  public float getY() {
     return y;
+  }
+  void setX(float xcoord) {
+    x = xcoord;
+  }
+  void setY(float ycoord) {
+    y = ycoord;
+  }
+  Weapons getWeapons(){
+    return weapon;
   }
 
   public int getAttackSpeed(){

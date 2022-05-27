@@ -3,6 +3,14 @@ public class MonkeyList {
   public MonkeyList() {
     monke = new ArrayList<Monkey>();
   }
+ void processAll(){
+   for(int i = 0; i < monke.size(); i++){
+     float coord[] = monke.get(i).findBalloon();
+     monke.get(i).setX(coord[0]);
+     monke.get(i).setY(coord[1]);
+   }
+     
+  }
   void set(Monkey oldMonkey, Monkey newMonkey) {
     for (int i = 0; i < monke.size(); i++) {
       if (monke.get(i) == oldMonkey) {
@@ -14,10 +22,10 @@ public class MonkeyList {
     monke.add(toBeAdded);
   }
 
-  void remove(int xcoord, int ycoord) {
+  void remove(float xcoord, float ycoord) {
     for (int i = 0; i < monke.size(); i++) {
-      int compareX = monke.get(i).getX();
-      int compareY = monke.get(i).getY();
+      float compareX = monke.get(i).getX();
+      float compareY = monke.get(i).getY();
       if (xcoord >= compareX && xcoord <= compareX+25 && ycoord >= compareY && ycoord <= compareY+25) {
         monke.remove(i);
       }
