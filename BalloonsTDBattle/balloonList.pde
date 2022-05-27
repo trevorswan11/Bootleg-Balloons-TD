@@ -18,8 +18,14 @@ public class balloonList {
   
   void processAll() {
     for (int index = 0; index < balloons.size(); index++) {
-      balloons.get(index).followMap();
-      if (balloons.get(index).atEnd) {
+      if (balloons.get(index).getHealth() > 0) {
+        balloons.get(index).followMap();
+        if (balloons.get(index).atEnd) {
+          player.decreaseHealth(balloons.get(index).health);
+          balloons.remove(index);
+          index--;
+        }
+      } else {
         balloons.remove(index);
         index--;
       }
