@@ -52,15 +52,16 @@ void keyPressed() {
 
 }
 
-
 void draw() {
   map.display();
+  fill(0);
   if (MODE == ADD) {
-    text("MODE: Add", 20, 30);
+    text("MODE: Add", 30, 60);
   }
   if (MODE == DELETE) {
-    text("MODE: Delete", 20, 30);
+    text("MODE: Delete", 30, 60);
   }
+  balloons.addBalloons();
   balloons.display();
   balloons.processAll();
   monkeys.display();
