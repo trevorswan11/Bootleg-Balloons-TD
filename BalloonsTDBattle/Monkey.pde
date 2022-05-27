@@ -34,6 +34,7 @@ public class Monkey {
         coord[1] = current.getCurrentY();
       }
     }
+    return coord;
   }
   public int getX() {
     return x;

@@ -1,12 +1,11 @@
 public class Weapons {
-  PImage image;
+  color c;
   int x;
   int y;
   public Weapons(int xcoord, int ycoord) {
-    image = loadImage("dart.png");
-    image.resize(25, 25);
     x = xcoord;
     y = ycoord;
+    c = color(random(255), random(255), random(255));
   }
 
   void changeX(int interval) {
@@ -16,6 +15,7 @@ public class Weapons {
     y = y + interval;
   }
   void display() {
-    image(image, x, y);
+    fill(c);
+    circle(x, y, 5);
   }
 }

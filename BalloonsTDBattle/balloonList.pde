@@ -44,7 +44,7 @@ public class balloonList {
   Balloon get(int index) {
     return balloons.get(index);
   }
-  int size(){
+  int size() {
     return balloons.size();
   }
 }

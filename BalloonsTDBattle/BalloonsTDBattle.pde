@@ -31,6 +31,7 @@ void mouseClicked() {
   if (MODE == ADD) {
     fill(0);
     monkeys.add(new Monkey(mouseX, mouseY));
+    
   }
   if (MODE == DELETE) {
     fill(0);
