@@ -49,6 +49,9 @@ void keyPressed() {
   if (key == 'b') {
     balloons.add(new Balloon());  
   }
+  if (key == ENTER) {
+    roundStart = true;  
+  }
 
 }
 
@@ -61,8 +64,10 @@ void draw() {
   if (MODE == DELETE) {
     text("MODE: Delete", 30, 60);
   }
-  balloons.addBalloons();
-  balloons.display();
-  balloons.processAll();
+  if (roundStart) {
+    balloons.addBalloons();
+    balloons.display();
+    balloons.processAll();
+  }
   monkeys.display();
 }
