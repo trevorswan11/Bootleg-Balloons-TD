@@ -14,7 +14,7 @@ public class Balloon {
   public Balloon() {
     image = redBalloon;
     health = 1;
-    speed = 2;
+    speed = 10;
   }
   
   public Balloon(Balloon balloon) {

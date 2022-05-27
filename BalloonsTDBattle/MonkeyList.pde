@@ -3,9 +3,13 @@ public class MonkeyList {
   public MonkeyList() {
     monke = new ArrayList<Monkey>();
   }
-  void set(Monkey oldMonkey, Monkey newMonkey){
-    for(int i = 0; i < monke.size(); i++){
-      if(monke.get(i) == oldMonkey){
+  Monkey get(int index) {
+    return monke.get(index);
+  }
+
+  void set(Monkey oldMonkey, Monkey newMonkey) {
+    for (int i = 0; i < monke.size(); i++) {
+      if (monke.get(i) == oldMonkey) {
         monke.set(i, newMonkey);
       }
     }
@@ -27,5 +31,8 @@ public class MonkeyList {
     for (int i = 0; i < monke.size(); i++) {
       monke.get(i).display();
     }
+  }
+  int size() {
+    return monke.size();
   }
 }

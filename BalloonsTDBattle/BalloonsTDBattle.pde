@@ -21,7 +21,7 @@ int round = 1;
 void setup() {
   size(800, 600);
   map = new Map();
-  
+
   //images
   redBalloon = loadImage("red_balloon.png");
   redBalloon.resize(balloonSize, balloonSize);
@@ -41,15 +41,14 @@ void mouseClicked() {
 void keyPressed() {
   if (key == ' ') {
     if (MODE == DELETE) {
-      MODE = ADD;  
+      MODE = ADD;
     } else {
-      MODE++;  
+      MODE++;
     }
   }
   if (key == 'b') {
-    balloons.add(new Balloon());  
+    balloons.add(new Balloon());
   }
-
 }
 
 
@@ -64,4 +63,7 @@ void draw() {
   balloons.display();
   balloons.processAll();
   monkeys.display();
+  for (int i = 0; i < monkeys.size(); i++) {
+    monkeys.get(i).findBalloon();
+  }
 }
