@@ -24,36 +24,38 @@ public class Monkey {
     x = xcoord;
     y = ycoord;
   }
-  float[] findBalloon(){
-    float[]coord = new float[2];
-    balloonList balloon2 = balloons;
-    for(int i = 0; i< balloon2.size(); i++){
-      Balloon current = balloon2.get(i);
-      if(current.getHealth() > 0 && dist(getX(), getY(), current.getCurrentX(), current.getCurrentY()) > attackRange){
-        coord[0] = current.getCurrentX();
-        coord[1] = current.getCurrentY();
-      }
-    }
-  }
   public int getX() {
     return x;
   }
   public int getY() {
     return y;
   }
-
-  public int getAttackSpeed(){
+  public int getAttackSpeed() {
     return attackSpeed;
   }
-  public int getAttackRange(){
+  public int getAttackRange() {
     return attackRange;
   }
-  public int getAttackStrength(){
+  public int getAttackStrength() {
     return attackStrength;
   }
-  public PImage getImage(){
+  public PImage getImage() {
     return image;
   }
+  float[] findBalloon() {
+    float[] coords = new float[2];
+    balloonList balloons2 = balloons;
+    
+    for (int i = 0; i< balloonSize; i --) {
+      Balloon current = balloons2.get(i);
+      if (current.getHealth() > 0 && dist(getX(), getY(), current.getCurrentX(), current.getCurrentY()) < attackRange) {
+        coords[0] = current.getCurrentX();
+        coords[1] = current.getCurrentY();
+      }
+    }
+    return coords;
+  }
+  
   void display() {
     image(image, x, y);
   }

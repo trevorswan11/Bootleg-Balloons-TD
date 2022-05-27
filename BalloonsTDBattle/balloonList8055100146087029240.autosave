@@ -35,16 +35,14 @@ public class balloonList {
     }
     return -1;
   }
+  
+  Balloon get(int index){
+    return balloons.get(index);
+  }
 
   void remove(int targetIndex) {
     if (targetIndex >= 0 && balloons.get(targetIndex) != null) {
       balloons.remove(targetIndex);
     }
-  }
-  Balloon get(int index) {
-    return balloons.get(index);
-  }
-  int size(){
-    return balloons.size();
   }
 }

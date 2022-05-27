@@ -46,6 +46,7 @@ void keyPressed() {
       MODE++;  
     }
   }
+
   if (key == 'b') {
     balloons.add(new Balloon());  
   }
