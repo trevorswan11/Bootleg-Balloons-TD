@@ -3,9 +3,17 @@ public class MonkeyList {
   public MonkeyList() {
     monke = new ArrayList<Monkey>();
   }
+  void set(Monkey oldMonkey, Monkey newMonkey){
+    for(int i = 0; i < monke.size(); i++){
+      if(monke.get(i) == oldMonkey){
+        monke.set(i, newMonkey);
+      }
+    }
+  }
   void add(Monkey toBeAdded) {
     monke.add(toBeAdded);
   }
+
   void remove(int xcoord, int ycoord) {
     for (int i = 0; i < monke.size(); i++) {
       int compareX = monke.get(i).getX();

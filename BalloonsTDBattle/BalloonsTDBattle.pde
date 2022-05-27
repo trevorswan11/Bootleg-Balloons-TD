@@ -19,7 +19,7 @@ int MODE = ADD;
 int round = 1;
 
 void setup() {
-  size(800,600);
+  size(800, 600);
   map = new Map();
   
   //images
@@ -28,12 +28,14 @@ void setup() {
 }
 
 void mouseClicked() {
-  //if (MODE == ADD) {
-  //  monkeys.add(new Monkey(mouseX, mouseY));
-  //} else if (MODE == DELETE) {
-  //  monkeys.remove(mouseX, mouseY);
-  //}
-  balloons.remove(balloons.getBalloonAt(mouseX,mouseY));
+  if (MODE == ADD) {
+    fill(0);
+    monkeys.add(new Monkey(mouseX, mouseY));
+  }
+  if (MODE == DELETE) {
+    fill(0);
+    monkeys.remove(mouseX, mouseY);
+  }
 }
 
 void keyPressed() {
@@ -47,11 +49,19 @@ void keyPressed() {
   if (key == 'b') {
     balloons.add(new Balloon());  
   }
-}
 
+}
 
 void draw() {
   map.display();
+  fill(0);
+  if (MODE == ADD) {
+    text("MODE: Add", 30, 60);
+  }
+  if (MODE == DELETE) {
+    text("MODE: Delete", 30, 60);
+  }
+  balloons.addBalloons();
   balloons.display();
   balloons.processAll();
   monkeys.display();

@@ -1,5 +1,6 @@
 public class balloonList {
   ArrayList<Balloon> balloons;
+  int timer = 0;
   
   public balloonList() {
     balloons = new ArrayList<Balloon>();  
@@ -23,7 +24,15 @@ public class balloonList {
         index--;
       }
     }
-
+  }
+  
+  void addBalloons() {
+    if (timer < round*60*3) {
+      if (timer%15 == 0) {
+        balloons.add(new Balloon());  
+      }
+      timer++;
+    }
   }
   
   int getBalloonAt(int x, int y) {
@@ -41,6 +50,10 @@ public class balloonList {
     if (targetIndex >= 0 && balloons.get(targetIndex) != null) {
       balloons.remove(targetIndex);
     }
+  }
+  
+  Balloon get(int index) {
+    return balloons.get(index);  
   }
 
   

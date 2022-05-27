@@ -80,6 +80,49 @@ public class Balloon {
       return -1;
     }
   }
+   
+  float[] getFuture(int attackSpeed) {
+    float x_ = currentX;
+    float y_ = currentY;
+    int directionsIndex_ = directionsIndex;
+    
+    int[] nextCords_ = map.getDirection(directionsIndex+1);
+    float distanceX_ = nextCords[0]-x_;
+    float distanceY_ = nextCords[1]-y_;
+    int maxTime = attackSpeed; //some calculation based on attackSpeed and balloonSpeed
+    int timer = 0;
+    
+    while (timer < maxTime) {
+      if (directionsIndex_ < map.getDirectionsSize()) {
+        if (distanceX_ != 0) {
+          float sign = distanceSign(distanceX_);
+          x_ += speed*distanceSign(distanceX_);
+          distanceX_ -= speed*distanceSign(distanceX_);
+          if (sign != distanceSign(distanceX_)) {
+            distanceX_ = 0;  
+            x_ = nextCords_[0];
+          }
+        } else if (distanceY_ != 0) {
+          float sign = distanceSign(distanceY_);
+          y_ += speed*distanceSign(distanceY_);
+          distanceY_ -= speed*distanceSign(distanceY_);
+          if (sign != distanceSign(distanceY_)) {
+            distanceY_ = 0;  
+            y_ = nextCords_[1];
+          }
+        }
+       if (distanceX_ == 0 && distanceY_ == 0) {
+         if (directionsIndex_ != 13) {
+           directionsIndex_++;
+           nextCords_ = map.getDirection(directionsIndex_);
+           distanceX_ = nextCords_[0]-x_;
+           distanceY_ = nextCords_[1]-x_;
+         }
+       }  
+      }
+    }
+    return new float[]{x_,y_};
+  }
         
   int getDirectionsIndex() {
     return directionsIndex;  
