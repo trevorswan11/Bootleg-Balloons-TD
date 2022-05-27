@@ -6,6 +6,7 @@ balloonList balloons = new balloonList();
 
 //Change image display by loading in the setup so you only have to set up once
 
+Player player;
 Monkey m;
 Map map;
 Balloon balloon;
@@ -21,6 +22,7 @@ int round = 1;
 void setup() {
   size(800, 600);
   map = new Map();
+  player = new Player();
   
   //images
   redBalloon = loadImage("red_balloon.png");
@@ -56,18 +58,25 @@ void keyPressed() {
 }
 
 void draw() {
-  map.display();
-  fill(0);
-  if (MODE == ADD) {
-    text("MODE: Add", 30, 60);
+  if (!player.isDead()) {
+    map.display();
+    fill(0);
+    if (MODE == ADD) {
+      text("MODE: Add", 30, 60);
+    }
+    if (MODE == DELETE) {
+      text("MODE: Delete", 30, 60);
+    }
+    if (roundStart) {
+      balloons.addBalloons();
+      balloons.display();
+      balloons.processAll();
+    }
+    monkeys.display();
+  } else {
+    background(0);
+    textSize(100);
+    textAlign(CENTER);
+    text("GAME OVER", width/2, height/2);
   }
-  if (MODE == DELETE) {
-    text("MODE: Delete", 30, 60);
-  }
-  if (roundStart) {
-    balloons.addBalloons();
-    balloons.display();
-    balloons.processAll();
-  }
-  monkeys.display();
 }
