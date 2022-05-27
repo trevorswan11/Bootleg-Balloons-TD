@@ -1,10 +1,13 @@
 public class Map { 
  final int[][] directions = new int[][]{{410,0},{410, 60},{670,60},{670,225},{270,225},{270,95},{115,95},{115,350},{470,350},{470,440},{220,440},{220,570},{670,570},{670,600}};
  PImage image;
+ PImage path;
  
  public Map() {
    image = loadImage("snow_map.jpg");  
    image.resize(800,600);
+   path = loadImage("snow_map_path.jpg");
+   path.resize(800,600);
  }
  
  int[] getDirection(int index) {
@@ -25,6 +28,15 @@ public class Map {
      line(directions[i][0],directions[i][1],directions[i+1][0],directions[i+1][1]);  
    }
  }
+ 
+ void displayPath() {
+   image(path, 0, 0);  
+ }
+ 
+ PImage getPath() {
+   return path;  
+ }
+
 
  
 }

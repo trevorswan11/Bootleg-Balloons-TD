@@ -13,8 +13,9 @@ Our project is a bootleg version of the popular mini-game, Bloons TD Battle. The
 * 5/24/22: I tested different INTERVALs for calculateDirections() and changed move() and followMap() into if statements and declared variables used in these functions as global variables
 * 5/24/22: I removed calculate directions and just inputted corner points into a variable. Got my move() and followMap() functions to work for any speed. Started working on my ballonList.
 * 5/25/22: I created balloonList as an ArrayList and wrote add(), remove(), getBalloonAt(), display(), and processAll() as well as load images in setup();
+* 5/26/22: I created getFuture() for Monkey class to use for attack and I created addBalloons() that will add balloons based on the round
 
-* **Nicole Liu**
+**Nicole Liu**
 * 5/23/22: I set up the Monkey and MonkeyList class. Monkey Class can display but MonkeyList is having some trouble.
 * 5/25/22: I got the MonkeyList to work and display. I tested out the remove and add methods by implementing modes in the main and they seem to work. Also created a weapons class and started working on that. Also tested out the monkey class on the main class.
 * 5/26/22: I started working on the findBalloon method and added some accessor methods to the classes.

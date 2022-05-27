@@ -36,6 +36,7 @@ public class Monkey {
     }
     return coord;
   }
+  
   public int getX() {
     return x;
   }
