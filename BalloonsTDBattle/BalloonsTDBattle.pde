@@ -6,6 +6,7 @@ balloonList balloons = new balloonList();
 
 //Change image display by loading in the setup so you only have to set up once
 
+Player player;
 Monkey m;
 Map map;
 Balloon balloon;
@@ -16,11 +17,12 @@ PImage redBalloon;
 
 boolean roundStart = false;
 int MODE = ADD;
-int round = 1;
+int round = 0;
 
 void setup() {
-  size(800, 600);
+  size(1000, 600);
   map = new Map();
+  player = new Player();
   
   //images
   redBalloon = loadImage("red_balloon.png");
@@ -47,25 +49,48 @@ void keyPressed() {
       MODE++;  
     }
   }
+<<<<<<< HEAD
 
   if (key == 'b') {
     balloons.add(new Balloon());  
+=======
+  if (key == ENTER) {
+    roundStart = true;  
+>>>>>>> 4d03e33fa390cb4f005450869a599e81d0c1b904
   }
 
 }
 
 void draw() {
-  map.display();
-  fill(0);
-  if (MODE == ADD) {
-    text("MODE: Add", 30, 60);
+  background(255);
+  if (!player.isDead()) {
+    text("ROUND: " + round, 820, 30);
+    text("HEALTH: " + player.health, 820, 50);
+    map.display();
+    fill(0);
+    if (MODE == ADD) {
+      text("MODE: Add", 820, 70);
+    }
+    if (MODE == DELETE) {
+      text("MODE: Delete", 820, 70);
+    }
+    if (roundStart) {
+      balloons.addBalloons();
+      balloons.display();
+      balloons.processAll();
+    }
+    monkeys.display();
+  } else {
+    textSize(100);
+    textAlign(CENTER);
+    text("GAME OVER", width/2, height/2);
   }
-  if (MODE == DELETE) {
-    text("MODE: Delete", 30, 60);
-  }
+<<<<<<< HEAD
   balloons.addBalloons();
   balloons.display();
   balloons.processAll();
   monkeys.display();
   monkeys.processAll();
+=======
+>>>>>>> 4d03e33fa390cb4f005450869a599e81d0c1b904
 }

@@ -14,7 +14,7 @@ public class Balloon {
   public Balloon() {
     image = redBalloon;
     health = 1;
-    speed = 2;
+    speed = 1;
   }
   
   public Balloon(Balloon balloon) {
@@ -30,9 +30,9 @@ public class Balloon {
   }
 
   void display() {
-    if (health > 0 && !atEnd) {
+    //if (health > 0 && !atEnd) {
       image(image, currentX-balloonSize/2, currentY-balloonSize/2);
-    }
+    //}
   }
   
   void followMap() {
@@ -124,6 +124,14 @@ public class Balloon {
     return new float[]{x_,y_};
   }
         
+  int decreaseHealth() {
+   health--;
+   return health;
+  }
+  int decreaseHealth(int change) {
+    health -= change;
+    return health;
+  }
   int getDirectionsIndex() {
     return directionsIndex;  
   }

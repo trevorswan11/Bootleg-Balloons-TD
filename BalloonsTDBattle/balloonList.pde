@@ -1,9 +1,14 @@
 public class balloonList {
   ArrayList<Balloon> balloons;
-  int timer = 0;
+  int timer;
   
   public balloonList() {
+<<<<<<< HEAD
     balloons = new ArrayList<Balloon>();
+=======
+    balloons = new ArrayList<Balloon>();  
+    timer = round*60*5;
+>>>>>>> 4d03e33fa390cb4f005450869a599e81d0c1b904
   }
 
   void add(Balloon balloon) {
@@ -18,21 +23,36 @@ public class balloonList {
 
   void processAll() {
     for (int index = 0; index < balloons.size(); index++) {
-      balloons.get(index).followMap();
-      if (balloons.get(index).atEnd) {
+      if (balloons.get(index).getHealth() > 0) {
+        balloons.get(index).followMap();
+        if (balloons.get(index).atEnd) {
+          player.decreaseHealth(balloons.get(index).health);
+          balloons.remove(index);
+          index--;
+        }
+      } else {
         balloons.remove(index);
         index--;
       }
     }
+<<<<<<< HEAD
 
 }
+=======
+    if (timer == 0 && balloons.size() == 0) {
+      roundStart = false;
+      round++;
+      timer = round*60*5;
+    }
+  }
+>>>>>>> 4d03e33fa390cb4f005450869a599e81d0c1b904
   
   void addBalloons() {
-    if (timer < round*60*3) {
-      if (timer%15 == 0) {
+    if (timer > 0) {
+      if (timer%25 == 0) {
         balloons.add(new Balloon());  
       }
-      timer++;
+      timer--;
     }
 
 }
