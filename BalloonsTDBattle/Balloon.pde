@@ -146,6 +146,7 @@ public class Balloon {
   }
   int getHealth() {
     return health;
+    
   }
   float getSpeed() {
     return speed;

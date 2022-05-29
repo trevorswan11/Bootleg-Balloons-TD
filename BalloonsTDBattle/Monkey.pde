@@ -13,7 +13,7 @@ public class Monkey {
     image.resize(25, 25);
     weapon = new Weapons(xcoord, ycoord);
     attackSpeed = 10;
-    attackRange = 10;
+    attackRange = 50;
     attackStrength = 10;
     x = xcoord;
     y = ycoord;
@@ -23,21 +23,27 @@ public class Monkey {
     image.resize(25, 25);
     attackSpeed = speed;
     attackStrength = strength;
+    attackRange = range;
     x = xcoord;
     y = ycoord;
   }
+  
   float[] findBalloon(){
     float[]coord = new float[2];
     balloonList balloon2 = balloons;
-    for(int i = balloon2.size()-1; i> -1; i--){
+    for(int i = balloon2.size()-1; i> 0; i--){
       Balloon current = balloon2.get(i);
-      if(current.getHealth() > 0 && dist(getX(), getY(), current.getCurrentX(), current.getCurrentY()) > attackRange){
+      if(current.getHealth() > 0 && dist(getX(), getY(), current.getCurrentX(), current.getCurrentY()) <= attackRange){
         coord[0] = current.getCurrentX();
         coord[1] = current.getCurrentY();
       }
     }
     return coord;
   }
+  void attack(Balloon b){
+    b.decreaseHealth(attackStrength);
+  }
+  
   
   public float getX() {
     return x;

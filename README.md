@@ -19,3 +19,5 @@ Our project is a bootleg version of the popular mini-game, Bloons TD Battle. The
 * 5/23/22: I set up the Monkey and MonkeyList class. Monkey Class can display but MonkeyList is having some trouble.
 * 5/25/22: I got the MonkeyList to work and display. I tested out the remove and add methods by implementing modes in the main and they seem to work. Also created a weapons class and started working on that. Also tested out the monkey class on the main class.
 * 5/26/22: I started working on the findBalloon method and added some accessor methods to the classes.
+* 5/27/22: I tested the findBallon method and created more methods like processAll() to apply the methods to the balloons.
+* 5/29/22: 
