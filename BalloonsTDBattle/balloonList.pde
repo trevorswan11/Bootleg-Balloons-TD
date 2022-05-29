@@ -33,8 +33,8 @@ public class balloonList {
   }
   
   void addBalloons() {
-    if (timer < round*60*3) {
-      if (timer%15 == 0) {
+    if (timer < round*60*5) {
+      if (timer%25 == 0) {
         balloons.add(new Balloon());  
       }
       timer++;
