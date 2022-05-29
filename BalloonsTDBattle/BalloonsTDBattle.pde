@@ -17,7 +17,7 @@ PImage redBalloon;
 
 boolean roundStart = false;
 int MODE = ADD;
-int round = 1;
+int round = 0;
 
 void setup() {
   size(1000, 600);
@@ -57,14 +57,15 @@ void keyPressed() {
 void draw() {
   background(255);
   if (!player.isDead()) {
-    text("HEALTH: " + player.health, 820, 30);
+    text("ROUND: " + round, 820, 30);
+    text("HEALTH: " + player.health, 820, 50);
     map.display();
     fill(0);
     if (MODE == ADD) {
-      text("MODE: Add", 820, 60);
+      text("MODE: Add", 820, 70);
     }
     if (MODE == DELETE) {
-      text("MODE: Delete", 820, 60);
+      text("MODE: Delete", 820, 70);
     }
     if (roundStart) {
       balloons.addBalloons();
