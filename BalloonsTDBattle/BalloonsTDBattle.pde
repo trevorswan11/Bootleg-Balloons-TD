@@ -20,7 +20,7 @@ int MODE = ADD;
 int round = 1;
 
 void setup() {
-  size(800, 600);
+  size(1000, 600);
   map = new Map();
   player = new Player();
   
@@ -48,9 +48,6 @@ void keyPressed() {
       MODE++;  
     }
   }
-  if (key == 'b') {
-    balloons.add(new Balloon());  
-  }
   if (key == ENTER) {
     roundStart = true;  
   }
@@ -58,14 +55,16 @@ void keyPressed() {
 }
 
 void draw() {
+  background(255);
   if (!player.isDead()) {
+    text("HEALTH: " + player.health, 820, 30);
     map.display();
     fill(0);
     if (MODE == ADD) {
-      text("MODE: Add", 30, 60);
+      text("MODE: Add", 820, 60);
     }
     if (MODE == DELETE) {
-      text("MODE: Delete", 30, 60);
+      text("MODE: Delete", 820, 60);
     }
     if (roundStart) {
       balloons.addBalloons();
@@ -74,7 +73,6 @@ void draw() {
     }
     monkeys.display();
   } else {
-    background(0);
     textSize(100);
     textAlign(CENTER);
     text("GAME OVER", width/2, height/2);
