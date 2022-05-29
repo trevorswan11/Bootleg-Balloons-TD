@@ -6,9 +6,11 @@ public class MonkeyList {
   void processAll() {
     for (int i = 0; i < monke.size(); i++) {
       Monkey current =  monke.get(i);
-      float coord[] = current.findBalloon();
-      current.getWeapons().setX(coord[0]);
-      current.getWeapons().setY(coord[1]);
+      float coord[] = current.findBalloon(); //find the balloon
+      int index =  balloons.getBalloonAt(coord[0], coord[1]); // find index of balloon
+      if (index != -1) {
+        current.attack(balloons.get(index));// attack balloon index
+      }
     }
   }
   void set(Monkey oldMonkey, Monkey newMonkey) {

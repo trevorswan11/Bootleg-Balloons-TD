@@ -14,7 +14,7 @@ public class Monkey {
     weapon = new Weapons(xcoord, ycoord);
     attackSpeed = 10;
     attackRange = 50;
-    attackStrength = 10;
+    attackStrength = 1;
     x = xcoord;
     y = ycoord;
   }

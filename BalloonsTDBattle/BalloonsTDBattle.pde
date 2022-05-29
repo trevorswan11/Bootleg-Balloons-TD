@@ -23,7 +23,7 @@ void setup() {
   size(1000, 600);
   map = new Map();
   player = new Player();
-  
+
   //images
   redBalloon = loadImage("red_balloon.png");
   redBalloon.resize(balloonSize, balloonSize);
@@ -33,7 +33,6 @@ void mouseClicked() {
   if (MODE == ADD) {
     fill(0);
     monkeys.add(new Monkey(mouseX, mouseY));
-    
   }
   if (MODE == DELETE) {
     fill(0);
@@ -42,23 +41,20 @@ void mouseClicked() {
 }
 
 void keyPressed() {
+  if (key == 'b') {
+    balloons.add(new Balloon());
+  }
+
+  if (key == ENTER) {
+    roundStart = true;
+  }
   if (key == ' ') {
     if (MODE == DELETE) {
-      MODE = ADD;  
+      MODE = ADD;
     } else {
-      MODE++;  
+      MODE++;
     }
   }
-<<<<<<< HEAD
-
-  if (key == 'b') {
-    balloons.add(new Balloon());  
-=======
-  if (key == ENTER) {
-    roundStart = true;  
->>>>>>> 4d03e33fa390cb4f005450869a599e81d0c1b904
-  }
-
 }
 
 void draw() {
@@ -78,6 +74,7 @@ void draw() {
       balloons.addBalloons();
       balloons.display();
       balloons.processAll();
+      monkeys.processAll();
     }
     monkeys.display();
   } else {
@@ -85,12 +82,4 @@ void draw() {
     textAlign(CENTER);
     text("GAME OVER", width/2, height/2);
   }
-<<<<<<< HEAD
-  balloons.addBalloons();
-  balloons.display();
-  balloons.processAll();
-  monkeys.display();
-  monkeys.processAll();
-=======
->>>>>>> 4d03e33fa390cb4f005450869a599e81d0c1b904
 }

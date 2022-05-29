@@ -1,14 +1,10 @@
 public class balloonList {
   ArrayList<Balloon> balloons;
   int timer;
-  
+
   public balloonList() {
-<<<<<<< HEAD
     balloons = new ArrayList<Balloon>();
-=======
-    balloons = new ArrayList<Balloon>();  
     timer = round*60*5;
->>>>>>> 4d03e33fa390cb4f005450869a599e81d0c1b904
   }
 
   void add(Balloon balloon) {
@@ -35,29 +31,23 @@ public class balloonList {
         index--;
       }
     }
-<<<<<<< HEAD
-
-}
-=======
     if (timer == 0 && balloons.size() == 0) {
       roundStart = false;
       round++;
       timer = round*60*5;
     }
   }
->>>>>>> 4d03e33fa390cb4f005450869a599e81d0c1b904
-  
+
   void addBalloons() {
     if (timer > 0) {
       if (timer%25 == 0) {
-        balloons.add(new Balloon());  
+        balloons.add(new Balloon());
       }
       timer--;
     }
+  }
 
-}
-
-  int getBalloonAt(int x, int y) {
+  int getBalloonAt(float x, float y) {
     for (int index = 0; index < balloons.size(); index++) {
       float distance_ = dist(x, y, balloons.get(index).currentX, balloons.get(index).currentY);
       float size_ = balloonSize;
