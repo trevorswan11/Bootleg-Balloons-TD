@@ -1,9 +1,10 @@
 public class balloonList {
   ArrayList<Balloon> balloons;
-  int timer = 0;
+  int timer;
   
   public balloonList() {
     balloons = new ArrayList<Balloon>();  
+    timer = round*60*5;
   }
   
   void add(Balloon balloon) {
@@ -30,14 +31,19 @@ public class balloonList {
         index--;
       }
     }
+    if (timer == 0 && balloons.size() == 0) {
+      roundStart = false;
+      round++;
+      timer = round*60*5;
+    }
   }
   
   void addBalloons() {
-    if (timer < round*60*5) {
+    if (timer > 0) {
       if (timer%25 == 0) {
         balloons.add(new Balloon());  
       }
-      timer++;
+      timer--;
     }
   }
   
@@ -61,7 +67,4 @@ public class balloonList {
   Balloon get(int index) {
     return balloons.get(index);  
   }
-
-  
-  
 }
