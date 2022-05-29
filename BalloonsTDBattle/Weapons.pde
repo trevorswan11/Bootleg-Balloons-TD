@@ -21,6 +21,6 @@ public class Weapons {
   }
   void display() {
     fill(c);
-    circle(x, y, 5);
+    circle(x, y, 10);
   }
 }

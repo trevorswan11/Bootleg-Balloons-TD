@@ -3,13 +3,13 @@ public class MonkeyList {
   public MonkeyList() {
     monke = new ArrayList<Monkey>();
   }
- void processAll(){
-   for(int i = 0; i < monke.size(); i++){
-     float coord[] = monke.get(i).findBalloon();
-     monke.get(i).setX(coord[0]);
-     monke.get(i).setY(coord[1]);
-   }
-     
+  void processAll() {
+    for (int i = 0; i < monke.size(); i++) {
+      Monkey current =  monke.get(i);
+      float coord[] = current.findBalloon();
+      current.getWeapons().setX(coord[0]);
+      current.getWeapons().setY(coord[1]);
+    }
   }
   void set(Monkey oldMonkey, Monkey newMonkey) {
     for (int i = 0; i < monke.size(); i++) {
