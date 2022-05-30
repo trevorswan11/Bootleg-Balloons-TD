@@ -7,17 +7,23 @@ public class Weapons {
     y = ycoord;
     c = color(random(255), random(255), random(255));
   }
-  void setX(float xcoord){
+  void setX(float xcoord) {
     x = xcoord;
   }
-  void setY(float ycoord){
+  void setY(float ycoord) {
     y = ycoord;
   }
-  void changeX(int interval) {
+  void changeX(float interval) {
     x = x + interval;
   }
-  void changeY(int interval) {
+  void changeY(float interval) {
     y = y + interval;
+  }
+  float getX() {
+    return x;
+  }
+  float getY() {
+    return y;
   }
   void display() {
     fill(c);

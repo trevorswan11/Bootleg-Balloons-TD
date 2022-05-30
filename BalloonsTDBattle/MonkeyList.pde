@@ -8,8 +8,11 @@ public class MonkeyList {
       Monkey current =  monke.get(i);
       float coord[] = current.findBalloon(); //find the balloon
       int index =  balloons.getBalloonAt(coord[0], coord[1]); // find index of balloon
-      if (index != -1) {
+      if (index > -1) {
+        //println("index: " + index);
+        //println("balloon size: " + balloons.size());
         current.attack(balloons.get(index));// attack balloon index
+        current.throwWeapon(balloons.get(index));
       }
     }
   }
