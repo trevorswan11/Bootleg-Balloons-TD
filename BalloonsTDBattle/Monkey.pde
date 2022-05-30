@@ -14,7 +14,7 @@ public class Monkey {
     weapon = new Weapons(xcoord, ycoord);
     attackSpeed = 10;
     attackRange = 50;
-    attackStrength = 1;
+    attackStrength = 10;
     x = xcoord;
     y = ycoord;
   }
@@ -31,7 +31,7 @@ public class Monkey {
   float[] findBalloon() {
     float[]coord = new float[2];
     balloonList balloon2 = balloons;
-    for (int i = balloon2.size()-1; i> 0; i--) {
+    for (int i = 0 ; i< balloon2.size(); i++) {
       Balloon current = balloon2.get(i);
       if (current.getHealth() > 0 && dist(getX(), getY(), current.getCurrentX(), current.getCurrentY()) <= attackRange) {
         coord[0] = current.getCurrentX();
@@ -45,19 +45,21 @@ public class Monkey {
   }
   void throwWeapon(Balloon b) {
     float[] coord = b.getFuture(attackSpeed);
-      if(weapon.getX() == coord[0] && weapon.getY() == coord[1]){
-        weapon.setDisplay(_
-      }else{
-      float xInterval = (coord[0]-weapon.getX())/10;
-      float yInterval = (coord[1]-weapon.getY())/10;
+    //println("index: " + balloons.getBalloonAt(coord[0], coord[1]));
+    float range = dist(weapon.getX(), weapon.getY(), coord[0], coord[1]);
+    if (range < 10) {
+      attack(b);
+      weapon.setDisplay(false);
+      weapon.setX(x);
+      weapon.setY(y);
+      weapon.setDisplay(true);
+    } else {
+      float xInterval = (coord[0]-weapon.getX())/3;//change 10 to something based off of attackSpeed
+      float yInterval = (coord[1]-weapon.getY())/3;
       weapon.changeX(xInterval);
       weapon.changeY(yInterval);
     }
   }
-  
-
-
-
 
   public float getX() {
     return x;

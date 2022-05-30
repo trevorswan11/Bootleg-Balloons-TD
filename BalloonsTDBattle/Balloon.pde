@@ -13,7 +13,7 @@ public class Balloon {
 
   public Balloon() {
     image = redBalloon;
-    health = 100;
+    health = 1;
     speed = 1;
   }
 

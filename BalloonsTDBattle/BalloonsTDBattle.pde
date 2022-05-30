@@ -3,7 +3,6 @@ final int DELETE = 1;
 final int UPGRADE = 2;
 MonkeyList monkeys = new MonkeyList();
 balloonList balloons = new balloonList();
-weaponsList weapons = new weaponsList();
 
 //Change image display by loading in the setup so you only have to set up once
 
