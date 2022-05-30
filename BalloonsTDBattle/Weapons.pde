@@ -1,21 +1,42 @@
 public class Weapons {
-  PImage image;
-  int x;
-  int y;
-  public Weapons(int xcoord, int ycoord) {
-    image = loadImage("dart.png");
-    image.resize(25, 25);
+  color c;
+  float x;
+  float y;
+  boolean isDisplay = true;
+  public Weapons(float xcoord, float ycoord) {
     x = xcoord;
     y = ycoord;
+    c = color(random(255), random(255), random(255));
   }
-
-  void changeX(int interval) {
+  void setX(float xcoord) {
+    x = xcoord;
+  }
+  void setY(float ycoord) {
+    y = ycoord;
+  }
+  void changeX(float interval) {
     x = x + interval;
   }
-  void changeY(int interval) {
+  void changeY(float interval) {
     y = y + interval;
   }
+  float getX() {
+    return x;
+  }
+  float getY() {
+    return y;
+  }
+  boolean getisDisplay() {
+    return isDisplay;
+  }
+  void setDisplay(boolean b) {
+    isDisplay = b;
+    }
+  
   void display() {
-    image(image, x, y);
+    if (isDisplay == true) {
+      fill(c);
+      circle(x, y, 10);
+    }
   }
 }

@@ -7,19 +7,6 @@ public class MonkeyList {
     return monke.get(index);
   }
 
-  void processAll() {
-    for (int i = 0; i < monke.size(); i++) {
-      Monkey current =  monke.get(i);
-      float coord[] = current.findBalloon(); //find the balloon
-      int index =  balloons.getBalloonAt(coord[0], coord[1]); // find index of balloon
-      if (index > -1) {
-        current.throwWeapon(balloons.get(index));
-      } else {
-        current.weapon.setX(current.getX());
-        current.weapon.setY(current.getY());
-      }
-    }
-  }
   void set(Monkey oldMonkey, Monkey newMonkey) {
     for (int i = 0; i < monke.size(); i++) {
       if (monke.get(i) == oldMonkey) {
@@ -31,22 +18,15 @@ public class MonkeyList {
     monke.add(toBeAdded);
   }
 
-  void remove(float xcoord, float ycoord) {
+  void remove(int xcoord, int ycoord) {
     for (int i = 0; i < monke.size(); i++) {
-      float compareX = monke.get(i).getX();
-      float compareY = monke.get(i).getY();
+      int compareX = monke.get(i).getX();
+      int compareY = monke.get(i).getY();
       if (xcoord >= compareX && xcoord <= compareX+25 && ycoord >= compareY && ycoord <= compareY+25) {
         monke.remove(i);
       }
     }
   }
-  public int size() {
-    return monke.size();
-  }
-  public Monkey get(int index) {
-    return monke.get(index);
-  }
-
   void display() {
     for (int i = 0; i < monke.size(); i++) {
       monke.get(i).display();
