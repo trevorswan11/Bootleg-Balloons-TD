@@ -22,3 +22,4 @@ Our project is a bootleg version of the popular mini-game, Bloons TD Battle. The
 * 5/26/22: I started working on the findBalloon method and added some accessor methods to the classes.
 * 5/27/22: I tested the findBallon method and created more methods like processAll() to apply the methods to the balloons.
 * 5/29/22: I completed the attack method and started on the shootWeapon method and also made some updates to processAll().
+* 5/30/22: I completed the shootWeapon method.
