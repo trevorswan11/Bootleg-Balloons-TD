@@ -3,9 +3,6 @@ public class MonkeyList {
   public MonkeyList() {
     monke = new ArrayList<Monkey>();
   }
-  Monkey get(int index) {
-    return monke.get(index);
-  }
 
   void processAll() {
     for (int i = 0; i < monke.size(); i++) {
@@ -40,9 +37,7 @@ public class MonkeyList {
       }
     }
   }
-  public int size() {
-    return monke.size();
-  }
+
   public Monkey get(int index) {
     return monke.get(index);
   }
