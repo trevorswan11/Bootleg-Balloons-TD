@@ -3,6 +3,7 @@ final int DELETE = 1;
 final int UPGRADE = 2;
 MonkeyList monkeys = new MonkeyList();
 balloonList balloons = new balloonList();
+weaponsList weapons = new weaponsList();
 
 //Change image display by loading in the setup so you only have to set up once
 
@@ -32,11 +33,14 @@ void setup() {
 void mouseClicked() {
   if (MODE == ADD) {
     fill(0);
-    monkeys.add(new Monkey(mouseX, mouseY));
+    Monkey m = new Monkey(mouseX, mouseY);
+    monkeys.add(m);
+    //weapons.add(m.getWeapons());
   }
   if (MODE == DELETE) {
     fill(0);
     monkeys.remove(mouseX, mouseY);
+    //weapons.remove(mouseX, mouseY);
   }
 }
 

@@ -2,6 +2,7 @@ public class Weapons {
   color c;
   float x;
   float y;
+  boolean isDisplay = true;
   public Weapons(float xcoord, float ycoord) {
     x = xcoord;
     y = ycoord;
@@ -25,8 +26,17 @@ public class Weapons {
   float getY() {
     return y;
   }
+  boolean getisDisplay() {
+    return isDisplay;
+  }
+  void setDisplay(boolean b) {
+    isDisplay = b;
+    }
+  
   void display() {
-    fill(c);
-    circle(x, y, 10);
+    if (isDisplay == true) {
+      fill(c);
+      circle(x, y, 10);
+    }
   }
 }

@@ -45,15 +45,15 @@ public class Monkey {
   }
   void throwWeapon(Balloon b) {
     float[] coord = b.getFuture(attackSpeed);
-    //while (weapon.getX() != b.getCurrentX() || weapon.getY() < b.getCurrentY()) {
+      if(weapon.getX() == coord[0] && weapon.getY() == coord[1]){
+        weapon.setDisplay(_
+      }else{
       float xInterval = (coord[0]-weapon.getX())/10;
       float yInterval = (coord[1]-weapon.getY())/10;
       weapon.changeX(xInterval);
       weapon.changeY(yInterval);
-      if(weapon.getX() == coord[0]){
-        weapon = new Weapons(x, y);
-      }
     }
+  }
   
 
 
