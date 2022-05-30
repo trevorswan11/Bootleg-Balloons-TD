@@ -10,6 +10,9 @@ public class MonkeyList {
       int index =  balloons.getBalloonAt(coord[0], coord[1]); // find index of balloon
       if (index > -1) {
         current.throwWeapon(balloons.get(index));
+      } else {
+        current.weapon.setX(current.getX());
+        current.weapon.setY(current.getY());
       }
     }
   }
