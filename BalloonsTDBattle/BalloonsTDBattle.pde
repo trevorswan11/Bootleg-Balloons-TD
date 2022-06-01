@@ -10,10 +10,9 @@ Player player;
 Monkey m;
 Map map;
 Balloon balloon;
-int balloonSize = 25;
+int balloonSize = 35;
 
-
-PImage redBalloon;
+PImage red, blue, green, yellow, pink, black, white, zebra, lead, rainbow, ceramic;
 
 boolean roundStart = false;
 int MODE = ADD;
@@ -26,8 +25,28 @@ void setup() {
 
 
   //images
-  redBalloon = loadImage("red_balloon.png");
-  redBalloon.resize(balloonSize, balloonSize);
+  red = loadImage("red_balloon.png");
+  red.resize(balloonSize, balloonSize);
+  blue = loadImage("blue_balloon.png");
+  blue.resize(balloonSize, balloonSize);
+  green = loadImage("green_balloon.png");
+  green.resize(balloonSize, balloonSize);
+  yellow = loadImage("yellow_balloon.png");
+  yellow.resize(balloonSize, balloonSize);
+  pink = loadImage("pink_balloon.png");
+  pink.resize(balloonSize, balloonSize);
+  black = loadImage("black_balloon.png");
+  black.resize(balloonSize, balloonSize);
+  white = loadImage("white_balloon.png");
+  white.resize(balloonSize, balloonSize);
+  zebra = loadImage("zebra_balloon.png");
+  zebra.resize(balloonSize, balloonSize);
+  lead = loadImage("lead_balloon.png");
+  lead.resize(balloonSize, balloonSize);
+  rainbow = loadImage("rainbow_balloon.png");
+  rainbow.resize(balloonSize, balloonSize);
+  ceramic = loadImage("ceramic_balloon.png");
+  ceramic.resize(balloonSize, balloonSize);
 }
 
 void mouseClicked() {
