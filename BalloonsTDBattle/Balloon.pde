@@ -6,6 +6,7 @@ public class Balloon {
   float currentX = 410;
   float currentY = 0;
   Boolean atEnd = false;
+  int size = balloonSize;
 
   int[] nextCords = map.getDirection(1);
   float distanceX = nextCords[0]-currentX;
@@ -35,7 +36,7 @@ public class Balloon {
   }
 
   void display() {
-    image(image, currentX-balloonSize/2, currentY-balloonSize/2);
+    image(image, currentX-size/2, currentY-balloonSize/2);
   }
 
   void followMap() {
@@ -244,6 +245,7 @@ public class blackBalloon extends Balloon{
     image = black;
     health = 11;
     speed = 1.5;
+    size = balloonSize/2;
   }
   
   blackBalloon(float x, float y) {
@@ -251,6 +253,7 @@ public class blackBalloon extends Balloon{
     image = black;
     health = 11;
     speed = 1.5;
+    size = balloonSize/2;
   }
 
   //if 1 damage done to it, it splits into two pink balloons, else split into 1 pink
@@ -261,6 +264,7 @@ public class whiteBalloon extends Balloon{
     image = white;
     health = 11;
     speed = 1.5;
+    size = balloonSize/2;
   }
   
   whiteBalloon(float x, float y) {
@@ -268,6 +272,7 @@ public class whiteBalloon extends Balloon{
     image = white;
     health = 11;
     speed = 1.5;
+    size = balloonSize/2;
   }
 
   //if 1 damage done to it, it splits into 2 pink balloons
