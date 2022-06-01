@@ -146,6 +146,12 @@ public class Balloon {
     currentY += change;
     return currentY;
   }
+  void setX(float x_) {
+    currentX = x_;  
+  }
+  void setY(float y_) {
+    currentY = y_;  
+  }
   float getCurrentX() {
     return currentX;
   }
@@ -160,6 +166,15 @@ public class Balloon {
   }
   float getSpeed() {
     return speed;
+  }
+  void setNextCords(int[] cords) {
+    nextCords = cords;
+  }
+  void setDistanceX(float dist) {
+    distanceX = dist;  
+  }
+  void setDistanceY(float dist) {
+    distanceY = dist;  
   }
 }
 
