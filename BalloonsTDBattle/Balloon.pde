@@ -12,7 +12,7 @@ public class Balloon {
   float distanceY = nextCords[1]-currentY;
 
   public Balloon() {
-    image = redBalloon;
+    image = red;
     health = 1;
     speed = 1;
   }
@@ -30,9 +30,7 @@ public class Balloon {
   }
 
   void display() {
-    //if (health > 0 && !atEnd) {
     image(image, currentX-balloonSize/2, currentY-balloonSize/2);
-    //}
   }
 
   void followMap() {
@@ -159,4 +157,98 @@ public class Balloon {
   float getSpeed() {
     return speed;
   }
+}
+
+public class redBalloon extends Balloon{
+  redBalloon() {
+    image = red;
+    health = 1;
+    speed = 1;
+  }
+}
+
+public class blueBalloon extends Balloon{
+  blueBalloon() {
+    image = blue;
+    health = 2;
+    speed = 2;
+  }
+}
+
+public class greenBalloon extends Balloon{
+  greenBalloon() {
+    image = green;
+    health = 3;
+    speed = 2;
+  }
+}
+
+public class yellowBalloon extends Balloon{
+  yellowBalloon() {
+    image = yellow;
+    health = 4;
+    speed = 3;
+  }
+}
+
+public class pinkBalloon extends Balloon{
+  pinkBalloon() {
+    image = pink;
+    health = 5; 
+    speed = 4;
+  }
+}
+
+public class blackBalloon extends Balloon{
+  blackBalloon() {
+    image = black;
+    health = 11;
+    speed = 3;
+  }
+  //if 1 damage done to it, it splits into two pink balloons, else split into 1 pink
+}
+
+public class whiteBalloon extends Balloon{
+  whiteBalloon() {
+    image = white;
+    health = 11;
+    speed = 3;
+  }
+  //if 1 damage done to it, it splits into 2 pink balloons
+}
+
+public class zebraBalloon extends Balloon{
+  zebraBalloon() {
+    image = zebra;
+    health = 23;
+    speed = 3;
+  }
+  //if 1 damage done to it, it splits into 1 black and 1 white
+}
+
+public class leadBalloon extends Balloon{
+  leadBalloon() {
+    image = lead;
+    health = 23;
+    speed = 1;
+  }
+  //if 1 damage done to it, it splits into 2 black balloons 
+}
+
+public class rainbowBalloon extends Balloon{
+  rainbowBalloon() {
+    image = rainbow;
+    health = 47;
+    speed = 4;
+  }
+  //if 1 damage dont to it, it splits into 2 zebra baloons 
+}
+
+public class ceramicBalloon extends Balloon{
+  ceramicBalloon() {
+    image = ceramic;
+    health = 104;
+    speed = 5;
+  }
+  //if 10 damage is done to it(health 94), it splits into 2 rainbow balloons
 }
