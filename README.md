@@ -15,7 +15,8 @@ Our project is a bootleg version of the popular mini-game, Bloons TD Battle. The
 * 5/25/22: I created balloonList as an ArrayList and wrote add(), remove(), getBalloonAt(), display(), and processAll() as well as load images in setup();
 * 5/26/22: I created getFuture() for Monkey class to use for attack and I created addBalloons() that will add balloons based on the round
 * 5/27/22: Created player class and start trigger key as well as game over page.
-* 5/29/22: Displayed health and decreased it when Balloons reached the end as implemented rounds. 
+* 5/29/22: Displayed health and decreased it when Balloons reached the end as implemented rounds.
+* 5/31/22: Created Ballon class subclasses for different types of Balloons and set up all the constructors and images. 
 
 **Nicole Liu**
 * 5/23/22: I set up the Monkey and MonkeyList class. Monkey Class can display but MonkeyList is having some trouble.
