@@ -36,9 +36,9 @@ void setup() {
   pink = loadImage("pink_balloon.png");
   pink.resize(balloonSize, balloonSize);
   black = loadImage("black_balloon.png");
-  black.resize(balloonSize, balloonSize);
+  black.resize(balloonSize/2, balloonSize);
   white = loadImage("white_balloon.png");
-  white.resize(balloonSize, balloonSize);
+  white.resize(balloonSize/2, balloonSize);
   zebra = loadImage("zebra_balloon.png");
   zebra.resize(balloonSize, balloonSize);
   lead = loadImage("lead_balloon.png");
