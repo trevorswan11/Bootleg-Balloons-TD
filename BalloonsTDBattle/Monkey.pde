@@ -9,18 +9,16 @@ public class Monkey {
   public Monkey(float xcoord, float ycoord) {
     //Default values for monkey stats except for x and y since those have to be determiend
     //by mouseClicked()
-    image = loadImage("monkey.png");
-    image.resize(25, 25);
+    image = defaultMonkey;
     weapon = new Weapons(xcoord, ycoord);
-    attackSpeed = 10;
+    attackSpeed = 20;
     attackRange = 50;
-    attackStrength = 10;
+    attackStrength = 1;
     x = xcoord;
     y = ycoord;
   }
   public Monkey(int speed, int range, int strength, int xcoord, int ycoord) {
-    image = loadImage("monkey.png");
-    image.resize(25, 25);
+    image = defaultMonkey;
     attackSpeed = speed;
     attackStrength = strength;
     attackRange = range;
@@ -44,7 +42,7 @@ public class Monkey {
     b.decreaseHealth(attackStrength);
   }
   void throwWeapon(Balloon b) {
-    float[] coord = b.getFuture(attackSpeed);
+    float[] coord = b.getFuture(attackSpeed*b.getSpeed());
     //println("index: " + balloons.getBalloonAt(coord[0], coord[1]));
     float range = dist(weapon.getX(), weapon.getY(), coord[0], coord[1]);
     if (range < 10) {
@@ -54,8 +52,8 @@ public class Monkey {
       weapon.setY(y);
       weapon.setDisplay(true);
     } else {
-      float xInterval = (coord[0]-weapon.getX())/3;//change 10 to something based off of attackSpeed
-      float yInterval = (coord[1]-weapon.getY())/3;
+      float xInterval = (coord[0]-weapon.getX())/attackSpeed;//change 10 to something based off of attackSpeed
+      float yInterval = (coord[1]-weapon.getY())/attackSpeed;
       weapon.changeX(xInterval);
       weapon.changeY(yInterval);
     }

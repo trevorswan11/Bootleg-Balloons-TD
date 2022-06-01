@@ -14,7 +14,7 @@ public class Balloon {
   public Balloon() {
     image = redBalloon;
     health = 1;
-    speed = 1;
+    speed = 5;
   }
 
   public Balloon(Balloon balloon) {
@@ -81,7 +81,7 @@ public class Balloon {
     }
   }
 
-  float[] getFuture(int attackSpeed) {
+  float[] getFuture(float attackSpeed) {
     float x_ = currentX;
     float y_ = currentY;
     int directionsIndex_ = directionsIndex;
@@ -89,7 +89,7 @@ public class Balloon {
     int[] nextCords_ = map.getDirection(directionsIndex+1);
     float distanceX_ = nextCords[0]-x_;
     float distanceY_ = nextCords[1]-y_;
-    int maxTime = attackSpeed; //some calculation based on attackSpeed and balloonSpeed
+    float maxTime = attackSpeed; //some calculation based on attackSpeed and balloonSpeed
     int timer = 0;
 
     while (timer < maxTime) {

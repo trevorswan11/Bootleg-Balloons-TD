@@ -14,6 +14,7 @@ int balloonSize = 25;
 
 
 PImage redBalloon;
+PImage defaultMonkey;
 
 boolean roundStart = false;
 int MODE = ADD;
@@ -28,6 +29,8 @@ void setup() {
   //images
   redBalloon = loadImage("red_balloon.png");
   redBalloon.resize(balloonSize, balloonSize);
+  defaultMonkey = loadImage("monkey.png");
+  defaultMonkey.resize(25, 25);
 }
 
 void mouseClicked() {
