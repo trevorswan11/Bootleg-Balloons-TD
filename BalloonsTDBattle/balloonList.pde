@@ -7,10 +7,6 @@ public class balloonList {
     timer = round*60*5;
   }
 
-  void add(Balloon balloon) {
-    balloons.add(balloon);
-  }
-
   void display() {
     for (int index = 0; index < balloons.size(); index++) {
       balloons.get(index).display();
@@ -62,6 +58,17 @@ public class balloonList {
     return balloons.get(index);
   }
 
+  void add(Balloon balloon) {
+    balloons.add(balloon);
+  }
+  
+  void add(int index, Balloon balloon) {
+    balloons.add(index, balloon);  
+  }
+
+  void set(int index, Balloon balloon) {
+    balloons.set(index, balloon);  
+  }
 
   void remove(int targetIndex) {
     if (targetIndex >= 0 && balloons.get(targetIndex) != null) {
