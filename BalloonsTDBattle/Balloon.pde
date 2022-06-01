@@ -16,6 +16,11 @@ public class Balloon {
     health = 1;
     speed = 1;
   }
+  
+  public Balloon(float x, float y) {
+    currentX = x;
+    currentY = y;
+  }
 
   public Balloon(Balloon balloon) {
     image = balloon.image;
@@ -165,10 +170,24 @@ public class redBalloon extends Balloon{
     health = 1;
     speed = 1;
   }
+  
+  redBalloon(float x, float y) {
+    super(x,y);
+    image = red;
+    health = 1;
+    speed = 1;
+  }
 }
 
 public class blueBalloon extends Balloon{
   blueBalloon() {
+    image = blue;
+    health = 2;
+    speed = 1.3;
+  }
+  
+  blueBalloon(float x, float y) {
+    super(x,y);
     image = blue;
     health = 2;
     speed = 1.3;
@@ -181,10 +200,24 @@ public class greenBalloon extends Balloon{
     health = 3;
     speed = 1.5;
   }
+  
+  greenBalloon(float x, float y) {
+    super(x,y);
+    image = green;
+    health = 3;
+    speed = 1.5;
+  }
 }
 
 public class yellowBalloon extends Balloon{
   yellowBalloon() {
+    image = yellow;
+    health = 4;
+    speed = 2;
+  }
+
+  yellowBalloon(float x, float y) {
+    super(x,y);
     image = yellow;
     health = 4;
     speed = 2;
@@ -197,6 +230,13 @@ public class pinkBalloon extends Balloon{
     health = 5; 
     speed = 2.5;
   }
+
+  pinkBalloon(float x, float y) {
+    super(x,y);
+    image = pink;
+    health = 5; 
+    speed = 2.5;
+  }
 }
 
 public class blackBalloon extends Balloon{
@@ -205,6 +245,14 @@ public class blackBalloon extends Balloon{
     health = 11;
     speed = 1.5;
   }
+  
+  blackBalloon(float x, float y) {
+    super(x,y);
+    image = black;
+    health = 11;
+    speed = 1.5;
+  }
+
   //if 1 damage done to it, it splits into two pink balloons, else split into 1 pink
 }
 
@@ -214,6 +262,14 @@ public class whiteBalloon extends Balloon{
     health = 11;
     speed = 1.5;
   }
+  
+  whiteBalloon(float x, float y) {
+    super(x,y);
+    image = white;
+    health = 11;
+    speed = 1.5;
+  }
+
   //if 1 damage done to it, it splits into 2 pink balloons
 }
 
@@ -223,6 +279,14 @@ public class zebraBalloon extends Balloon{
     health = 23;
     speed = 1.5;
   }
+
+  zebraBalloon(float x, float y) {
+    super(x,y);
+    image = zebra;
+    health = 23;
+    speed = 1.5;
+  }
+
   //if 1 damage done to it, it splits into 1 black and 1 white
 }
 
@@ -232,6 +296,14 @@ public class leadBalloon extends Balloon{
     health = 23;
     speed = 1;
   }
+
+  leadBalloon(float x, float y) {
+    super(x,y);
+    image = lead;
+    health = 23;
+    speed = 1;
+  }
+
   //if 1 damage done to it, it splits into 2 black balloons 
 }
 
@@ -241,6 +313,14 @@ public class rainbowBalloon extends Balloon{
     health = 47;
     speed = 1.6;
   }
+  
+  rainbowBalloon(float x, float y) {
+    super(x,y);
+    image = rainbow;
+    health = 47;
+    speed = 1.6;
+  }
+
   //if 1 damage dont to it, it splits into 2 zebra baloons 
 }
 
@@ -250,5 +330,13 @@ public class ceramicBalloon extends Balloon{
     health = 104;
     speed = 1.7;
   }
+  
+  ceramicBalloon(float x, float y) {
+    super(x,y);
+    image = ceramic;
+    health = 104;
+    speed = 1.7;
+  }
+
   //if 10 damage is done to it(health 94), it splits into 2 rainbow balloons
 }
