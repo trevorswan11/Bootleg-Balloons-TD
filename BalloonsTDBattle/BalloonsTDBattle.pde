@@ -4,8 +4,6 @@ final int UPGRADE = 2;
 MonkeyList monkeys = new MonkeyList();
 balloonList balloons = new balloonList();
 
-//Change image display by loading in the setup so you only have to set up once
-
 Player player;
 Monkey m;
 Map map;
@@ -54,13 +52,11 @@ void mouseClicked() {
     fill(0);
     Monkey m = new Monkey(mouseX, mouseY);
     monkeys.add(m);
-    //weapons.add(m.getWeapons());
   }
   if (MODE == DELETE) {
     fill(0);
     monkeys.remove(mouseX, mouseY);
-    //weapons.remove(mouseX, mouseY);
-  }
+  }  
 }
 
 void keyPressed() {
@@ -100,11 +96,6 @@ void draw() {
       monkeys.processAll();
     }
     monkeys.display();
-    /*balloons.display();
-    balloons.processAll();
-    for (int i = 0; i < monkeys.size(); i++) {
-      monkeys.get(i).findBalloon();
-    }*/
   } else {
     textSize(100);
     textAlign(CENTER);
