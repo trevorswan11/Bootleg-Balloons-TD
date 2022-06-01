@@ -54,22 +54,35 @@ public class balloonList {
     return -1;
   }
   
+  void setNewBalloon(int index, Balloon balloon) {
+    int health = balloon.getHealth();
+    float x = balloon.getCurrentX();
+    float y = balloon.getCurrentY();
+    if (health == 1) {
+      set(index, new redBalloon(x,y));
+    } else if (health == 2) {
+      set(index, new blueBalloon(x,y));
+    } else if (health == 3) {
+      set(index, new greenBalloon(x,y));
+    } else if (health == 4) {
+      set(index, new yellowBalloon(x,y));
+    } else if (health == 5) {
+      set(index, new pinkBalloon(x,y));
+    }
+  }
+  
   Balloon get(int index){
     return balloons.get(index);
   }
-
   void add(Balloon balloon) {
     balloons.add(balloon);
   }
-  
   void add(int index, Balloon balloon) {
     balloons.add(index, balloon);  
   }
-
   void set(int index, Balloon balloon) {
     balloons.set(index, balloon);  
   }
-
   void remove(int targetIndex) {
     if (targetIndex >= 0 && balloons.get(targetIndex) != null) {
       balloons.remove(targetIndex);
