@@ -37,7 +37,7 @@ public class balloonList {
   void addBalloons() {
     if (timer > 0) {
       if (timer%25 == 0) {
-        balloons.add(new Balloon());
+        balloons.add(new pinkBalloon());
       }
       timer--;
     }
@@ -54,20 +54,19 @@ public class balloonList {
     return -1;
   }
   
-  void setNewBalloon(int index, Balloon balloon) {
+  void setNewBalloon(int index) {
+    Balloon balloon = balloons.get(index);
     int health = balloon.getHealth();
-    float x = balloon.getCurrentX();
-    float y = balloon.getCurrentY();
     if (health == 1) {
-      set(index, new redBalloon(x,y));
+      set(index, new redBalloon(balloon));
     } else if (health == 2) {
-      set(index, new blueBalloon(x,y));
+      set(index, new blueBalloon(balloon));
     } else if (health == 3) {
-      set(index, new greenBalloon(x,y));
+      set(index, new greenBalloon(balloon));
     } else if (health == 4) {
-      set(index, new yellowBalloon(x,y));
+      set(index, new yellowBalloon(balloon));
     } else if (health == 5) {
-      set(index, new pinkBalloon(x,y));
+      set(index, new pinkBalloon(balloon));
     }
   }
   
