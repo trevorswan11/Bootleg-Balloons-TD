@@ -10,7 +10,9 @@ public class MonkeyList {
       if (current.getTimer() !=  current.getAttackSpeed()) {
         current.addTimer(1);
       } else {
-        current.setTimer(0);
+        if (current.throwingWeapon == false) {
+          current.setTimer(0);
+        }
         float coord[] = current.findBalloon(); //find the balloon
         int index =  balloons.getBalloonAt(coord[0], coord[1]); // find index of balloon
         if (index > -1) {

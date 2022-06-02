@@ -3,7 +3,7 @@ public class Monkey {
   int attackSpeed;
   int attackRange;
   int attackStrength;
-  Weapons weapon;
+  boolean throwingWeapon = false;
   float x; // The coordinates of the monkey
   float y;
   int timer;
@@ -11,7 +11,6 @@ public class Monkey {
     //Default values for monkey stats except for x and y since those have to be determiend
     //by mouseClicked()
     image = defaultMonkey;
-    weapon = new Weapons(xcoord, ycoord);
     attackSpeed = 20;
     attackRange = 50;
     attackStrength = 1;
@@ -50,11 +49,13 @@ public class Monkey {
     float range = dist(weapon.getX(), weapon.getY(), coord[0], coord[1]);
     if (range < 10) {
       attack(b);
+      throwingWeapon = false;
       weapon.setDisplay(false);
       weapon.setX(x);
       weapon.setY(y);
       weapon.setDisplay(true);
     } else {
+      throwingWeapon = true;
       float xInterval = (coord[0]-weapon.getX())/2;//change 10 to something based off of attackSpeed
       float yInterval = (coord[1]-weapon.getY())/2;
       weapon.changeX(xInterval);
