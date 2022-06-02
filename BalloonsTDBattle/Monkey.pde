@@ -6,6 +6,7 @@ public class Monkey {
   Weapons weapon;
   float x; // The coordinates of the monkey
   float y;
+  int timer;
   public Monkey(float xcoord, float ycoord) {
     //Default values for monkey stats except for x and y since those have to be determiend
     //by mouseClicked()
@@ -16,6 +17,7 @@ public class Monkey {
     attackStrength = 1;
     x = xcoord;
     y = ycoord;
+    timer = 0;
   }
   public Monkey(int speed, int range, int strength, int xcoord, int ycoord) {
     image = defaultMonkey;
@@ -24,12 +26,13 @@ public class Monkey {
     attackRange = range;
     x = xcoord;
     y = ycoord;
+    timer = 0;
   }
 
   float[] findBalloon() {
     float[]coord = new float[2];
     balloonList balloon2 = balloons;
-    for (int i = 0 ; i< balloon2.size(); i++) {
+    for (int i = 0; i< balloon2.size(); i++) {
       Balloon current = balloon2.get(i);
       if (current.getHealth() > 0 && dist(getX(), getY(), current.getCurrentX(), current.getCurrentY()) <= attackRange) {
         coord[0] = current.getCurrentX();
@@ -42,7 +45,7 @@ public class Monkey {
     b.decreaseHealth(attackStrength);
   }
   void throwWeapon(Balloon b) {
-    float[] coord = b.getFuture(attackSpeed*b.getSpeed());
+    float[] coord = b.getFuture(b.getSpeed());
     //println("index: " + balloons.getBalloonAt(coord[0], coord[1]));
     float range = dist(weapon.getX(), weapon.getY(), coord[0], coord[1]);
     if (range < 10) {
@@ -52,8 +55,8 @@ public class Monkey {
       weapon.setY(y);
       weapon.setDisplay(true);
     } else {
-      float xInterval = (coord[0]-weapon.getX())/attackSpeed;//change 10 to something based off of attackSpeed
-      float yInterval = (coord[1]-weapon.getY())/attackSpeed;
+      float xInterval = (coord[0]-weapon.getX())/2;//change 10 to something based off of attackSpeed
+      float yInterval = (coord[1]-weapon.getY())/2;
       weapon.changeX(xInterval);
       weapon.changeY(yInterval);
     }
@@ -85,10 +88,19 @@ public class Monkey {
   public int getAttackStrength() {
     return attackStrength;
   }
+  public int getTimer() {
+    return timer;
+  }
+  void addTimer(int num) {
+    timer = timer + num;
+  }
+  void setTimer(int num) {
+    timer =num;
+  }
   public PImage getImage() {
     return image;
   }
-  
+
   void display() {
     image(image, x, y);
     weapon.display();

@@ -7,13 +7,18 @@ public class MonkeyList {
   void processAll() {
     for (int i = 0; i < monke.size(); i++) {
       Monkey current =  monke.get(i);
-      float coord[] = current.findBalloon(); //find the balloon
-      int index =  balloons.getBalloonAt(coord[0], coord[1]); // find index of balloon
-      if (index > -1) {
-        current.throwWeapon(balloons.get(index));
+      if (current.getTimer() !=  current.getAttackSpeed()) {
+        current.addTimer(1);
       } else {
-        current.weapon.setX(current.getX());
-        current.weapon.setY(current.getY());
+        current.setTimer(0);
+        float coord[] = current.findBalloon(); //find the balloon
+        int index =  balloons.getBalloonAt(coord[0], coord[1]); // find index of balloon
+        if (index > -1) {
+          current.throwWeapon(balloons.get(index));
+        } else {
+          current.weapon.setX(current.getX());
+          current.weapon.setY(current.getY());
+        }
       }
     }
   }
