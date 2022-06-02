@@ -24,7 +24,17 @@ public class Rounds{
   void runRound() {
     int[][] currentRound = rounds[round];
     for (int i = 0; i < currentRound.length; i++) {
-      
+      int currentBalloon = currentRound[i][0];
+      int numberofBalloons = currentRound[i][1];
+      int wait = currentRound[i][2];
+      while (numberofBalloons >= 0) {
+        int timer = 0;
+        while (timer < wait) {
+          timer++;  
+        } 
+        addBalloon(currentBalloon);
+        numberofBalloons--; 
+      }
     }
   }
   
