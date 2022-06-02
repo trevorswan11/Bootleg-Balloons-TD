@@ -18,4 +18,40 @@ public class Rounds{
     {{RED, 10, 2}, {BLUE, 5, 2}}
   };
   
+  public Rounds() {  
+  }
+  
+  void runRound() {
+    int[][] currentRound = rounds[round];
+    for (int i = 0; i < currentRound.length; i++) {
+      
+    }
+  }
+  
+  void addBalloon(int b) {
+    if (b == RED) {
+      balloons.add(new redBalloon());  
+    } else if (b == BLUE) {
+      balloons.add(new blueBalloon());  
+    } else if (b == GREEN) {
+      balloons.add(new greenBalloon());
+    } else if (b == YELLOW) {
+      balloons.add(new yellowBalloon());
+    } else if (b == PINK) {
+      balloons.add(new pinkBalloon());
+    } else if (b == BLACK) {
+      balloons.add(new blackBalloon());
+    } else if (b == WHITE) {
+      balloons.add(new whiteBalloon());
+    } else if (b == ZEBRA) {
+      balloons.add(new zebraBalloon());
+    } else if (b == LEAD) {
+      balloons.add(new leadBalloon());
+    } else if (b == RAINBOW) {
+      balloons.add(new rainbowBalloon());
+    } else if (b == CERAMIC) {
+      balloons.add(new ceramicBalloon());
+    } 
+  }
+  
 }
