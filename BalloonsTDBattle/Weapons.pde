@@ -39,6 +39,4 @@ public class Weapons {
       circle(x, y, 10);
     }
   }
-  void throwWeapon(Balloon b) {
-  }
 }

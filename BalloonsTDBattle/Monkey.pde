@@ -3,20 +3,21 @@ public class Monkey {
   int attackSpeed;
   int attackRange;
   int attackStrength;
-  boolean throwingWeapon = false;
+  Weapons weapon;
+  boolean thrown;
+  int timer = 0;
   float x; // The coordinates of the monkey
   float y;
-  int timer;
   public Monkey(float xcoord, float ycoord) {
     //Default values for monkey stats except for x and y since those have to be determiend
     //by mouseClicked()
     image = defaultMonkey;
-    attackSpeed = 20;
+    weapon = new Weapons(xcoord, ycoord);
+    attackSpeed = 10;
     attackRange = 50;
-    attackStrength = 1;
+    attackStrength = 10;
     x = xcoord;
     y = ycoord;
-    timer = 0;
   }
   public Monkey(int speed, int range, int strength, int xcoord, int ycoord) {
     image = defaultMonkey;
@@ -25,13 +26,12 @@ public class Monkey {
     attackRange = range;
     x = xcoord;
     y = ycoord;
-    timer = 0;
   }
 
   float[] findBalloon() {
     float[]coord = new float[2];
     balloonList balloon2 = balloons;
-    for (int i = 0; i< balloon2.size(); i++) {
+    for (int i = 0 ; i< balloon2.size(); i++) {
       Balloon current = balloon2.get(i);
       if (current.getHealth() > 0 && dist(getX(), getY(), current.getCurrentX(), current.getCurrentY()) <= attackRange) {
         coord[0] = current.getCurrentX();
@@ -43,20 +43,21 @@ public class Monkey {
   void attack(Balloon b) {
     b.decreaseHealth(attackStrength);
   }
-
   void throwWeapon(Balloon b) {
-    Weapons bullet = new Weapons(x, y);
-    bullets.add(bullet);
-    float[] coord = b.getFuture(b.getSpeed());
-    float range = dist(x, y, coord[0], coord[1]);
-    if (range < 10) {
+    float[] coord = b.getFuture();
+    float range = dist(weapon.getX(), weapon.getY(), coord[0], coord[1]);
+    if (range < 10 && !thrown) {
       attack(b);
-      bullets.remove(bullet);
+      thrown = true;
+      weapon.setDisplay(false);
+      weapon.setX(x);
+      weapon.setY(y);
+      weapon.setDisplay(true);
     } else {
-      float xInterval = (coord[0]-bullet.getX())/2;//change 10 to something based off of attackSpeed
-      float yInterval = (coord[1]-bullet.getY())/2;
-      bullet.changeX(xInterval);
-      bullet.changeY(yInterval);
+      float xInterval = (coord[0]-weapon.getX())/3;//change 10 to something based off of attackSpeed
+      float yInterval = (coord[1]-weapon.getY())/3;
+      weapon.changeX(xInterval);
+      weapon.changeY(yInterval);
     }
   }
 
@@ -73,6 +74,9 @@ public class Monkey {
   void setY(float ycoord) {
     y = ycoord;
   }
+  Weapons getWeapons() {
+    return weapon;
+  }
 
   public int getAttackSpeed() {
     return attackSpeed;
@@ -83,41 +87,22 @@ public class Monkey {
   public int getAttackStrength() {
     return attackStrength;
   }
-  public int getTimer() {
-    return timer;
-  }
-  void addTimer(int num) {
-    timer = timer + num;
-  }
-  void setTimer(int num) {
-    timer =num;
-  }
   public PImage getImage() {
     return image;
   }
-
+  
+  int increaseTimer() {
+    return timer++;  
+  }
+  void resetTimer() {
+    timer = 0;  
+  }
+  void setThrown(boolean b) {
+    thrown = b;  
+  }
+  
   void display() {
     image(image, x, y);
+    weapon.display();
   }
 }
-/*
-  void attack(Balloon b) {
- b.decreaseHealth(attackStrength);
- }
- void throwWeapon(Balloon b) {
- float[] coord = b.getFuture(b.getSpeed());
- //println("index: " + balloons.getBalloonAt(coord[0], coord[1]));
- float range = dist(weapon.getX(), weapon.getY(), coord[0], coord[1]);
- if (range < 10) {
- attack(b);
- weapon.setDisplay(false);
- weapon.setX(x);
- weapon.setY(y);
- weapon.setDisplay(true);
- } else {
- float xInterval = (coord[0]-weapon.getX())/2;//change 10 to something based off of attackSpeed
- float yInterval = (coord[1]-weapon.getY())/2;
- weapon.changeX(xInterval);
- weapon.changeY(yInterval);
- }
- }*/
