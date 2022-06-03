@@ -18,6 +18,7 @@ Our project is a bootleg version of the popular mini-game, Bloons TD Battle. The
 * 5/29/22: Displayed health and decreased it when Balloons reached the end as implemented rounds.
 * 5/31/22: Created Balloon class subclasses for different types of Balloons and set up all the constructors and images.
 * 6/1/22: Created setNewBalloon function that will turn each balloon to the correct Balloon after it is popped to match the new health(ex: turn pink to yellow and zebras to a white and a white)
+* 6/2/22: Created runRound() that would spawn specified balloons in rounds[][][] for each of the rounds
 
 **Nicole Liu**
 * 5/23/22: I set up the Monkey and MonkeyList class. Monkey Class can display but MonkeyList is having some trouble.
