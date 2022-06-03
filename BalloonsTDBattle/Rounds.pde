@@ -10,32 +10,44 @@ public class Rounds{
   final int LEAD = 8;
   final int RAINBOW = 9;
   final int CERAMIC = 10;
-  
+    
   int[][][] rounds = new int[][][]{ 
     //{ballonType, how many of each balloon, how much time between each}
-    {{RED, 10, 2}},
-    {{RED, 20, 2}},
-    {{RED, 10, 2}, {BLUE, 5, 2}}
+    {{RED, 20, 10}},
+    {{RED, 30, 10}},
+    {{RED, 20, 10}, {BLUE, 5, 10}}
   };
+  
+  int[][] currentRound = rounds[round];
+  int index = 0;
+  int currentBalloon = currentRound[index][0];
+  int numberOfBalloons = currentRound[index][1];
+  int wait = currentRound[index][2];
+  int timer = 0;
   
   public Rounds() {  
   }
   
   void runRound() {
-    int[][] currentRound = rounds[round];
-    for (int i = 0; i < currentRound.length; i++) {
-      int currentBalloon = currentRound[i][0];
-      int numberofBalloons = currentRound[i][1];
-      int wait = currentRound[i][2];
-      while (numberofBalloons >= 0) {
-        int timer = 0;
-        while (timer < wait) {
+    if (index < currentRound.length) {
+      if (numberOfBalloons >= 0) {
+        if (timer < wait) {
           timer++;  
-        } 
-        addBalloon(currentBalloon);
-        numberofBalloons--; 
+        } else {
+          addBalloon(currentBalloon);
+          numberOfBalloons--;
+          timer = 0;
+        }
+      } else {
+        if (index != currentRound.length-1) {
+          index++;
+          currentBalloon = currentRound[index][0];
+          numberOfBalloons = currentRound[index][1];
+          wait = currentRound[index][2];
+          timer = 0;
+        }
       }
-    }
+    }    
   }
   
   void addBalloon(int b) {
