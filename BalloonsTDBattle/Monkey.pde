@@ -43,23 +43,20 @@ public class Monkey {
   void attack(Balloon b) {
     b.decreaseHealth(attackStrength);
   }
+
   void throwWeapon(Balloon b) {
+    Weapons bullet = new Weapons(x, y);
+    bullets.add(bullet);
     float[] coord = b.getFuture(b.getSpeed());
-    //println("index: " + balloons.getBalloonAt(coord[0], coord[1]));
-    float range = dist(weapon.getX(), weapon.getY(), coord[0], coord[1]);
+    float range = dist(x, y, coord[0], coord[1]);
     if (range < 10) {
       attack(b);
-      throwingWeapon = false;
-      weapon.setDisplay(false);
-      weapon.setX(x);
-      weapon.setY(y);
-      weapon.setDisplay(true);
+      bullets.remove(bullet);
     } else {
-      throwingWeapon = true;
-      float xInterval = (coord[0]-weapon.getX())/2;//change 10 to something based off of attackSpeed
-      float yInterval = (coord[1]-weapon.getY())/2;
-      weapon.changeX(xInterval);
-      weapon.changeY(yInterval);
+      float xInterval = (coord[0]-bullet.getX())/2;//change 10 to something based off of attackSpeed
+      float yInterval = (coord[1]-bullet.getY())/2;
+      bullet.changeX(xInterval);
+      bullet.changeY(yInterval);
     }
   }
 
@@ -75,9 +72,6 @@ public class Monkey {
   }
   void setY(float ycoord) {
     y = ycoord;
-  }
-  Weapons getWeapons() {
-    return weapon;
   }
 
   public int getAttackSpeed() {
@@ -104,6 +98,26 @@ public class Monkey {
 
   void display() {
     image(image, x, y);
-    weapon.display();
   }
 }
+/*
+  void attack(Balloon b) {
+ b.decreaseHealth(attackStrength);
+ }
+ void throwWeapon(Balloon b) {
+ float[] coord = b.getFuture(b.getSpeed());
+ //println("index: " + balloons.getBalloonAt(coord[0], coord[1]));
+ float range = dist(weapon.getX(), weapon.getY(), coord[0], coord[1]);
+ if (range < 10) {
+ attack(b);
+ weapon.setDisplay(false);
+ weapon.setX(x);
+ weapon.setY(y);
+ weapon.setDisplay(true);
+ } else {
+ float xInterval = (coord[0]-weapon.getX())/2;//change 10 to something based off of attackSpeed
+ float yInterval = (coord[1]-weapon.getY())/2;
+ weapon.changeX(xInterval);
+ weapon.changeY(yInterval);
+ }
+ }*/

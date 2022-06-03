@@ -3,6 +3,7 @@ final int DELETE = 1;
 final int UPGRADE = 2;
 MonkeyList monkeys = new MonkeyList();
 balloonList balloons = new balloonList();
+weaponList bullets = new weaponList();
 
 //Change image display by loading in the setup so you only have to set up once
 
@@ -82,6 +83,7 @@ void draw() {
       balloons.display();
       balloons.processAll();
       monkeys.processAll();
+      bullets.display();
     }
     monkeys.display();
     /*balloons.display();

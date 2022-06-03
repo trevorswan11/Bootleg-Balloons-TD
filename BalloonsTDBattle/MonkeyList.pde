@@ -10,20 +10,17 @@ public class MonkeyList {
       if (current.getTimer() !=  current.getAttackSpeed()) {
         current.addTimer(1);
       } else {
-        if (current.throwingWeapon == false) {
-          current.setTimer(0);
-        }
+        current.setTimer(0);
         float coord[] = current.findBalloon(); //find the balloon
         int index =  balloons.getBalloonAt(coord[0], coord[1]); // find index of balloon
         if (index > -1) {
           current.throwWeapon(balloons.get(index));
-        } else {
-          current.weapon.setX(current.getX());
-          current.weapon.setY(current.getY());
         }
       }
     }
   }
+
+
   void set(Monkey oldMonkey, Monkey newMonkey) {
     for (int i = 0; i < monke.size(); i++) {
       if (monke.get(i) == oldMonkey) {
@@ -58,3 +55,23 @@ public class MonkeyList {
     return monke.size();
   }
 }
+/*  void processAll() {
+ for (int i = 0; i < monke.size(); i++) {
+ Monkey current =  monke.get(i);
+ if (current.getTimer() !=  current.getAttackSpeed()) {
+ current.addTimer(1);
+ } else {
+ if (current.throwingWeapon == false) {
+ current.setTimer(0);
+ }
+ float coord[] = current.findBalloon(); //find the balloon
+ int index =  balloons.getBalloonAt(coord[0], coord[1]); // find index of balloon
+ if (index > -1) {
+ current.throwWeapon(balloons.get(index));
+ } else {
+ current.weapon.setX(current.getX());
+ current.weapon.setY(current.getY());
+ }
+ }
+ }
+ }*/
