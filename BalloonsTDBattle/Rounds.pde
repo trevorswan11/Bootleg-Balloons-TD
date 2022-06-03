@@ -42,7 +42,9 @@ public class Rounds{
         if (index == currentRound.length-1) {
           index = 0;
           roundOver = true;
-          currentRound = rounds[round];
+          if (round < rounds.length-1) {
+            currentRound = rounds[round+1];
+          }
         } else {
           index++;
         }

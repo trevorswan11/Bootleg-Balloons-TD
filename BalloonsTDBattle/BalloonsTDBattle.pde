@@ -86,7 +86,7 @@ void keyPressed() {
 void draw() {
   background(255);
   if (!player.isDead()) {
-    text("ROUND: " + round, 820, 30);
+    text("ROUND: " + (round+1), 820, 30);
     text("HEALTH: " + player.health, 820, 50);
     map.display();
     fill(0);
