@@ -9,6 +9,7 @@ Monkey m;
 Map map;
 Balloon balloon;
 int balloonSize = 35;
+Rounds rounds;
 
 PImage red, blue, green, yellow, pink, black, white, zebra, lead, rainbow, ceramic;
 
@@ -20,7 +21,7 @@ void setup() {
   size(1000, 600);
   map = new Map();
   player = new Player();
-
+  rounds = new Rounds();
 
   //images
   red = loadImage("red_balloon.png");
@@ -48,15 +49,20 @@ void setup() {
 }
 
 void mouseClicked() {
-  if (MODE == ADD) {
-    fill(0);
-    Monkey m = new Monkey(mouseX, mouseY);
-    monkeys.add(m);
+  //if (MODE == ADD) {
+  //  fill(0);
+  //  Monkey m = new Monkey(mouseX, mouseY);
+  //  monkeys.add(m);
+  //}
+  //if (MODE == DELETE) {
+  //  fill(0);
+  //  monkeys.remove(mouseX, mouseY);
+  //}  
+  int index = balloons.getBalloonAt(mouseX, mouseY);
+  if (index > -1) {
+    balloons.get(index).decreaseHealth(1);
+    balloons.setNewBalloon(index);
   }
-  if (MODE == DELETE) {
-    fill(0);
-    monkeys.remove(mouseX, mouseY);
-  }  
 }
 
 void keyPressed() {
@@ -90,7 +96,7 @@ void draw() {
       text("MODE: Delete", 820, 70);
     }
     if (roundStart) {
-      balloons.addBalloons();
+      rounds.runRound();
       balloons.display();
       balloons.processAll();
       monkeys.processAll();
