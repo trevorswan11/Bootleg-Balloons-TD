@@ -61,7 +61,17 @@ public class Monkey {
       weapon.changeY(yInterval);
     }
   }
-
+  boolean canBePlaced(){
+    boolean result = true;
+    int dist = 50;
+    for(int i = 0; i < monkeys.size(); i ++){
+      Monkey current = monkeys.get(i);
+      if(dist(x, y, current.getX(), current.getY()) < dist){
+        result = false;
+    }
+    }
+    return result;
+  }
   public float getX() {
     return x;
   }

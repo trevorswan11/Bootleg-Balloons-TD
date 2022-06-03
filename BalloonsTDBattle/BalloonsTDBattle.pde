@@ -65,17 +65,18 @@ void mouseClicked() {
   if (MODE == ADD) {
     fill(0);
     Monkey m = new Monkey(mouseX, mouseY);
-    monkeys.add(m);
+    if(m.canBePlaced() == true){
+      monkeys.add(m);
+    }
+    else{
+      fill(#FF0000);
+      circle(m.getX(), m.getY(), 50);
+    }
   }
   if (MODE == DELETE) {
     fill(0);
     monkeys.remove(mouseX, mouseY);
-  }  
-  //int index = balloons.getBalloonAt(mouseX, mouseY);
-  //if (index > -1) {
-  //  balloons.get(index).decreaseHealth(1);
-  //  balloons.setNewBalloon(index);
-  //}
+  }
 }
 
 void keyPressed() {

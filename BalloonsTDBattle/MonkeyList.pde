@@ -4,7 +4,7 @@ public class MonkeyList {
     monke = new ArrayList<Monkey>();
   }
 
-void processAll() {
+  void processAll() {
     for (int i = 0; i < monke.size(); i++) {
       Monkey current =  monke.get(i);
       if (current.timer != current.attackSpeed) {
@@ -15,14 +15,15 @@ void processAll() {
         if (index > -1 && balloons.get(index).getTarget() == false) {
           current.throwWeapon(balloons.get(index));
           balloons.setNewBalloon(index);
-        } 
+        }
         if (current.thrown) {
           current.weapon.setX(current.getX());
           current.weapon.setY(current.getY());
-          current.resetTimer();  
+          current.resetTimer();
           current.setThrown(false);
         }
       }
+      println(current.canBePlaced());
     }
   }
 
@@ -36,7 +37,9 @@ void processAll() {
   void add(Monkey toBeAdded) {
     monke.add(toBeAdded);
   }
-
+   void remove(Monkey e) {
+     monke.remove(e);
+   }
   void remove(float xcoord, float ycoord) {
     for (int i = 0; i < monke.size(); i++) {
       float compareX = monke.get(i).getX();
