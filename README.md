@@ -24,4 +24,5 @@ Our project is a bootleg version of the popular mini-game, Bloons TD Battle. The
 * 5/29/22: I completed the attack method and started on the shootWeapon method and also made some updates to processAll().
 * 5/30/22: I completed the shootWeapon method.
 * 5/31/22: I made the monkey image load in the main and am trying to work on shootWeapon so that it works for all speeds.
-* 6/1/22:
+* 6/1/22:  I tried to implement a timer to slow down the attacks.
+* 6/2/22:  I am working on creating a weaponsList class to make the shooting mechanisms easier.
