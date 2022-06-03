@@ -18,15 +18,13 @@ public class Balloon {
     speed = 1;
   }
   
-  public Balloon(float x, float y) {
-    currentX = x;
-    currentY = y;
-  }
-
-  public Balloon(Balloon balloon) {
-    image = balloon.image;
-    health = balloon.health;
-    speed = balloon.speed;
+  public Balloon(Balloon b) {
+    currentX = b.getCurrentX();
+    currentY = b.getCurrentY();
+    directionsIndex = b.getDirectionsIndex();
+    nextCords = b.nextCords;
+    distanceX = b.distanceX;
+    distanceY = b.distanceY;
   }
 
   public Balloon(PImage image_, int health_, float speed_) {
@@ -85,7 +83,7 @@ public class Balloon {
     }
   }
 
-  float[] getFuture(int attackSpeed) {
+  float[] getFuture() {
     float x_ = currentX;
     float y_ = currentY;
     int directionsIndex_ = directionsIndex;
@@ -93,10 +91,9 @@ public class Balloon {
     int[] nextCords_ = map.getDirection(directionsIndex+1);
     float distanceX_ = nextCords[0]-x_;
     float distanceY_ = nextCords[1]-y_;
-    int maxTime = attackSpeed; //some calculation based on attackSpeed and balloonSpeed
     int timer = 0;
 
-    while (timer < maxTime) {
+    while (timer < 3) {
       if (directionsIndex_ < map.getDirectionsSize()) {
         if (distanceX_ != 0) {
           float sign = distanceSign(distanceX_);
@@ -148,6 +145,12 @@ public class Balloon {
     currentY += change;
     return currentY;
   }
+  void setX(float x_) {
+    currentX = x_;  
+  }
+  void setY(float y_) {
+    currentY = y_;  
+  }
   float getCurrentX() {
     return currentX;
   }
@@ -163,6 +166,15 @@ public class Balloon {
   float getSpeed() {
     return speed;
   }
+  void setNextCords(int[] cords) {
+    nextCords = cords;
+  }
+  void setDistanceX(float dist) {
+    distanceX = dist;  
+  }
+  void setDistanceY(float dist) {
+    distanceY = dist;  
+  }
 }
 
 public class redBalloon extends Balloon{
@@ -172,8 +184,8 @@ public class redBalloon extends Balloon{
     speed = 1;
   }
   
-  redBalloon(float x, float y) {
-    super(x,y);
+  redBalloon(Balloon b) {
+    super(b);
     image = red;
     health = 1;
     speed = 1;
@@ -187,8 +199,8 @@ public class blueBalloon extends Balloon{
     speed = 1.3;
   }
   
-  blueBalloon(float x, float y) {
-    super(x,y);
+  blueBalloon(Balloon b) {
+    super(b);
     image = blue;
     health = 2;
     speed = 1.3;
@@ -202,8 +214,8 @@ public class greenBalloon extends Balloon{
     speed = 1.5;
   }
   
-  greenBalloon(float x, float y) {
-    super(x,y);
+  greenBalloon(Balloon b) {
+    super(b);
     image = green;
     health = 3;
     speed = 1.5;
@@ -217,8 +229,8 @@ public class yellowBalloon extends Balloon{
     speed = 2;
   }
 
-  yellowBalloon(float x, float y) {
-    super(x,y);
+  yellowBalloon(Balloon b) {
+    super(b);
     image = yellow;
     health = 4;
     speed = 2;
@@ -232,8 +244,8 @@ public class pinkBalloon extends Balloon{
     speed = 2.5;
   }
 
-  pinkBalloon(float x, float y) {
-    super(x,y);
+  pinkBalloon(Balloon b) {
+    super(b);
     image = pink;
     health = 5; 
     speed = 2.5;
@@ -248,14 +260,14 @@ public class blackBalloon extends Balloon{
     size = balloonSize/2;
   }
   
-  blackBalloon(float x, float y) {
-    super(x,y);
+  blackBalloon(Balloon b) {
+    super(b);
     image = black;
     health = 11;
     speed = 1.5;
     size = balloonSize/2;
   }
-
+  
   //if 1 damage done to it, it splits into two pink balloons, else split into 1 pink
 }
 
@@ -267,8 +279,8 @@ public class whiteBalloon extends Balloon{
     size = balloonSize/2;
   }
   
-  whiteBalloon(float x, float y) {
-    super(x,y);
+  whiteBalloon(Balloon b) {
+    super(b);
     image = white;
     health = 11;
     speed = 1.5;
@@ -285,8 +297,8 @@ public class zebraBalloon extends Balloon{
     speed = 1.5;
   }
 
-  zebraBalloon(float x, float y) {
-    super(x,y);
+  zebraBalloon(Balloon b) {
+    super(b);
     image = zebra;
     health = 23;
     speed = 1.5;
@@ -302,8 +314,8 @@ public class leadBalloon extends Balloon{
     speed = 1;
   }
 
-  leadBalloon(float x, float y) {
-    super(x,y);
+  leadBalloon(Balloon b) {
+    super(b);
     image = lead;
     health = 23;
     speed = 1;
@@ -319,8 +331,8 @@ public class rainbowBalloon extends Balloon{
     speed = 1.6;
   }
   
-  rainbowBalloon(float x, float y) {
-    super(x,y);
+  rainbowBalloon(Balloon b) {
+    super(b);
     image = rainbow;
     health = 47;
     speed = 1.6;
@@ -336,8 +348,8 @@ public class ceramicBalloon extends Balloon{
     speed = 1.7;
   }
   
-  ceramicBalloon(float x, float y) {
-    super(x,y);
+  ceramicBalloon(Balloon b) {
+    super(b);
     image = ceramic;
     health = 104;
     speed = 1.7;
