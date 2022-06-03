@@ -83,7 +83,7 @@ public class Balloon {
     }
   }
 
-  float[] getFuture(int attackSpeed) {
+  float[] getFuture() {
     float x_ = currentX;
     float y_ = currentY;
     int directionsIndex_ = directionsIndex;
@@ -91,10 +91,9 @@ public class Balloon {
     int[] nextCords_ = map.getDirection(directionsIndex+1);
     float distanceX_ = nextCords[0]-x_;
     float distanceY_ = nextCords[1]-y_;
-    int maxTime = attackSpeed; //some calculation based on attackSpeed and balloonSpeed
     int timer = 0;
 
-    while (timer < maxTime) {
+    while (timer < 3) {
       if (directionsIndex_ < map.getDirectionsSize()) {
         if (distanceX_ != 0) {
           float sign = distanceSign(distanceX_);

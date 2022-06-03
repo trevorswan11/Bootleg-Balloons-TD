@@ -50,20 +50,20 @@ void setup() {
 }
 
 void mouseClicked() {
-  //if (MODE == ADD) {
-  //  fill(0);
-  //  Monkey m = new Monkey(mouseX, mouseY);
-  //  monkeys.add(m);
-  //}
-  //if (MODE == DELETE) {
-  //  fill(0);
-  //  monkeys.remove(mouseX, mouseY);
-  //}  
-  int index = balloons.getBalloonAt(mouseX, mouseY);
-  if (index > -1) {
-    balloons.get(index).decreaseHealth(1);
-    balloons.setNewBalloon(index);
+  if (MODE == ADD) {
+    fill(0);
+    Monkey m = new Monkey(mouseX, mouseY);
+    monkeys.add(m);
   }
+  if (MODE == DELETE) {
+    fill(0);
+    monkeys.remove(mouseX, mouseY);
+  }  
+  //int index = balloons.getBalloonAt(mouseX, mouseY);
+  //if (index > -1) {
+  //  balloons.get(index).decreaseHealth(1);
+  //  balloons.setNewBalloon(index);
+  //}
 }
 
 void keyPressed() {
@@ -86,6 +86,7 @@ void keyPressed() {
 void draw() {
   background(255);
   if (!player.isDead()) {
+    fill(0);
     text("ROUND: " + (round+1), 820, 30);
     text("HEALTH: " + player.health, 820, 50);
     map.display();

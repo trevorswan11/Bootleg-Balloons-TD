@@ -86,7 +86,7 @@ public class balloonList {
         add(index, new zebraBalloon(balloon));
       }
       if (!(balloon.image == ceramic && health > 94)) {
-        float[] newCords = balloons.get(index).getFuture(10);
+        float[] newCords = balloons.get(index).getFuture();
         Balloon b = balloons.get(index);
         balloons.get(index).setX(newCords[0]);
         balloons.get(index).setY(newCords[1]);

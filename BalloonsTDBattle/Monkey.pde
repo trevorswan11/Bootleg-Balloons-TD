@@ -4,6 +4,8 @@ public class Monkey {
   int attackRange;
   int attackStrength;
   Weapons weapon;
+  boolean thrown;
+  int timer = 0;
   float x; // The coordinates of the monkey
   float y;
   public Monkey(float xcoord, float ycoord) {
@@ -14,7 +16,7 @@ public class Monkey {
     weapon = new Weapons(xcoord, ycoord);
     attackSpeed = 10;
     attackRange = 50;
-    attackStrength = 10;
+    attackStrength = 1;
     x = xcoord;
     y = ycoord;
   }
@@ -44,11 +46,12 @@ public class Monkey {
     b.decreaseHealth(attackStrength);
   }
   void throwWeapon(Balloon b) {
-    float[] coord = b.getFuture(attackSpeed);
+    float[] coord = b.getFuture();
     //println("index: " + balloons.getBalloonAt(coord[0], coord[1]));
     float range = dist(weapon.getX(), weapon.getY(), coord[0], coord[1]);
-    if (range < 10) {
+    if (range < 10 && !thrown) {
       attack(b);
+      thrown = true;
       weapon.setDisplay(false);
       weapon.setX(x);
       weapon.setY(y);
@@ -89,6 +92,16 @@ public class Monkey {
   }
   public PImage getImage() {
     return image;
+  }
+  
+  int increaseTimer() {
+    return timer++;  
+  }
+  void resetTimer() {
+    timer = 0;  
+  }
+  void setThrown(boolean b) {
+    thrown = b;  
   }
   
   void display() {
