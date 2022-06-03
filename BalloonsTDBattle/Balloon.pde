@@ -7,6 +7,7 @@ public class Balloon {
   float currentY = 0;
   Boolean atEnd = false;
   int size = balloonSize;
+  Boolean target = false;
 
   int[] nextCords = map.getDirection(1);
   float distanceX = nextCords[0]-currentX;
@@ -14,8 +15,8 @@ public class Balloon {
 
   public Balloon() {
     image = red;
-    health = 100;
-    speed = 2.5;
+    health = 1;
+    speed = 1;
   }
   
   public Balloon(Balloon b) {
@@ -164,6 +165,12 @@ public class Balloon {
   }
   float getSpeed() {
     return speed;
+  }
+  boolean getTarget(){
+  return target;
+  }
+  void setTarget(boolean b){
+    target = b;
   }
   void setNextCords(int[] cords) {
     nextCords = cords;

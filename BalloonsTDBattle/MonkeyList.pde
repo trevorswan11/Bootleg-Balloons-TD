@@ -12,7 +12,7 @@ void processAll() {
       } else {
         float coord[] = current.findBalloon(); //find the balloon
         int index =  balloons.getBalloonAt(coord[0], coord[1]); // find index of balloon
-        if (index > -1) {
+        if (index > -1 && balloons.get(index).getTarget() == false) {
           current.throwWeapon(balloons.get(index));
           balloons.setNewBalloon(index);
         } 
