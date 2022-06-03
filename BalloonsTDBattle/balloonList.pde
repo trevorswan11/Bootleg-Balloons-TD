@@ -27,10 +27,10 @@ public class balloonList {
         index--;
       }
     }
-    if (timer == 0 && balloons.size() == 0) {
+    if (roundOver == true && balloons.size() == 0) {
       roundStart = false;
+      roundOver = false;
       round++;
-      timer = round*60*5;
     }
   }
 

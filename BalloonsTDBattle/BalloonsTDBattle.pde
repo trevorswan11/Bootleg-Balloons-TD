@@ -14,6 +14,7 @@ Rounds rounds;
 PImage red, blue, green, yellow, pink, black, white, zebra, lead, rainbow, ceramic;
 
 boolean roundStart = false;
+boolean roundOver = false;
 int MODE = ADD;
 int round = 0;
 
@@ -96,7 +97,9 @@ void draw() {
       text("MODE: Delete", 820, 70);
     }
     if (roundStart) {
-      rounds.runRound();
+      if (!roundOver) {
+        rounds.runRound();
+      }
       balloons.display();
       balloons.processAll();
       monkeys.processAll();

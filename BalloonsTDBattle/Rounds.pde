@@ -39,13 +39,17 @@ public class Rounds{
           timer = 0;
         }
       } else {
-        if (index != currentRound.length-1) {
+        if (index == currentRound.length-1) {
+          index = 0;
+          roundOver = true;
+          currentRound = rounds[round];
+        } else {
           index++;
-          currentBalloon = currentRound[index][0];
-          numberOfBalloons = currentRound[index][1];
-          wait = currentRound[index][2];
-          timer = 0;
         }
+        currentBalloon = currentRound[index][0];
+        numberOfBalloons = currentRound[index][1];
+        wait = currentRound[index][2];
+        timer = 0;
       }
     }    
   }
