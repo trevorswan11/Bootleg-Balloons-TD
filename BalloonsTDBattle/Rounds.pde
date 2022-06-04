@@ -13,10 +13,15 @@ public class Rounds{
     
   int[][][] rounds = new int[][][]{ 
     //{ballonType, how many of each balloon, how much time between each}
-    {{RED, 20, 10}},
-    {{RED, 30, 10}},
-    {{RED, 20, 10}, {BLUE, 5, 10}}
-  };
+    {{RED, 20, 35}},
+    {{RED, 30, 30}},
+    {{RED, 10, 30}, {BLUE, 5, 30}, {RED, 10, 30}},
+    {{RED, 20, 30}, {BLUE, 15, 30}, {RED, 10, 30}},
+    {{BLUE, 15, 10}, {RED, 5, 25}, {BLUE, 10, 10}},
+    {{GREEN, 4, 30}, {RED, 15, 30}, {BLUE, 15, 30}},
+    {{BLUE, 10, 25}, {GREEN, 5, 20}, {RED, 20, 20}, {BLUE, 15, 25}},
+    {{RED, 20, 20}, {BLUE, 20, 15}, {GREEN, 14, 20}},
+};
   
   int[][] currentRound = rounds[round];
   int index = 0;
