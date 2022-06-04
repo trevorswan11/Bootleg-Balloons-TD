@@ -21,6 +21,13 @@ public class Rounds{
     {{GREEN, 4, 30}, {RED, 15, 30}, {BLUE, 15, 30}},
     {{BLUE, 10, 25}, {GREEN, 5, 20}, {RED, 20, 20}, {BLUE, 15, 25}},
     {{RED, 20, 20}, {BLUE, 20, 15}, {GREEN, 14, 20}},
+    {{GREEN, 30, 20}},
+    {{BLUE, 102, 20}},
+    {{RED, 10, 25}, {BLUE, 10, 15}, {GREEN, 12, 20}, {YELLOW, 2, 20}},
+    {{BLUE, 15, 15}, {GREEN, 10, 20}, {YELLOW, 5, 20}},
+    {{RED, 100, 10}, {GREEN, 23, 20}, {YELLOW, 4, 20}},
+    {{RED, 50, 10}, {BLUE, 15, 10}, {GREEN, 10, 20}, {YELLOW, 9, 10}},
+    {{RED, 20, 10},{GREEN, 12, 15}, {YELLOW, 5, 10}, {PINK, 3, 10}}
 };
   
   int[][] currentRound = rounds[round];
