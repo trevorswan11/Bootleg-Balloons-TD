@@ -65,7 +65,7 @@ public class Monkey {
     int dist = 50;
     color c = map.getPath().get((int)x,(int)y);
     boolean result = true;
-    if (red(c) == 0){
+    if (red(c) == 0 || red(c) == #0000FF){
       result = false;
     }
     for (int i = 0; i < monkeys.size(); i ++) {
