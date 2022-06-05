@@ -11,6 +11,7 @@ Map map;
 Balloon balloon;
 int balloonSize = 35;
 Rounds rounds;
+Buttons button1;
 
 
 PImage redBalloon;
@@ -28,6 +29,7 @@ void setup() {
   map = new Map();
   player = new Player();
   rounds = new Rounds();
+  button1 = new Buttons(820, 90, "MODE");
 
   //images
 
@@ -62,7 +64,8 @@ void setup() {
 }
 
 void mouseClicked() {
-  if (MODE == ADD) {
+  button1.clicked(mouseX, mouseY);
+  if (button1.getMode() == ADD) {
     fill(0);
     Monkey m = new Monkey(mouseX, mouseY);
     println(m.canBePlaced());
@@ -99,6 +102,7 @@ void keyPressed() {
 
 void draw() {
   background(255);
+  button1.display();
   if (!player.isDead()) {
     fill(0);
     text("ROUND: " + (round+1), 820, 30);
