@@ -31,7 +31,7 @@ public class Monkey {
   float[] findBalloon() {
     float[]coord = new float[2];
     balloonList balloon2 = balloons;
-    for (int i = 0 ; i< balloon2.size(); i++) {
+    for (int i = 0; i< balloon2.size(); i++) {
       Balloon current = balloon2.get(i);
       if (current.getHealth() > 0 && dist(getX(), getY(), current.getCurrentX(), current.getCurrentY()) <= attackRange) {
         coord[0] = current.getCurrentX();
@@ -61,14 +61,18 @@ public class Monkey {
       weapon.changeY(yInterval);
     }
   }
-  boolean canBePlaced(){
-    boolean result = true;
+  boolean canBePlaced() {
     int dist = 50;
-    for(int i = 0; i < monkeys.size(); i ++){
-      Monkey current = monkeys.get(i);
-      if(dist(x, y, current.getX(), current.getY()) < dist){
-        result = false;
+    color c = map.getPath().get((int)x,(int)y);
+    boolean result = true;
+    if (color(c) == color(0)){
+      result = false;
     }
+    for (int i = 0; i < monkeys.size(); i ++) {
+      Monkey current = monkeys.get(i);
+      if (dist(x, y, current.getX(), current.getY()) < dist) {
+        result = false;
+      }
     }
     return result;
   }
@@ -101,17 +105,17 @@ public class Monkey {
   public PImage getImage() {
     return image;
   }
-  
+
   int increaseTimer() {
-    return timer++;  
+    return timer++;
   }
   void resetTimer() {
-    timer = 0;  
+    timer = 0;
   }
   void setThrown(boolean b) {
-    thrown = b;  
+    thrown = b;
   }
-  
+
   void display() {
     image(image, x, y);
     weapon.display();

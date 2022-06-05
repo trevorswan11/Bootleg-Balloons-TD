@@ -23,7 +23,6 @@ public class MonkeyList {
           current.setThrown(false);
         }
       }
-      println(current.canBePlaced());
     }
   }
 

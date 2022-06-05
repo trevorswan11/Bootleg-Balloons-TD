@@ -65,12 +65,13 @@ void mouseClicked() {
   if (MODE == ADD) {
     fill(0);
     Monkey m = new Monkey(mouseX, mouseY);
+    println(m.canBePlaced());
     if(m.canBePlaced() == true){
       monkeys.add(m);
     }
     else{
-      fill(#FF0000);
-      circle(m.getX(), m.getY(), 50);
+      fill(#A03030);
+      circle(mouseX, mouseY, 50);
     }
   }
   if (MODE == DELETE) {
