@@ -6,8 +6,9 @@ public class Buttons {
   int MODE;
   String caption;
   int modeLimit;
+  color c;
 
-  public Buttons (float xcoord, float ycoord, String Caption, int limit) {
+  public Buttons (float xcoord, float ycoord, String Caption, int limit, color colors) {
     x = xcoord;
     y = ycoord;
     l = 50;
@@ -15,9 +16,10 @@ public class Buttons {
     MODE = 0;
     caption = Caption;
     modeLimit = limit;
+    c = colors;
   }
   void display() {
-    fill(#C3E3DA);
+    fill(c);
     rect(x, y, w, l);
     fill(0);
     textAlign(CENTER);

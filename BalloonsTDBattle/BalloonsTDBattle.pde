@@ -29,7 +29,7 @@ void setup() {
   map = new Map();
   player = new Player();
   rounds = new Rounds();
-  button1 = new Buttons(820, 90, "ADD", 2);
+  button1 = new Buttons(820, 90, "ADD", 2, #C3E3DA);
 
   //images
 
