@@ -5,14 +5,16 @@ public class Buttons {
   float w;
   int MODE;
   String caption;
+  int modeLimit;
 
-  public Buttons (float xcoord, float ycoord, String Caption) {
+  public Buttons (float xcoord, float ycoord, String Caption, int limit) {
     x = xcoord;
     y = ycoord;
     l = 50;
     w = 50;
     MODE = 0;
     caption = Caption;
+    modeLimit = limit;
   }
   void display() {
     fill(#C3E3DA);
@@ -24,7 +26,7 @@ public class Buttons {
   void clicked( int xcoord, int ycoord) {
     if (xcoord > x && xcoord < x+w && ycoord > y && ycoord<y+l) {
       MODE++;
-      if (MODE == 2) {
+      if (MODE == modeLimit) {
         MODE = 0;
       }
     }
@@ -32,4 +34,8 @@ public class Buttons {
   int getMode() {
     return MODE;
   }
+  void setCaption(String c){
+    caption = c;
+  }
+  
 }

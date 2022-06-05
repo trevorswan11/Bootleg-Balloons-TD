@@ -29,7 +29,7 @@ void setup() {
   map = new Map();
   player = new Player();
   rounds = new Rounds();
-  button1 = new Buttons(820, 90, "MODE");
+  button1 = new Buttons(820, 90, "ADD", 2);
 
   //images
 
@@ -66,19 +66,19 @@ void setup() {
 void mouseClicked() {
   button1.clicked(mouseX, mouseY);
   if (button1.getMode() == ADD) {
-    fill(0);
+    button1.setCaption("ADD");
     Monkey m = new Monkey(mouseX, mouseY);
     println(m.canBePlaced());
     if(m.canBePlaced() == true){
       monkeys.add(m);
     }
-    else{
+    else if(mouseX < 800){
       fill(#A03030);
       circle(mouseX, mouseY, 50);
     }
   }
-  if (MODE == DELETE) {
-    fill(0);
+  if (button1.getMode() == DELETE) {
+    button1.setCaption("SELL");
     monkeys.remove(mouseX, mouseY);
   }
 }
@@ -105,16 +105,10 @@ void draw() {
   button1.display();
   if (!player.isDead()) {
     fill(0);
-    text("ROUND: " + (round+1), 820, 30);
-    text("HEALTH: " + player.health, 820, 50);
+    text("ROUND: " + (round+1), 840, 30);
+    text("HEALTH: " + player.health, 850, 50);
     map.display();
     fill(0);
-    if (MODE == ADD) {
-      text("MODE: Add", 820, 70);
-    }
-    if (MODE == DELETE) {
-      text("MODE: Delete", 820, 70);
-    }
     if (roundStart) {
       if (!roundOver) {
         rounds.runRound();
