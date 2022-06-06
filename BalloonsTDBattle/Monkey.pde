@@ -8,6 +8,8 @@ public class Monkey {
   int timer = 0;
   float x; // The coordinates of the monkey
   float y;
+  int price;
+  
   public Monkey(float xcoord, float ycoord) {
     //Default values for monkey stats except for x and y since those have to be determiend
     //by mouseClicked()
@@ -18,6 +20,7 @@ public class Monkey {
     attackStrength = 5;
     x = xcoord;
     y = ycoord;
+    price = 550;
   }
   public Monkey(int speed, int range, int strength, int xcoord, int ycoord) {
     image = defaultMonkey;
@@ -26,6 +29,7 @@ public class Monkey {
     attackRange = range;
     x = xcoord;
     y = ycoord;
+    price = 550;
   }
 
   float[] findBalloon() {
@@ -63,7 +67,7 @@ public class Monkey {
     }
   }
   boolean canBePlaced() {
-    int dist = 50;
+    int dist = 25;
     color c = map.getPath().get((int)x,(int)y);
     boolean result = true;
     if (red(c) == 0 || red(c) == #0000FF){

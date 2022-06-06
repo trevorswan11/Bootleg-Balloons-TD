@@ -70,8 +70,9 @@ void mouseClicked() {
   if (button1.getMode() == ADD) {
     button1.setCaption("ADD");
     Monkey m = new Monkey(mouseX, mouseY);
-    if (m.canBePlaced() == true) {
+    if (m.canBePlaced() == true && m.price <= player.income) {
       monkeys.add(m);
+      player.changeIncome(m.price*-1);
     } else if (mouseX < 800) {
       fill(#A03030);
       circle(mouseX, mouseY, 50);
