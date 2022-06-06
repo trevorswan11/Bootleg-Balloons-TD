@@ -115,6 +115,8 @@ void draw() {
       int index = monkeys.get(mouseX, mouseY);
       if (index > -1) {
         text("Attack Speed: " + monkeys.get(index).getAttackSpeed(),  860, 190);
+        text("Attack Strength: " + monkeys.get(index).getAttackStrength(),  860, 210);
+        text("Attack Range: " + monkeys.get(index).getAttackRange(),  860, 230);
       }
     }
     if (roundStart) {
