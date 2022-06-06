@@ -35,7 +35,7 @@ public class Player {
  }
  
  int roundIncome() {
-   income = income+100*(int)(round*1.25);  
+   income += 100;  
    return income;
  }
   
