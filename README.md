@@ -32,3 +32,4 @@ Our project is a bootleg version of the popular mini-game, Bloons TD Battle. The
 * 6/2/22:  I am working on creating a weaponsList class to make the shooting mechanisms easier.
 * 6/3/22:  I made it so that one monkey can't attack the same balloon and put restrictions on where a monkey can be placed.
 * 6/4/22:  I fixed up the canBePlaced() and created a button class
+* 6/5/22:  I made the monkey's statistics show up if your mouse touches the monkey and if you're in STATS mode
