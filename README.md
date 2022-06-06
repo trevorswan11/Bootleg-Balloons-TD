@@ -30,3 +30,5 @@ Our project is a bootleg version of the popular mini-game, Bloons TD Battle. The
 * 5/31/22: I made the monkey image load in the main and am trying to work on shootWeapon so that it works for all speeds.
 * 6/1/22:  I tried to implement a timer to slow down the attacks.
 * 6/2/22:  I am working on creating a weaponsList class to make the shooting mechanisms easier.
+* 6/3/22:  I made it so that one monkey can't attack the same balloon and put restrictions on where a monkey can be placed.
+* 6/4/22:  I fixed up the canBePlaced() and created a button class
