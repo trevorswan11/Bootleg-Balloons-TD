@@ -1,6 +1,6 @@
 final int ADD = 0;
 final int DELETE = 1;
-final int UPGRADE = 2;
+final int STATS = 2;
 MonkeyList monkeys = new MonkeyList();
 balloonList balloons = new balloonList();
 weaponList bullets = new weaponList();
@@ -12,13 +12,13 @@ Balloon balloon;
 int balloonSize = 35;
 Rounds rounds;
 Buttons button1;
+Buttons button2;
 
 
 PImage redBalloon;
 PImage defaultMonkey;
 
 PImage red, blue, green, yellow, pink, black, white, zebra, lead, rainbow, ceramic;
-
 boolean roundStart = false;
 boolean roundOver = false;
 int MODE = ADD;
@@ -29,7 +29,8 @@ void setup() {
   map = new Map();
   player = new Player();
   rounds = new Rounds();
-  button1 = new Buttons(820, 90, "ADD", 2, #C3E3DA);
+  button1 = new Buttons(820, 90, "ADD", 3, #C3E3DA);
+  //button1 = new Buttons(820, 90, defaultMonkey, 2, #C3E3DA);
 
   //images
 
@@ -68,7 +69,6 @@ void mouseClicked() {
   if (button1.getMode() == ADD) {
     button1.setCaption("ADD");
     Monkey m = new Monkey(mouseX, mouseY);
-    println(m.canBePlaced());
     if(m.canBePlaced() == true){
       monkeys.add(m);
     }
@@ -80,6 +80,15 @@ void mouseClicked() {
   if (button1.getMode() == DELETE) {
     button1.setCaption("SELL");
     monkeys.remove(mouseX, mouseY);
+  }
+  if (button1.getMode() == STATS){
+    button1.setCaption("STATS");
+    int index = monkeys.get(mouseX, mouseY);
+    println(index);
+    if(index > -1){
+      fill(0);
+      text("Attack Speed" + monkeys.get(index).getAttackSpeed(), 820, 160);
+    }
   }
 }
 
@@ -107,6 +116,7 @@ void draw() {
     fill(0);
     text("ROUND: " + (round+1), 840, 30);
     text("HEALTH: " + player.health, 850, 50);
+    //image(defaultMonkey, 820, 160);
     map.display();
     fill(0);
     if (roundStart) {

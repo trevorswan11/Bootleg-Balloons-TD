@@ -36,9 +36,9 @@ public class MonkeyList {
   void add(Monkey toBeAdded) {
     monke.add(toBeAdded);
   }
-   void remove(Monkey e) {
-     monke.remove(e);
-   }
+  void remove(Monkey e) {
+    monke.remove(e);
+  }
   void remove(float xcoord, float ycoord) {
     for (int i = 0; i < monke.size(); i++) {
       float compareX = monke.get(i).getX();
@@ -52,6 +52,17 @@ public class MonkeyList {
   public Monkey get(int index) {
     return monke.get(index);
   }
+  int get(float xcoord, float ycoord) {
+    int result = -1;
+    for (int i = 0; i < monke.size(); i ++) {
+      Monkey current = monke.get(i);
+      if (current.x == xcoord && current.y == ycoord) {
+        result = i;
+      }
+    }
+    return result;
+  }
+
 
   void display() {
     for (int i = 0; i < monke.size(); i++) {
