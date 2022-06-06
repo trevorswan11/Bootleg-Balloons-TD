@@ -114,9 +114,10 @@ void draw() {
       button1.setCaption("STATS");
       int index = monkeys.get(mouseX, mouseY);
       if (index > -1) {
-        text("Attack Speed: " + monkeys.get(index).getAttackSpeed(),  860, 190);
-        text("Attack Strength: " + monkeys.get(index).getAttackStrength(),  860, 210);
-        text("Attack Range: " + monkeys.get(index).getAttackRange(),  860, 230);
+        text("Monkey " + index + "'s Statistics", 860, 190);
+        text("Attack Speed: " + monkeys.get(index).getAttackSpeed(),  860, 210);
+        text("Attack Strength: " + monkeys.get(index).getAttackStrength(),  860, 230);
+        text("Attack Range: " + monkeys.get(index).getAttackRange(),  860, 250);
       }
     }
     if (roundStart) {
