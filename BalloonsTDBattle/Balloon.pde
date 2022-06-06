@@ -6,21 +6,26 @@ public class Balloon {
   float currentX = 410;
   float currentY = 0;
   Boolean atEnd = false;
+  int size = balloonSize;
+  Boolean target = false;
 
   int[] nextCords = map.getDirection(1);
   float distanceX = nextCords[0]-currentX;
   float distanceY = nextCords[1]-currentY;
 
   public Balloon() {
-    image = redBalloon;
+    image = red;
     health = 1;
     speed = 1;
   }
-
-  public Balloon(Balloon balloon) {
-    image = balloon.image;
-    health = balloon.health;
-    speed = balloon.speed;
+  
+  public Balloon(Balloon b) {
+    currentX = b.getCurrentX();
+    currentY = b.getCurrentY();
+    directionsIndex = b.getDirectionsIndex();
+    nextCords = b.nextCords;
+    distanceX = b.distanceX;
+    distanceY = b.distanceY;
   }
 
   public Balloon(PImage image_, int health_, float speed_) {
@@ -30,9 +35,7 @@ public class Balloon {
   }
 
   void display() {
-    //if (health > 0 && !atEnd) {
-    image(image, currentX-balloonSize/2, currentY-balloonSize/2);
-    //}
+    image(image, currentX-size/2, currentY-balloonSize/2);
   }
 
   void followMap() {
@@ -81,7 +84,7 @@ public class Balloon {
     }
   }
 
-  float[] getFuture(int attackSpeed) {
+ float[] getFuture() {
     float x_ = currentX;
     float y_ = currentY;
     int directionsIndex_ = directionsIndex;
@@ -89,10 +92,9 @@ public class Balloon {
     int[] nextCords_ = map.getDirection(directionsIndex+1);
     float distanceX_ = nextCords[0]-x_;
     float distanceY_ = nextCords[1]-y_;
-    int maxTime = attackSpeed; //some calculation based on attackSpeed and balloonSpeed
     int timer = 0;
 
-    while (timer < maxTime) {
+    while (timer < 3) {
       if (directionsIndex_ < map.getDirectionsSize()) {
         if (distanceX_ != 0) {
           float sign = distanceSign(distanceX_);
@@ -124,7 +126,6 @@ public class Balloon {
     }
     return new float[]{x_, y_};
   }
-
   int decreaseHealth() {
     health--;
     return health;
@@ -144,6 +145,12 @@ public class Balloon {
     currentY += change;
     return currentY;
   }
+  void setX(float x_) {
+    currentX = x_;  
+  }
+  void setY(float y_) {
+    currentY = y_;  
+  }
   float getCurrentX() {
     return currentX;
   }
@@ -159,4 +166,200 @@ public class Balloon {
   float getSpeed() {
     return speed;
   }
+  boolean getTarget(){
+  return target;
+  }
+  void setTarget(boolean b){
+    target = b;
+  }
+  void setNextCords(int[] cords) {
+    nextCords = cords;
+  }
+  void setDistanceX(float dist) {
+    distanceX = dist;  
+  }
+  void setDistanceY(float dist) {
+    distanceY = dist;  
+  }
+}
+
+public class redBalloon extends Balloon{
+  redBalloon() {
+    image = red;
+    health = 1;
+    speed = 1;
+  }
+  
+  redBalloon(Balloon b) {
+    super(b);
+    image = red;
+    health = 1;
+    speed = 1;
+  }
+}
+
+public class blueBalloon extends Balloon{
+  blueBalloon() {
+    image = blue;
+    health = 2;
+    speed = 1.3;
+  }
+  
+  blueBalloon(Balloon b) {
+    super(b);
+    image = blue;
+    health = 2;
+    speed = 1.3;
+  }
+}
+
+public class greenBalloon extends Balloon{
+  greenBalloon() {
+    image = green;
+    health = 3;
+    speed = 1.5;
+  }
+  
+  greenBalloon(Balloon b) {
+    super(b);
+    image = green;
+    health = 3;
+    speed = 1.5;
+  }
+}
+
+public class yellowBalloon extends Balloon{
+  yellowBalloon() {
+    image = yellow;
+    health = 4;
+    speed = 2;
+  }
+
+  yellowBalloon(Balloon b) {
+    super(b);
+    image = yellow;
+    health = 4;
+    speed = 2;
+  }
+}
+
+public class pinkBalloon extends Balloon{
+  pinkBalloon() {
+    image = pink;
+    health = 5; 
+    speed = 2.5;
+  }
+
+  pinkBalloon(Balloon b) {
+    super(b);
+    image = pink;
+    health = 5; 
+    speed = 2.5;
+  }
+}
+
+public class blackBalloon extends Balloon{
+  blackBalloon() {
+    image = black;
+    health = 11;
+    speed = 1.5;
+    size = balloonSize/2;
+  }
+  
+  blackBalloon(Balloon b) {
+    super(b);
+    image = black;
+    health = 11;
+    speed = 1.5;
+    size = balloonSize/2;
+  }
+  
+  //if 1 damage done to it, it splits into two pink balloons, else split into 1 pink
+}
+
+public class whiteBalloon extends Balloon{
+  whiteBalloon() {
+    image = white;
+    health = 11;
+    speed = 1.5;
+    size = balloonSize/2;
+  }
+  
+  whiteBalloon(Balloon b) {
+    super(b);
+    image = white;
+    health = 11;
+    speed = 1.5;
+    size = balloonSize/2;
+  }
+
+  //if 1 damage done to it, it splits into 2 pink balloons
+}
+
+public class zebraBalloon extends Balloon{
+  zebraBalloon() {
+    image = zebra;
+    health = 23;
+    speed = 1.5;
+  }
+
+  zebraBalloon(Balloon b) {
+    super(b);
+    image = zebra;
+    health = 23;
+    speed = 1.5;
+  }
+
+  //if 1 damage done to it, it splits into 1 black and 1 white
+}
+
+public class leadBalloon extends Balloon{
+  leadBalloon() {
+    image = lead;
+    health = 23;
+    speed = 1;
+  }
+
+  leadBalloon(Balloon b) {
+    super(b);
+    image = lead;
+    health = 23;
+    speed = 1;
+  }
+
+  //if 1 damage done to it, it splits into 2 black balloons 
+}
+
+public class rainbowBalloon extends Balloon{
+  rainbowBalloon() {
+    image = rainbow;
+    health = 47;
+    speed = 1.6;
+  }
+  
+  rainbowBalloon(Balloon b) {
+    super(b);
+    image = rainbow;
+    health = 47;
+    speed = 1.6;
+  }
+
+  //if 1 damage dont to it, it splits into 2 zebra baloons 
+}
+
+public class ceramicBalloon extends Balloon{
+  ceramicBalloon() {
+    image = ceramic;
+    health = 104;
+    speed = 1.7;
+  }
+  
+  ceramicBalloon(Balloon b) {
+    super(b);
+    image = ceramic;
+    health = 104;
+    speed = 1.7;
+  }
+
+  //if 10 damage is done to it(health 94), it splits into 2 rainbow balloons
 }

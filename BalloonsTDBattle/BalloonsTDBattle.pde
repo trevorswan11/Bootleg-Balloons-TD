@@ -1,21 +1,28 @@
 final int ADD = 0;
 final int DELETE = 1;
-final int UPGRADE = 2;
+final int STATS = 2;
 MonkeyList monkeys = new MonkeyList();
 balloonList balloons = new balloonList();
-
-//Change image display by loading in the setup so you only have to set up once
+weaponList bullets = new weaponList();
 
 Player player;
 Monkey m;
 Map map;
 Balloon balloon;
-int balloonSize = 25;
+int balloonSize = 35;
+Rounds rounds;
+
+boolean displayStats = false;
+Buttons button1;
+Buttons button2;
 
 
 PImage redBalloon;
+PImage defaultMonkey;
 
+PImage red, blue, green, yellow, pink, black, white, zebra, lead, rainbow, ceramic;
 boolean roundStart = false;
+boolean roundOver = false;
 int MODE = ADD;
 int round = 0;
 
@@ -23,24 +30,56 @@ void setup() {
   size(1000, 600);
   map = new Map();
   player = new Player();
-
+  rounds = new Rounds();
+  button1 = new Buttons(820, 90, "ADD", 3, #C3E3DA);
+  //button1 = new Buttons(820, 90, defaultMonkey, 2, #C3E3DA);
 
   //images
+
   redBalloon = loadImage("red_balloon.png");
   redBalloon.resize(balloonSize, balloonSize);
+  defaultMonkey = loadImage("monkey.png");
+  defaultMonkey.resize(25, 25);
+
+  red = loadImage("red_balloon.png");
+  red.resize(balloonSize, balloonSize);
+  blue = loadImage("blue_balloon.png");
+  blue.resize(balloonSize, balloonSize);
+  green = loadImage("green_balloon.png");
+  green.resize(balloonSize, balloonSize);
+  yellow = loadImage("yellow_balloon.png");
+  yellow.resize(balloonSize, balloonSize);
+  pink = loadImage("pink_balloon.png");
+  pink.resize(balloonSize, balloonSize);
+  black = loadImage("black_balloon.png");
+  black.resize(balloonSize/2, balloonSize);
+  white = loadImage("white_balloon.png");
+  white.resize(balloonSize/2, balloonSize);
+  zebra = loadImage("zebra_balloon.png");
+  zebra.resize(balloonSize, balloonSize);
+  lead = loadImage("lead_balloon.png");
+  lead.resize(balloonSize, balloonSize);
+  rainbow = loadImage("rainbow_balloon.png");
+  rainbow.resize(balloonSize, balloonSize);
+  ceramic = loadImage("ceramic_balloon.png");
+  ceramic.resize(balloonSize, balloonSize);
 }
 
 void mouseClicked() {
-  if (MODE == ADD) {
-    fill(0);
+  button1.clicked(mouseX, mouseY);
+  if (button1.getMode() == ADD) {
+    button1.setCaption("ADD");
     Monkey m = new Monkey(mouseX, mouseY);
-    monkeys.add(m);
-    //weapons.add(m.getWeapons());
+    if (m.canBePlaced() == true) {
+      monkeys.add(m);
+    } else if (mouseX < 800) {
+      fill(#A03030);
+      circle(mouseX, mouseY, 50);
+    }
   }
-  if (MODE == DELETE) {
-    fill(0);
+  if (button1.getMode() == DELETE) {
+    button1.setCaption("SELL");
     monkeys.remove(mouseX, mouseY);
-    //weapons.remove(mouseX, mouseY);
   }
 }
 
@@ -63,29 +102,34 @@ void keyPressed() {
 
 void draw() {
   background(255);
+  button1.display();
   if (!player.isDead()) {
-    text("ROUND: " + round, 820, 30);
-    text("HEALTH: " + player.health, 820, 50);
+    fill(0);
+    text("ROUND: " + (round+1), 843, 30);
+    text("HEALTH: " + player.health, 850, 50);
+    //image(defaultMonkey, 820, 160);
     map.display();
     fill(0);
-    if (MODE == ADD) {
-      text("MODE: Add", 820, 70);
-    }
-    if (MODE == DELETE) {
-      text("MODE: Delete", 820, 70);
+    if (button1.getMode() == STATS) {
+      button1.setCaption("STATS");
+      int index = monkeys.get(mouseX, mouseY);
+      if (index > -1) {
+        text("Monkey " + index + "'s Statistics", 860, 190);
+        text("Attack Speed: " + monkeys.get(index).getAttackSpeed(),  860, 210);
+        text("Attack Strength: " + monkeys.get(index).getAttackStrength(),  860, 230);
+        text("Attack Range: " + monkeys.get(index).getAttackRange(),  860, 250);
+      }
     }
     if (roundStart) {
-      balloons.addBalloons();
+      if (!roundOver) {
+        rounds.runRound();
+      }
       balloons.display();
       balloons.processAll();
       monkeys.processAll();
+      bullets.display();
     }
     monkeys.display();
-    /*balloons.display();
-    balloons.processAll();
-    for (int i = 0; i < monkeys.size(); i++) {
-      monkeys.get(i).findBalloon();
-    }*/
   } else {
     textSize(100);
     textAlign(CENTER);
