@@ -24,10 +24,10 @@ PImage red, blue, green, yellow, pink, black, white, zebra, lead, rainbow, ceram
 boolean roundStart = false;
 boolean roundOver = false;
 int MODE = ADD;
-int round = 0;
+int round = 10;
 
 void setup() {
-  size(1000, 600);
+  size(1000, 750);
   map = new Map();
   player = new Player();
   rounds = new Rounds();
@@ -105,8 +105,9 @@ void draw() {
   button1.display();
   if (!player.isDead()) {
     fill(0);
-    text("ROUND: " + (round+1), 843, 30);
+    text("ROUND: " + (round+1), 845, 30);
     text("HEALTH: " + player.health, 850, 50);
+    text("INCOME: " + player.income, 850, 70);
     //image(defaultMonkey, 820, 160);
     map.display();
     fill(0);

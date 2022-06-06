@@ -14,8 +14,15 @@ public class Player {
   }
   
   int changeIncome(int change) {
-    income = income + change; 
+    income += change; 
     return income;
+  }
+  
+  int attackIncome(Monkey monkey, Balloon balloon) {
+    int attack = monkey.getAttackStrength();
+    int health = balloon.getHealth();
+    int change = attack-health;
+    return income += health+change;
   }
   
  int decreaseHealth() {

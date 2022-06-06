@@ -13,9 +13,9 @@ public class Monkey {
     //by mouseClicked()
     image = defaultMonkey;
     weapon = new Weapons(xcoord, ycoord);
-    attackSpeed = 1;
+    attackSpeed = 50;
     attackRange = 50;
-    attackStrength = 1;
+    attackStrength = 5;
     x = xcoord;
     y = ycoord;
   }
@@ -48,6 +48,7 @@ public class Monkey {
     float[] coord = b.getFuture();
     float range = dist(weapon.getX(), weapon.getY(), coord[0], coord[1]);
     if (range < 10 && !thrown) {
+      player.attackIncome(this, b);
       attack(b);
       thrown = true;
       weapon.setDisplay(false);
