@@ -13,6 +13,7 @@ int balloonSize = 35;
 Rounds rounds;
 int showStats = -1;
 boolean gameStart = false;
+boolean freeplayStart = false;
 
 boolean displayStats = false;
 Buttons button1;
@@ -29,7 +30,7 @@ PImage red, blue, green, yellow, pink, black, white, zebra, lead, rainbow, ceram
 boolean roundStart = false;
 boolean roundOver = false;
 int MODE = ADD;
-int round = 0;
+int round = 20;
 
 void setup() {
   size(1000, 750);
@@ -74,12 +75,12 @@ void setup() {
 }
 
 void mouseClicked() {
-  //int i = monkeys.get(mouseX, mouseY);
-  //showStats = i;
-  
-  if (!gameStart) {
+  if (!gameStart && !freeplayStart) {
     if (normal.inRange(mouseX, mouseY)) {
       gameStart = true;  
+    }
+    if (freeplay.inRange(mouseX, mouseY)) {
+      freeplayStart = true;  
     }
   } else if (player.isDead()) {
     if (startOver.inRange(mouseX,mouseY)) {
@@ -109,24 +110,13 @@ void mouseClicked() {
 }
 
 void keyPressed() {
-  if (key == 'b') {
-    balloons.add(new Balloon());
-  }
-
   if (key == ENTER) {
     roundStart = true;
-  }
-  if (key == ' ') {
-    if (MODE == DELETE) {
-      MODE = ADD;
-    } else {
-      MODE++;
-    }
   }
 }
 
 void draw() {
-  if (!gameStart) {
+  if (!gameStart && !freeplayStart) {
     background(255);
     textSize(100);
     textAlign(CENTER);
@@ -135,7 +125,7 @@ void draw() {
     freeplay.display();
     normal.hover(mouseX, mouseY);
     freeplay.hover(mouseX, mouseY);
-  } else {
+  } else if (gameStart) {
     background(255);
     if (!player.isDead()) {
     button1.display();
@@ -143,12 +133,8 @@ void draw() {
       text("ROUND: " + (round+1), 845, 30);
       text("HEALTH: " + player.health, 850, 50);
       text("INCOME: " + player.income, 850, 70);
-      //image(defaultMonkey, 820, 160);
       map.display();
       fill(0);
-      //if (showStats != -1) {
-      //  monkeys.get(showStats).showStats();
-      //}
       if (button1.getMode() == STATS) {
         button1.setCaption("STATS");
         int index = monkeys.get(mouseX, mouseY);
@@ -176,5 +162,14 @@ void draw() {
       startOver.display();
       startOver.hover(mouseX, mouseY);
     }
+   } else if (freeplayStart) {
+     background(255);
+     map.display();
+     fill(0);
+     balloons.display();
+     balloons.processAll();
+     monkeys.processAll();
+     bullets.display();
+     monkeys.display();
    }
 }
