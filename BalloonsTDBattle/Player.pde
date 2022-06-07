@@ -1,5 +1,5 @@
 public class Player {
-  int health;
+  int health = 0;
   int income;
   int points;
   int time; 

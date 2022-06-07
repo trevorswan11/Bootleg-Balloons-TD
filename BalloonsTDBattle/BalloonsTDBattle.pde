@@ -29,7 +29,7 @@ PImage red, blue, green, yellow, pink, black, white, zebra, lead, rainbow, ceram
 boolean roundStart = false;
 boolean roundOver = false;
 int MODE = ADD;
-int round = 10;
+int round = 0;
 
 void setup() {
   size(1000, 750);
@@ -41,7 +41,7 @@ void setup() {
 
   normal = new Buttons(width/2-50, height/2 + 100, "NORMAL", 40, 100, 20, 225);
   freeplay = new Buttons(width/2-50, height/2 + 150, "FREEPLAY", 40, 100, 20, 225);
-  startOver = new Buttons(width/2-50, height/2 + 150, "START OVER", 40, 100, 20, 225);
+  startOver = new Buttons(width/2-70, height/2 + 110, "START OVER", 40, 140, 20, 225);
   //images
 
   redBalloon = loadImage("red_balloon.png");
@@ -80,6 +80,13 @@ void mouseClicked() {
   if (!gameStart) {
     if (normal.inRange(mouseX, mouseY)) {
       gameStart = true;  
+    }
+  } else if (player.isDead()) {
+    if (startOver.inRange(mouseX,mouseY)) {
+      player = new Player();
+      rounds = new Rounds();
+      monkeys = new MonkeyList();
+      gameStart = false;
     }
   } else {
     button1.clicked(mouseX, mouseY);
