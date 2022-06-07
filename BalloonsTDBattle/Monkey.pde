@@ -8,32 +8,34 @@ public class Monkey {
   int timer = 0;
   float x; // The coordinates of the monkey
   float y;
+  int price;
+  
   public Monkey(float xcoord, float ycoord) {
     //Default values for monkey stats except for x and y since those have to be determiend
     //by mouseClicked()
-    image = loadImage("monkey.png");
-    image.resize(25, 25);
+    image = defaultMonkey;
     weapon = new Weapons(xcoord, ycoord);
-    attackSpeed = 10;
+    attackSpeed = 20;
     attackRange = 50;
-    attackStrength = 1;
+    attackStrength = 5;
     x = xcoord;
     y = ycoord;
+    price = 550;
   }
   public Monkey(int speed, int range, int strength, int xcoord, int ycoord) {
-    image = loadImage("monkey.png");
-    image.resize(25, 25);
+    image = defaultMonkey;
     attackSpeed = speed;
     attackStrength = strength;
     attackRange = range;
     x = xcoord;
     y = ycoord;
+    price = 550;
   }
 
   float[] findBalloon() {
     float[]coord = new float[2];
     balloonList balloon2 = balloons;
-    for (int i = 0 ; i< balloon2.size(); i++) {
+    for (int i = 0; i< balloon2.size(); i++) {
       Balloon current = balloon2.get(i);
       if (current.getHealth() > 0 && dist(getX(), getY(), current.getCurrentX(), current.getCurrentY()) <= attackRange) {
         coord[0] = current.getCurrentX();
@@ -46,10 +48,11 @@ public class Monkey {
     b.decreaseHealth(attackStrength);
   }
   void throwWeapon(Balloon b) {
+    b.setTarget(true);
     float[] coord = b.getFuture();
-    //println("index: " + balloons.getBalloonAt(coord[0], coord[1]));
     float range = dist(weapon.getX(), weapon.getY(), coord[0], coord[1]);
     if (range < 10 && !thrown) {
+      player.attackIncome(this, b);
       attack(b);
       thrown = true;
       weapon.setDisplay(false);
@@ -63,7 +66,26 @@ public class Monkey {
       weapon.changeY(yInterval);
     }
   }
-
+  boolean canBePlaced() {
+    int dist = 25;
+    color c = map.getPath().get((int)x,(int)y);
+    boolean result = true;
+    if (red(c) == 0 || red(c) == #0000FF){
+      result = false;
+    }
+    for (int i = 0; i < monkeys.size(); i ++) {
+      Monkey current = monkeys.get(i);
+      if (dist(x, y, current.getX(), current.getY()) < dist) {
+        result = false;
+      }
+    }
+    return result;
+  }
+  
+  void showStats() {
+    image(image, 100, 900);
+  }
+  
   public float getX() {
     return x;
   }
@@ -93,17 +115,17 @@ public class Monkey {
   public PImage getImage() {
     return image;
   }
-  
+
   int increaseTimer() {
-    return timer++;  
+    return timer++;
   }
   void resetTimer() {
-    timer = 0;  
+    timer = 0;
   }
   void setThrown(boolean b) {
-    thrown = b;  
+    thrown = b;
   }
-  
+
   void display() {
     image(image, x, y);
     weapon.display();

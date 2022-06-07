@@ -31,6 +31,7 @@ public class balloonList {
       roundStart = false;
       roundOver = false;
       round++;
+      player.roundIncome();
     }
   }
 
@@ -114,6 +115,7 @@ public class balloonList {
       balloons.remove(targetIndex);
     }
   }
+  
   int size() {
     return balloons.size();
   }

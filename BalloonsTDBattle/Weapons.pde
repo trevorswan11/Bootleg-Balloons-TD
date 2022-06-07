@@ -31,8 +31,8 @@ public class Weapons {
   }
   void setDisplay(boolean b) {
     isDisplay = b;
-    }
-  
+  }
+
   void display() {
     if (isDisplay == true) {
       fill(c);
