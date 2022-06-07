@@ -17,8 +17,10 @@ boolean gameStart = false;
 boolean displayStats = false;
 Buttons button1;
 Buttons button2;
-Buttons start;
+Buttons normal;
+Buttons freeplay;
 Buttons nextRound;
+Buttons startOver; 
 
 PImage redBalloon;
 PImage defaultMonkey;
@@ -37,7 +39,9 @@ void setup() {
   button1 = new Buttons(820, 90, "ADD", 3, #C3E3DA);
   //button1 = new Buttons(820, 90, defaultMonkey, 2, #C3E3DA);
 
-  start = new Buttons(width/2-50, height/2 + 100, "START", 50, 100, 20, 225);
+  normal = new Buttons(width/2-50, height/2 + 100, "NORMAL", 40, 100, 20, 225);
+  freeplay = new Buttons(width/2-50, height/2 + 150, "FREEPLAY", 40, 100, 20, 225);
+  startOver = new Buttons(width/2-50, height/2 + 150, "START OVER", 40, 100, 20, 225);
   //images
 
   redBalloon = loadImage("red_balloon.png");
@@ -72,21 +76,28 @@ void setup() {
 void mouseClicked() {
   //int i = monkeys.get(mouseX, mouseY);
   //showStats = i;
-  button1.clicked(mouseX, mouseY);
-  if (button1.getMode() == ADD) {
-    button1.setCaption("ADD");
-    Monkey m = new Monkey(mouseX, mouseY);
-    if (m.canBePlaced() == true && m.price <= player.income) {
-      monkeys.add(m);
-      player.changeIncome(m.price*-1);
-    } else if (mouseX < 800 && m.price <= player.income) {
-      fill(#A03030);
-      circle(mouseX, mouseY, m.getAttackRange());
+  
+  if (!gameStart) {
+    if (normal.inRange(mouseX, mouseY)) {
+      gameStart = true;  
     }
-  }
-  if (button1.getMode() == DELETE) {
-    button1.setCaption("SELL");
-    monkeys.sell(mouseX,mouseY);
+  } else {
+    button1.clicked(mouseX, mouseY);
+    if (button1.getMode() == ADD) {
+      button1.setCaption("ADD");
+      Monkey m = new Monkey(mouseX, mouseY);
+      if (m.canBePlaced() == true && m.price <= player.income) {
+        monkeys.add(m);
+        player.changeIncome(m.price*-1);
+      } else if (mouseX < 800 && m.price <= player.income) {
+        fill(#A03030);
+        circle(mouseX, mouseY, m.getAttackRange());
+      }
+    }
+    if (button1.getMode() == DELETE) {
+      button1.setCaption("SELL");
+      monkeys.sell(mouseX,mouseY);
+    }
   }
 }
 
@@ -109,14 +120,18 @@ void keyPressed() {
 
 void draw() {
   if (!gameStart) {
+    background(255);
     textSize(100);
     textAlign(CENTER);
     text("START GAME", width/2, height/2);
-    start.display();
+    normal.display();
+    freeplay.display();
+    normal.hover(mouseX, mouseY);
+    freeplay.hover(mouseX, mouseY);
   } else {
     background(255);
-    button1.display();
     if (!player.isDead()) {
+    button1.display();
       fill(0);
       text("ROUND: " + (round+1), 845, 30);
       text("HEALTH: " + player.health, 850, 50);
@@ -151,6 +166,8 @@ void draw() {
       textSize(100);
       textAlign(CENTER);
       text("GAME OVER", width/2, height/2);
+      startOver.display();
+      startOver.hover(mouseX, mouseY);
     }
    }
 }
