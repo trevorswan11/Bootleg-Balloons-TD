@@ -62,10 +62,10 @@ public class Monkey {
     }
   }
   boolean canBePlaced() {
-    int dist = 50;
+    int dist = 25;
     color c = map.getPath().get((int)x,(int)y);
     boolean result = true;
-    if (red(c) == 0 || red(c) == #0000FF){
+    if (red(c) != 255){
       result = false;
     }
     for (int i = 0; i < monkeys.size(); i ++) {

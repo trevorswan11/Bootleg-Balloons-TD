@@ -9,6 +9,7 @@ public class Buttons {
   color c;
   PImage p;
   boolean hasImage;
+  
 
   public Buttons (float xcoord, float ycoord, String Caption, int limit, color colors) {
     x = xcoord;
@@ -21,7 +22,7 @@ public class Buttons {
     c = colors;
     hasImage = false;
   }
-  /*
+ 
   public Buttons (float xcoord, float ycoord, PImage img, int limit, color colors) {
     x = xcoord;
     y = ycoord;
@@ -33,7 +34,6 @@ public class Buttons {
     c = colors;
     hasImage = true;
   }
-*/
   void display() {
     fill(c);
     rect(x, y, w, l);

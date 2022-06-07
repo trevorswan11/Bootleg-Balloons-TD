@@ -19,6 +19,7 @@ Buttons button2;
 
 PImage redBalloon;
 PImage defaultMonkey;
+PImage buttonMonkey;
 
 PImage red, blue, green, yellow, pink, black, white, zebra, lead, rainbow, ceramic;
 boolean roundStart = false;
@@ -32,7 +33,6 @@ void setup() {
   player = new Player();
   rounds = new Rounds();
   button1 = new Buttons(820, 90, "ADD", 3, #C3E3DA);
-  //button1 = new Buttons(820, 90, defaultMonkey, 2, #C3E3DA);
 
   //images
 
@@ -40,6 +40,9 @@ void setup() {
   redBalloon.resize(balloonSize, balloonSize);
   defaultMonkey = loadImage("monkey.png");
   defaultMonkey.resize(25, 25);
+  buttonMonkey = loadImage("monkey.png");
+  buttonMonkey.resize(50, 50);
+  button2 = new Buttons(880, 90, buttonMonkey, 1, #C3E3DA);
 
   red = loadImage("red_balloon.png");
   red.resize(balloonSize, balloonSize);
@@ -81,6 +84,9 @@ void mouseClicked() {
     button1.setCaption("SELL");
     monkeys.remove(mouseX, mouseY);
   }
+  if (button2.getMode() == 1){
+    
+  }
 }
 
 void keyPressed() {
@@ -103,6 +109,7 @@ void keyPressed() {
 void draw() {
   background(255);
   button1.display();
+  button2.display();
   if (!player.isDead()) {
     fill(0);
     text("ROUND: " + (round+1), 843, 30);
