@@ -44,7 +44,8 @@ void setup() {
   freeplay = new Buttons(width/2-50, height/2 + 150, "FREEPLAY", 40, 100, 20, 225);
   startOver = new Buttons(width/2-70, height/2 + 110, "START OVER", 40, 140, 20, 225);
   
-  redBalloonButton = new balloonButton(100, 700, new redBalloon());
+  redBalloonButton = new balloonButton(70, 700, new redBalloon());
+  redBalloonButton.setImage(red);
   
   //images
 
