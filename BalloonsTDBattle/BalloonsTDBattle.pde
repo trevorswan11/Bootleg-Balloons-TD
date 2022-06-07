@@ -3,7 +3,6 @@ final int DELETE = 1;
 final int STATS = 2;
 MonkeyList monkeys = new MonkeyList();
 balloonList balloons = new balloonList();
-weaponList bullets = new weaponList();
 
 Player player;
 Monkey m;
@@ -15,13 +14,14 @@ int showStats = -1;
 boolean gameStart = false;
 boolean freeplayStart = false;
 
-boolean displayStats = false;
 Buttons button1;
 Buttons button2;
 Buttons normal;
 Buttons freeplay;
 Buttons nextRound;
 Buttons startOver; 
+
+balloonButton redBalloonButton;
 
 PImage redBalloon;
 PImage defaultMonkey;
@@ -43,6 +43,9 @@ void setup() {
   normal = new Buttons(width/2-50, height/2 + 100, "NORMAL", 40, 100, 20, 225);
   freeplay = new Buttons(width/2-50, height/2 + 150, "FREEPLAY", 40, 100, 20, 225);
   startOver = new Buttons(width/2-70, height/2 + 110, "START OVER", 40, 140, 20, 225);
+  
+  redBalloonButton = new balloonButton(100, 700, new redBalloon());
+  
   //images
 
   redBalloon = loadImage("red_balloon.png");
@@ -152,7 +155,6 @@ void draw() {
         balloons.display();
         balloons.processAll();
         monkeys.processAll();
-        bullets.display();
       }
       monkeys.display();
     } else {
@@ -169,7 +171,7 @@ void draw() {
      balloons.display();
      balloons.processAll();
      monkeys.processAll();
-     bullets.display();
      monkeys.display();
+     redBalloonButton.display();
    }
 }

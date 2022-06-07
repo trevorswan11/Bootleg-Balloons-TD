@@ -11,12 +11,13 @@ public class buttonsList {
       buttons.get(i).display();    
     }
   }
-  Buttons findButtonAt(int x, int y) {
+  int findButtonAt(int x, int y) {
     for (int i = 0; i < buttons.size(); i++) {
       if (buttons.get(i).inRange(x, y)) {
-        return buttons.get(i);
+        return i;
       }
     }
+    return -1;
   }
   
   void add(Buttons button) {

@@ -15,9 +15,9 @@ public class Monkey {
     //by mouseClicked()
     image = defaultMonkey;
     weapon = new Weapons(xcoord, ycoord);
-    attackSpeed = 20;
+    attackSpeed = 10;
     attackRange = 50;
-    attackStrength = 5;
+    attackStrength = 1;
     x = xcoord;
     y = ycoord;
     price = 550;

@@ -33,6 +33,17 @@ public class Buttons {
     size = size_;
     hasImage = false;
   }
+  
+  public Buttons (float x_, float y_, PImage image, int l_, int w_, color colors_) {
+    x = x_;
+    y = y_;
+    l = l_;
+    w = w_;
+    p = image;
+    c = colors_;
+    hasImage = true;
+  }
+  
   /*
   public Buttons (float xcoord, float ycoord, PImage img, int limit, color colors) {
     x = xcoord;
@@ -50,14 +61,13 @@ public class Buttons {
     fill(c);
     rect(x, y, w, l);
     fill(0);
-    textAlign(CENTER);
     if (hasImage == false) {
+      textAlign(CENTER);
       textSize(size);
       text(caption, x + (w/2), y + (l/2));
-    }
-     else{
+    } else{
       image(p, x , y);
-  }
+    }
 }
 void clicked( int xcoord, int ycoord) {
   if (xcoord > x && xcoord < x+w && ycoord > y && ycoord<y+l) {
@@ -90,4 +100,10 @@ void setColor(color c_) {
   c = c_;  
 }
 
+}
+
+public class balloonButton extends Buttons {
+  public balloonButton(int x_, int y_, Balloon b) {
+    super(x_, y_, b.getImage(), balloonSize, balloonSize, 255);
+  }
 }
