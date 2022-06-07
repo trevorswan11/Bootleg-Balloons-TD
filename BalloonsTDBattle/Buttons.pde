@@ -68,8 +68,16 @@ void clicked( int xcoord, int ycoord) {
   }
 }
 
-boolean beenClicked(int x_, int y_) {
+boolean inRange(int x_, int y_) {
   return (x_ > x && x_ < x+w && y_ > y && y_ < y+l);
+}
+
+void hover(int x_, int y_) {
+  if (inRange(x_, y_)) {
+    c = 200;
+  } else {
+    c = 225;  
+  }
 }
 
 int getMode() {
@@ -77,6 +85,9 @@ int getMode() {
 }
 void setCaption(String c) {
   caption = c;
+}
+void setColor(color c_) {
+  c = c_;  
 }
 
 }
