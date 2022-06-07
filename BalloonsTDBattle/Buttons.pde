@@ -8,6 +8,7 @@ public class Buttons {
   int modeLimit;
   color c;
   PImage p;
+  int size = 10;
   boolean hasImage;
 
   public Buttons (float xcoord, float ycoord, String Caption, int limit, color colors) {
@@ -19,6 +20,17 @@ public class Buttons {
     caption = Caption;
     modeLimit = limit;
     c = colors;
+    hasImage = false;
+  }
+  
+  public Buttons (float x_, float y_, String caption_, int l_, int w_, int size_, color colors_) {
+    x = x_;
+    y = y_;
+    l = l_;
+    w = w_;
+    caption = caption_;
+    c = colors_;
+    size = size_;
     hasImage = false;
   }
   /*
@@ -40,6 +52,7 @@ public class Buttons {
     fill(0);
     textAlign(CENTER);
     if (hasImage == false) {
+      textSize(size);
       text(caption, x + (w/2), y + (l/2));
     }
      else{
@@ -54,6 +67,11 @@ void clicked( int xcoord, int ycoord) {
     }
   }
 }
+
+boolean beenClicked(int x_, int y_) {
+  return (x_ > x && x_ < x+w && y_ > y && y_ < y+l);
+}
+
 int getMode() {
   return MODE;
 }
