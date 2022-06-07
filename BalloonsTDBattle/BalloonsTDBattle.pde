@@ -80,7 +80,11 @@ void mouseClicked() {
   }
   if (button1.getMode() == DELETE) {
     button1.setCaption("SELL");
-    monkeys.remove(mouseX, mouseY);
+    int i = monkeys.get(mouseX, mouseY);
+    if (i > -1) {
+      player.changeIncome((int)(monkeys.get(i).price*0.795));
+      monkeys.remove(monkeys.get(i));
+    }
   }
 }
 
