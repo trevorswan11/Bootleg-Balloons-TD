@@ -21,6 +21,7 @@ Our project is a bootleg version of the popular mini-game, Bloons TD Battle. The
 * 6/2/22: Created runRound() that would spawn specified balloons in rounds[][][] for each of the rounds
 * 6/3/22: Fixed monkey attack method
 * 6/4/22: Added up 38 rounds
+* 6/6/22: Created start and end screen with button options. Implemented income (buy, sell, round income).
 
 **Nicole Liu**
 * 5/23/22: I set up the Monkey and MonkeyList class. Monkey Class can display but MonkeyList is having some trouble.
