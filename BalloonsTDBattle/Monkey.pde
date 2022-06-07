@@ -81,6 +81,11 @@ public class Monkey {
     }
     return result;
   }
+  
+  void showStats() {
+    image(image, 100, 900);
+  }
+  
   public float getX() {
     return x;
   }
