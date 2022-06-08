@@ -60,5 +60,4 @@ int getMode() {
 void setCaption(String c) {
   caption = c;
 }
-
 }
