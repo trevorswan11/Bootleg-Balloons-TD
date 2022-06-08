@@ -37,18 +37,8 @@ void setup() {
   map = new Map();
   player = new Player();
   rounds = new Rounds();
-  button1 = new Buttons(820, 90, "ADD", 3, #C3E3DA);
-  //button1 = new Buttons(820, 90, defaultMonkey, 2, #C3E3DA);
-
-  normal = new Buttons(width/2-50, height/2 + 100, "NORMAL", 40, 100, 20, 225);
-  freeplay = new Buttons(width/2-50, height/2 + 150, "FREEPLAY", 40, 100, 20, 225);
-  startOver = new Buttons(width/2-70, height/2 + 110, "START OVER", 40, 140, 20, 225);
-  
-  redBalloonButton = new balloonButton(70, 700, new redBalloon());
-  redBalloonButton.setImage(red);
   
   //images
-
   redBalloon = loadImage("red_balloon.png");
   redBalloon.resize(balloonSize, balloonSize);
   defaultMonkey = loadImage("monkey.png");
@@ -76,6 +66,17 @@ void setup() {
   rainbow.resize(balloonSize, balloonSize);
   ceramic = loadImage("ceramic_balloon.png");
   ceramic.resize(balloonSize, balloonSize);
+  
+  
+  //button1 = new Buttons(820, 90, "ADD", 3, #C3E3DA);
+  button1 = new Buttons(820, 90, defaultMonkey, 2, #C3E3DA);
+
+  normal = new Buttons(width/2-50, height/2 + 100, "NORMAL", 40, 100, 20, 225);
+  freeplay = new Buttons(width/2-50, height/2 + 150, "FREEPLAY", 40, 100, 20, 225);
+  startOver = new Buttons(width/2-70, height/2 + 110, "START OVER", 40, 140, 20, 225);
+  
+  redBalloonButton = new balloonButton(70, 700, new redBalloon());
+
 }
 
 void mouseClicked() {
@@ -131,6 +132,7 @@ void draw() {
     freeplay.hover(mouseX, mouseY);
   } else if (gameStart) {
     background(255);
+    textSize(15);
     if (!player.isDead()) {
     button1.display();
       fill(0);

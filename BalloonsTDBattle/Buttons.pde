@@ -44,7 +44,7 @@ public class Buttons {
     hasImage = true;
   }
   
-  /*
+
   public Buttons (float xcoord, float ycoord, PImage img, int limit, color colors) {
     x = xcoord;
     y = ycoord;
@@ -56,7 +56,8 @@ public class Buttons {
     c = colors;
     hasImage = true;
   }
-*/
+
+
   void display() {
     fill(c);
     rect(x, y, w, l);
@@ -66,8 +67,7 @@ public class Buttons {
       textSize(size);
       text(caption, x + (w/2), y + (l/2));
     } else{
-      println(p);
-      image(red, x , y);
+      image(p, x , y);
     }
 }
 void clicked( int xcoord, int ycoord) {
@@ -112,8 +112,6 @@ public class balloonButton extends Buttons {
   public balloonButton(int x_, int y_, Balloon b_) {
     super(x_, y_, b_.getImage(), balloonSize, balloonSize, 255);
     b = b_;
-    image = b_.getImage();
-    //println(image);
   }
   
   void display() {
