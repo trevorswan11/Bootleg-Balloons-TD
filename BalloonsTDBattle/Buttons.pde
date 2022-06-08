@@ -112,5 +112,11 @@ public class balloonButton extends Buttons {
   public balloonButton(int x_, int y_, Balloon b_) {
     super(x_, y_, b_.getImage(), balloonSize, balloonSize, 255);
     b = b_;
+    image = b_.getImage();
+    //println(image);
+  }
+  
+  void display() {
+      
   }
 }
