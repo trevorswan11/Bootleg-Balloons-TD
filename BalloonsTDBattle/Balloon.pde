@@ -20,6 +20,8 @@ public class Balloon {
   }
   
   public Balloon(Balloon b) {
+    health = b.getHealth();
+    speed = b.getSpeed();
     currentX = b.getCurrentX();
     currentY = b.getCurrentY();
     directionsIndex = b.getDirectionsIndex();

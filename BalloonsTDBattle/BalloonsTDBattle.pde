@@ -3,7 +3,6 @@ final int DELETE = 1;
 final int STATS = 2;
 MonkeyList monkeys = new MonkeyList();
 balloonList balloons = new balloonList();
-weaponList bullets = new weaponList();
 
 Player player;
 Monkey m;
@@ -13,14 +12,16 @@ int balloonSize = 35;
 Rounds rounds;
 int showStats = -1;
 boolean gameStart = false;
+boolean freeplayStart = false;
 
-boolean displayStats = false;
 Buttons button1;
 Buttons button2;
 Buttons normal;
 Buttons freeplay;
 Buttons nextRound;
 Buttons startOver; 
+
+balloonButton redBalloonButton;
 
 PImage redBalloon;
 PImage defaultMonkey;
@@ -29,21 +30,15 @@ PImage red, blue, green, yellow, pink, black, white, zebra, lead, rainbow, ceram
 boolean roundStart = false;
 boolean roundOver = false;
 int MODE = ADD;
-int round = 0;
+int round = 20;
 
 void setup() {
   size(1000, 750);
   map = new Map();
   player = new Player();
   rounds = new Rounds();
-  button1 = new Buttons(820, 90, "ADD", 3, #C3E3DA);
-  //button1 = new Buttons(820, 90, defaultMonkey, 2, #C3E3DA);
-
-  normal = new Buttons(width/2-50, height/2 + 100, "NORMAL", 40, 100, 20, 225);
-  freeplay = new Buttons(width/2-50, height/2 + 150, "FREEPLAY", 40, 100, 20, 225);
-  startOver = new Buttons(width/2-70, height/2 + 110, "START OVER", 40, 140, 20, 225);
+  
   //images
-
   redBalloon = loadImage("red_balloon.png");
   redBalloon.resize(balloonSize, balloonSize);
   defaultMonkey = loadImage("monkey.png");
@@ -71,15 +66,26 @@ void setup() {
   rainbow.resize(balloonSize, balloonSize);
   ceramic = loadImage("ceramic_balloon.png");
   ceramic.resize(balloonSize, balloonSize);
+  
+  
+  //button1 = new Buttons(820, 90, "ADD", 3, #C3E3DA);
+  button1 = new Buttons(820, 90, defaultMonkey, 2, #C3E3DA);
+
+  normal = new Buttons(width/2-50, height/2 + 100, "NORMAL", 40, 100, 20, 225);
+  freeplay = new Buttons(width/2-50, height/2 + 150, "FREEPLAY", 40, 100, 20, 225);
+  startOver = new Buttons(width/2-70, height/2 + 110, "START OVER", 40, 140, 20, 225);
+  
+  redBalloonButton = new balloonButton(70, 700, new redBalloon());
+
 }
 
 void mouseClicked() {
-  //int i = monkeys.get(mouseX, mouseY);
-  //showStats = i;
-  
-  if (!gameStart) {
+  if (!gameStart && !freeplayStart) {
     if (normal.inRange(mouseX, mouseY)) {
       gameStart = true;  
+    }
+    if (freeplay.inRange(mouseX, mouseY)) {
+      freeplayStart = true;  
     }
   } else if (player.isDead()) {
     if (startOver.inRange(mouseX,mouseY)) {
@@ -109,24 +115,13 @@ void mouseClicked() {
 }
 
 void keyPressed() {
-  if (key == 'b') {
-    balloons.add(new Balloon());
-  }
-
   if (key == ENTER) {
     roundStart = true;
-  }
-  if (key == ' ') {
-    if (MODE == DELETE) {
-      MODE = ADD;
-    } else {
-      MODE++;
-    }
   }
 }
 
 void draw() {
-  if (!gameStart) {
+  if (!gameStart && !freeplayStart) {
     background(255);
     textSize(100);
     textAlign(CENTER);
@@ -135,20 +130,17 @@ void draw() {
     freeplay.display();
     normal.hover(mouseX, mouseY);
     freeplay.hover(mouseX, mouseY);
-  } else {
+  } else if (gameStart) {
     background(255);
+    textSize(15);
     if (!player.isDead()) {
     button1.display();
       fill(0);
       text("ROUND: " + (round+1), 845, 30);
       text("HEALTH: " + player.health, 850, 50);
       text("INCOME: " + player.income, 850, 70);
-      //image(defaultMonkey, 820, 160);
       map.display();
       fill(0);
-      //if (showStats != -1) {
-      //  monkeys.get(showStats).showStats();
-      //}
       if (button1.getMode() == STATS) {
         button1.setCaption("STATS");
         int index = monkeys.get(mouseX, mouseY);
@@ -166,7 +158,6 @@ void draw() {
         balloons.display();
         balloons.processAll();
         monkeys.processAll();
-        bullets.display();
       }
       monkeys.display();
     } else {
@@ -176,5 +167,14 @@ void draw() {
       startOver.display();
       startOver.hover(mouseX, mouseY);
     }
+   } else if (freeplayStart) {
+     background(255);
+     map.display();
+     fill(0);
+     balloons.display();
+     balloons.processAll();
+     monkeys.processAll();
+     monkeys.display();
+     redBalloonButton.display();
    }
 }
