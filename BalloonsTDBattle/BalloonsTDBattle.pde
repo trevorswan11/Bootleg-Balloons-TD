@@ -3,7 +3,6 @@ final int DELETE = 1;
 final int STATS = 2;
 MonkeyList monkeys = new MonkeyList();
 balloonList balloons = new balloonList();
-weaponList bullets = new weaponList();
 
 Player player;
 Monkey m;
@@ -11,11 +10,18 @@ Map map;
 Balloon balloon;
 int balloonSize = 35;
 Rounds rounds;
+int showStats = -1;
+boolean gameStart = false;
+boolean freeplayStart = false;
 
-boolean displayStats = false;
 Buttons button1;
 Buttons button2;
+Buttons normal;
+Buttons freeplay;
+Buttons nextRound;
+Buttons startOver; 
 
+balloonButton redBalloonButton;
 
 PImage redBalloon;
 PImage defaultMonkey;
@@ -25,17 +31,15 @@ PImage red, blue, green, yellow, pink, black, white, zebra, lead, rainbow, ceram
 boolean roundStart = false;
 boolean roundOver = false;
 int MODE = ADD;
-int round = 0;
+int round = 20;
 
 void setup() {
-  size(1000, 600);
+  size(1000, 750);
   map = new Map();
   player = new Player();
   rounds = new Rounds();
-  button1 = new Buttons(820, 90, "ADD", 3, #C3E3DA);
 
   //images
-
   redBalloon = loadImage("red_balloon.png");
   redBalloon.resize(balloonSize, balloonSize);
   defaultMonkey = loadImage("monkey.png");
@@ -66,23 +70,49 @@ void setup() {
   rainbow.resize(balloonSize, balloonSize);
   ceramic = loadImage("ceramic_balloon.png");
   ceramic.resize(balloonSize, balloonSize);
+  
+  button1 = new Buttons(820, 90, defaultMonkey, 2, #C3E3DA);
+
+  normal = new Buttons(width/2-50, height/2 + 100, "NORMAL", 40, 100, 20, 225);
+  freeplay = new Buttons(width/2-50, height/2 + 150, "FREEPLAY", 40, 100, 20, 225);
+  startOver = new Buttons(width/2-70, height/2 + 110, "START OVER", 40, 140, 20, 225);
+  
+  redBalloonButton = new balloonButton(70, 700, new redBalloon());
+
 }
 
 void mouseClicked() {
-  button1.clicked(mouseX, mouseY);
-  if (button1.getMode() == ADD) {
-    button1.setCaption("ADD");
-    Monkey m = new Monkey(mouseX, mouseY);
-    if (m.canBePlaced() == true) {
-      monkeys.add(m);
-    } else if (mouseX < 800) {
-      fill(#A03030);
-      circle(mouseX, mouseY, 50);
+  if (!gameStart && !freeplayStart) {
+    if (normal.inRange(mouseX, mouseY)) {
+      gameStart = true;  
     }
-  }
-  if (button1.getMode() == DELETE) {
-    button1.setCaption("SELL");
-    monkeys.remove(mouseX, mouseY);
+    if (freeplay.inRange(mouseX, mouseY)) {
+      freeplayStart = true;  
+    }
+  } else if (player.isDead()) {
+    if (startOver.inRange(mouseX,mouseY)) {
+      player = new Player();
+      rounds = new Rounds();
+      monkeys = new MonkeyList();
+      gameStart = false;
+    }
+  } else {
+    button1.clicked(mouseX, mouseY);
+    if (button1.getMode() == ADD) {
+      button1.setCaption("ADD");
+      Monkey m = new Monkey(mouseX, mouseY);
+      if (m.canBePlaced() == true && m.price <= player.income) {
+        monkeys.add(m);
+        player.changeIncome(m.price*-1);
+      } else if (mouseX < 800 && m.price <= player.income) {
+        fill(#A03030);
+        circle(mouseX, mouseY, m.getAttackRange());
+      }
+    }
+    if (button1.getMode() == DELETE) {
+      button1.setCaption("SELL");
+      monkeys.sell(mouseX,mouseY);
+    }
   }
   if (button2.getMode() == 1){
     
@@ -90,56 +120,63 @@ void mouseClicked() {
 }
 
 void keyPressed() {
-  if (key == 'b') {
-    balloons.add(new Balloon());
-  }
-
   if (key == ENTER) {
     roundStart = true;
-  }
-  if (key == ' ') {
-    if (MODE == DELETE) {
-      MODE = ADD;
-    } else {
-      MODE++;
-    }
   }
 }
 
 void draw() {
-  background(255);
-  button1.display();
-  button2.display();
-  if (!player.isDead()) {
-    fill(0);
-    text("ROUND: " + (round+1), 843, 30);
-    text("HEALTH: " + player.health, 850, 50);
-    //image(defaultMonkey, 820, 160);
-    map.display();
-    fill(0);
-    if (button1.getMode() == STATS) {
-      button1.setCaption("STATS");
-      int index = monkeys.get(mouseX, mouseY);
-      if (index > -1) {
-        text("Monkey " + index + "'s Statistics", 860, 190);
-        text("Attack Speed: " + monkeys.get(index).getAttackSpeed(),  860, 210);
-        text("Attack Strength: " + monkeys.get(index).getAttackStrength(),  860, 230);
-        text("Attack Range: " + monkeys.get(index).getAttackRange(),  860, 250);
-      }
-    }
-    if (roundStart) {
-      if (!roundOver) {
-        rounds.runRound();
-      }
-      balloons.display();
-      balloons.processAll();
-      monkeys.processAll();
-      bullets.display();
-    }
-    monkeys.display();
-  } else {
+  if (!gameStart && !freeplayStart) {
+    background(255);
     textSize(100);
     textAlign(CENTER);
-    text("GAME OVER", width/2, height/2);
-  }
+    text("START GAME", width/2, height/2);
+    normal.display();
+    freeplay.display();
+  } else if (gameStart) {
+    background(255);
+    textSize(15);
+    if (!player.isDead()) {
+    button1.display();
+      fill(0);
+      text("ROUND: " + (round+1), 845, 30);
+      text("HEALTH: " + player.health, 850, 50);
+      text("INCOME: " + player.income, 850, 70);
+      map.display();
+      fill(0);
+      if (button1.getMode() == STATS) {
+        button1.setCaption("STATS");
+        int index = monkeys.get(mouseX, mouseY);
+        if (index > -1) {
+          text("Monkey " + index + "'s Statistics", 860, 190);
+          text("Attack Speed: " + monkeys.get(index).getAttackSpeed(),  860, 210);
+          text("Attack Strength: " + monkeys.get(index).getAttackStrength(),  860, 230);
+          text("Attack Range: " + monkeys.get(index).getAttackRange(),  860, 250);
+        }
+      }
+      if (roundStart) {
+        if (!roundOver) {
+          rounds.runRound();
+        }
+        balloons.display();
+        balloons.processAll();
+        monkeys.processAll();
+      }
+      monkeys.display();
+    } else {
+      textSize(100);
+      textAlign(CENTER);
+      text("GAME OVER", width/2, height/2);
+      startOver.display();
+    }
+   } else if (freeplayStart) {
+     background(255);
+     map.display();
+     fill(0);
+     balloons.display();
+     balloons.processAll();
+     monkeys.processAll();
+     monkeys.display();
+     redBalloonButton.display();
+   }
 }

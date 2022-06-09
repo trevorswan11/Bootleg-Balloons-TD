@@ -8,16 +8,19 @@ public class Monkey {
   int timer = 0;
   float x; // The coordinates of the monkey
   float y;
+  int price;
+  
   public Monkey(float xcoord, float ycoord) {
     //Default values for monkey stats except for x and y since those have to be determiend
     //by mouseClicked()
     image = defaultMonkey;
     weapon = new Weapons(xcoord, ycoord);
-    attackSpeed = 1;
+    attackSpeed = 10;
     attackRange = 50;
     attackStrength = 1;
     x = xcoord;
     y = ycoord;
+    price = 550;
   }
   public Monkey(int speed, int range, int strength, int xcoord, int ycoord) {
     image = defaultMonkey;
@@ -26,6 +29,7 @@ public class Monkey {
     attackRange = range;
     x = xcoord;
     y = ycoord;
+    price = 550;
   }
 
   float[] findBalloon() {
@@ -48,6 +52,7 @@ public class Monkey {
     float[] coord = b.getFuture();
     float range = dist(weapon.getX(), weapon.getY(), coord[0], coord[1]);
     if (range < 10 && !thrown) {
+      player.attackIncome(this, b);
       attack(b);
       thrown = true;
       weapon.setDisplay(false);
@@ -76,6 +81,11 @@ public class Monkey {
     }
     return result;
   }
+  
+  void showStats() {
+    image(image, 100, 900);
+  }
+  
   public float getX() {
     return x;
   }

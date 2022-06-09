@@ -48,6 +48,19 @@ public class MonkeyList {
       }
     }
   }
+  
+  void sell(int x, int y) {
+    int i = get(x, y);
+    if (i > -1) {
+      player.changeIncome((int)(get(i).price*0.795));
+      remove(get(i));
+    }
+  }
+  
+  void sell(Monkey m) {
+    player.changeIncome((int)(m.price*0.795));
+    remove(m);
+  }
 
   public Monkey get(int index) {
     return monke.get(index);
