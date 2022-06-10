@@ -99,17 +99,18 @@ void mouseClicked() {
     button1.clicked(mouseX, mouseY);
     println(button1.getMode());
     if (button1.getMode() == 0) {
-      Monkey m = new Monkey(820, 90);
+      Monkey m = new Monkey(mouseX, mouseY);
       monkeys.add(m);
     }
   }
 }
 void mouseDragged() {
-  if(monkeys.get(mouseX, mouseY) > -1){
-    Monkey m = monkeys.get(monkeys.get(mouseX, mouseY));
+    //monkeys.remove(mouseX, mouseY);
+  if (button1.getMode() == 0 && monkeys.get(mouseX, mouseY) != -1) {
+    Monkey m =  monkeys.get(monkeys.get(mouseX, mouseY));
+    //draw();
     m.mouseDragged();
   }
-  
 }
 
 void keyPressed() {

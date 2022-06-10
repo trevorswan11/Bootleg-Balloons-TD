@@ -9,7 +9,7 @@ public class Monkey {
   float x; // The coordinates of the monkey
   float y;
   int price;
-  
+
   public Monkey(float xcoord, float ycoord) {
     //Default values for monkey stats except for x and y since those have to be determiend
     //by mouseClicked()
@@ -22,6 +22,7 @@ public class Monkey {
     y = ycoord;
     price = 550;
   }
+  
   public Monkey(int speed, int range, int strength, int xcoord, int ycoord) {
     image = defaultMonkey;
     attackSpeed = speed;
@@ -68,9 +69,9 @@ public class Monkey {
   }
   boolean canBePlaced() {
     int dist = 25;
-    color c = map.getPath().get((int)x,(int)y);
+    color c = map.getPath().get((int)x, (int)y);
     boolean result = true;
-    if (red(c) != 255){
+    if (red(c) != 255) {
       result = false;
     }
     for (int i = 0; i < monkeys.size(); i ++) {
@@ -81,11 +82,11 @@ public class Monkey {
     }
     return result;
   }
-  
+
   void showStats() {
     image(image, 100, 900);
   }
-  
+
   public float getX() {
     return x;
   }
@@ -96,6 +97,7 @@ public class Monkey {
   void setX(float xcoord) {
     x = xcoord;
   }
+  
   void setY(float ycoord) {
     y = ycoord;
   }
@@ -106,9 +108,11 @@ public class Monkey {
   public int getAttackSpeed() {
     return attackSpeed;
   }
+  
   public int getAttackRange() {
     return attackRange;
   }
+  
   public int getAttackStrength() {
     return attackStrength;
   }
@@ -119,6 +123,7 @@ public class Monkey {
   int increaseTimer() {
     return timer++;
   }
+  
   void resetTimer() {
     timer = 0;
   }
@@ -130,9 +135,11 @@ public class Monkey {
     image(image, x, y);
     weapon.display();
   }
-  void mouseDragged() {
-  x = mouseX;
-  y = mouseY;
   
+  void mouseDragged() {
+    if ((x < 1000 && x > 0) && (y > 0 && y < 750)) {
+      x = mouseX;
+      y = mouseY;
+    }
   }
 }
