@@ -95,6 +95,7 @@ void mouseClicked() {
       gameStart = false;
     }
   } else {
+    //redBalloonButton.spawnBalloon();
     button1.clicked(mouseX, mouseY);
     if (button1.getMode() == ADD) {
       button1.setCaption("ADD");

@@ -114,7 +114,9 @@ public class balloonButton extends Buttons {
     b = b_;
   }
   
-  void display() {
-      
+  void spawnBalloon() {
+    if (inRange(mouseX, mouseY)) {
+      balloons.add(new Balloon(b));  
+    }
   }
 }
