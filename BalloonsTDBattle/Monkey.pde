@@ -130,4 +130,9 @@ public class Monkey {
     image(image, x, y);
     weapon.display();
   }
+  void mouseDragged() {
+  x += mouseX;
+  y += mouseY;
+  
+  }
 }
