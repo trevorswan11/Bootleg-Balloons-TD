@@ -131,8 +131,8 @@ public class Monkey {
     weapon.display();
   }
   void mouseDragged() {
-  x += mouseX;
-  y += mouseY;
+  x = mouseX;
+  y = mouseY;
   
   }
 }

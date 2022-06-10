@@ -43,7 +43,7 @@ void setup() {
   redBalloon = loadImage("red_balloon.png");
   redBalloon.resize(balloonSize, balloonSize);
   defaultMonkey = loadImage("monkey.png");
-  defaultMonkey.resize(25, 25);
+  defaultMonkey.resize(50, 50);
   buttonMonkey = loadImage("monkey.png");
   buttonMonkey.resize(25, 25);
   button1 = new Buttons(820, 90, buttonMonkey, 2, #C3E3DA);
@@ -97,35 +97,20 @@ void mouseClicked() {
     }
   } else {
     button1.clicked(mouseX, mouseY);
-     println(button1.getMode());
+    println(button1.getMode());
     if (button1.getMode() == 0) {
-      //Monkey m = new Monkey(820, 90);
-      m.mouseDragged();
+      Monkey m = new Monkey(820, 90);
       monkeys.add(m);
- 
     }
   }
 }
-     /*
-      button1.setCaption("ADD");
-      Monkey m = new Monkey(mouseX, mouseY);
-      if (m.canBePlaced() == true && m.price <= player.income) {
-        monkeys.add(m);
-        player.changeIncome(m.price*-1);
-      } else if (mouseX < 800 && m.price <= player.income) {
-        fill(#A03030);
-        circle(mouseX, mouseY, m.getAttackRange());
-      }
-    }
-    if (button1.getMode() == DELETE) {
-      button1.setCaption("SELL");
-      monkeys.sell(mouseX,mouseY);
-    }
+void mouseDragged() {
+  if(monkeys.get(mouseX, mouseY) > -1){
+    Monkey m = monkeys.get(monkeys.get(mouseX, mouseY));
+    m.mouseDragged();
   }
-  if (button2.getMode() == 1){
-    
-  }
-  */
+  
+}
 
 void keyPressed() {
   if (key == ENTER) {
