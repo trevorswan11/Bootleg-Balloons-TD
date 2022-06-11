@@ -18,7 +18,7 @@ public class Monkey {
     //Default values for monkey stats except for x and y since those have to be determiend
     //by mouseClicked()
     weapon = new Weapons(xcoord, ycoord);
-    image = defaultMonkey;
+    image = dart;
     attackSpeed = 10;
     attackRange = 50;
     attackStrength = 1;
@@ -28,7 +28,7 @@ public class Monkey {
   }
 
   public Monkey(int speed, int range, int strength, int xcoord, int ycoord) {
-    image = defaultMonkey;
+    image = dart;
     attackSpeed = speed;
     attackStrength = strength;
     attackRange = range;
@@ -49,6 +49,7 @@ public class Monkey {
     }
     return coord;
   }
+  
   void attack(Balloon b) {
     b.decreaseHealth(attackStrength);
   }
@@ -174,10 +175,31 @@ public class Monkey {
     weapon.display();
   }
 
-void move() {
-  float dx = mouseX - x;
-  x += dx;
-  float dy = mouseY - y;
-  y += dy ;
+  void move() {
+    float dx = mouseX - x;
+    x += dx;
+    float dy = mouseY - y;
+    y += dy ;
+  }
 }
+
+public class dartMonkey extends Monkey{
+  public dartMonkey(int xcoord,int ycoord) {
+    super(100, 50, 1, xcoord, ycoord); 
+    image = dart;
+  }
+}
+
+public class wizardMonkey extends Monkey{
+  public wizardMonkey(int xcoord,int ycoord) {
+    super(100, 50, 1, xcoord, ycoord); 
+    image = wizard;
+  }
+}
+
+public class sniperMonkey extends Monkey{
+  public sniperMonkey(int xcoord,int ycoord) {
+    super(100, 50, 1, xcoord, ycoord); 
+    image = sniper;
+  }
 }

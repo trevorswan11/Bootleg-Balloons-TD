@@ -9,11 +9,13 @@ Player player;
 Monkey m;
 Map map;
 Balloon balloon;
-int balloonSize = 35;
 Rounds rounds;
 int showStats = -1;
 boolean gameStart = false;
 boolean freeplayStart = false;
+
+int balloonSize = 35;
+int monkeySize = 25; 
 
 Buttons button1;
 Buttons button2;
@@ -24,10 +26,7 @@ Buttons startOver;
 
 balloonButtonList balloonButtons;
 
-PImage redBalloon;
-PImage defaultMonkey;
-PImage buttonMonkey;
-
+PImage dart, wizard, sniper;
 PImage red, blue, green, yellow, pink, black, white, zebra, lead, rainbow, ceramic;
 boolean roundStart = false;
 boolean roundOver = false;
@@ -44,14 +43,13 @@ void setup() {
   rounds = new Rounds();
 
   //images
-  redBalloon = loadImage("red_balloon.png");
-  redBalloon.resize(balloonSize, balloonSize);
-  defaultMonkey = loadImage("monkey.png");
-  defaultMonkey.resize(25, 25);
-  buttonMonkey = loadImage("monkey.png");
-  buttonMonkey.resize(25, 25);
-  button1 = new Buttons(820, 90, buttonMonkey, 2, #C3E3DA);
-
+  dart = loadImage("dart.png");
+  dart.resize(monkeySize, monkeySize);
+  wizard = loadImage("wizard.png");
+  wizard.resize(monkeySize, monkeySize);
+  sniper = loadImage("sniper.png");
+  sniper.resize(monkeySize, monkeySize);
+  
   red = loadImage("red_balloon.png");
   red.resize(balloonSize, balloonSize);
   blue = loadImage("blue_balloon.png");
