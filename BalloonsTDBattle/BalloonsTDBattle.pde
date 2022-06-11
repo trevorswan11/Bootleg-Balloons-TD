@@ -18,6 +18,7 @@ Buttons normal;
 Buttons freeplay;
 Buttons nextRound;
 Buttons startOver;
+Buttons sellButton;
 
 balloonButtonList balloonButtons;
 monkeyButtonList monkeyButtons;
@@ -39,7 +40,7 @@ void setup() {
 
   //images
 
-  button2 = new Buttons (350, 650, "SELL", 30, 50, 10, 255);
+  sellButton= new Buttons (350, 650, "SELL", 30, 50, 10, 255);
 
 
   dart = loadImage("dart.png");
@@ -105,25 +106,27 @@ void mouseClicked() {
       monkeys.setShowStats(-1);
     }
   }
-}
 
-
-int buttonIndex = monkeyButtons.findButtonAt(mouseX, mouseY);
-monkeys.addMonkey(buttonIndex);
-if (monkeys.get(mouseX, mouseY) > -1) {
-  Monkey m1 = monkeys.get(monkeys.get(mouseX, mouseY));
-  m1.addClickedNum();
-  if (m1.canBePlaced(mouseX, mouseY) || m1.getClickedNum() == 1) {
-    m1.setMovement();
+  int buttonIndex = monkeyButtons.findButtonAt(mouseX, mouseY);
+  monkeys.addMonkey(buttonIndex);
+  if (monkeys.showStats < monkeys.size() && monkeys.showStats > -1 && sellButton.clicked1(mouseX, mouseY) == true) {
+    monkeys.sell(monkeys.showStats);
+    monkeys.setShowStats(-1);
   }
-  if (m1.canBePlaced(mouseX, mouseY) && m1.getClickedNum() > 2) {
-    m1.setLocked(true);
+  if (monkeys.get(mouseX, mouseY) > -1) {
+    Monkey m1 = monkeys.get(monkeys.get(mouseX, mouseY));
+    m1.addClickedNum();
+    if (m1.canBePlaced(mouseX, mouseY) || m1.getClickedNum() == 1) {
+      m1.setMovement();
+    }
+    if (m1.canBePlaced(mouseX, mouseY) && m1.getClickedNum() > 2) {
+      m1.setLocked(true);
+    }
   }
+
+  balloonButtons.spawnBalloon();
 }
 
-balloonButtons.spawnBalloon();
-}
-}
 
 
 void moving() {
@@ -189,32 +192,32 @@ void draw() {
       startOver.display();
       startOver.hover(mouseX, mouseY);
     }
-} else if (freeplayStart) {
-  background(255);
-  map.display();
-  fill(0);
-  balloons.display();
-  balloons.processAll();
-  monkeys.processAll();
-  monkeyButtons.display();
-  if (monkeys.showStats != -1) {
-    monkeys.displayStats();
-    balloonButtons.setShown(false);
-  } else {
-    balloonButtons.display();
-    balloonButtons.setShown(true);
-  }
-  if (monkeys.get(mouseX, mouseY) > -1 && monkeys.get(monkeys.get(mouseX, mouseY)).getLocked() == false && monkeys.get(monkeys.get(mouseX, mouseY)).getMovement() == true) {
-    moving();
-    Monkey bob = monkeys.get(monkeys.get(mouseX, mouseY));
-    if (bob.canBePlaced(mouseX, mouseY) == true) {
-      fill(#3DA745, 150);
-      circle(mouseX, mouseY, bob.getAttackRange()*2);
+  } else if (freeplayStart) {
+    background(255);
+    map.display();
+    fill(0);
+    balloons.display();
+    balloons.processAll();
+    monkeys.processAll();
+    monkeyButtons.display();
+    if (monkeys.showStats != -1) {
+      monkeys.displayStats();
+      balloonButtons.setShown(false);
     } else {
-      fill(#B22225, 150);
-      circle(mouseX, mouseY, bob.getAttackRange()*2);
+      balloonButtons.display();
+      balloonButtons.setShown(true);
     }
+    if (monkeys.get(mouseX, mouseY) > -1 && monkeys.get(monkeys.get(mouseX, mouseY)).getLocked() == false && monkeys.get(monkeys.get(mouseX, mouseY)).getMovement() == true) {
+      moving();
+      Monkey bob = monkeys.get(monkeys.get(mouseX, mouseY));
+      if (bob.canBePlaced(mouseX, mouseY) == true) {
+        fill(#3DA745, 150);
+        circle(mouseX, mouseY, bob.getAttackRange()*2);
+      } else {
+        fill(#B22225, 150);
+        circle(mouseX, mouseY, bob.getAttackRange()*2);
+      }
+    }
+    monkeys.display();
   }
-  monkeys.display();
 }
-  }

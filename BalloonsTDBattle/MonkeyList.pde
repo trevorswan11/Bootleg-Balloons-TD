@@ -12,7 +12,7 @@ public class MonkeyList {
         current.increaseTimer();
       } else if (current.getTargetBalloon() == -1) {
         float coord[] = monke.get(i).findBalloon();
-        current.setTargetBalloon(balloons.getBalloonAt(coord[0], coord[1])); 
+        current.setTargetBalloon(balloons.getBalloonAt(coord[0], coord[1]));
       } else {
         int index = current.getTargetBalloon();
         if (index > -1 && index < balloons.size() && balloons.get(index).getTarget() == false && (!(balloons.get(index).getFuture()[0] == -1 && balloons.get(index).getFuture()[0] == -1))) {
@@ -30,7 +30,7 @@ public class MonkeyList {
       }
     }
   }
-  
+
   void addMonkey(int buttonIndex) {
     if (buttonIndex != -1 && player.getIncome() > monkeyButtons.getMonkey(buttonIndex).getPrice() && balloons.size()==0) {
       PImage i = monkeyButtons.getMonkey(buttonIndex).getImage();
@@ -46,7 +46,7 @@ public class MonkeyList {
       if (gameStart) {
         player.changeIncome(m.getPrice() * -1);
       }
-    } 
+    }
   }
 
   void set(Monkey oldMonkey, Monkey newMonkey) {
@@ -58,6 +58,9 @@ public class MonkeyList {
   }
   void add(Monkey toBeAdded) {
     monke.add(toBeAdded);
+  }
+  void remove(int i) {
+    monke.remove(i);
   }
   void remove(Monkey e) {
     monke.remove(e);
@@ -78,6 +81,10 @@ public class MonkeyList {
       player.changeIncome((int)(get(i).price*0.795));
       remove(get(i));
     }
+  }
+  void sell(int index) {
+    player.changeIncome((int)(monkeys.get(index).getPrice()*0.795));
+    monkeys.remove(index);
   }
 
   void sell(Monkey m) {

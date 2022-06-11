@@ -106,7 +106,7 @@ public class Monkey {
     image(image, 70, 650);
     fill(#C1C8C9, 150);
     circle(x, y, attackRange*2);
-    button2.display();
+    sellButton.display();
   }
 
   public float getX() {
@@ -203,13 +203,6 @@ public class Monkey {
   }
 }
 
-  void move() {
-    float dx = mouseX - x;
-    x += dx;
-    float dy = mouseY - y;
-    y += dy ;
-  }
-
 public class dartMonkey extends Monkey{
   public dartMonkey(float xcoord,float ycoord) {
     //speed, range, power
@@ -244,6 +237,4 @@ public class sniperMonkey extends Monkey{
     }
     return new float[]{highest.getCurrentX(), highest.getCurrentY()};
   }
-
-
 }
