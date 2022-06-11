@@ -29,27 +29,33 @@ public class buttonsList {
 }
 
 public class balloonButtonList extends buttonsList {
-  ArrayList<balloonButton> buttons;
+  ArrayList<balloonButton> buttons_;
+  int yValue = 650;
+  int xValue = 80;
+  int spacing = 40;
 
   public balloonButtonList() {
-    buttons = new ArrayList<balloonButton>();
-    add(new balloonButton(90, 700, new redBalloon()));
-    add(new balloonButton(90, 700, new blueBalloon()));
-    add(new balloonButton(90, 700, new greenBalloon()));
-    add(new balloonButton(90, 700, new yellowBalloon()));
-    add(new balloonButton(90, 700, new pinkBalloon()));
-    add(new balloonButton(90, 700, new blackBalloon()));
-    add(new balloonButton(90, 700, new whiteBalloon()));
-    add(new balloonButton(90, 700, new zebraBalloon()));
-    add(new balloonButton(90, 700, new leadBalloon()));
-    add(new balloonButton(90, 700, new rainbowBalloon()));
-    add(new balloonButton(90, 700, new ceramicBalloon()));
+    buttons_ = new ArrayList<balloonButton>();
+    buttons_.add(new balloonButton(xValue, yValue, new redBalloon()));
+    buttons_.add(new balloonButton(xValue+40, yValue, new blueBalloon()));
+    buttons_.add(new balloonButton(xValue+(spacing*2), yValue, new greenBalloon()));
+    buttons_.add(new balloonButton(xValue+(spacing*3), yValue, new yellowBalloon()));
+    buttons_.add(new balloonButton(xValue+(spacing*4), yValue, new pinkBalloon()));
+    buttons_.add(new balloonButton(xValue+(spacing*5), yValue, new blackBalloon()));
+    buttons_.add(new balloonButton(xValue+(spacing*6), yValue, new whiteBalloon()));
+    buttons_.add(new balloonButton(xValue+(spacing*7), yValue, new zebraBalloon()));
+    buttons_.add(new balloonButton(xValue+(spacing*8), yValue, new leadBalloon()));
+    buttons_.add(new balloonButton(xValue+(spacing*9), yValue, new rainbowBalloon()));
+    buttons_.add(new balloonButton(xValue+(spacing*10), yValue, new ceramicBalloon()));
   }
   
   void spawnBalloon() {
     int i = findButtonAt(mouseX, mouseY); 
     if (i > -1) {
-      buttons.get(i).spawnBalloon();  
+      buttons_.get(i).spawnBalloon();  
     }
   }
+  
+
+
 }
