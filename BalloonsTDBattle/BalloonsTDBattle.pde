@@ -28,7 +28,7 @@ boolean roundStart = false;
 boolean roundOver = false;
 boolean locked = false;
 int clickedNum = 0;
-int round = 21;
+int round = 0;
 
 
 void setup() {
@@ -88,7 +88,9 @@ void mouseClicked() {
       player = new Player();
       rounds = new Rounds();
       monkeys = new MonkeyList();
+      balloons = new balloonList();
       gameStart = false;
+      round = 0;
     }
   } else {
     int index = monkeys.get(mouseX, mouseY);
@@ -158,10 +160,10 @@ void draw() {
         Monkey bob = monkeys.get(monkeys.get(mouseX, mouseY));
         if (bob.canBePlaced(mouseX, mouseY) == true) {
           fill(#3DA745, 150);
-          circle(mouseX+12, mouseY+12, bob.getAttackRange()*2);
+          circle(mouseX, mouseY, bob.getAttackRange()*2);
         } else {
           fill(#B22225, 150);
-          circle(mouseX+12, mouseY+12, bob.getAttackRange()*2);
+          circle(mouseX, mouseY, bob.getAttackRange()*2);
         }
       }
       if (roundStart) {
@@ -200,10 +202,10 @@ void draw() {
        Monkey bob = monkeys.get(monkeys.get(mouseX, mouseY));
        if (bob.canBePlaced(mouseX, mouseY) == true) {
          fill(#3DA745, 150);
-         circle(mouseX+12, mouseY+12, bob.getAttackRange()*2);
+         circle(mouseX, mouseY, bob.getAttackRange()*2);
        } else {
          fill(#B22225, 150);
-         circle(mouseX+12, mouseY+12, bob.getAttackRange()*2);
+         circle(mouseX, mouseY, bob.getAttackRange()*2);
        }
      }
      monkeys.display();

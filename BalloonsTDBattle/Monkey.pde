@@ -73,10 +73,8 @@ public class Monkey {
       player.attackIncome(this, b);
       attack(b);
       thrown = true;
-      weapon.setDisplay(false);
       weapon.setX(x);
       weapon.setY(y);
-      weapon.setDisplay(true);
     } else {
       float xInterval = (coord[0]-weapon.getX())/3;//change 10 to something based off of attackSpeed
       float yInterval = (coord[1]-weapon.getY())/3;
@@ -104,7 +102,7 @@ public class Monkey {
   void showStats() {
     image(image, 70, 650);
     fill(#C1C8C9, 150);
-    circle(x+12, y+12, attackRange*2);
+    circle(x, y, attackRange*2);
   }
 
   public float getX() {
@@ -189,8 +187,8 @@ public class Monkey {
   }
 
   void display() {
-    image(image, x, y);
     weapon.display();
+    image(image, x-monkeySize/2, y-monkeySize/2);
   }
 
   void move() {
@@ -204,7 +202,7 @@ public class Monkey {
 public class dartMonkey extends Monkey{
   public dartMonkey(float xcoord,float ycoord) {
     //speed, range, power
-    super(5, 100, 1, xcoord, ycoord); 
+    super(50, 100, 1, xcoord, ycoord); 
     image = dart;
     price = 200; 
   }
@@ -212,7 +210,7 @@ public class dartMonkey extends Monkey{
 
 public class wizardMonkey extends Monkey{
   public wizardMonkey(float xcoord,float ycoord) {
-    super(70, 50, 1, xcoord, ycoord); 
+    super(70, 80, 1, xcoord, ycoord); 
     image = wizard;
     price = 550;
   }

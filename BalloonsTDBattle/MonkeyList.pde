@@ -48,9 +48,6 @@ public class MonkeyList {
       }
     } 
   }
-  
-  // Monkey m =  new Monkey(monkeyButtons.getMonkey(buttonIndex), monkeyButtons.get(buttonIndex).getX(), monkeyButtons.get(buttonIndex).getY());
-
 
   void set(Monkey oldMonkey, Monkey newMonkey) {
     for (int i = 0; i < monke.size(); i++) {
