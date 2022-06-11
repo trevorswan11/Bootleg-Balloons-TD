@@ -1,10 +1,9 @@
 public class buttonsList {
-  ArrayList<Buttons> buttons;
+  ArrayList<balloonButton> buttons;
   
   public buttonsList() {
-    
+    buttons = new ArrayList<balloonButton>();
   }
-  
   
   void display() {
     for (int i = 0; i < buttons.size(); i++) {
@@ -20,10 +19,18 @@ public class buttonsList {
     return -1;
   }
   
-  void add(Buttons button) {
+  void spawnBalloon() {
+    int i = findButtonAt(mouseX, mouseY); 
+    if (i > -1) {
+      buttons.get(i).spawnBalloon();  
+    }
+  }
+  
+  void add(balloonButton button) {
     buttons.add(button);
   }
-  void add(int index, Buttons button) {
+  void add(int index, balloonButton button) {
     buttons.add(index, button);  
   }
+  
 }
