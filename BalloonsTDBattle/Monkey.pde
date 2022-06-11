@@ -53,7 +53,6 @@ public class Monkey {
     b.decreaseHealth(attackStrength);
   }
   void throwWeapon(Balloon b) {
-    // weapon = new Weapons(x, y);
     b.setTarget(true);
     float[] coord = b.getFuture();
     float range = dist(weapon.getX(), weapon.getY(), coord[0], coord[1]);
@@ -90,7 +89,9 @@ public class Monkey {
   }
 
   void showStats() {
-    image(image, 100, 900);
+    image(image, 70, 650);
+    fill(#C1C8C9);
+    circle(x+12, y+12, attackRange*2);
   }
 
   public float getX() {
@@ -142,7 +143,6 @@ public class Monkey {
   void setLocked(boolean b) {
     locked = b;
   }
-
 
   void setMovement() {
     if (movement == false) {

@@ -99,7 +99,13 @@ void mouseClicked() {
       gameStart = false;
     }
   } else {
-    if (player.getIncome() > 550 && balloons.size()==0&& button1.clicked1(mouseX, mouseY) == true) {
+    int index = monkeys.get(mouseX, mouseY);
+    if(index > -1){
+      monkeys.setShowStats(index);
+    }else if(mouseX < 800 && mouseY < 600){
+      monkeys.setShowStats(-1);
+    }
+    if (player.getIncome() > 550 && balloons.size()==0 && button1.clicked1(mouseX, mouseY) == true) {
       Monkey m =  new Monkey(820, 90);
       monkeys.add(m);
       player.changeIncome(m.getPrice() * -1);
@@ -110,10 +116,8 @@ void mouseClicked() {
       if (m1.canBePlaced(mouseX, mouseY) == true ||m1.getClickedNum() == 1) {
         m1.setMovement();
       }
-      if (m1.getClickedNum() > 2) {
+      if (m1.canBePlaced(mouseX, mouseY) == true && m1.getClickedNum() > 2) {
         m1.setLocked(true);
-        fill(#C1C8C9);
-        circle(mouseX+12, mouseY+12, 75);
       }
     }
   }
@@ -128,7 +132,6 @@ void moving() {
 }
 
 void keyPressed() {
-  ;
   if (key == ENTER) {
     roundStart = true;
   }
@@ -154,15 +157,18 @@ void draw() {
       text("INCOME: " + player.income, 850, 70);
       map.display();
       fill(0);
+      if(monkeys.showStats != -1){
+        monkeys.displayStats();
+      }
       if (monkeys.get(mouseX, mouseY) > -1 && monkeys.get(monkeys.get(mouseX, mouseY)).getLocked() == false && monkeys.get(monkeys.get(mouseX, mouseY)).getMovement() == true) {
         moving();
         Monkey bob = monkeys.get(monkeys.get(mouseX, mouseY));
         if (bob.canBePlaced(mouseX, mouseY) == true) {
           fill(#3DA745);
-          circle(mouseX+12, mouseY+12, 75);
+          circle(mouseX+12, mouseY+12, bob.getAttackRange()*2);
         } else {
           fill(#B22225);
-          circle(mouseX+12, mouseY+12, 75);
+          circle(mouseX+12, mouseY+12, bob.getAttackRange()*2);
         }
       }
       if (roundStart) {

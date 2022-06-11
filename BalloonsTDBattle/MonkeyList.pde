@@ -1,5 +1,6 @@
 public class MonkeyList {
   ArrayList<Monkey> monke;
+  int showStats = -1;
   public MonkeyList() {
     monke = new ArrayList<Monkey>();
   }
@@ -77,6 +78,14 @@ public class MonkeyList {
     }
     return result;
   }
+
+  void setShowStats(int b) {
+    showStats = b;
+  }
+  void displayStats() {
+    monkeys.get(showStats).showStats();
+  }
+
 
 
   void display() {
