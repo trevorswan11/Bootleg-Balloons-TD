@@ -15,7 +15,7 @@ public class Balloon {
 
   public Balloon() {
     image = red;
-    health = 1;
+    health = 0;
     speed = 1;
   }
   
@@ -90,7 +90,11 @@ public class Balloon {
     }
   }
 
- float[] getFuture() {
+  float[] getFuture() {
+    if (directionsIndex+1 >= map.getDirectionsSize()) {
+      return new float[]{-1, -1};  
+    }
+   
     float x_ = currentX;
     float y_ = currentY;
     int directionsIndex_ = directionsIndex;
@@ -125,6 +129,8 @@ public class Balloon {
             nextCords_ = map.getDirection(directionsIndex_);
             distanceX_ = nextCords_[0]-x_;
             distanceY_ = nextCords_[1]-x_;
+          } else {
+            return new float[]{-1, -1};  
           }
         }
       }
@@ -132,6 +138,7 @@ public class Balloon {
     }
     return new float[]{x_, y_};
   }
+ 
   int decreaseHealth() {
     health--;
     return health;
@@ -173,7 +180,7 @@ public class Balloon {
     return speed;
   }
   boolean getTarget(){
-  return target;
+    return target;
   }
   void setTarget(boolean b){
     target = b;

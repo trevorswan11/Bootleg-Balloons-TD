@@ -1,6 +1,3 @@
-final int ADD = 0;
-final int DELETE = 1;
-final int STATS = 2;
 int show = 1;
 MonkeyList monkeys = new MonkeyList();
 balloonList balloons = new balloonList();
@@ -9,32 +6,29 @@ Player player;
 Monkey m;
 Map map;
 Balloon balloon;
-int balloonSize = 35;
 Rounds rounds;
 int showStats = -1;
 boolean gameStart = false;
 boolean freeplayStart = false;
 
-Buttons button1;
-Buttons button2;
+int balloonSize = 35;
+int monkeySize = 50;
+
 Buttons normal;
 Buttons freeplay;
 Buttons nextRound;
 Buttons startOver;
 
 balloonButtonList balloonButtons;
+monkeyButtonList monkeyButtons;
 
-PImage redBalloon;
-PImage defaultMonkey;
-PImage buttonMonkey;
-
+PImage dart, wizard, sniper;
 PImage red, blue, green, yellow, pink, black, white, zebra, lead, rainbow, ceramic;
 boolean roundStart = false;
 boolean roundOver = false;
-int MODE = ADD;
 boolean locked = false;
 int clickedNum = 0;
-int round = 21;
+int round = 0;
 
 
 void setup() {
@@ -44,15 +38,16 @@ void setup() {
   rounds = new Rounds();
 
   //images
-  redBalloon = loadImage("red_balloon.png");
-  redBalloon.resize(balloonSize, balloonSize);
-  defaultMonkey = loadImage("monkey.png");
-  defaultMonkey.resize(75, 75);
-  buttonMonkey = loadImage("monkey.png");
-  buttonMonkey.resize(25, 25);
-  button1 = new Buttons(820, 90, buttonMonkey, 2, #C3E3DA);
+
   button2 = new Buttons (350, 650, "SELL", 30, 50, 10, 255);
 
+
+  dart = loadImage("dart.png");
+  dart.resize(monkeySize, monkeySize);
+  wizard = loadImage("wizard.png");
+  wizard.resize(monkeySize, monkeySize);
+  sniper = loadImage("sniper.png");
+  sniper.resize(monkeySize, monkeySize);
 
   red = loadImage("red_balloon.png");
   red.resize(balloonSize, balloonSize);
@@ -77,12 +72,12 @@ void setup() {
   ceramic = loadImage("ceramic_balloon.png");
   ceramic.resize(balloonSize, balloonSize);
 
-  // button1 = new Buttons(820, 90, defaultMonkey, 1, #C3E3DA);
 
   normal = new Buttons(width/2-50, height/2 + 100, "NORMAL", 40, 100, 20, 225);
   freeplay = new Buttons(width/2-50, height/2 + 150, "FREEPLAY", 40, 100, 20, 225);
   startOver = new Buttons(width/2-70, height/2 + 110, "START OVER", 40, 140, 20, 225);
   balloonButtons = new balloonButtonList();
+  monkeyButtons = new monkeyButtonList();
 }
 
 void mouseClicked() {
@@ -98,7 +93,9 @@ void mouseClicked() {
       player = new Player();
       rounds = new Rounds();
       monkeys = new MonkeyList();
+      balloons = new balloonList();
       gameStart = false;
+      round = 0;
     }
   } else {
     int index = monkeys.get(mouseX, mouseY);
@@ -107,28 +104,25 @@ void mouseClicked() {
     } else if (mouseX < 800 && mouseY < 600) {
       monkeys.setShowStats(-1);
     }
-    if (index > -1 && button2.clicked1(mouseX, mouseY) == true) {
-       println(button2.clicked1(mouseX, mouseY));
-      monkeys.sell(monkeys.get(index));
-    }
-    if (player.getIncome() > 550 && balloons.size()==0 && button1.clicked1(mouseX, mouseY) == true) {
-      Monkey m =  new Monkey(820, 90);
-      monkeys.add(m);
-      player.changeIncome(m.getPrice() * -1);
-    }
-    if (monkeys.get(mouseX, mouseY) > -1) {
-      Monkey m1 = monkeys.get(monkeys.get(mouseX, mouseY));
-      m1.addClickedNum();
-      if (m1.canBePlaced(mouseX, mouseY) == true ||m1.getClickedNum() == 1) {
-        m1.setMovement();
-      }
-      if (m1.canBePlaced(mouseX, mouseY) == true && m1.getClickedNum() > 2) {
-        m1.setLocked(true);
-      }
-    }
-
-    balloonButtons.spawnBalloon();
   }
+}
+
+
+int buttonIndex = monkeyButtons.findButtonAt(mouseX, mouseY);
+monkeys.addMonkey(buttonIndex);
+if (monkeys.get(mouseX, mouseY) > -1) {
+  Monkey m1 = monkeys.get(monkeys.get(mouseX, mouseY));
+  m1.addClickedNum();
+  if (m1.canBePlaced(mouseX, mouseY) || m1.getClickedNum() == 1) {
+    m1.setMovement();
+  }
+  if (m1.canBePlaced(mouseX, mouseY) && m1.getClickedNum() > 2) {
+    m1.setLocked(true);
+  }
+}
+
+balloonButtons.spawnBalloon();
+}
 }
 
 
@@ -158,8 +152,7 @@ void draw() {
     background(255);
     textSize(15);
     if (!player.isDead()) {
-      button1.display();
-      // button2.display();
+      monkeyButtons.display();
       fill(0);
       text("ROUND: " + (round+1), 845, 30);
       text("HEALTH: " + player.health, 850, 50);
@@ -173,11 +166,11 @@ void draw() {
         moving();
         Monkey bob = monkeys.get(monkeys.get(mouseX, mouseY));
         if (bob.canBePlaced(mouseX, mouseY) == true) {
-          fill(#3DA745);
-          circle(mouseX+12, mouseY+12, bob.getAttackRange()*2);
+          fill(#3DA745, 150);
+          circle(mouseX, mouseY, bob.getAttackRange()*2);
         } else {
-          fill(#B22225);
-          circle(mouseX+12, mouseY+12, bob.getAttackRange()*2);
+          fill(#B22225, 150);
+          circle(mouseX, mouseY, bob.getAttackRange()*2);
         }
       }
       if (roundStart) {
@@ -196,14 +189,32 @@ void draw() {
       startOver.display();
       startOver.hover(mouseX, mouseY);
     }
-  } else if (freeplayStart) {
-    background(255);
-    map.display();
-    fill(0);
-    balloons.display();
-    balloons.processAll();
-    monkeys.processAll();
-    monkeys.display();
+} else if (freeplayStart) {
+  background(255);
+  map.display();
+  fill(0);
+  balloons.display();
+  balloons.processAll();
+  monkeys.processAll();
+  monkeyButtons.display();
+  if (monkeys.showStats != -1) {
+    monkeys.displayStats();
+    balloonButtons.setShown(false);
+  } else {
     balloonButtons.display();
+    balloonButtons.setShown(true);
   }
+  if (monkeys.get(mouseX, mouseY) > -1 && monkeys.get(monkeys.get(mouseX, mouseY)).getLocked() == false && monkeys.get(monkeys.get(mouseX, mouseY)).getMovement() == true) {
+    moving();
+    Monkey bob = monkeys.get(monkeys.get(mouseX, mouseY));
+    if (bob.canBePlaced(mouseX, mouseY) == true) {
+      fill(#3DA745, 150);
+      circle(mouseX, mouseY, bob.getAttackRange()*2);
+    } else {
+      fill(#B22225, 150);
+      circle(mouseX, mouseY, bob.getAttackRange()*2);
+    }
+  }
+  monkeys.display();
 }
+  }

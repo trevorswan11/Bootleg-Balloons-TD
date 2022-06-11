@@ -94,7 +94,7 @@ public class Buttons {
 
   void hover(int x_, int y_) {
     if (inRange(x_, y_)) {
-      c = 200;
+      c = 150;
     } else {
       c = 225;
     }
@@ -102,6 +102,9 @@ public class Buttons {
 
   int getMode() {
     return MODE;
+  }
+  PImage getImage() {
+    return p;  
   }
   void setCaption(String c) {
     caption = c;
@@ -112,17 +115,30 @@ public class Buttons {
   void setImage(PImage image_) {
     p = image_;
   }
+  float getX() {
+    return x;  
+  }
+  float getY() {
+    return y;  
+  }
+  void resizeImage(int l, int w) {
+    p.resize(l,w);
+  }
 }
 
 public class balloonButton extends Buttons {
   Balloon b;
-  PImage image;
 
   public balloonButton(int x_, int y_, Balloon b_) {
     super(x_, y_, b_.getImage(), balloonSize, balloonSize, 255);
     b = b_;
   }
 
+  public balloonButton(int x_, int y_, Balloon b_, int l_, int w_) {
+    super(x_, y_, b_.getImage(), balloonSize, balloonSize, 255);
+    b = b_;
+    resizeImage(l_, w_);
+  }
 
   void spawnBalloon() {
     if (inRange(mouseX, mouseY)) {
@@ -139,4 +155,41 @@ public class balloonButton extends Buttons {
       image(p, x, y);
     }
   }
+}
+
+public class monkeyButton extends Buttons {
+  Monkey m; 
+  
+   public monkeyButton(int x_, int y_, Monkey m_) {
+    super(x_, y_, m_.getImage(), monkeySize, monkeySize, 255);
+    m = m_;
+   }
+  
+  public monkeyButton(int x_, int y_, Monkey m_, int l_, int w_) {
+    super(x_, y_, m_.getImage(), monkeySize, monkeySize, 255);
+    m = m_;
+    resizeImage(l_, w_);
+  }
+    
+  Monkey getMonkey() {
+    return m;  
+  }
+  
+  //void hover() {
+  //  if (inRange(mouseX, mouseY)) {
+  //    //display text of what the monkey does       
+  //  }
+  //}
+  
+  void display() {
+    if (m.getPrice() <= player.getIncome()) {
+      fill(c);
+    } else {
+      fill(#B22225);  
+    }
+    rect(x, y, w, l);
+    image(p, x, y);
+  }
+
+  
 }
