@@ -117,4 +117,14 @@ public class balloonButton extends Buttons {
   void spawnBalloon() {
     balloons.add(new Balloon(b));
   }
+  
+  void display() {
+    fill(c);
+    rect(x, y, w, l);
+    if (b.getImage() == white || b.getImage() == black) {
+      image(p, x+balloonSize/3 , y);    
+    } else {
+      image(p, x , y);
+    }
+  }
 }
