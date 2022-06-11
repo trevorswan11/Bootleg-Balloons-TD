@@ -99,19 +99,21 @@ void mouseClicked() {
       gameStart = false;
     }
   } else {
-    if ((balloons.size()==0) && button1.clicked1(mouseX, mouseY) == true) {
+    if (player.getIncome() > 550 && balloons.size()==0&& button1.clicked1(mouseX, mouseY) == true) {
       Monkey m =  new Monkey(820, 90);
       monkeys.add(m);
+      player.changeIncome(m.getPrice() * -1);
     }
     if (monkeys.get(mouseX, mouseY) > -1) {
       Monkey m1 = monkeys.get(monkeys.get(mouseX, mouseY));
       m1.addClickedNum();
-      println(m1.getClickedNum());
       if (m1.canBePlaced(mouseX, mouseY) == true ||m1.getClickedNum() == 1) {
         m1.setMovement();
       }
-      if(m1.getClickedNum() > 2){
+      if (m1.getClickedNum() > 2) {
         m1.setLocked(true);
+        fill(#C1C8C9);
+        circle(mouseX+12, mouseY+12, 75);
       }
     }
   }
@@ -125,7 +127,8 @@ void moving() {
   m.move();
 }
 
-void keyPressed() {;
+void keyPressed() {
+  ;
   if (key == ENTER) {
     roundStart = true;
   }

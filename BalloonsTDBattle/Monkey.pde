@@ -158,6 +158,9 @@ public class Monkey {
   int increaseTimer() {
     return timer++;
   }
+  int getPrice(){
+    return price;
+  }
 
   void resetTimer() {
     timer = 0;
