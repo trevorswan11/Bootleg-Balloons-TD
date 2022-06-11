@@ -21,7 +21,7 @@ Buttons freeplay;
 Buttons nextRound;
 Buttons startOver; 
 
-balloonButton redBalloonButton;
+balloonButtonList balloonButtons;
 
 PImage redBalloon;
 PImage defaultMonkey;
@@ -30,7 +30,7 @@ PImage red, blue, green, yellow, pink, black, white, zebra, lead, rainbow, ceram
 boolean roundStart = false;
 boolean roundOver = false;
 int MODE = ADD;
-int round = 20;
+int round = 21;
 
 void setup() {
   size(1000, 750);
@@ -75,8 +75,7 @@ void setup() {
   freeplay = new Buttons(width/2-50, height/2 + 150, "FREEPLAY", 40, 100, 20, 225);
   startOver = new Buttons(width/2-70, height/2 + 110, "START OVER", 40, 140, 20, 225);
   
-  redBalloonButton = new balloonButton(70, 700, new redBalloon());
-
+  balloonButtons = new balloonButtonList();
 }
 
 void mouseClicked() {
@@ -95,22 +94,7 @@ void mouseClicked() {
       gameStart = false;
     }
   } else {
-    button1.clicked(mouseX, mouseY);
-    if (button1.getMode() == ADD) {
-      button1.setCaption("ADD");
-      Monkey m = new Monkey(mouseX, mouseY);
-      if (m.canBePlaced() == true && m.price <= player.income) {
-        monkeys.add(m);
-        player.changeIncome(m.price*-1);
-      } else if (mouseX < 800 && m.price <= player.income) {
-        fill(#A03030);
-        circle(mouseX, mouseY, m.getAttackRange());
-      }
-    }
-    if (button1.getMode() == DELETE) {
-      button1.setCaption("SELL");
-      monkeys.sell(mouseX,mouseY);
-    }
+    balloonButtons.spawnBalloon();
   }
 }
 
@@ -175,6 +159,6 @@ void draw() {
      balloons.processAll();
      monkeys.processAll();
      monkeys.display();
-     redBalloonButton.display();
+     balloonButtons.display();
    }
 }
