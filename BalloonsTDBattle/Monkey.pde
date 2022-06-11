@@ -5,11 +5,13 @@ public class Monkey {
   int attackStrength;
   Weapons weapon;
   boolean thrown;
+  boolean locked = false;
   int timer = 0;
   float x; // The coordinates of the monkey
   float y;
   int price;
   boolean movement = false;
+
 
   public Monkey(float xcoord, float ycoord) {
     //Default values for monkey stats except for x and y since those have to be determiend
@@ -72,18 +74,13 @@ public class Monkey {
     int dist = 25;
     color c = map.getPath().get((int)xcoord, (int)ycoord);
     boolean result = true;
-    println(red(c));
     if (red(c) != 255) {
       result = false;
     }
     for (int i = 0; i < monkeys.size(); i ++) {
       int now = monkeys.get(xcoord, ycoord);
-      println(now);
-      if (now == i) {
-        i++;
-      }
       Monkey current = monkeys.get(i);
-      if (dist(xcoord, ycoord, current.getX(), current.getY()) < dist) {
+      if (now != i && dist(xcoord, ycoord, current.getX(), current.getY()) < dist ) {
         result = false;
       }
     }
@@ -130,6 +127,14 @@ public class Monkey {
   public boolean getMovement() {
     return movement;
   }
+  
+  public boolean getLocked(){
+    return locked;
+  }
+    void setLocked(boolean b) {
+    locked = b;
+  }
+
 
   void setMovement() {
     if (movement == false) {
