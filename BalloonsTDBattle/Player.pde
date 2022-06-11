@@ -50,5 +50,8 @@ public class Player {
    income += 100;  
    return income;
  }
+ int getIncome(){
+   return income;
+ }
   
 }

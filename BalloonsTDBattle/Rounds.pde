@@ -35,7 +35,7 @@ public class Rounds{
     {{BLACK, 6, 20}},
     {{PINK, 14, 15}},
     {{WHITE, 8, 20}},
-    {{BLACK, 5, 15}, {WHITE, 4}},
+    {{BLACK, 5, 15}, {WHITE, 4, 20}},
     {{GREEN, 100, 10}},
     {{YELLOW, 31, 10}},
     {{PINK, 23, 15}, {ZEBRA, 4, 20}},
