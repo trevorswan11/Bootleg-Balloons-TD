@@ -197,7 +197,8 @@ public class Monkey {
 
 public class dartMonkey extends Monkey{
   public dartMonkey(int xcoord,int ycoord) {
-    super(100, 50, 1, xcoord, ycoord); 
+    //speed, range, power
+    super(50, 100, 1, xcoord, ycoord); 
     image = dart;
     price = 200; 
   }
@@ -205,7 +206,7 @@ public class dartMonkey extends Monkey{
 
 public class wizardMonkey extends Monkey{
   public wizardMonkey(int xcoord,int ycoord) {
-    super(50, 50, 1, xcoord, ycoord); 
+    super(70, 50, 1, xcoord, ycoord); 
     image = wizard;
     price = 550;
   }
@@ -213,7 +214,7 @@ public class wizardMonkey extends Monkey{
 
 public class sniperMonkey extends Monkey{
   public sniperMonkey(int xcoord,int ycoord) {
-    super(100, 50, 1, xcoord, ycoord); 
+    super(100, 50, 2, xcoord, ycoord); 
     image = sniper;
     price = 350; 
   }

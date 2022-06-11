@@ -1,6 +1,3 @@
-final int ADD = 0;
-final int DELETE = 1;
-final int STATS = 2;
 int show = 1;
 MonkeyList monkeys = new MonkeyList();
 balloonList balloons = new balloonList();
@@ -29,7 +26,6 @@ PImage dart, wizard, sniper;
 PImage red, blue, green, yellow, pink, black, white, zebra, lead, rainbow, ceramic;
 boolean roundStart = false;
 boolean roundOver = false;
-int MODE = ADD;
 boolean locked = false;
 int clickedNum = 0;
 int round = 21;
@@ -103,10 +99,17 @@ void mouseClicked() {
     }
     
     int buttonIndex = monkeyButtons.findButtonAt(mouseX, mouseY);
-    if (buttonIndex != -1 && player.getIncome() > monkeyButtons.getMonkey(buttonIndex).getPrice() && balloons.size()==0 ) {
-      Monkey m =  new Monkey(monkeyButtons.getMonkey(buttonIndex), monkeyButtons.get(buttonIndex).getX(), monkeyButtons.get(buttonIndex).getY());
-      monkeys.add(m);
-      player.changeIncome(m.getPrice() * -1);
+    if (gameStart) {
+      if (buttonIndex != -1 && player.getIncome() > monkeyButtons.getMonkey(buttonIndex).getPrice() && balloons.size()==0 ) {
+        Monkey m =  new Monkey(monkeyButtons.getMonkey(buttonIndex), monkeyButtons.get(buttonIndex).getX(), monkeyButtons.get(buttonIndex).getY());
+        monkeys.add(m);
+        player.changeIncome(m.getPrice() * -1);
+      }
+    } else if (freeplayStart) {
+      if (buttonIndex != -1 && balloons.size()==0 ) {
+        Monkey m =  new Monkey(monkeyButtons.getMonkey(buttonIndex), monkeyButtons.get(buttonIndex).getX(), monkeyButtons.get(buttonIndex).getY());
+        monkeys.add(m);
+      }
     }
     if (monkeys.get(mouseX, mouseY) > -1) {
       Monkey m1 = monkeys.get(monkeys.get(mouseX, mouseY));
@@ -195,7 +198,25 @@ void draw() {
      balloons.display();
      balloons.processAll();
      monkeys.processAll();
+     monkeyButtons.display();
+     if(monkeys.showStats != -1){
+        monkeys.displayStats();
+        balloonButtons.setShown(false);
+     } else {
+       balloonButtons.display();
+       balloonButtons.setShown(true);
+     }
+     if (monkeys.get(mouseX, mouseY) > -1 && monkeys.get(monkeys.get(mouseX, mouseY)).getLocked() == false && monkeys.get(monkeys.get(mouseX, mouseY)).getMovement() == true) {
+       moving();
+       Monkey bob = monkeys.get(monkeys.get(mouseX, mouseY));
+       if (bob.canBePlaced(mouseX, mouseY) == true) {
+         fill(#3DA745, 150);
+         circle(mouseX+12, mouseY+12, bob.getAttackRange()*2);
+       } else {
+         fill(#B22225, 150);
+         circle(mouseX+12, mouseY+12, bob.getAttackRange()*2);
+       }
+     }
      monkeys.display();
-     balloonButtons.display();
    }
 }

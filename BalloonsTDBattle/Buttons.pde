@@ -94,7 +94,7 @@ public class Buttons {
 
   void hover(int x_, int y_) {
     if (inRange(x_, y_)) {
-      c = 200;
+      c = 150;
     } else {
       c = 225;
     }
@@ -171,5 +171,22 @@ public class monkeyButton extends Buttons {
   Monkey getMonkey() {
     return m;  
   }
+  
+  //void hover() {
+  //  if (inRange(mouseX, mouseY)) {
+  //    //display text of what the monkey does       
+  //  }
+  //}
+  
+  void display() {
+    if (m.getPrice() <= player.getIncome()) {
+      fill(c);
+    } else {
+      fill(#B22225);  
+    }
+    rect(x, y, w, l);
+    image(p, x, y);
+  }
+
   
 }
