@@ -11,6 +11,7 @@ public class Monkey {
   float y;
   int price;
   boolean movement = false;
+  int clickedNum;
 
 
   public Monkey(float xcoord, float ycoord) {
@@ -124,14 +125,20 @@ public class Monkey {
     return image;
   }
 
+  public int clickedNum() {
+    return clickedNum;
+  }
+    void addClickedNum() {
+    clickedNum++;
+  }
   public boolean getMovement() {
     return movement;
   }
-  
-  public boolean getLocked(){
+
+  public boolean getLocked() {
     return locked;
   }
-    void setLocked(boolean b) {
+  void setLocked(boolean b) {
     locked = b;
   }
 

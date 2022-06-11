@@ -48,7 +48,7 @@ public class MonkeyList {
       }
     }
   }
-  
+
   void sell(int x, int y) {
     int i = get(x, y);
     if (i > -1) {
@@ -56,7 +56,7 @@ public class MonkeyList {
       remove(get(i));
     }
   }
-  
+
   void sell(Monkey m) {
     player.changeIncome((int)(m.price*0.795));
     remove(m);
@@ -65,14 +65,14 @@ public class MonkeyList {
   public Monkey get(int index) {
     return monke.get(index);
   }
-  
+
   public int get(float xcoord, float ycoord) {
     int result = -1;
     for (int i = 0; i < monke.size(); i++) {
       float compareX = monke.get(i).getX();
       float compareY = monke.get(i).getY();
       if (xcoord >= compareX-50 && xcoord <= compareX+50 && ycoord >= compareY-50 && ycoord <= compareY+50) {
-       result = i;
+        result = i;
       }
     }
     return result;

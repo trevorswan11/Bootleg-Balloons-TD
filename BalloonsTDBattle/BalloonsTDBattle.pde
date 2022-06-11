@@ -33,8 +33,8 @@ boolean roundStart = false;
 boolean roundOver = false;
 int MODE = ADD;
 int round = 20;
-boolean locked = false;
-int clickedNum = 0;
+boolean gameLocked = false;
+
 
 void setup() {
   size(1000, 750);
@@ -99,18 +99,18 @@ void mouseClicked() {
       gameStart = false;
     }
   } else {
-    if (locked == false && button1.clicked1(mouseX, mouseY) == true) {
+    if (gameLocked == false && button1.clicked1(mouseX, mouseY) == true) {
       Monkey m =  new Monkey(820, 90);
       monkeys.add(m);
     }
     if (monkeys.get(mouseX, mouseY) > -1) {
-      clickedNum++;
-      println(clickedNum);
       Monkey m1 = monkeys.get(monkeys.get(mouseX, mouseY));
-      if (m1.canBePlaced(mouseX, mouseY) == true ||clickedNum == 1) {
+      m1.addClickedNum();
+      println(m1.clickedNum());
+      if (m1.canBePlaced(mouseX, mouseY) == true ||m1.clickedNum() == 1) {
         m1.setMovement();
       }
-      if(clickedNum > 2){
+      if(m1.clickedNum > 2){
         m1.setLocked(true);
       }
     }
@@ -128,6 +128,7 @@ void keyPressed() {
     roundStart = true;
   }
 }
+
 
 
 void draw() {
@@ -164,12 +165,10 @@ void draw() {
         }
       }
       if (roundStart) {
-        for(int i = 0; i < monkeys.size(); i++){
-        Monkey all = monkeys.get(i);
-        all.setLocked(true);
-        }
+        gameLocked = true;
         if (!roundOver) {
           rounds.runRound();
+          gameLocked = false;
         }
         balloons.display();
         balloons.processAll();
