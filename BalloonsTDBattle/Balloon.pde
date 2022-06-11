@@ -20,6 +20,7 @@ public class Balloon {
   }
   
   public Balloon(Balloon b) {
+    image = b.getImage();
     health = b.getHealth();
     speed = b.getSpeed();
     currentX = b.getCurrentX();
