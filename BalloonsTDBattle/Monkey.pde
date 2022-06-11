@@ -17,8 +17,8 @@ public class Monkey {
   public Monkey(float xcoord, float ycoord) {
     //Default values for monkey stats except for x and y since those have to be determiend
     //by mouseClicked()
+    weapon = new Weapons(x, y);
     image = defaultMonkey;
-    weapon = new Weapons(xcoord, ycoord);
     attackSpeed = 10;
     attackRange = 50;
     attackStrength = 1;
@@ -53,6 +53,7 @@ public class Monkey {
     b.decreaseHealth(attackStrength);
   }
   void throwWeapon(Balloon b) {
+   // weapon = new Weapons(x, y);
     b.setTarget(true);
     float[] coord = b.getFuture();
     float range = dist(weapon.getX(), weapon.getY(), coord[0], coord[1]);
@@ -125,7 +126,7 @@ public class Monkey {
     return image;
   }
 
-  public int clickedNum() {
+  public int getClickedNum() {
     return clickedNum;
   }
     void addClickedNum() {

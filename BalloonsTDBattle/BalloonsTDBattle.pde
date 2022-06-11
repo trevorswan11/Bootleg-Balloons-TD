@@ -4,6 +4,7 @@ final int STATS = 2;
 int show = 1;
 MonkeyList monkeys = new MonkeyList();
 balloonList balloons = new balloonList();
+boolean canMove = true;
 
 Player player;
 Monkey m;
@@ -33,8 +34,8 @@ boolean roundStart = false;
 boolean roundOver = false;
 int MODE = ADD;
 int round = 20;
-boolean gameLocked = false;
-
+boolean locked = false;
+int clickedNum = 0;
 
 void setup() {
   size(1000, 750);
@@ -99,18 +100,18 @@ void mouseClicked() {
       gameStart = false;
     }
   } else {
-    if (gameLocked == false && button1.clicked1(mouseX, mouseY) == true) {
+    if ((balloons.size()>0) && button1.clicked1(mouseX, mouseY) == true) {
       Monkey m =  new Monkey(820, 90);
       monkeys.add(m);
     }
     if (monkeys.get(mouseX, mouseY) > -1) {
       Monkey m1 = monkeys.get(monkeys.get(mouseX, mouseY));
       m1.addClickedNum();
-      println(m1.clickedNum());
-      if (m1.canBePlaced(mouseX, mouseY) == true ||m1.clickedNum() == 1) {
+      println(m1.getClickedNum());
+      if (m1.canBePlaced(mouseX, mouseY) == true ||m1.getClickedNum() == 1) {
         m1.setMovement();
       }
-      if(m1.clickedNum > 2){
+      if(m1.getClickedNum() > 2){
         m1.setLocked(true);
       }
     }
@@ -123,12 +124,11 @@ void moving() {
   m.move();
 }
 
-void keyPressed() {
+void keyPressed() {;
   if (key == ENTER) {
     roundStart = true;
   }
 }
-
 
 
 void draw() {
@@ -150,25 +150,20 @@ void draw() {
       text("INCOME: " + player.income, 850, 70);
       map.display();
       fill(0);
-      if (monkeys.get(monkeys.get(mouseX, mouseY)).getLocked() == false && monkeys.get(mouseX, mouseY) > -1 && monkeys.get(monkeys.get(mouseX, mouseY)).getMovement() == true) {
+      if ( canMove== true && monkeys.get(mouseX, mouseY) > -1 && monkeys.get(monkeys.get(mouseX, mouseY)).getLocked() == false && monkeys.get(monkeys.get(mouseX, mouseY)).getMovement() == true) {
         moving();
         Monkey bob = monkeys.get(monkeys.get(mouseX, mouseY));
         if (bob.canBePlaced(mouseX, mouseY) == true) {
           fill(#3DA745);
-          //tint(255, 127);
           circle(mouseX+12, mouseY+12, 75);
         } else {
           fill(#B22225);
-          //tint(255, 0);
           circle(mouseX+12, mouseY+12, 75);
-          //tint(255, 127);
         }
       }
       if (roundStart) {
-        gameLocked = true;
         if (!roundOver) {
           rounds.runRound();
-          gameLocked = false;
         }
         balloons.display();
         balloons.processAll();

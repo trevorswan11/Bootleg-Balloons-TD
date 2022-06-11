@@ -17,8 +17,8 @@ public class MonkeyList {
           balloons.setNewBalloon(index);
         }
         if (current.thrown) {
-          current.weapon.setX(current.getX());
-          current.weapon.setY(current.getY());
+          //current.weapon.setX(current.getX());
+          //current.weapon.setY(current.getY());
           current.resetTimer();
           current.setThrown(false);
         }
