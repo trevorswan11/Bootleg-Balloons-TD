@@ -1,5 +1,6 @@
 public class MonkeyList {
   ArrayList<Monkey> monke;
+  int showStats = -1;
   public MonkeyList() {
     monke = new ArrayList<Monkey>();
   }
@@ -49,20 +50,42 @@ public class MonkeyList {
     }
   }
 
+  void sell(int x, int y) {
+    int i = get(x, y);
+    if (i > -1) {
+      player.changeIncome((int)(get(i).price*0.795));
+      remove(get(i));
+    }
+  }
+
+  void sell(Monkey m) {
+    player.changeIncome((int)(m.price*0.795));
+    remove(m);
+  }
+
   public Monkey get(int index) {
     return monke.get(index);
   }
-  int get(float xcoord, float ycoord) {
+
+  public int get(float xcoord, float ycoord) {
     int result = -1;
     for (int i = 0; i < monke.size(); i++) {
       float compareX = monke.get(i).getX();
       float compareY = monke.get(i).getY();
-      if (xcoord >= compareX && xcoord <= compareX+25 && ycoord >= compareY && ycoord <= compareY+25) {
-       result = i;
+      if (xcoord >= compareX-50 && xcoord <= compareX+50 && ycoord >= compareY-50 && ycoord <= compareY+50) {
+        result = i;
       }
     }
     return result;
   }
+
+  void setShowStats(int b) {
+    showStats = b;
+  }
+  void displayStats() {
+    monkeys.get(showStats).showStats();
+  }
+
 
 
   void display() {

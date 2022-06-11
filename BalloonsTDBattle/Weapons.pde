@@ -32,6 +32,12 @@ public class Weapons {
   void setDisplay(boolean b) {
     isDisplay = b;
   }
+  void move() {
+    float dx = mouseX - x;
+    x += dx;
+    float dy = mouseY - y;
+    y += dy ;
+  }
 
   void display() {
     if (isDisplay == true) {

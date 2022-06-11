@@ -1,5 +1,5 @@
 public class Player {
-  int health;
+  int health = 0;
   int income;
   int points;
   int time; 
@@ -14,8 +14,20 @@ public class Player {
   }
   
   int changeIncome(int change) {
-    income = income + change; 
+    income += change; 
     return income;
+  }
+  
+  int attackIncome(Monkey monkey, Balloon balloon) {
+    int attack = monkey.getAttackStrength();
+    int health = balloon.getHealth();
+    if (health < attack) {
+      return income += health;  
+    } else {
+      return income += attack;
+    } 
+ 
+      
   }
   
  int decreaseHealth() {
@@ -35,7 +47,10 @@ public class Player {
  }
  
  int roundIncome() {
-   income = income+100*(int)(round*1.25);  
+   income += 100;  
+   return income;
+ }
+ int getIncome(){
    return income;
  }
   
