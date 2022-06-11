@@ -66,7 +66,7 @@ public class MonkeyList {
     return monke.get(index);
   }
   
-  int get(float xcoord, float ycoord) {
+  public int get(float xcoord, float ycoord) {
     int result = -1;
     for (int i = 0; i < monke.size(); i++) {
       float compareX = monke.get(i).getX();

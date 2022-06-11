@@ -9,6 +9,7 @@ public class Monkey {
   float x; // The coordinates of the monkey
   float y;
   int price;
+  boolean movement = false;
 
   public Monkey(float xcoord, float ycoord) {
     //Default values for monkey stats except for x and y since those have to be determiend
@@ -22,7 +23,7 @@ public class Monkey {
     y = ycoord;
     price = 550;
   }
-  
+
   public Monkey(int speed, int range, int strength, int xcoord, int ycoord) {
     image = defaultMonkey;
     attackSpeed = speed;
@@ -97,7 +98,7 @@ public class Monkey {
   void setX(float xcoord) {
     x = xcoord;
   }
-  
+
   void setY(float ycoord) {
     y = ycoord;
   }
@@ -108,11 +109,11 @@ public class Monkey {
   public int getAttackSpeed() {
     return attackSpeed;
   }
-  
+
   public int getAttackRange() {
     return attackRange;
   }
-  
+
   public int getAttackStrength() {
     return attackStrength;
   }
@@ -120,10 +121,22 @@ public class Monkey {
     return image;
   }
 
+  public boolean getMovement() {
+    return movement;
+  }
+
+  void setMovement() {
+    if (movement == false) {
+      movement = true;
+    } else {
+      movement = false;
+    }
+  }
+
   int increaseTimer() {
     return timer++;
   }
-  
+
   void resetTimer() {
     timer = 0;
   }
@@ -135,11 +148,11 @@ public class Monkey {
     image(image, x, y);
     weapon.display();
   }
-  
-  void mouseDragged() {
-    if ((x < 1000 && x > 0) && (y > 0 && y < 750)) {
-      x = mouseX;
-      y = mouseY;
-    }
+
+  void move() {
+    float dx = mouseX - x;
+    x += dx;
+    float dy = mouseY - y;
+    y += dy ;
   }
 }

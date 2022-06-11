@@ -1,6 +1,7 @@
 final int ADD = 0;
 final int DELETE = 1;
 final int STATS = 2;
+int show = 1;
 MonkeyList monkeys = new MonkeyList();
 balloonList balloons = new balloonList();
 
@@ -96,21 +97,21 @@ void mouseClicked() {
       gameStart = false;
     }
   } else {
-    button1.clicked(mouseX, mouseY);
-    println(button1.getMode());
-    if (button1.getMode() == 0) {
-      Monkey m = new Monkey(mouseX, mouseY);
+    Monkey m;
+    if (button1.clicked1(mouseX, mouseY) == true) {
+      Monkey m = new Monkey(820, 90);
       monkeys.add(m);
+      if (monkeys.get(mouseX, mouseY) > -1) {
+        m.setMovement();
+      }
     }
   }
 }
-void mouseDragged() {
-    //monkeys.remove(mouseX, mouseY);
-  if (button1.getMode() == 0 && monkeys.get(mouseX, mouseY) != -1) {
-    Monkey m =  monkeys.get(monkeys.get(mouseX, mouseY));
-    //draw();
-    m.mouseDragged();
-  }
+
+
+void moving() {
+  Monkey m =  monkeys.get(monkeys.get(mouseX, mouseY));
+  m.move();
 }
 
 void keyPressed() {
@@ -118,6 +119,7 @@ void keyPressed() {
     roundStart = true;
   }
 }
+
 
 void draw() {
   if (!gameStart && !freeplayStart) {
@@ -138,15 +140,8 @@ void draw() {
       text("INCOME: " + player.income, 850, 70);
       map.display();
       fill(0);
-      if (button1.getMode() == STATS) {
-        button1.setCaption("STATS");
-        int index = monkeys.get(mouseX, mouseY);
-        if (index > -1) {
-          text("Monkey " + index + "'s Statistics", 860, 190);
-          text("Attack Speed: " + monkeys.get(index).getAttackSpeed(), 860, 210);
-          text("Attack Strength: " + monkeys.get(index).getAttackStrength(), 860, 230);
-          text("Attack Range: " + monkeys.get(index).getAttackRange(), 860, 250);
-        }
+      if (monkeys.get(mouseX, mouseY) != -1) {
+        moving();
       }
       if (roundStart) {
         if (!roundOver) {
