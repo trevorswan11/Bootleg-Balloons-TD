@@ -19,6 +19,7 @@ Buttons freeplay;
 Buttons nextRound;
 Buttons startOver;
 Buttons sellButton;
+Buttons cancelButton;
 
 balloonButtonList balloonButtons;
 monkeyButtonList monkeyButtons;
@@ -41,6 +42,7 @@ void setup() {
   //images
 
   sellButton= new Buttons (350, 650, "SELL", 30, 50, 10, 255);
+  cancelButton = new Buttons (800, 650, "CANCEL", 70, 70, 20, 55);
 
 
   dart = loadImage("dart.png");
@@ -122,9 +124,13 @@ void mouseClicked() {
     if (m1.canBePlaced(mouseX, mouseY) && m1.getClickedNum() > 2) {
       m1.setLocked(true);
     }
-  }
+    if (cancelButton.clicked1(mouseX, mouseY) == true && m1.getMovement() == true) {
+      monkeys.remove(m1);
+      player.changeIncome();
+    }
 
-  balloonButtons.spawnBalloon();
+    balloonButtons.spawnBalloon();
+  }
 }
 
 
@@ -156,6 +162,7 @@ void draw() {
     textSize(15);
     if (!player.isDead()) {
       monkeyButtons.display();
+      cancelButton.display();
       fill(0);
       text("ROUND: " + (round+1), 845, 30);
       text("HEALTH: " + player.health, 850, 50);
