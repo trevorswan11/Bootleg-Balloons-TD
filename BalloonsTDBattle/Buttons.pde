@@ -123,7 +123,6 @@ public class balloonButton extends Buttons {
     b = b_;
   }
 
-
   void spawnBalloon() {
     if (inRange(mouseX, mouseY)) {
       balloons.add(new Balloon(b));
@@ -139,4 +138,23 @@ public class balloonButton extends Buttons {
       image(p, x, y);
     }
   }
+}
+
+public class monkeyButton extends Buttons {
+  Monkey m; 
+  PImage image; 
+  
+  public monkeyButton(int x_, int y_, Monkey m_) {
+    super(x_, y_, m_.getImage(), monkeySize, monkeySize, 255);
+    m = m_;
+  }
+  
+  void addMonkey(int x_, int y_) {
+    if (m.getPrice() < player.getIncome()) {
+      Monkey monkey_ =  new Monkey(m, x_, y_);
+      monkeys.add(monkey_);
+      player.changeIncome(monkey_.getPrice() * -1);
+    }
+  }
+  
 }

@@ -36,6 +36,16 @@ public class Monkey {
     y = ycoord;
     price = 550;
   }
+  
+  public Monkey(Monkey m_, int xcoord, int ycoord) {
+    image = dart;
+    attackSpeed = m_.getAttackSpeed();
+    attackStrength =  m_.getAttackStrength();
+    attackRange =  m_.getAttackRange();
+    x = xcoord;
+    y = ycoord;
+    price =  m_.getPrice();
+  }
 
   float[] findBalloon() {
     float[]coord = new float[2];
@@ -187,6 +197,7 @@ public class dartMonkey extends Monkey{
   public dartMonkey(int xcoord,int ycoord) {
     super(100, 50, 1, xcoord, ycoord); 
     image = dart;
+    price = 200; 
   }
 }
 
@@ -194,6 +205,7 @@ public class wizardMonkey extends Monkey{
   public wizardMonkey(int xcoord,int ycoord) {
     super(100, 50, 1, xcoord, ycoord); 
     image = wizard;
+    price = 550;
   }
 }
 
@@ -201,5 +213,6 @@ public class sniperMonkey extends Monkey{
   public sniperMonkey(int xcoord,int ycoord) {
     super(100, 50, 1, xcoord, ycoord); 
     image = sniper;
+    price = 350; 
   }
 }
