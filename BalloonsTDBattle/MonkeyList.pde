@@ -50,7 +50,7 @@ public class MonkeyList {
     }
   }
 
-  void sell(int x, int y) {
+  void sell(float x, float y) {
     int i = get(x, y);
     if (i > -1) {
       player.changeIncome((int)(get(i).price*0.795));

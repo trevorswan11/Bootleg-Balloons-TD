@@ -89,9 +89,13 @@ public class Monkey {
   }
 
   void showStats() {
+    text("Wizard Monkey", 220, 665);
+    fill(255);
+    rect(70, 650, 75, 75);
     image(image, 70, 650);
     fill(#C1C8C9);
     circle(x+12, y+12, attackRange*2);
+    button2.display();
   }
 
   public float getX() {
@@ -158,7 +162,7 @@ public class Monkey {
   int increaseTimer() {
     return timer++;
   }
-  int getPrice(){
+  int getPrice() {
     return price;
   }
 
@@ -170,14 +174,14 @@ public class Monkey {
   }
 
   void display() {
-    image(image, x, y);
+    image(buttonMonkey, x, y);
     weapon.display();
   }
 
-void move() {
-  float dx = mouseX - x;
-  x += dx;
-  float dy = mouseY - y;
-  y += dy ;
-}
+  void move() {
+    float dx = mouseX - x;
+    x += dx;
+    float dy = mouseY - y;
+    y += dy ;
+  }
 }

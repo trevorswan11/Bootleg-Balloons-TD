@@ -47,10 +47,12 @@ void setup() {
   redBalloon = loadImage("red_balloon.png");
   redBalloon.resize(balloonSize, balloonSize);
   defaultMonkey = loadImage("monkey.png");
-  defaultMonkey.resize(25, 25);
+  defaultMonkey.resize(75, 75);
   buttonMonkey = loadImage("monkey.png");
   buttonMonkey.resize(25, 25);
   button1 = new Buttons(820, 90, buttonMonkey, 2, #C3E3DA);
+  button2 = new Buttons (350, 650, "SELL", 30, 50, 10, 255);
+
 
   red = loadImage("red_balloon.png");
   red.resize(balloonSize, balloonSize);
@@ -75,13 +77,12 @@ void setup() {
   ceramic = loadImage("ceramic_balloon.png");
   ceramic.resize(balloonSize, balloonSize);
 
-  //button1 = new Buttons(820, 90, defaultMonkey, 1, #C3E3DA);
+  // button1 = new Buttons(820, 90, defaultMonkey, 1, #C3E3DA);
 
   normal = new Buttons(width/2-50, height/2 + 100, "NORMAL", 40, 100, 20, 225);
   freeplay = new Buttons(width/2-50, height/2 + 150, "FREEPLAY", 40, 100, 20, 225);
   startOver = new Buttons(width/2-70, height/2 + 110, "START OVER", 40, 140, 20, 225);
   balloonButtons = new balloonButtonList();
-
 }
 
 void mouseClicked() {
@@ -101,10 +102,14 @@ void mouseClicked() {
     }
   } else {
     int index = monkeys.get(mouseX, mouseY);
-    if(index > -1){
+    if (index > -1 && monkeys.get(index).getMovement()==false) {
       monkeys.setShowStats(index);
-    }else if(mouseX < 800 && mouseY < 600){
+    } else if (mouseX < 800 && mouseY < 600) {
       monkeys.setShowStats(-1);
+    }
+    if (index > -1 && button2.clicked1(mouseX, mouseY) == true) {
+       println(button2.clicked1(mouseX, mouseY));
+      monkeys.sell(monkeys.get(index));
     }
     if (player.getIncome() > 550 && balloons.size()==0 && button1.clicked1(mouseX, mouseY) == true) {
       Monkey m =  new Monkey(820, 90);
@@ -123,7 +128,6 @@ void mouseClicked() {
     }
 
     balloonButtons.spawnBalloon();
-
   }
 }
 
@@ -155,13 +159,14 @@ void draw() {
     textSize(15);
     if (!player.isDead()) {
       button1.display();
+      // button2.display();
       fill(0);
       text("ROUND: " + (round+1), 845, 30);
       text("HEALTH: " + player.health, 850, 50);
       text("INCOME: " + player.income, 850, 70);
       map.display();
       fill(0);
-      if(monkeys.showStats != -1){
+      if (monkeys.showStats != -1) {
         monkeys.displayStats();
       }
       if (monkeys.get(mouseX, mouseY) > -1 && monkeys.get(monkeys.get(mouseX, mouseY)).getLocked() == false && monkeys.get(monkeys.get(mouseX, mouseY)).getMovement() == true) {
@@ -191,15 +196,14 @@ void draw() {
       startOver.display();
       startOver.hover(mouseX, mouseY);
     }
-
-   } else if (freeplayStart) {
-     background(255);
-     map.display();
-     fill(0);
-     balloons.display();
-     balloons.processAll();
-     monkeys.processAll();
-     monkeys.display();
-     balloonButtons.display();
-   }
+  } else if (freeplayStart) {
+    background(255);
+    map.display();
+    fill(0);
+    balloons.display();
+    balloons.processAll();
+    monkeys.processAll();
+    monkeys.display();
+    balloonButtons.display();
+  }
 }
