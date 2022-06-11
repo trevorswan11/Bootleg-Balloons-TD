@@ -56,6 +56,24 @@ public class balloonButtonList extends buttonsList {
     }
   }
   
-
-
+  void display() {
+    for (int i = 0; i < buttons_.size(); i++) {
+      buttons_.get(i).display();    
+    }
+  }
+  int findButtonAt(int x, int y) {
+    for (int i = 0; i < buttons_.size(); i++) {
+      if (buttons_.get(i).inRange(x, y)) {
+        return i;
+      }
+    }
+    return -1;
+  }
+  
+  void add(balloonButton button) {
+    buttons_.add(button);
+  }
+  void add(int index, balloonButton button) {
+    buttons_.add(index, button);  
+  }
 }
