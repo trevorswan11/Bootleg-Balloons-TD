@@ -22,7 +22,7 @@ Buttons freeplay;
 Buttons nextRound;
 Buttons startOver;
 
-balloonButton redBalloonButton;
+balloonButtonList balloonButtons;
 
 PImage redBalloon;
 PImage defaultMonkey;
@@ -32,9 +32,10 @@ PImage red, blue, green, yellow, pink, black, white, zebra, lead, rainbow, ceram
 boolean roundStart = false;
 boolean roundOver = false;
 int MODE = ADD;
-int round = 20;
 boolean locked = false;
 int clickedNum = 0;
+int round = 21;
+
 
 void setup() {
   size(1000, 750);
@@ -79,8 +80,8 @@ void setup() {
   normal = new Buttons(width/2-50, height/2 + 100, "NORMAL", 40, 100, 20, 225);
   freeplay = new Buttons(width/2-50, height/2 + 150, "FREEPLAY", 40, 100, 20, 225);
   startOver = new Buttons(width/2-70, height/2 + 110, "START OVER", 40, 140, 20, 225);
+  balloonButtons = new balloonButtonList();
 
-  redBalloonButton = new balloonButton(70, 700, new redBalloon());
 }
 
 void mouseClicked() {
@@ -120,6 +121,9 @@ void mouseClicked() {
         m1.setLocked(true);
       }
     }
+
+    balloonButtons.spawnBalloon();
+
   }
 }
 
@@ -187,14 +191,15 @@ void draw() {
       startOver.display();
       startOver.hover(mouseX, mouseY);
     }
-  } else if (freeplayStart) {
-    background(255);
-    map.display();
-    fill(0);
-    balloons.display();
-    balloons.processAll();
-    monkeys.processAll();
-    monkeys.display();
-    redBalloonButton.display();
-  }
+
+   } else if (freeplayStart) {
+     background(255);
+     map.display();
+     fill(0);
+     balloons.display();
+     balloons.processAll();
+     monkeys.processAll();
+     monkeys.display();
+     balloonButtons.display();
+   }
 }
