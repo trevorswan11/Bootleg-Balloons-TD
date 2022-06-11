@@ -29,6 +29,9 @@ public class Balloon {
     nextCords = b.nextCords;
     distanceX = b.distanceX;
     distanceY = b.distanceY;
+    if (image == black || image == white) {
+      size = balloonSize/2;  
+    }
   }
 
   public Balloon(PImage image_, int health_, float speed_) {
@@ -286,6 +289,7 @@ public class whiteBalloon extends Balloon{
     health = 11;
     speed = 1.5;
     size = balloonSize/2;
+    
   }
   
   whiteBalloon(Balloon b) {

@@ -40,7 +40,7 @@ public class Rounds{
     {{YELLOW, 31, 10}},
     {{PINK, 23, 15}, {ZEBRA, 4, 20}},
     {{RED, 120, 10}, {BLUE, 55, 10}, {GREEN, 45, 10}, {YELLOW, 45, 10}},
-    //{{LEAD, 4, 10}},   
+    {{LEAD, 4, 10}},   
     {{YELLOW, 25, 10}, {PINK, 12, 15}},
     {{LEAD, 9, 10}},
     {{ZEBRA, 8, 20}, {ZEBRA, 2, 15}},
