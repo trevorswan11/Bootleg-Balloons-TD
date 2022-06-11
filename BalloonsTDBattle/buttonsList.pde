@@ -82,21 +82,17 @@ public class balloonButtonList extends buttonsList {
 
 public class monkeyButtonList extends buttonsList {
   ArrayList<monkeyButton> buttons_;
-  int xValue = 70;
-  int yValue = 650;
+  int xValue = 820;
+  int yValue = 100;
   int spacing = 50;
 
   public monkeyButtonList() {
     buttons_ = new ArrayList<monkeyButton>();
+    buttons_.add(new monkeyButton(xValue, yValue, new dartMonkey(0, 0)));
+    buttons_.add(new monkeyButton(xValue+spacing, yValue, new wizardMonkey(0, 0)));
+    buttons_.add(new monkeyButton(xValue, yValue+spacing, new sniperMonkey(0, 0)));
   }
-  
-  void spawnBalloon() {
-    int i = findButtonAt(mouseX, mouseY); 
-    if (i > -1) {
-      buttons_.get(i).spawnBalloon();  
-    }
-  }
-  
+    
   void display() {
     fill(0);
     for (int i = 0; i < buttons_.size(); i++) {
@@ -113,10 +109,16 @@ public class monkeyButtonList extends buttonsList {
     return -1;
   }
   
-  void add(balloonButton button) {
+  void add(monkeyButton button) {
     buttons_.add(button);
   }
-  void add(int index, balloonButton button) {
+  void add(int index, monkeyButton button) {
     buttons_.add(index, button);  
+  }
+  monkeyButton get(int index) {
+    return buttons_.get(index);  
+  }
+  Monkey getMonkey(int index) {
+    return buttons_.get(index).getMonkey();
   }
 }

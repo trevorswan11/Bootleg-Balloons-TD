@@ -112,6 +112,12 @@ public class Buttons {
   void setImage(PImage image_) {
     p = image_;
   }
+  float getX() {
+    return x;  
+  }
+  float getY() {
+    return y;  
+  }
 }
 
 public class balloonButton extends Buttons {
@@ -155,6 +161,10 @@ public class monkeyButton extends Buttons {
       monkeys.add(monkey_);
       player.changeIncome(monkey_.getPrice() * -1);
     }
+  }
+  
+  Monkey getMonkey() {
+    return m;  
   }
   
 }

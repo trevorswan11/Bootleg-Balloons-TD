@@ -17,14 +17,13 @@ boolean freeplayStart = false;
 int balloonSize = 35;
 int monkeySize = 25; 
 
-Buttons button1;
-Buttons button2;
 Buttons normal;
 Buttons freeplay;
 Buttons nextRound;
 Buttons startOver;
 
 balloonButtonList balloonButtons;
+monkeyButtonList monkeyButtons;
 
 PImage dart, wizard, sniper;
 PImage red, blue, green, yellow, pink, black, white, zebra, lead, rainbow, ceramic;
@@ -73,13 +72,11 @@ void setup() {
   ceramic = loadImage("ceramic_balloon.png");
   ceramic.resize(balloonSize, balloonSize);
 
-  //button1 = new Buttons(820, 90, defaultMonkey, 1, #C3E3DA);
-
   normal = new Buttons(width/2-50, height/2 + 100, "NORMAL", 40, 100, 20, 225);
   freeplay = new Buttons(width/2-50, height/2 + 150, "FREEPLAY", 40, 100, 20, 225);
   startOver = new Buttons(width/2-70, height/2 + 110, "START OVER", 40, 140, 20, 225);
   balloonButtons = new balloonButtonList();
-
+  monkeyButtons = new monkeyButtonList();
 }
 
 void mouseClicked() {
@@ -104,8 +101,10 @@ void mouseClicked() {
     }else if(mouseX < 800 && mouseY < 600){
       monkeys.setShowStats(-1);
     }
-    if (player.getIncome() > 550 && balloons.size()==0 && button1.clicked1(mouseX, mouseY) == true) {
-      Monkey m =  new Monkey(820, 90);
+    
+    int buttonIndex = monkeyButtons.findButtonAt(mouseX, mouseY);
+    if (player.getIncome() > 550 && balloons.size()==0 && buttonIndex != -1) {
+      Monkey m =  new Monkey(monkeyButtons.getMonkey(buttonIndex), monkeyButtons.get(buttonIndex).getX(), monkeyButtons.get(buttonIndex).getY());
       monkeys.add(m);
       player.changeIncome(m.getPrice() * -1);
     }
@@ -152,7 +151,7 @@ void draw() {
     background(255);
     textSize(15);
     if (!player.isDead()) {
-      button1.display();
+      monkeyButtons.display();
       fill(0);
       text("ROUND: " + (round+1), 845, 30);
       text("HEALTH: " + player.health, 850, 50);
@@ -189,7 +188,6 @@ void draw() {
       startOver.display();
       startOver.hover(mouseX, mouseY);
     }
-
    } else if (freeplayStart) {
      background(255);
      map.display();

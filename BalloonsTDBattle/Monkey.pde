@@ -28,6 +28,7 @@ public class Monkey {
   }
 
   public Monkey(int speed, int range, int strength, int xcoord, int ycoord) {
+    weapon = new Weapons(xcoord, ycoord);
     image = dart;
     attackSpeed = speed;
     attackStrength = strength;
@@ -37,7 +38,8 @@ public class Monkey {
     price = 550;
   }
   
-  public Monkey(Monkey m_, int xcoord, int ycoord) {
+  public Monkey(Monkey m_, float xcoord, float ycoord) {
+    weapon = new Weapons(xcoord, ycoord);
     image = dart;
     attackSpeed = m_.getAttackSpeed();
     attackStrength =  m_.getAttackStrength();
