@@ -4,7 +4,6 @@ final int STATS = 2;
 int show = 1;
 MonkeyList monkeys = new MonkeyList();
 balloonList balloons = new balloonList();
-boolean canMove = true;
 
 Player player;
 Monkey m;
@@ -100,7 +99,7 @@ void mouseClicked() {
       gameStart = false;
     }
   } else {
-    if ((balloons.size()>0) && button1.clicked1(mouseX, mouseY) == true) {
+    if ((balloons.size()==0) && button1.clicked1(mouseX, mouseY) == true) {
       Monkey m =  new Monkey(820, 90);
       monkeys.add(m);
     }
@@ -121,6 +120,8 @@ void mouseClicked() {
 
 void moving() {
   Monkey m =  monkeys.get(monkeys.get(mouseX, mouseY));
+  Weapons w = m.getWeapons();
+  w.move();
   m.move();
 }
 
@@ -150,7 +151,7 @@ void draw() {
       text("INCOME: " + player.income, 850, 70);
       map.display();
       fill(0);
-      if ( canMove== true && monkeys.get(mouseX, mouseY) > -1 && monkeys.get(monkeys.get(mouseX, mouseY)).getLocked() == false && monkeys.get(monkeys.get(mouseX, mouseY)).getMovement() == true) {
+      if (monkeys.get(mouseX, mouseY) > -1 && monkeys.get(monkeys.get(mouseX, mouseY)).getLocked() == false && monkeys.get(monkeys.get(mouseX, mouseY)).getMovement() == true) {
         moving();
         Monkey bob = monkeys.get(monkeys.get(mouseX, mouseY));
         if (bob.canBePlaced(mouseX, mouseY) == true) {
