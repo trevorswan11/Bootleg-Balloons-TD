@@ -30,14 +30,14 @@ public class buttonsList {
 
 public class balloonButtonList extends buttonsList {
   ArrayList<balloonButton> buttons_;
+  int xValue = 70;
   int yValue = 650;
-  int xValue = 80;
-  int spacing = 40;
+  int spacing = 50;
 
   public balloonButtonList() {
     buttons_ = new ArrayList<balloonButton>();
     buttons_.add(new balloonButton(xValue, yValue, new redBalloon()));
-    buttons_.add(new balloonButton(xValue+40, yValue, new blueBalloon()));
+    buttons_.add(new balloonButton(xValue+spacing, yValue, new blueBalloon()));
     buttons_.add(new balloonButton(xValue+(spacing*2), yValue, new greenBalloon()));
     buttons_.add(new balloonButton(xValue+(spacing*3), yValue, new yellowBalloon()));
     buttons_.add(new balloonButton(xValue+(spacing*4), yValue, new pinkBalloon()));
@@ -57,6 +57,8 @@ public class balloonButtonList extends buttonsList {
   }
   
   void display() {
+    fill(0);
+    text("SPAWN BALLOONS", 160, 630);
     for (int i = 0; i < buttons_.size(); i++) {
       buttons_.get(i).display();    
     }
