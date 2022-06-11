@@ -84,13 +84,15 @@ public class monkeyButtonList extends buttonsList {
   ArrayList<monkeyButton> buttons_;
   int xValue = 820;
   int yValue = 100;
-  int spacing = 50;
+  int spacing = 70;
+  int size = 40;
 
   public monkeyButtonList() {
     buttons_ = new ArrayList<monkeyButton>();
     buttons_.add(new monkeyButton(xValue, yValue, new dartMonkey(0, 0)));
     buttons_.add(new monkeyButton(xValue+spacing, yValue, new wizardMonkey(0, 0)));
     buttons_.add(new monkeyButton(xValue, yValue+spacing, new sniperMonkey(0, 0)));
+   
   }
     
   void display() {
@@ -119,6 +121,6 @@ public class monkeyButtonList extends buttonsList {
     return buttons_.get(index);  
   }
   Monkey getMonkey(int index) {
-    return buttons_.get(index).getMonkey();
+    return monkeyButtons.get(index).getMonkey();
   }
 }

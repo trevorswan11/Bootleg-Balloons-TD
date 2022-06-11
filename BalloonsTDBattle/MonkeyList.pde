@@ -72,7 +72,7 @@ public class MonkeyList {
     for (int i = 0; i < monke.size(); i++) {
       float compareX = monke.get(i).getX();
       float compareY = monke.get(i).getY();
-      if (xcoord >= compareX-50 && xcoord <= compareX+50 && ycoord >= compareY-50 && ycoord <= compareY+50) {
+      if (xcoord >= compareX-monkeySize && xcoord <= compareX+monkeySize && ycoord >= compareY-monkeySize && ycoord <= compareY+monkeySize) {
         result = i;
       }
     }

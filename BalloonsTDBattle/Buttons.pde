@@ -118,15 +118,23 @@ public class Buttons {
   float getY() {
     return y;  
   }
+  void resizeImage(int l, int w) {
+    p.resize(l,w);
+  }
 }
 
 public class balloonButton extends Buttons {
   Balloon b;
-  PImage image;
 
   public balloonButton(int x_, int y_, Balloon b_) {
     super(x_, y_, b_.getImage(), balloonSize, balloonSize, 255);
     b = b_;
+  }
+
+  public balloonButton(int x_, int y_, Balloon b_, int l_, int w_) {
+    super(x_, y_, b_.getImage(), balloonSize, balloonSize, 255);
+    b = b_;
+    resizeImage(l_, w_);
   }
 
   void spawnBalloon() {
@@ -148,21 +156,18 @@ public class balloonButton extends Buttons {
 
 public class monkeyButton extends Buttons {
   Monkey m; 
-  PImage image; 
   
-  public monkeyButton(int x_, int y_, Monkey m_) {
+   public monkeyButton(int x_, int y_, Monkey m_) {
     super(x_, y_, m_.getImage(), monkeySize, monkeySize, 255);
     m = m_;
-  }
+   }
   
-  void addMonkey(int x_, int y_) {
-    if (m.getPrice() < player.getIncome()) {
-      Monkey monkey_ =  new Monkey(m, x_, y_);
-      monkeys.add(monkey_);
-      player.changeIncome(monkey_.getPrice() * -1);
-    }
+  public monkeyButton(int x_, int y_, Monkey m_, int l_, int w_) {
+    super(x_, y_, m_.getImage(), monkeySize, monkeySize, 255);
+    m = m_;
+    resizeImage(l_, w_);
   }
-  
+    
   Monkey getMonkey() {
     return m;  
   }

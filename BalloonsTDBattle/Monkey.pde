@@ -40,7 +40,7 @@ public class Monkey {
   
   public Monkey(Monkey m_, float xcoord, float ycoord) {
     weapon = new Weapons(xcoord, ycoord);
-    image = dart;
+    image = m_.getImage();
     attackSpeed = m_.getAttackSpeed();
     attackStrength =  m_.getAttackStrength();
     attackRange =  m_.getAttackRange();
@@ -103,7 +103,7 @@ public class Monkey {
 
   void showStats() {
     image(image, 70, 650);
-    fill(#C1C8C9);
+    fill(#C1C8C9, 150);
     circle(x+12, y+12, attackRange*2);
   }
 
@@ -205,7 +205,7 @@ public class dartMonkey extends Monkey{
 
 public class wizardMonkey extends Monkey{
   public wizardMonkey(int xcoord,int ycoord) {
-    super(100, 50, 1, xcoord, ycoord); 
+    super(50, 50, 1, xcoord, ycoord); 
     image = wizard;
     price = 550;
   }

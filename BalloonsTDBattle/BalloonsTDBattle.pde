@@ -15,7 +15,7 @@ boolean gameStart = false;
 boolean freeplayStart = false;
 
 int balloonSize = 35;
-int monkeySize = 25; 
+int monkeySize = 50; 
 
 Buttons normal;
 Buttons freeplay;
@@ -103,7 +103,7 @@ void mouseClicked() {
     }
     
     int buttonIndex = monkeyButtons.findButtonAt(mouseX, mouseY);
-    if (player.getIncome() > 550 && balloons.size()==0 && buttonIndex != -1) {
+    if (buttonIndex != -1 && player.getIncome() > monkeyButtons.getMonkey(buttonIndex).getPrice() && balloons.size()==0 ) {
       Monkey m =  new Monkey(monkeyButtons.getMonkey(buttonIndex), monkeyButtons.get(buttonIndex).getX(), monkeyButtons.get(buttonIndex).getY());
       monkeys.add(m);
       player.changeIncome(m.getPrice() * -1);
@@ -111,10 +111,10 @@ void mouseClicked() {
     if (monkeys.get(mouseX, mouseY) > -1) {
       Monkey m1 = monkeys.get(monkeys.get(mouseX, mouseY));
       m1.addClickedNum();
-      if (m1.canBePlaced(mouseX, mouseY) == true ||m1.getClickedNum() == 1) {
+      if (m1.canBePlaced(mouseX, mouseY) || m1.getClickedNum() == 1) {
         m1.setMovement();
       }
-      if (m1.canBePlaced(mouseX, mouseY) == true && m1.getClickedNum() > 2) {
+      if (m1.canBePlaced(mouseX, mouseY) && m1.getClickedNum() > 2) {
         m1.setLocked(true);
       }
     }
@@ -165,10 +165,10 @@ void draw() {
         moving();
         Monkey bob = monkeys.get(monkeys.get(mouseX, mouseY));
         if (bob.canBePlaced(mouseX, mouseY) == true) {
-          fill(#3DA745);
+          fill(#3DA745, 150);
           circle(mouseX+12, mouseY+12, bob.getAttackRange()*2);
         } else {
-          fill(#B22225);
+          fill(#B22225, 150);
           circle(mouseX+12, mouseY+12, bob.getAttackRange()*2);
         }
       }
