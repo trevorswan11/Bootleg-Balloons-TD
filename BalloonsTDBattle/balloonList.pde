@@ -1,10 +1,8 @@
 public class balloonList {
   ArrayList<Balloon> balloons;
-  int timer;
 
   public balloonList() {
     balloons = new ArrayList<Balloon>();
-    timer = round*60*5;
   }
 
   void display() {
@@ -32,15 +30,6 @@ public class balloonList {
       roundOver = false;
       round++;
       player.roundIncome();
-    }
-  }
-
-  void addBalloons() {
-    if (timer > 0) {
-      if (timer%25 == 0) {
-        balloons.add(new rainbowBalloon());
-      }
-      timer--;
     }
   }
 
