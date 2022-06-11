@@ -12,14 +12,14 @@ public class Monkey {
   int price;
   boolean movement = false;
   int clickedNum;
-
+  int targetBalloon = -1; 
 
   public Monkey(float xcoord, float ycoord) {
     //Default values for monkey stats except for x and y since those have to be determiend
     //by mouseClicked()
     weapon = new Weapons(xcoord, ycoord);
     image = dart;
-    attackSpeed = 10;
+    attackSpeed = 1;
     attackRange = 50;
     attackStrength = 1;
     x = xcoord;
@@ -27,7 +27,7 @@ public class Monkey {
     price = 550;
   }
 
-  public Monkey(int speed, int range, int strength, int xcoord, int ycoord) {
+  public Monkey(int speed, int range, int strength, float xcoord, float ycoord) {
     weapon = new Weapons(xcoord, ycoord);
     image = dart;
     attackSpeed = speed;
@@ -180,6 +180,12 @@ public class Monkey {
   }
   void setThrown(boolean b) {
     thrown = b;
+  } 
+  void setTargetBalloon(int b) {
+    targetBalloon = b;   
+  }
+  int getTargetBalloon() {
+    return targetBalloon;  
   }
 
   void display() {
@@ -196,16 +202,16 @@ public class Monkey {
 }
 
 public class dartMonkey extends Monkey{
-  public dartMonkey(int xcoord,int ycoord) {
+  public dartMonkey(float xcoord,float ycoord) {
     //speed, range, power
-    super(50, 100, 1, xcoord, ycoord); 
+    super(5, 100, 1, xcoord, ycoord); 
     image = dart;
     price = 200; 
   }
 }
 
 public class wizardMonkey extends Monkey{
-  public wizardMonkey(int xcoord,int ycoord) {
+  public wizardMonkey(float xcoord,float ycoord) {
     super(70, 50, 1, xcoord, ycoord); 
     image = wizard;
     price = 550;
@@ -213,9 +219,22 @@ public class wizardMonkey extends Monkey{
 }
 
 public class sniperMonkey extends Monkey{
-  public sniperMonkey(int xcoord,int ycoord) {
+  public sniperMonkey(float xcoord,float ycoord) {
     super(100, 50, 2, xcoord, ycoord); 
     image = sniper;
     price = 350; 
   }
+  
+  float[] findBalloon() {
+    Balloon highest = new Balloon();
+    for (int i = 0; i< balloons.size(); i++) {
+      Balloon current = balloons.get(i);
+      if (current.getHealth() > highest.getHealth()) {
+        highest = current; 
+      }
+    }
+    return new float[]{highest.getCurrentX(), highest.getCurrentY()};
+  }
+
+
 }

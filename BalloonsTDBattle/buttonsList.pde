@@ -25,7 +25,6 @@ public class buttonsList {
   void add(int index, Buttons button) {
     buttons.add(index, button);  
   }
-  
 }
 
 public class balloonButtonList extends buttonsList {

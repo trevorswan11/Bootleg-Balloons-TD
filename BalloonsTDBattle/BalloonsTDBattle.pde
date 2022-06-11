@@ -99,18 +99,7 @@ void mouseClicked() {
     }
     
     int buttonIndex = monkeyButtons.findButtonAt(mouseX, mouseY);
-    if (gameStart) {
-      if (buttonIndex != -1 && player.getIncome() > monkeyButtons.getMonkey(buttonIndex).getPrice() && balloons.size()==0 ) {
-        Monkey m =  new Monkey(monkeyButtons.getMonkey(buttonIndex), monkeyButtons.get(buttonIndex).getX(), monkeyButtons.get(buttonIndex).getY());
-        monkeys.add(m);
-        player.changeIncome(m.getPrice() * -1);
-      }
-    } else if (freeplayStart) {
-      if (buttonIndex != -1 && balloons.size()==0 ) {
-        Monkey m =  new Monkey(monkeyButtons.getMonkey(buttonIndex), monkeyButtons.get(buttonIndex).getX(), monkeyButtons.get(buttonIndex).getY());
-        monkeys.add(m);
-      }
-    }
+    monkeys.addMonkey(buttonIndex);
     if (monkeys.get(mouseX, mouseY) > -1) {
       Monkey m1 = monkeys.get(monkeys.get(mouseX, mouseY));
       m1.addClickedNum();

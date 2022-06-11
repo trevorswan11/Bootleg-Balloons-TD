@@ -103,6 +103,9 @@ public class Buttons {
   int getMode() {
     return MODE;
   }
+  PImage getImage() {
+    return p;  
+  }
   void setCaption(String c) {
     caption = c;
   }
