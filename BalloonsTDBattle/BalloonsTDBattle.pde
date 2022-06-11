@@ -44,7 +44,7 @@ void setup() {
   redBalloon = loadImage("red_balloon.png");
   redBalloon.resize(balloonSize, balloonSize);
   defaultMonkey = loadImage("monkey.png");
-  defaultMonkey.resize(50, 50);
+  defaultMonkey.resize(25, 25);
   buttonMonkey = loadImage("monkey.png");
   buttonMonkey.resize(25, 25);
   button1 = new Buttons(820, 90, buttonMonkey, 2, #C3E3DA);
@@ -97,13 +97,13 @@ void mouseClicked() {
       gameStart = false;
     }
   } else {
-    Monkey m;
     if (button1.clicked1(mouseX, mouseY) == true) {
-      Monkey m = new Monkey(820, 90);
+      Monkey m =  new Monkey(820, 90);
       monkeys.add(m);
-      if (monkeys.get(mouseX, mouseY) > -1) {
-        m.setMovement();
-      }
+    }
+    if (monkeys.get(mouseX, mouseY) > -1) {
+      Monkey m1 = monkeys.get(monkeys.get(mouseX, mouseY));
+      m1.setMovement();
     }
   }
 }
@@ -140,8 +140,23 @@ void draw() {
       text("INCOME: " + player.income, 850, 70);
       map.display();
       fill(0);
-      if (monkeys.get(mouseX, mouseY) != -1) {
+      if (monkeys.get(mouseX, mouseY) > -1 && monkeys.get(monkeys.get(mouseX, mouseY)).getMovement() == true) {
         moving();
+        //map.displayPath();
+        Monkey bob = monkeys.get(monkeys.get(mouseX, mouseY));
+        //println(bob.canBePlaced(mouseX, mouseY));
+        if (bob.canBePlaced(mouseX, mouseY) == true) {
+          fill(#3DA745);
+          //tint(255, 127);
+          circle(mouseX+12, mouseY+12, 75);
+        } else {
+          fill(#B22225);
+          //tint(255, 0);
+          circle(mouseX+12, mouseY+12, 75);
+          //tint(255, 127);
+
+          //bob.setMovement(false);
+        }
       }
       if (roundStart) {
         if (!roundOver) {

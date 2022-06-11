@@ -68,16 +68,22 @@ public class Monkey {
       weapon.changeY(yInterval);
     }
   }
-  boolean canBePlaced() {
+  boolean canBePlaced(float xcoord, float ycoord) {
     int dist = 25;
-    color c = map.getPath().get((int)x, (int)y);
+    color c = map.getPath().get((int)xcoord, (int)ycoord);
     boolean result = true;
+    println(red(c));
     if (red(c) != 255) {
       result = false;
     }
     for (int i = 0; i < monkeys.size(); i ++) {
+      int now = monkeys.get(xcoord, ycoord);
+      println(now);
+      if (now == i) {
+        i++;
+      }
       Monkey current = monkeys.get(i);
-      if (dist(x, y, current.getX(), current.getY()) < dist) {
+      if (dist(xcoord, ycoord, current.getX(), current.getY()) < dist) {
         result = false;
       }
     }
@@ -131,6 +137,9 @@ public class Monkey {
     } else {
       movement = false;
     }
+  }
+  void setMovement(boolean b) {
+    movement = b;
   }
 
   int increaseTimer() {
