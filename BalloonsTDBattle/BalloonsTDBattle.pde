@@ -29,7 +29,7 @@ Buttons upgradeSpeedButton;
 balloonButtonList balloonButtons;
 monkeyButtonList monkeyButtons;
 
-PImage dart, ninja, wizard, sniper, ninjaImg, wizardImg, sniperImg;
+PImage dart, ninja, wizard, sniper, water, ninjaImg, wizardImg, sniperImg, waterImg;
 PImage red, blue, green, yellow, pink, black, white, zebra, lead, rainbow, ceramic;
 boolean roundStart = false;
 boolean roundOver = false;
@@ -62,12 +62,16 @@ void setup() {
   wizard.resize(monkeySize, monkeySize);
   sniper = loadImage("sniper.png");
   sniper.resize(monkeySize, monkeySize);
+  water = loadImage("water.png");
+  water.resize(monkeySize, monkeySize);
   ninjaImg = loadImage("ninja.png");
   ninjaImg.resize(imageSize, imageSize);
   wizardImg = loadImage("wizard.png");
   wizardImg.resize(imageSize, imageSize);
   sniperImg = loadImage("sniper.png");
   sniperImg.resize(imageSize, imageSize);
+  waterImg = loadImage("water.png");
+  waterImg.resize(imageSize, imageSize);
 
   red = loadImage("red_balloon.png");
   red.resize(balloonSize, balloonSize);

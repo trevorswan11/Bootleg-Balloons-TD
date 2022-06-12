@@ -316,7 +316,7 @@ public class ninjaMonkey extends Monkey {
     Balloon b3 = balloons.get(balloons.getIndex(b)+2);
     if (balloons.getIndex(b)+1 < balloons.size() && balloons.getIndex(b)+2 < balloons.size()  && upgraded == true && balloons.size() > 3) {
       throwWeaponUpgraded(b);
-    }else if ( balloons.getIndex(b)< balloons.size() && balloons.getIndex(b)+1 < balloons.size() && balloons.getIndex(b)+2 < balloons.size() && balloons.size() > 3){
+    } else if ( balloons.getIndex(b)< balloons.size() && balloons.getIndex(b)+1 < balloons.size() && balloons.getIndex(b)+2 < balloons.size() && balloons.size() > 3) {
       b.setTarget(true);
       float[] coord = b.getFuture();
       float range = dist(weapon.getX(), weapon.getY(), coord[0], coord[1]);
@@ -328,15 +328,15 @@ public class ninjaMonkey extends Monkey {
         }
         attack(b);
         thrown = true;
-        //weapon.setX(x);
-        //weapon.setY(y);
+        weapon.setX(x);
+        weapon.setY(y);
       } else {
         float xInterval = (coord[0]-weapon.getX())/3;//change 10 to something based off of attackSpeed
         float yInterval = (coord[1]-weapon.getY())/3;
         weapon.changeX(xInterval);
         weapon.changeY(yInterval);
       }
-    }else{
+    } else {
       super.throwWeapon(b);
     }
   }
@@ -362,6 +362,46 @@ public class wizardMonkey extends Monkey {
     upgradeThrowButton.display();
     upgradeSpeedButton.display();
     upgradeRangeButton.display();
+  }
+}
+
+public class waterMonkey extends Monkey {
+  public waterMonkey(float xcoord, float ycoord) {
+    super(50, 100, 2, xcoord, ycoord);
+    weapon2 =  new Weapons(xcoord, ycoord, #56E6F2);
+    weapon3 = new Weapons(xcoord, ycoord, #56E6F2);
+    weapon = new Weapons(xcoord, ycoord, #56E6F2);
+    image = water;
+    price = 200;
+  }
+  void showStats() {
+    text("Water Monkey", 220, 665);
+    fill(#CDF2F5);
+    rect(70, 650, 75, 75);
+    image(waterImg, 70, 650);
+    fill(#C1C8C9, 150);
+    circle(x, y, attackRange*2);
+    sellButton.display();
+    upgradeStrengthButton.display();
+    upgradeThrowButton.display();
+    upgradeSpeedButton.display();
+    upgradeRangeButton.display();
+  }
+  boolean canBePlaced(float xcoord, float ycoord) {
+    int dist = 25;
+    color c = map.getPath().get((int)xcoord, (int)ycoord);
+    boolean result = true;
+    if (red(c) == 255 || red(c) == 0 || xcoord > 800 || ycoord >600) {
+      result = false;
+    }
+    for (int i = 0; i < monkeys.size(); i ++) {
+      int now = monkeys.get(xcoord, ycoord);
+      Monkey current = monkeys.get(i);
+      if (now != i && dist(xcoord, ycoord, current.getX(), current.getY()) < dist ) {
+        result = false;
+      }
+    }
+    return result;
   }
 }
 

@@ -1,7 +1,7 @@
 public class MonkeyList {
   ArrayList<Monkey> monke;
   int showStats = -1;
-  
+
   public MonkeyList() {
     monke = new ArrayList<Monkey>();
   }
@@ -40,6 +40,8 @@ public class MonkeyList {
         m = new ninjaMonkey(monkeyButtons.get(buttonIndex).getX(), monkeyButtons.get(buttonIndex).getY());
       } else if (i == wizard) {
         m = new wizardMonkey(monkeyButtons.get(buttonIndex).getX(), monkeyButtons.get(buttonIndex).getY());
+      } else if (i == water) {
+        m = new waterMonkey(monkeyButtons.get(buttonIndex).getX(), monkeyButtons.get(buttonIndex).getY());
       } else {
         m = new sniperMonkey(monkeyButtons.get(buttonIndex).getX(), monkeyButtons.get(buttonIndex).getY());
       }
@@ -108,7 +110,7 @@ public class MonkeyList {
     }
     return result;
   }
- 
+
 
   void setShowStats(int b) {
     showStats = b;
