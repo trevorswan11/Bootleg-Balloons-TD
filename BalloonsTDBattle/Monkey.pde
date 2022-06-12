@@ -340,14 +340,14 @@ public class sniperMonkey extends Monkey {
     name = "Sniper Monkey";
   }
 
-  float[] findBalloon() {
-    Balloon highest = new Balloon();
+  float[] findBalloon() { //finds strongest balloon
+    Balloon strongest = new Balloon();
     for (int i = 0; i< balloons.size(); i++) {
       Balloon current = balloons.get(i);
-      if (current.getHealth() > highest.getHealth()) {
-        highest = current;
+      if (current.getHealth() > strongest.getHealth()) { //if finds balloon with higher health, will replace strongest with it
+        strongest = current;
       }
     }
-    return new float[]{highest.getCurrentX(), highest.getCurrentY()};
+    return new float[]{strongest.getCurrentX(), strongest.getCurrentY()};
   }
 }

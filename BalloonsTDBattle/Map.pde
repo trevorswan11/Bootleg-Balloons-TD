@@ -4,7 +4,7 @@ public class Map {
  PImage image;
  PImage path; //replica of map with only 3 solid colors so program can read it to determine where to place monekys rather than the map displayed with ranging colors 
  
- public Map() {
+ public Map() { //only load in map once
    image = loadImage("snow_map.jpg");  
    image.resize(800,600);
    path = loadImage("snow_map_path.jpg");
