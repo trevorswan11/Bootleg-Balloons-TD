@@ -24,6 +24,7 @@ Our project is a bootleg version of the popular mini-game, Bloons TD Battle. The
 * 6/6/22: Created start and end screen with button options. Implemented income (buy, sell, round income).
 * 6/7/22: Started freeplay mode and buttons to spawn the balloons.
 * 6/10/22: Created buttonsList with balloonButtonList subclass to let user click any balloon button and spawn it
+* 6/11/22: Created monkey subclasses and monkeyButtonList subclass to spawn any of the monkey subclasses created startRound/quit buttons.
 
 **Nicole Liu**
 * 5/23/22: I set up the Monkey and MonkeyList class. Monkey Class can display but MonkeyList is having some trouble.
