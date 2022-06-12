@@ -26,8 +26,6 @@ public class Player {
     } else {
       return income += attack;
     } 
- 
-      
   }
   
  int decreaseHealth() {

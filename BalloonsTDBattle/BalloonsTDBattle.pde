@@ -6,10 +6,16 @@ Monkey m;
 Map map;
 Balloon balloon;
 Rounds rounds;
+
 int showStats = -1;
 boolean gameStart = false;
 boolean freeplayStart = false;
 boolean paused = false;
+boolean roundStart = false;
+boolean roundOver = false;
+boolean locked = false;
+int clickedNum = 0;
+int round = 0;
 
 int balloonSize = 35;
 int monkeySize = 50; 
@@ -26,12 +32,6 @@ monkeyButtonList monkeyButtons;
 
 PImage dart, wizard, sniper;
 PImage red, blue, green, yellow, pink, black, white, zebra, lead, rainbow, ceramic;
-boolean roundStart = false;
-boolean roundOver = false;
-boolean locked = false;
-int clickedNum = 0;
-int round = 0;
-
 
 void setup() {
   size(1000, 750);
@@ -70,6 +70,7 @@ void setup() {
   ceramic = loadImage("ceramic_balloon.png");
   ceramic.resize(balloonSize, balloonSize);
 
+  //buttons
   normal = new Buttons(width/2-50, height/2 + 100, "NORMAL", 40, 100, 20, 225);
   freeplay = new Buttons(width/2-50, height/2 + 150, "FREEPLAY", 40, 100, 20, 225);
   startOver = new Buttons(width/2-70, height/2 + 110, "START OVER", 40, 140, 20, 225);
@@ -78,6 +79,23 @@ void setup() {
   startRound = new Buttons(865, 500, "START", 70, 70, 20, 225);
   balloonButtons = new balloonButtonList();
   monkeyButtons = new monkeyButtonList();
+}
+
+void moving() {
+  Monkey m =  monkeys.get(monkeys.get(mouseX, mouseY));
+  Weapons w = m.getWeapons();
+  w.move();
+  m.move();
+}
+
+void restart() {
+  player = new Player();
+  rounds = new Rounds();
+  monkeys = new MonkeyList();
+  balloons = new balloonList();
+  gameStart = false;
+  freeplayStart = false;
+  round = 0;
 }
 
 void mouseClicked() {
@@ -125,24 +143,6 @@ void mouseClicked() {
       roundStart = true;  
     }
   }
-}
-
-
-void moving() {
-  Monkey m =  monkeys.get(monkeys.get(mouseX, mouseY));
-  Weapons w = m.getWeapons();
-  w.move();
-  m.move();
-}
-
-void restart() {
-  player = new Player();
-  rounds = new Rounds();
-  monkeys = new MonkeyList();
-  balloons = new balloonList();
-  gameStart = false;
-  freeplayStart = false;
-  round = 0;
 }
 
 void draw() {
@@ -212,8 +212,10 @@ void draw() {
      pause.display();
      quit.display();
      balloons.display();
-     balloons.processAll();
-     monkeys.processAll();
+     if (!paused) {
+       balloons.processAll();
+       monkeys.processAll();
+     }
      monkeyButtons.display();
      if(monkeys.showStats != -1){
         monkeys.displayStats();

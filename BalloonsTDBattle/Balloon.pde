@@ -33,7 +33,7 @@ public class Balloon {
       size = balloonSize/2;  
     }
   }
-
+  
   public Balloon(PImage image_, int health_, float speed_) {
     image = image_;
     health = health_;
@@ -164,6 +164,18 @@ public class Balloon {
   void setY(float y_) {
     currentY = y_;  
   }
+  void setTarget(boolean b){
+    target = b;
+  }
+  void setNextCords(int[] cords) {
+    nextCords = cords;
+  }
+  void setDistanceX(float dist) {
+    distanceX = dist;  
+  }
+  void setDistanceY(float dist) {
+    distanceY = dist;  
+  }
   float getCurrentX() {
     return currentX;
   }
@@ -181,18 +193,6 @@ public class Balloon {
   }
   boolean getTarget(){
     return target;
-  }
-  void setTarget(boolean b){
-    target = b;
-  }
-  void setNextCords(int[] cords) {
-    nextCords = cords;
-  }
-  void setDistanceX(float dist) {
-    distanceX = dist;  
-  }
-  void setDistanceY(float dist) {
-    distanceY = dist;  
   }
 }
 

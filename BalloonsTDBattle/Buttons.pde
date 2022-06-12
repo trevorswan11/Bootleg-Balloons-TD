@@ -64,8 +64,8 @@ public class Buttons {
     }
   }
 
-  PImage getImage() {
-    return p;  
+  void resizeImage(int l, int w) {
+    p.resize(l,w);
   }
   void setCaption(String c) {
     caption = c;
@@ -76,14 +76,14 @@ public class Buttons {
   void setImage(PImage image_) {
     p = image_;
   }
+  PImage getImage() {
+    return p;  
+  }
   float getX() {
     return x;  
   }
   float getY() {
     return y;  
-  }
-  void resizeImage(int l, int w) {
-    p.resize(l,w);
   }
 }
 
