@@ -22,8 +22,8 @@ public class MonkeyList {
         if (current.thrown) {
           current.setThrown(false);
           current.setTargetBalloon(-1);
-          current.weapon.setX(current.getX());
-          current.weapon.setY(current.getY());
+          //current.weapon.setX(current.getX());
+          //current.weapon.setY(current.getY());
           current.resetTimer();
           current.setTargetBalloon(-1);
         }
@@ -35,8 +35,8 @@ public class MonkeyList {
     if (buttonIndex != -1 && player.getIncome() > monkeyButtons.getMonkey(buttonIndex).getPrice()) {
       PImage i = monkeyButtons.getMonkey(buttonIndex).getImage();
       Monkey m;
-      if (i == dart) {
-        m = new dartMonkey(monkeyButtons.get(buttonIndex).getX(), monkeyButtons.get(buttonIndex).getY());
+      if (i == ninja) {
+        m = new ninjaMonkey(monkeyButtons.get(buttonIndex).getX(), monkeyButtons.get(buttonIndex).getY());
       } else if (i == wizard) {
         m = new wizardMonkey(monkeyButtons.get(buttonIndex).getX(), monkeyButtons.get(buttonIndex).getY());
       } else {
@@ -115,8 +115,6 @@ public class MonkeyList {
   void displayStats() {
     monkeys.get(showStats).showStats();
   }
-
-
 
   void display() {
     for (int i = 0; i < monke.size(); i++) {

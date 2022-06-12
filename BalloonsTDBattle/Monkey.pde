@@ -2,7 +2,7 @@ public class Monkey {
   PImage image; //For creating the monkey image
   int attackSpeed;
   int attackRange;
-  int attackStrength;
+  float attackStrength;
   Weapons weapon;
   boolean thrown;
   boolean locked = false;
@@ -134,8 +134,11 @@ public class Monkey {
     return attackRange;
   }
 
-  public int getAttackStrength() {
+  public float getAttackStrength() {
     return attackStrength;
+  }
+  void setAttackStrength(float a) {
+    attackStrength = a;
   }
   public PImage getImage() {
     return image;
@@ -168,6 +171,7 @@ public class Monkey {
   void setMovement(boolean b) {
     movement = b;
   }
+
 
   int increaseTimer() {
     return timer++;
@@ -202,22 +206,48 @@ public class Monkey {
   }
 }
 
-public class dartMonkey extends Monkey {
-  public dartMonkey(float xcoord, float ycoord) {
+public class ninjaMonkey extends Monkey {
+  public ninjaMonkey(float xcoord, float ycoord) {
     //speed, range, power
     super(50, 100, 1, xcoord, ycoord);
-    image = dart;
+    image = ninja;
     price = 200;
   }
 
   void showStats() {
-    text("Dart Monkey", 220, 665);
+    text("Ninja Monkey", 220, 665);
     fill(#CDF2F5);
     rect(70, 650, 75, 75);
-    image(dartImg, 70, 650);
+    image(ninjaImg, 70, 650);
     fill(#C1C8C9, 150);
     circle(x, y, attackRange*2);
     sellButton.display();
+    upgradeStrengthButton.display();
+  }
+  void throwWeapon(Balloon b) {
+    float[] coord = {0, 0};
+    float range = 0;
+    for (int i = 0; i < 3; i++) {
+      int index = balloons.getIndex(b) + i;
+      b = balloons.get(index);
+      if (i == 0) {
+        b.setTarget(true);
+        coord = b.getFuture();
+        range = dist(weapon.getX(), weapon.getY(), coord[0], coord[1]);
+      }
+      if (range < 10 && !thrown) {
+        player.attackIncome(this, b);
+        attack(b);
+        thrown = true;
+      } else {
+        float xInterval = (coord[0]-weapon.getX())/3;//change 10 to something based off of attackSpeed
+        float yInterval = (coord[1]-weapon.getY())/3;
+        weapon.changeX(xInterval);
+        weapon.changeY(yInterval);
+      }
+    }
+    weapon.setX(x);
+    weapon.setY(y);
   }
 }
 
@@ -236,6 +266,7 @@ public class wizardMonkey extends Monkey {
     fill(#C1C8C9, 150);
     circle(x, y, attackRange*2);
     sellButton.display();
+    upgradeStrengthButton.display();
   }
 }
 
@@ -254,6 +285,7 @@ public class sniperMonkey extends Monkey {
     fill(#C1C8C9, 150);
     circle(x, y, attackRange*2);
     sellButton.display();
+    upgradeStrengthButton.display();
   }
 
   float[] findBalloon() {

@@ -21,11 +21,12 @@ Buttons nextRound;
 Buttons startOver;
 Buttons sellButton;
 Buttons cancelButton;
+Buttons upgradeStrengthButton;
 
 balloonButtonList balloonButtons;
 monkeyButtonList monkeyButtons;
 
-PImage dart, wizard, sniper, dartImg, wizardImg, sniperImg;
+PImage dart, ninja, wizard, sniper, ninjaImg, wizardImg, sniperImg;
 PImage red, blue, green, yellow, pink, black, white, zebra, lead, rainbow, ceramic;
 boolean roundStart = false;
 boolean roundOver = false;
@@ -44,16 +45,19 @@ void setup() {
 
   sellButton= new Buttons (350, 650, "SELL", 30, 50, 10, 255);
   cancelButton = new Buttons (850, 650, "CANCEL", 70, 70, 20, 55);
+  upgradeStrengthButton = new Buttons (500, 650, "STRENGTH\nUPGRADE", 50, 70, 10, 255);
 
 
   dart = loadImage("dart.png");
   dart.resize(monkeySize, monkeySize);
+  ninja = loadImage("ninja.png");
+  ninja.resize(monkeySize, monkeySize);
   wizard = loadImage("wizard.png");
   wizard.resize(monkeySize, monkeySize);
   sniper = loadImage("sniper.png");
   sniper.resize(monkeySize, monkeySize);
-  dartImg = loadImage("dart.png");
-  dartImg.resize(imageSize, imageSize);
+  ninjaImg = loadImage("ninja.png");
+  ninjaImg.resize(imageSize, imageSize);
   wizardImg = loadImage("wizard.png");
   wizardImg.resize(imageSize, imageSize);
   sniperImg = loadImage("sniper.png");
@@ -115,9 +119,14 @@ void mouseClicked() {
       monkeys.setShowStats(-1);
     }
   }
-
+  println(upgradeStrengthButton.clicked1(mouseX, mouseY));
   int buttonIndex = monkeyButtons.findButtonAt(mouseX, mouseY);
   monkeys.addMonkey(buttonIndex);
+  if(upgradeStrengthButton.clicked1(mouseX, mouseY) == true){
+      float value = monkeys.get(monkeys.showStats).getAttackStrength()*1.1;
+      monkeys.get(monkeys.showStats).setAttackStrength(value);
+      player.changeIncome(100*-1);
+    }
   if (monkeys.showStats < monkeys.size() && monkeys.showStats > -1 && sellButton.clicked1(mouseX, mouseY) == true) {
     monkeys.sell(monkeys.showStats);
     monkeys.setShowStats(-1);
@@ -135,9 +144,9 @@ void mouseClicked() {
       monkeys.remove(m1);
       player.changeIncome(m1.getPrice());
     }
-
-    balloonButtons.spawnBalloon();
+    
   }
+    balloonButtons.spawnBalloon();
 }
 
 

@@ -143,7 +143,7 @@ public class Balloon {
     health--;
     return health;
   }
-  int decreaseHealth(int change) {
+  int decreaseHealth(float change) {
     health -= change;
     return health;
   }

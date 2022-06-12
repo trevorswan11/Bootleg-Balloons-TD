@@ -43,7 +43,7 @@ public class balloonList {
     }
     return -1;
   }
-  
+
   void setNewBalloon(int index) {
     Balloon balloon = balloons.get(index);
     int health = balloon.getHealth();
@@ -86,25 +86,34 @@ public class balloonList {
       }
     }
   }
-  
-  Balloon get(int index){
+
+  Balloon get(int index) {
     return balloons.get(index);
+  }
+  int getIndex(Balloon b) {
+    int result = -1;
+    for (int i = 0; i < balloons.size(); i ++) {
+      if (b == balloons.get(i)) {
+        result = i;
+      }
+    }
+    return result;
   }
   void add(Balloon balloon) {
     balloons.add(balloon);
   }
   void add(int index, Balloon balloon) {
-    balloons.add(index, balloon);  
+    balloons.add(index, balloon);
   }
   void set(int index, Balloon balloon) {
-    balloons.set(index, balloon);  
+    balloons.set(index, balloon);
   }
   void remove(int targetIndex) {
     if (targetIndex >= 0 && balloons.get(targetIndex) != null) {
       balloons.remove(targetIndex);
     }
   }
-  
+
   int size() {
     return balloons.size();
   }

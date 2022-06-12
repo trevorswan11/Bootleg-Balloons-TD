@@ -95,7 +95,7 @@ public class monkeyButtonList extends buttonsList {
 
   public monkeyButtonList() {
     buttons_ = new ArrayList<monkeyButton>();
-    buttons_.add(new monkeyButton(xValue, yValue, new dartMonkey(0, 0)));
+    buttons_.add(new monkeyButton(xValue, yValue, new ninjaMonkey(0, 0)));
     buttons_.add(new monkeyButton(xValue+spacing, yValue, new wizardMonkey(0, 0)));
     buttons_.add(new monkeyButton(xValue, yValue+spacing, new sniperMonkey(0, 0)));
    

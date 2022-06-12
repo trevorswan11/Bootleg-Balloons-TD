@@ -19,7 +19,7 @@ public class Player {
   }
   
   int attackIncome(Monkey monkey, Balloon balloon) {
-    int attack = monkey.getAttackStrength();
+    float attack = monkey.getAttackStrength();
     int health = balloon.getHealth();
     if (health < attack) {
       return income += health;  
