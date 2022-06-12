@@ -74,9 +74,11 @@ public class Monkey {
     return coord;
   }
 
+
   void attack(Balloon b) {
     b.decreaseHealth(attackStrength);
   }
+
   void throwWeaponUpgraded(Balloon b) {
     Balloon b2 = balloons.get(balloons.getIndex(b)+1);
     Balloon b3 = balloons.get(balloons.getIndex(b)+2);
@@ -104,7 +106,6 @@ public class Monkey {
     } else {
       float xInterval = (coord[0]-weapon.getX())/3;//change 10 to something based off of attackSpeed
       float yInterval = (coord[1]-weapon.getY())/3;
-      println(coord2[0]);
       float xInterval2 = (coord2[0]-weapon2.getX())/3;//change 10 to something based off of attackSpeed
       float yInterval2 = (coord2[1]-weapon2.getY())/3;
       float xInterval3 = (coord3[0]-weapon3.getX())/3;//change 10 to something based off of attackSpeed
@@ -117,9 +118,8 @@ public class Monkey {
       weapon3.changeY(yInterval3);
     }
   }
-
   void throwWeapon(Balloon b) {
-    if (upgraded == true && balloons.size() > 3) {
+    if (balloons.getIndex(b)+1 < balloons.size() && balloons.getIndex(b)+2 < balloons.size()  && upgraded == true && balloons.size() > 3) {
       throwWeaponUpgraded(b);
     } else {
       b.setTarget(true);
@@ -265,7 +265,6 @@ public class Monkey {
   int getTargetBalloon() {
     return targetBalloon;
   }
-
   void display() {
     weapon.display();
     if (upgraded == true) {

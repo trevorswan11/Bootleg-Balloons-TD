@@ -129,6 +129,12 @@ void mouseClicked() {
     player.changeIncome(100*-1);
   }
   if (upgradeThrowButton.clicked1(mouseX, mouseY) == true) {
+    Weapons w2 = monkeys.get(monkeys.showStats).getWeapons2();
+    Weapons w3 = monkeys.get(monkeys.showStats).getWeapons3();
+    w2.setX(monkeys.get(monkeys.showStats).getWeapons().getX());
+    w3.setX(monkeys.get(monkeys.showStats).getWeapons().getX());
+    w2.setY(monkeys.get(monkeys.showStats).getWeapons().getY());
+    w3.setY(monkeys.get(monkeys.showStats).getWeapons().getY());
     monkeys.get(monkeys.showStats).setUpgraded(true);
   }
   if (monkeys.showStats < monkeys.size() && monkeys.showStats > -1 && sellButton.clicked1(mouseX, mouseY) == true) {
@@ -157,12 +163,6 @@ void mouseClicked() {
 void moving() {
   Monkey m =  monkeys.get(monkeys.get(mouseX, mouseY));
   Weapons w = m.getWeapons();
-  if (m.getUpgraded() == true) {
-    Weapons w2 = m.getWeapons2();
-    Weapons w3 = m.getWeapons3();
-    w2.move();
-    w3.move();
-  }
   w.move();
   m.move();
 }
