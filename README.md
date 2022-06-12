@@ -7,7 +7,7 @@ Our project is a bootleg version of the popular mini-game, Bloons TD Battle. The
 **Design Document:** https://docs.google.com/document/d/1v6FhPbggvfvNtyiybX9_7laz6RiJBexw62pb6UX0cF0/edit
 
 **Instructions**
-* DO NOT move the monkeys fast when you are dragging them to place them down 
+* DO NOT move the mouse fast when you are dragging monkeys to place them down
 
 **Development Log**
 
@@ -28,7 +28,7 @@ Our project is a bootleg version of the popular mini-game, Bloons TD Battle. The
 * 6/7/22: Started freeplay mode and buttons to spawn the balloons.
 * 6/10/22: Created buttonsList with balloonButtonList subclass to let user click any balloon button and spawn it
 * 6/11/22: Created monkey subclasses and monkeyButtonList subclass to spawn any of the monkey subclasses created startRound/quit buttons.
-*6/12/22: Cleaned up code and added comments
+*6/12/22: Cleaned up code, fixed bugs, and added comments
 
 **Nicole Liu**
 * 5/23/22: I set up the Monkey and MonkeyList class. Monkey Class can display but MonkeyList is having some trouble.
