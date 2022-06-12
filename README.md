@@ -6,9 +6,6 @@ Our project is a bootleg version of the popular mini-game, Bloons TD Battle. The
 
 **Design Document:** https://docs.google.com/document/d/1v6FhPbggvfvNtyiybX9_7laz6RiJBexw62pb6UX0cF0/edit
 
-**Instructions**
-* DO NOT move the mouse fast when you are dragging monkeys to place them down
-
 **Development Log**
 
 **April Li**
@@ -28,7 +25,6 @@ Our project is a bootleg version of the popular mini-game, Bloons TD Battle. The
 * 6/7/22: Started freeplay mode and buttons to spawn the balloons.
 * 6/10/22: Created buttonsList with balloonButtonList subclass to let user click any balloon button and spawn it
 * 6/11/22: Created monkey subclasses and monkeyButtonList subclass to spawn any of the monkey subclasses created startRound/quit buttons.
-*6/12/22: Cleaned up code, fixed bugs, and added comments
 
 **Nicole Liu**
 * 5/23/22: I set up the Monkey and MonkeyList class. Monkey Class can display but MonkeyList is having some trouble.
@@ -43,3 +39,9 @@ Our project is a bootleg version of the popular mini-game, Bloons TD Battle. The
 * 6/3/22:  I made it so that one monkey can't attack the same balloon and put restrictions on where a monkey can be placed.
 * 6/4/22:  I fixed up the canBePlaced() and created a button class
 * 6/5/22:  I made the monkey's statistics show up if your mouse touches the monkey and if you're in STATS mode
+* 6/6/22:  I worked on displaying the monkey stats.
+* 6/7/22:  I fixed canBePlaced() so monkeys cannot be placed in water.
+* 6/9/22: I worked on dragging the monkey.
+* 6/10/22: I worked on the dragging and creating the monkey methods and made it so that a circle would appear around the monkey while it was being dragged and made locking mechanisms.
+* 6/11/22: I worked on creating upgrades and the cancel and sell button.
+* 6/12/22: I created the waterMonkey and made comments and cleaned up sone code.
