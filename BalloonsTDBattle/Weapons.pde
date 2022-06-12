@@ -7,6 +7,11 @@ public class Weapons {
     y = ycoord;
     c = color(random(255), random(255), random(255));
   }
+  public Weapons(float xcoord, float ycoord, color colors) {
+    x = xcoord;
+    y = ycoord;
+    c = colors;
+  }
   void setX(float xcoord) {
     x = xcoord;
   }

@@ -1,6 +1,7 @@
 public class MonkeyList {
   ArrayList<Monkey> monke;
-  int showStats = -1;
+  int showStats = -1; //indicates index of which monkey's stats are being shown, if it's -1 no stats are shown 
+
   public MonkeyList() {
     monke = new ArrayList<Monkey>();
   }
@@ -12,41 +13,42 @@ public class MonkeyList {
         current.increaseTimer();
       } else if (current.getTargetBalloon() == -1) {
         float coord[] = monke.get(i).findBalloon();
-        current.setTargetBalloon(balloons.getBalloonAt(coord[0], coord[1])); 
+        current.setTargetBalloon(balloons.getBalloonAt(coord[0], coord[1]));
       } else {
         int index = current.getTargetBalloon();
-        if (index > -1 && index < balloons.size() && (!(balloons.get(index).getFuture()[0] == -1 && balloons.get(index).getFuture()[0] == -1))) {
+        if (index > -1 && index < balloons.size() && (!(balloons.get(index).getFuture(3)[0] == -1 && balloons.get(index).getFuture(3)[0] == -1))) {
           current.throwWeapon(balloons.get(index));
         }
         if (current.thrown) {
           balloons.setNewBalloon(index);
           current.setThrown(false);
           current.setTargetBalloon(-1);
-          current.weapon.setX(current.getX());
-          current.weapon.setY(current.getY());
           current.resetTimer();
           current.setTargetBalloon(-1);
         }
       }
     }
   }
-  
+
   void addMonkey(int buttonIndex) {
-    if (buttonIndex != -1 && player.getIncome() > monkeyButtons.getMonkey(buttonIndex).getPrice() && balloons.size()==0) {
+    if (buttonIndex != -1 && player.getIncome() > monkeyButtons.getMonkey(buttonIndex).getPrice()) { //checks if player can afford monkey and if button was clicked 
       PImage i = monkeyButtons.getMonkey(buttonIndex).getImage();
       Monkey m;
-      if (i == dart) {
-        m = new dartMonkey(monkeyButtons.get(buttonIndex).getX(), monkeyButtons.get(buttonIndex).getY());
+      //checks image of monkey to add correct monkey subclass to monkeys
+      if (i == ninja) {
+        m = new ninjaMonkey(monkeyButtons.get(buttonIndex).getX(), monkeyButtons.get(buttonIndex).getY());
       } else if (i == wizard) {
         m = new wizardMonkey(monkeyButtons.get(buttonIndex).getX(), monkeyButtons.get(buttonIndex).getY());
+      } else if (i == water) {
+        m = new waterMonkey(monkeyButtons.get(buttonIndex).getX(), monkeyButtons.get(buttonIndex).getY());
       } else {
         m = new sniperMonkey(monkeyButtons.get(buttonIndex).getX(), monkeyButtons.get(buttonIndex).getY());
       }
       monkeys.add(m);
-      if (gameStart) {
+      if (gameStart) { //if in normal gameMode, will subtract from income 
         player.changeIncome(m.getPrice() * -1);
       }
-    } 
+    }
   }
 
   void set(Monkey oldMonkey, Monkey newMonkey) {
@@ -56,40 +58,27 @@ public class MonkeyList {
       }
     }
   }
-  
   void add(Monkey toBeAdded) {
     monke.add(toBeAdded);
   }
-  
+  void remove(int i) {
+    monke.remove(i);
+  }
   void remove(Monkey e) {
     monke.remove(e);
   }
-  void remove(float xcoord, float ycoord) {
-    for (int i = 0; i < monke.size(); i++) {
-      float compareX = monke.get(i).getX();
-      float compareY = monke.get(i).getY();
-      if (xcoord >= compareX && xcoord <= compareX+25 && ycoord >= compareY && ycoord <= compareY+25) {
-        monke.remove(i);
-      }
+  void sell(int index) {
+    if (gameStart) { //if in normal gameMode, will add to income 
+      player.changeIncome((int)(monkeys.get(index).getPrice()*0.795));
     }
+    monkeys.remove(index);
   }
 
-  void sell(int x, int y) {
-    int i = get(x, y);
-    if (i > -1) {
-      player.changeIncome((int)(get(i).price*0.795));
-      remove(get(i));
-    }
-  }
-  void sell(Monkey m) {
-    player.changeIncome((int)(m.price*0.795));
-    remove(m);
-  }
-
-  public Monkey get(int index) {
+  Monkey get(int index) {
     return monke.get(index);
   }
-  public int get(float xcoord, float ycoord) {
+  
+  int get(float xcoord, float ycoord) {
     int result = -1;
     for (int i = 0; i < monke.size(); i++) {
       float compareX = monke.get(i).getX();
@@ -100,6 +89,7 @@ public class MonkeyList {
     }
     return result;
   }
+
 
   void setShowStats(int b) {
     showStats = b;

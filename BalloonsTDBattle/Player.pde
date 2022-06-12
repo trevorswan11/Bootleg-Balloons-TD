@@ -1,7 +1,6 @@
 public class Player {
-  int health = 0;
+  int health;
   int income;
-  int points;
   int time; 
   
   public Player() {
@@ -18,40 +17,31 @@ public class Player {
     return income;
   }
   
-  int attackIncome(Monkey monkey, Balloon balloon) {
-    int attack = monkey.getAttackStrength();
+  int attackIncome(Monkey monkey, Balloon balloon) { //adds to players income when balloon destroyed 
+    float attack = monkey.getAttackStrength();
     int health = balloon.getHealth();
-    if (health < attack) {
+    if (health < attack) { //if attackStrength of monkey greater than balloon health, will only add balloon health to income so player won't recieve extra income   
       return income += health;  
-    } else {
-      return income += attack;
+    } else { //if balloon wasn't destroyed, will only add how many layers were popped(attackStrength) to income  
+      return income += attack; 
     } 
   }
-  
- int decreaseHealth() {
-   health --;  
-   if (health < 0) {
-     return 0;  
-   }
-   return health;
- }
- 
- int decreaseHealth(int change) {
+   
+ int decreaseHealth(int change) { 
    health = health - change;
-   if (health < 0) {
+   if (health < 0) { //makes sure health doesn't go below 0 
      return 0;  
    }
    return health;
  }
  
- int roundIncome() {
+ int roundIncome() { //how much income player gets per round
    income += 100;  
    return income;
  }
  int getIncome(){
    return income;
  }
- 
  void setHealth(int h) {
    health = h;  
  }

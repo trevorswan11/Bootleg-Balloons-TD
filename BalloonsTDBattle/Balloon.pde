@@ -2,23 +2,25 @@ public class Balloon {
   PImage image;
   int health;
   float speed;
+  int size = balloonSize;
+  Boolean atEnd = false; 
+  Boolean target = false; //indicates if a monkey has it as its target 
+
   int directionsIndex = 1;
   float currentX = 410;
   float currentY = 0;
-  Boolean atEnd = false;
-  int size = balloonSize;
-  Boolean target = false;
+  int[] nextCords = map.getDirection(1); //find next cords 
+  float distanceX = nextCords[0]-currentX; //distance until it reaches the next cords
+  float distanceY = nextCords[1]-currentY; //distance until it reaches the next cord 
 
-  int[] nextCords = map.getDirection(1);
-  float distanceX = nextCords[0]-currentX;
-  float distanceY = nextCords[1]-currentY;
-
+//default balloon constructor 
   public Balloon() {
     image = red;
     health = 0;
     speed = 1;
   }
-  
+
+//sets new balloon to old balloon 
   public Balloon(Balloon b) {
     image = b.getImage();
     health = b.getHealth();
@@ -40,36 +42,33 @@ public class Balloon {
     speed = speed_;
   }
 
-  void display() {
-    image(image, currentX-size/2, currentY-balloonSize/2);
-  }
-
-  void followMap() {
+  void followMap() { //balloon will go through directions until it reaches the end 
     if (directionsIndex < map.getDirectionsSize()) {
       move();
-      if (distanceX == 0 && distanceY == 0) {
-        if (directionsIndex != 13) {
+      if (distanceX == 0 && distanceY == 0) { //if currentCords is at nextCords 
+        if (directionsIndex != 13) { //if not at the end continues onto the next cords 
           directionsIndex++;
           nextCords = map.getDirection(directionsIndex);
           distanceX = nextCords[0]-currentX;
           distanceY = nextCords[1]-currentY;
         } else {
-          atEnd = true;
+          atEnd = true; //if at the end, will set atEnd true 
         }
       }
     }
   }
 
-  void move() {
+  void move() { //will move balloon to next cord based on its current cords in intervals based on its speed 
+    //either distanceX or distanceY will be 0, since only one of those values should be changed at once 
     if (distanceX != 0) {
       float sign = distanceSign(distanceX);
-      currentX += speed*distanceSign(distanceX);
-      distanceX -= speed*distanceSign(distanceX);
-      if (sign != distanceSign(distanceX)) {
+      currentX += speed*distanceSign(distanceX); //moves balloon based on speed in direction found in sign 
+      distanceX -= speed*distanceSign(distanceX); //so we know how much distance balloon still has to travel 
+      if (sign != distanceSign(distanceX)) { //to make distances exact so balloon distance won't go over or under  
         distanceX = 0;
-        currentX = nextCords[0];
+        currentX = nextCords[0]; //sets current cords to next cords since distanceX = 0 
       }
-    } else if (distanceY != 0) {
+    } else if (distanceY != 0) { //same thing as above but for y cord
       float sign = distanceSign(distanceY);
       currentY += speed*distanceSign(distanceY);
       distanceY -= speed*distanceSign(distanceY);
@@ -80,7 +79,7 @@ public class Balloon {
     }
   }
 
-  float distanceSign(float n) {
+  float distanceSign(float n) { //calculates which direction the distance should be 
     if (n == 0) {
       return 0;
     } else if (n > 0) {
@@ -90,11 +89,12 @@ public class Balloon {
     }
   }
 
-  float[] getFuture() {
-    if (directionsIndex+1 >= map.getDirectionsSize()) {
+  float[] getFuture(int constant) { //combination of move and followmap 
+    if (directionsIndex+1 >= map.getDirectionsSize()) { //checks if balloon will be off the map when monkey attacks 
       return new float[]{-1, -1};  
     }
    
+    //new varibales so it doesn't actually change this balloon's ones  
     float x_ = currentX;
     float y_ = currentY;
     int directionsIndex_ = directionsIndex;
@@ -104,9 +104,9 @@ public class Balloon {
     float distanceY_ = nextCords[1]-y_;
     int timer = 0;
 
-    while (timer < 3) {
-      if (directionsIndex_ < map.getDirectionsSize()) {
-        if (distanceX_ != 0) {
+    while (timer < constant) { //will find balloon in constant "frames"
+      if (directionsIndex_ < map.getDirectionsSize()) { //same as followMap()
+        if (distanceX_ != 0) { //same as move()
           float sign = distanceSign(distanceX_);
           x_ += speed*distanceSign(distanceX_);
           distanceX_ -= speed*distanceSign(distanceX_);
@@ -123,14 +123,14 @@ public class Balloon {
             y_ = nextCords_[1];
           }
         }
-        if (distanceX_ == 0 && distanceY_ == 0) {
+        if (distanceX_ == 0 && distanceY_ == 0) { //continuation of followMap()
           if (directionsIndex_ != 13) {
             directionsIndex_++;
             nextCords_ = map.getDirection(directionsIndex_);
             distanceX_ = nextCords_[0]-x_;
             distanceY_ = nextCords_[1]-x_;
           } else {
-            return new float[]{-1, -1};  
+            return new float[]{-1, -1};  //return when balloon is going to be out of the map 
           }
         }
       }
@@ -138,12 +138,13 @@ public class Balloon {
     }
     return new float[]{x_, y_};
   }
+
  
-  int decreaseHealth() {
-    health--;
-    return health;
+  void display() {
+    image(image, currentX-size/2, currentY-balloonSize/2); //-balloonSize/2 to center it 
   }
-  int decreaseHealth(int change) {
+ 
+  int decreaseHealth(float change) {
     health -= change;
     return health;
   }
@@ -196,6 +197,7 @@ public class Balloon {
   }
 }
 
+//all balloon subclasses: exact same as balloon but just different constructors 
 public class redBalloon extends Balloon{
   redBalloon() {
     image = red;
@@ -286,8 +288,6 @@ public class blackBalloon extends Balloon{
     speed = 1.5;
     size = balloonSize/2;
   }
-  
-  //if 1 damage done to it, it splits into two pink balloons, else split into 1 pink
 }
 
 public class whiteBalloon extends Balloon{
@@ -306,8 +306,6 @@ public class whiteBalloon extends Balloon{
     speed = 1.5;
     size = balloonSize/2;
   }
-
-  //if 1 damage done to it, it splits into 2 pink balloons
 }
 
 public class zebraBalloon extends Balloon{
@@ -323,25 +321,6 @@ public class zebraBalloon extends Balloon{
     health = 23;
     speed = 1.5;
   }
-
-  //if 1 damage done to it, it splits into 1 black and 1 white
-}
-
-public class leadBalloon extends Balloon{
-  leadBalloon() {
-    image = lead;
-    health = 23;
-    speed = 1;
-  }
-
-  leadBalloon(Balloon b) {
-    super(b);
-    image = lead;
-    health = 23;
-    speed = 1;
-  }
-
-  //if 1 damage done to it, it splits into 2 black balloons 
 }
 
 public class rainbowBalloon extends Balloon{
@@ -357,8 +336,6 @@ public class rainbowBalloon extends Balloon{
     health = 47;
     speed = 1.6;
   }
-
-  //if 1 damage dont to it, it splits into 2 zebra baloons 
 }
 
 public class ceramicBalloon extends Balloon{
@@ -374,6 +351,4 @@ public class ceramicBalloon extends Balloon{
     health = 104;
     speed = 1.7;
   }
-
-  //if 10 damage is done to it(health 94), it splits into 2 rainbow balloons
 }
