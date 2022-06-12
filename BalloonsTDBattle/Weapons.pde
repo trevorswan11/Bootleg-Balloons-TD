@@ -2,11 +2,15 @@ public class Weapons {
   color c;
   float x;
   float y;
-  boolean isDisplay = true;
   public Weapons(float xcoord, float ycoord) {
     x = xcoord;
     y = ycoord;
     c = color(random(255), random(255), random(255));
+  }
+  public Weapons(float xcoord, float ycoord, color colors) {
+    x = xcoord;
+    y = ycoord;
+    c = colors;
   }
   void setX(float xcoord) {
     x = xcoord;
@@ -26,12 +30,6 @@ public class Weapons {
   float getY() {
     return y;
   }
-  boolean getisDisplay() {
-    return isDisplay;
-  }
-  void setDisplay(boolean b) {
-    isDisplay = b;
-  }
   void move() {
     float dx = mouseX - x;
     x += dx;
@@ -40,9 +38,7 @@ public class Weapons {
   }
 
   void display() {
-    if (isDisplay == true) {
-      fill(c);
-      circle(x, y, 10);
-    }
+    fill(c);
+    circle(x, y, 10);
   }
 }

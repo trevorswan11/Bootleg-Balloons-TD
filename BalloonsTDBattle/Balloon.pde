@@ -15,7 +15,7 @@ public class Balloon {
 
   public Balloon() {
     image = red;
-    health = 1;
+    health = 0;
     speed = 1;
   }
   
@@ -33,7 +33,7 @@ public class Balloon {
       size = balloonSize/2;  
     }
   }
-
+  
   public Balloon(PImage image_, int health_, float speed_) {
     image = image_;
     health = health_;
@@ -90,7 +90,11 @@ public class Balloon {
     }
   }
 
- float[] getFuture() {
+  float[] getFuture() {
+    if (directionsIndex+1 >= map.getDirectionsSize()) {
+      return new float[]{-1, -1};  
+    }
+   
     float x_ = currentX;
     float y_ = currentY;
     int directionsIndex_ = directionsIndex;
@@ -125,6 +129,8 @@ public class Balloon {
             nextCords_ = map.getDirection(directionsIndex_);
             distanceX_ = nextCords_[0]-x_;
             distanceY_ = nextCords_[1]-x_;
+          } else {
+            return new float[]{-1, -1};  
           }
         }
       }
@@ -132,11 +138,12 @@ public class Balloon {
     }
     return new float[]{x_, y_};
   }
+ 
   int decreaseHealth() {
     health--;
     return health;
   }
-  int decreaseHealth(int change) {
+  int decreaseHealth(float change) {
     health -= change;
     return health;
   }
@@ -157,6 +164,18 @@ public class Balloon {
   void setY(float y_) {
     currentY = y_;  
   }
+  void setTarget(boolean b){
+    target = b;
+  }
+  void setNextCords(int[] cords) {
+    nextCords = cords;
+  }
+  void setDistanceX(float dist) {
+    distanceX = dist;  
+  }
+  void setDistanceY(float dist) {
+    distanceY = dist;  
+  }
   float getCurrentX() {
     return currentX;
   }
@@ -173,19 +192,7 @@ public class Balloon {
     return speed;
   }
   boolean getTarget(){
-  return target;
-  }
-  void setTarget(boolean b){
-    target = b;
-  }
-  void setNextCords(int[] cords) {
-    nextCords = cords;
-  }
-  void setDistanceX(float dist) {
-    distanceX = dist;  
-  }
-  void setDistanceY(float dist) {
-    distanceY = dist;  
+    return target;
   }
 }
 

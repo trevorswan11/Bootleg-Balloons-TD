@@ -1,7 +1,3 @@
-final int ADD = 0;
-final int DELETE = 1;
-final int STATS = 2;
-int show = 1;
 MonkeyList monkeys = new MonkeyList();
 balloonList balloons = new balloonList();
 
@@ -9,33 +5,40 @@ Player player;
 Monkey m;
 Map map;
 Balloon balloon;
-int balloonSize = 35;
 Rounds rounds;
+
 int showStats = -1;
 boolean gameStart = false;
 boolean freeplayStart = false;
-
-Buttons button1;
-Buttons button2;
-Buttons normal;
-Buttons freeplay;
-Buttons nextRound;
-Buttons startOver;
-
-balloonButtonList balloonButtons;
-
-PImage redBalloon;
-PImage defaultMonkey;
-PImage buttonMonkey;
-
-PImage red, blue, green, yellow, pink, black, white, zebra, lead, rainbow, ceramic;
+boolean paused = false;
 boolean roundStart = false;
 boolean roundOver = false;
-int MODE = ADD;
 boolean locked = false;
 int clickedNum = 0;
-int round = 21;
+int round = 0;
 
+int balloonSize = 35;
+int monkeySize = 50;
+int imageSize = 75;
+
+Buttons normal;
+Buttons freeplay;
+Buttons startOver;
+Buttons sellButton;
+Buttons cancelButton;
+Buttons upgradeStrengthButton;
+Buttons upgradeThrowButton;
+Buttons upgradeRangeButton;
+Buttons upgradeSpeedButton;
+Buttons startRound;
+Buttons pause;
+Buttons quit;
+
+balloonButtonList balloonButtons;
+monkeyButtonList monkeyButtons;
+
+PImage dart, ninja, wizard, sniper, water, ninjaImg, wizardImg, sniperImg, waterImg;
+PImage red, blue, green, yellow, pink, black, white, zebra, lead, rainbow, ceramic;
 
 void setup() {
   size(1000, 750);
@@ -44,13 +47,26 @@ void setup() {
   rounds = new Rounds();
 
   //images
-  redBalloon = loadImage("red_balloon.png");
-  redBalloon.resize(balloonSize, balloonSize);
-  defaultMonkey = loadImage("monkey.png");
-  defaultMonkey.resize(25, 25);
-  buttonMonkey = loadImage("monkey.png");
-  buttonMonkey.resize(25, 25);
-  button1 = new Buttons(820, 90, buttonMonkey, 2, #C3E3DA);
+
+
+  dart = loadImage("dart.png");
+  dart.resize(monkeySize, monkeySize);
+  ninja = loadImage("ninja.png");
+  ninja.resize(monkeySize, monkeySize);
+  wizard = loadImage("wizard.png");
+  wizard.resize(monkeySize, monkeySize);
+  sniper = loadImage("sniper.png");
+  sniper.resize(monkeySize, monkeySize);
+  water = loadImage("water.png");
+  water.resize(monkeySize, monkeySize);
+  ninjaImg = loadImage("ninja.png");
+  ninjaImg.resize(imageSize, imageSize);
+  wizardImg = loadImage("wizard.png");
+  wizardImg.resize(imageSize, imageSize);
+  sniperImg = loadImage("sniper.png");
+  sniperImg.resize(imageSize, imageSize);
+  waterImg = loadImage("water.png");
+  waterImg.resize(imageSize, imageSize);
 
   red = loadImage("red_balloon.png");
   red.resize(balloonSize, balloonSize);
@@ -75,16 +91,44 @@ void setup() {
   ceramic = loadImage("ceramic_balloon.png");
   ceramic.resize(balloonSize, balloonSize);
 
-  //button1 = new Buttons(820, 90, defaultMonkey, 1, #C3E3DA);
-
+  //buttons
   normal = new Buttons(width/2-50, height/2 + 100, "NORMAL", 40, 100, 20, 225);
   freeplay = new Buttons(width/2-50, height/2 + 150, "FREEPLAY", 40, 100, 20, 225);
   startOver = new Buttons(width/2-70, height/2 + 110, "START OVER", 40, 140, 20, 225);
+  pause = new Buttons(835, 650, "PAUSE", 30, 130, 20, 225);
+  quit = new Buttons(835, 690, "QUIT", 30, 130, 20, 225);
+  startRound = new Buttons(865, 500, "START", 70, 70, 20, 225);
   balloonButtons = new balloonButtonList();
+  monkeyButtons = new monkeyButtonList();
+  sellButton= new Buttons (190, 680, "SELL", 30, 50, 10, 255);
+  cancelButton = new Buttons (865, 400, "CANCEL", 70, 70, 20, 55);
+  upgradeStrengthButton = new Buttons (500, 650, "STRENGTH\nUPGRADE", 50, 70, 10, 255);
+  upgradeThrowButton = new Buttons (650, 650, "THROW\nUPGRADE", 50, 70, 10, 255);
+  upgradeSpeedButton = new Buttons (350, 650, "SPEED\nUPGRADE", 50, 70, 10, 255);
+  upgradeRangeButton = new Buttons (800, 650, "RANGE\nUPGRADE", 50, 70, 10, 255);
+}
 
+void moving() {
+  Monkey m =  monkeys.get(monkeys.get(mouseX, mouseY));
+  Weapons w = m.getWeapons();
+  w.move();
+  m.move();
+}
+
+void restart() {
+  player = new Player();
+  rounds = new Rounds();
+  monkeys = new MonkeyList();
+  balloons = new balloonList();
+  gameStart = false;
+  freeplayStart = false;
+  round = 0;
 }
 
 void mouseClicked() {
+  color c = map.getPath().get(mouseX, mouseY);
+  println(("" + c + " " + red(c) + ", " + blue(c) + ", " + green(c)));
+  
   if (!gameStart && !freeplayStart) {
     if (normal.inRange(mouseX, mouseY)) {
       gameStart = true;
@@ -94,49 +138,71 @@ void mouseClicked() {
     }
   } else if (player.isDead()) {
     if (startOver.inRange(mouseX, mouseY)) {
-      player = new Player();
-      rounds = new Rounds();
-      monkeys = new MonkeyList();
-      gameStart = false;
+      restart();
     }
   } else {
     int index = monkeys.get(mouseX, mouseY);
-    if(index > -1){
+    if (index > -1 && monkeys.get(index).getMovement()==false) {
       monkeys.setShowStats(index);
-    }else if(mouseX < 800 && mouseY < 600){
+    } else if (mouseX < 800 && mouseY < 600) {
       monkeys.setShowStats(-1);
     }
-    if (player.getIncome() > 550 && balloons.size()==0 && button1.clicked1(mouseX, mouseY) == true) {
-      Monkey m =  new Monkey(820, 90);
-      monkeys.add(m);
-      player.changeIncome(m.getPrice() * -1);
-    }
-    if (monkeys.get(mouseX, mouseY) > -1) {
-      Monkey m1 = monkeys.get(monkeys.get(mouseX, mouseY));
-      m1.addClickedNum();
-      if (m1.canBePlaced(mouseX, mouseY) == true ||m1.getClickedNum() == 1) {
-        m1.setMovement();
-      }
-      if (m1.canBePlaced(mouseX, mouseY) == true && m1.getClickedNum() > 2) {
-        m1.setLocked(true);
-      }
-    }
-
-    balloonButtons.spawnBalloon();
-
   }
-}
-
-
-void moving() {
-  Monkey m =  monkeys.get(monkeys.get(mouseX, mouseY));
-  Weapons w = m.getWeapons();
-  w.move();
-  m.move();
-}
-
-void keyPressed() {
-  if (key == ENTER) {
+  int buttonIndex = monkeyButtons.findButtonAt(mouseX, mouseY);
+  monkeys.addMonkey(buttonIndex);
+  if (upgradeStrengthButton.clicked1(mouseX, mouseY) == true && player.getIncome() >= 50) {
+    float value = monkeys.get(monkeys.showStats).getAttackStrength()*1.1;
+    monkeys.get(monkeys.showStats).setAttackStrength(value);
+    player.changeIncome(50*-1);
+  }
+  if (upgradeSpeedButton.clicked1(mouseX, mouseY) == true && player.getIncome() >= 50) {
+    float value = monkeys.get(monkeys.showStats).getAttackSpeed()-2;
+    monkeys.get(monkeys.showStats).setAttackSpeed(value);
+    player.changeIncome(50*-1);
+  }
+  if (upgradeRangeButton.clicked1(mouseX, mouseY) == true && player.getIncome() >= 50) {
+    float value = monkeys.get(monkeys.showStats).getAttackRange()*1.1;
+    monkeys.get(monkeys.showStats).setAttackRange(value);
+    player.changeIncome(50*-1);
+  }
+  if (upgradeThrowButton.clicked1(mouseX, mouseY) == true && player.getIncome() >= 100) {
+    Weapons w2 = monkeys.get(monkeys.showStats).getWeapons2();
+    Weapons w3 = monkeys.get(monkeys.showStats).getWeapons3();
+    w2.setX(monkeys.get(monkeys.showStats).getWeapons().getX());
+    w3.setX(monkeys.get(monkeys.showStats).getWeapons().getX());
+    w2.setY(monkeys.get(monkeys.showStats).getWeapons().getY());
+    w3.setY(monkeys.get(monkeys.showStats).getWeapons().getY());
+    monkeys.get(monkeys.showStats).setUpgraded(true);
+    player.changeIncome(100*-1);
+  }
+  if (monkeys.showStats < monkeys.size() && monkeys.showStats > -1 && sellButton.clicked1(mouseX, mouseY) == true) {
+    monkeys.sell(monkeys.showStats);
+    monkeys.setShowStats(-1);
+  }
+  if (monkeys.get(mouseX, mouseY) > -1) {
+    Monkey m1 = monkeys.get(monkeys.get(mouseX, mouseY));
+    m1.addClickedNum();
+    if (m1.canBePlaced(mouseX, mouseY) || m1.getClickedNum() == 1) {
+      m1.setMovement();
+    }
+    if (m1.canBePlaced(mouseX, mouseY) && m1.getClickedNum() > 2) {
+      m1.setLocked(true);
+    }
+    if (cancelButton.clicked1(mouseX, mouseY) == true && m1.getMovement() == true) {
+      monkeys.remove(m1);
+      player.changeIncome(m1.getPrice());
+    }
+  }
+  balloonButtons.spawnBalloon();
+  if (quit.inRange(mouseX, mouseY)) {
+    restart();
+  } else if (pause.inRange(mouseX, mouseY)) {
+    if (paused == true) {
+      paused = false;
+    } else {
+      paused = true;
+    }
+  } else if (startRound.inRange(mouseX, mouseY)) {
     roundStart = true;
   }
 }
@@ -154,25 +220,32 @@ void draw() {
     background(255);
     textSize(15);
     if (!player.isDead()) {
-      button1.display();
+      pause.display();
+      quit.display();
+      startRound.display();
+      monkeyButtons.display();
+      cancelButton.display();
+
       fill(0);
-      text("ROUND: " + (round+1), 845, 30);
-      text("HEALTH: " + player.health, 850, 50);
-      text("INCOME: " + player.income, 850, 70);
+      textSize(15);
+      textAlign(LEFT);
+      text("ROUND: " + (round+1), 830, 30);
+      text("HEALTH: " + player.health, 830, 50);
+      text("INCOME: " + player.income, 830, 70);
       map.display();
       fill(0);
-      if(monkeys.showStats != -1){
+      if (monkeys.showStats != -1) {
         monkeys.displayStats();
       }
       if (monkeys.get(mouseX, mouseY) > -1 && monkeys.get(monkeys.get(mouseX, mouseY)).getLocked() == false && monkeys.get(monkeys.get(mouseX, mouseY)).getMovement() == true) {
         moving();
         Monkey bob = monkeys.get(monkeys.get(mouseX, mouseY));
         if (bob.canBePlaced(mouseX, mouseY) == true) {
-          fill(#3DA745);
-          circle(mouseX+12, mouseY+12, bob.getAttackRange()*2);
+          fill(#3DA745, 150);
+          circle(mouseX, mouseY, bob.getAttackRange()*2);
         } else {
-          fill(#B22225);
-          circle(mouseX+12, mouseY+12, bob.getAttackRange()*2);
+          fill(#B22225, 150);
+          circle(mouseX, mouseY, bob.getAttackRange()*2);
         }
       }
       if (roundStart) {
@@ -180,10 +253,16 @@ void draw() {
           rounds.runRound();
         }
         balloons.display();
-        balloons.processAll();
-        monkeys.processAll();
+        if (!paused) {
+          balloons.processAll();
+          monkeys.processAll();
+        }
       }
       monkeys.display();
+      if (paused) {
+        fill(0, 200);
+        triangle(360, 200, 360, 400, 560, 300);
+      }
     } else {
       textSize(100);
       textAlign(CENTER);
@@ -191,15 +270,41 @@ void draw() {
       startOver.display();
       startOver.hover(mouseX, mouseY);
     }
-
-   } else if (freeplayStart) {
-     background(255);
-     map.display();
-     fill(0);
-     balloons.display();
-     balloons.processAll();
-     monkeys.processAll();
-     monkeys.display();
-     balloonButtons.display();
-   }
+  } else if (freeplayStart) {
+    background(255);
+    map.display();
+    fill(0);
+    pause.display();
+    quit.display();
+    balloons.display();
+    cancelButton.display();
+    if (!paused) {
+      balloons.processAll();
+      monkeys.processAll();
+    }
+    monkeyButtons.display();
+    if (monkeys.showStats != -1) {
+      monkeys.displayStats();
+      balloonButtons.setShown(false);
+    } else {
+      balloonButtons.display();
+      balloonButtons.setShown(true);
+    }
+    if (monkeys.get(mouseX, mouseY) > -1 && monkeys.get(monkeys.get(mouseX, mouseY)).getLocked() == false && monkeys.get(monkeys.get(mouseX, mouseY)).getMovement() == true) {
+      moving();
+      Monkey bob = monkeys.get(monkeys.get(mouseX, mouseY));
+      if (bob.canBePlaced(mouseX, mouseY) == true) {
+        fill(#3DA745, 150);
+        circle(mouseX, mouseY, bob.getAttackRange()*2);
+      } else {
+        fill(#B22225, 150);
+        circle(mouseX, mouseY, bob.getAttackRange()*2);
+      }
+    }
+    monkeys.display();
+    if (paused) {
+      fill(0, 200);
+      triangle(360, 200, 360, 400, 560, 300);
+    }
+  }
 }
