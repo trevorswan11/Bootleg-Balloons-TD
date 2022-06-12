@@ -32,7 +32,7 @@ public class MonkeyList {
   }
 
   void addMonkey(int buttonIndex) {
-    if (buttonIndex != -1 && player.getIncome() > monkeyButtons.getMonkey(buttonIndex).getPrice() && balloons.size()==0) {
+    if (buttonIndex != -1 && player.getIncome() > monkeyButtons.getMonkey(buttonIndex).getPrice()) {
       PImage i = monkeyButtons.getMonkey(buttonIndex).getImage();
       Monkey m;
       if (i == dart) {
