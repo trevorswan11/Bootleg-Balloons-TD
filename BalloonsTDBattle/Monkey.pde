@@ -1,22 +1,24 @@
 public class Monkey {
+  String name = "Monkey"; 
   PImage image; //For creating the monkey image
   float attackSpeed;
   float attackRange;
   float attackStrength;
+  float x; // The coordinates of the monkey
+  float y;
+  int timer = 0; //used in its attack method to see how much time passed so it can attack again 
+  int price;
+
+  boolean thrown;
+  boolean locked = false;
+  boolean movement = false;
+  boolean upgraded = false;
+  int clickedNum;
+  int targetBalloon = -1; //shows which balloon the monkey is targeting, if it is -1 it means there is no balloon 
+  int weaponsNum = 1;
   Weapons weapon;
   Weapons weapon2;
   Weapons weapon3;
-  boolean thrown;
-  boolean locked = false;
-  int timer = 0;
-  float x; // The coordinates of the monkey
-  float y;
-  int price;
-  boolean movement = false;
-  int clickedNum;
-  int targetBalloon = -1;
-  int weaponsNum = 1;
-  boolean upgraded = false;
 
   public Monkey(float xcoord, float ycoord) {
     //Default values for monkey stats except for x and y since those have to be determiend
@@ -47,11 +49,10 @@ public class Monkey {
   }
 
   public Monkey(Monkey m_, float xcoord, float ycoord) {
-
     weapon2 =  new Weapons(xcoord, ycoord);
     weapon3 = new Weapons(xcoord, ycoord);
-
     weapon = new Weapons(xcoord, ycoord);
+    
     image = m_.getImage();
     attackSpeed = m_.getAttackSpeed();
     attackStrength =  m_.getAttackStrength();
@@ -73,7 +74,6 @@ public class Monkey {
     return coord;
   }
 
-
   void attack(Balloon b) {
     b.decreaseHealth(attackStrength);
   }
@@ -84,9 +84,9 @@ public class Monkey {
     b.setTarget(true);
     b2.setTarget(true);
     b3.setTarget(true);
-    float[] coord = b.getFuture();
-    float[] coord2 = b2.getFuture();
-    float[] coord3 = b3.getFuture();
+    float[] coord = b.getFuture(3);
+    float[] coord2 = b2.getFuture(3);
+    float[] coord3 = b3.getFuture(3);
     float range = dist(weapon.getX(), weapon.getY(), coord[0], coord[1]);
     if (range < 10 && !thrown) {
       player.attackIncome(this, b);
@@ -122,7 +122,7 @@ public class Monkey {
       throwWeaponUpgraded(b);
     } else {
       b.setTarget(true);
-      float[] coord = b.getFuture();
+      float[] coord = b.getFuture(3);
       float range = dist(weapon.getX(), weapon.getY(), coord[0], coord[1]);
       if (range < 10 && !thrown) {
         player.attackIncome(this, b);
@@ -131,7 +131,7 @@ public class Monkey {
         weapon.setX(x);
         weapon.setY(y);
       } else {
-        float xInterval = (coord[0]-weapon.getX())/3;//change 10 to something based off of attackSpeed
+        float xInterval = (coord[0]-weapon.getX())/3; //since getFuture() find next balloon cords in 3 "frames" the weapon has to travel in 3 "frames" as well 
         float yInterval = (coord[1]-weapon.getY())/3;
         weapon.changeX(xInterval);
         weapon.changeY(yInterval);
@@ -155,30 +155,74 @@ public class Monkey {
     }
     return result;
   }
+  
   void showStats() {
-    text("Dart Monkey", 220, 665);
-    fill(255);
-    rect(70, 650, 75, 75);
+    textAlign(LEFT);
+    textSize(15);
+    text(name, 190, 665);
+    fill(#CDF2F5);
+    rect(70, 650, monkeySize, monkeySize);
     image(image, 70, 650);
     fill(#C1C8C9, 150);
-    circle(x, y, attackRange*2);
+    circle(x, y, attackRange*2); //shows attackRange of the monkey 
+    //displays all the buttons 
     sellButton.display();
     upgradeStrengthButton.display();
     upgradeThrowButton.display();
     upgradeSpeedButton.display();
     upgradeRangeButton.display();
   }
-
+  
+  int increaseTimer() {
+    return timer++;
+  }
+  void resetTimer() {
+    timer = 0;
+  }
+  void setMovement() {
+    if (movement == false) {
+      movement = true;
+    } else {
+      movement = false;
+    }
+  }
+  void setMovement(boolean b) {
+    movement = b;
+  }
+  void setLocked(boolean b) {
+    locked = b;
+  }
+  void setAttackStrength(float a) {
+    attackStrength = a;
+  }
+  void setAttackRange(float a) {
+    attackRange = a;
+  }
+  void setAttackSpeed(float a) {
+    attackSpeed= a;
+  }
+  void addClickedNum() {
+    clickedNum++;
+  }
+  void setUpgraded(boolean b) {
+    upgraded = b;
+  }
+  void setThrown(boolean b) {
+    thrown = b;
+  }
+  void setTargetBalloon(int b) {
+    targetBalloon = b;
+  }
   void setX(float xcoord) {
     x = xcoord;
   }
   void setY(float ycoord) {
     y = ycoord;
   }
-  public float getX() {
+  float getX() {
     return x;
   }
-  public float getY() {
+  float getY() {
     return y;
   }
   Weapons getWeapons() {
@@ -190,81 +234,33 @@ public class Monkey {
   Weapons getWeapons3() {
     return weapon3;
   }
-
-
-  public float getAttackSpeed() {
+  float getAttackSpeed() {
     return attackSpeed;
   }
-  public float getAttackRange() {
+  float getAttackRange() {
     return attackRange;
   }
-  public float getAttackStrength() {
+  float getAttackStrength() {
     return attackStrength;
   }
-  void setAttackStrength(float a) {
-    attackStrength = a;
-  }
-  void setAttackRange(float a) {
-    attackRange = a;
-  }
-  void setAttackSpeed(float a) {
-    attackSpeed= a;
-  }
-  public PImage getImage() {
+  PImage getImage() {
     return image;
   }
-  public int getClickedNum() {
+  int getClickedNum() {
     return clickedNum;
   }
-  void addClickedNum() {
-    clickedNum++;
-  }
-  public boolean getUpgraded() {
+  boolean getUpgraded() {
     return upgraded;
   }
-
-  void setUpgraded(boolean b) {
-    upgraded = b;
-  }
-  public boolean getMovement() {
+  boolean getMovement() {
     return movement;
   }
-  public boolean getLocked() {
+  boolean getLocked() {
     return locked;
   }
-  void setLocked(boolean b) {
-    locked = b;
-  }
-
-  void setMovement() {
-    if (movement == false) {
-      movement = true;
-    } else {
-      movement = false;
-    }
-  }
-  void setMovement(boolean b) {
-    movement = b;
-  }
-
-
-  int increaseTimer() {
-    return timer++;
-  }
-  void resetTimer() {
-    timer = 0;
-  }
-  void setThrown(boolean b) {
-    thrown = b;
-  }
-  void setTargetBalloon(int b) {
-    targetBalloon = b;
-  }
-
   int getPrice() {
     return price;
   }
-
   int getTargetBalloon() {
     return targetBalloon;
   }
@@ -286,82 +282,22 @@ public class Monkey {
   }
 }
 
-
-
 public class ninjaMonkey extends Monkey {
   public ninjaMonkey(float xcoord, float ycoord) {
     //speed, range, power
-    super(50, 100, 1, xcoord, ycoord);
+    super(40, 100, 1, xcoord, ycoord);
     image = ninja;
     price = 200;
-  }
-
-  void showStats() {
-    text("Ninja Monkey", 220, 665);
-    fill(#CDF2F5);
-    rect(70, 650, 75, 75);
-    image(ninjaImg, 70, 650);
-    fill(#C1C8C9, 150);
-    circle(x, y, attackRange*2);
-    sellButton.display();
-    upgradeStrengthButton.display();
-    upgradeThrowButton.display();
-    upgradeSpeedButton.display();
-    upgradeRangeButton.display();
+    name = "Ninja Monkey";
   }
 }
-/*
- void throwWeapon(Balloon b) {
- Balloon b2 = balloons.get(balloons.getIndex(b)+1);
- Balloon b3 = balloons.get(balloons.getIndex(b)+2);
- if (balloons.getIndex(b)+1 < balloons.size() && balloons.getIndex(b)+2 < balloons.size()  && upgraded == true && balloons.size() > 3) {
- throwWeaponUpgraded(b);
- } else if ( balloons.getIndex(b)< balloons.size() && balloons.getIndex(b)+1 < balloons.size() && balloons.getIndex(b)+2 < balloons.size() && balloons.size() > 3) {
- b.setTarget(true);
- float[] coord = b.getFuture();
- float range = dist(weapon.getX(), weapon.getY(), coord[0], coord[1]);
- if (range < 10 && !thrown) {
- for (int i = balloons.getIndex(b); i<3; i++) {
- player.attackIncome(this, b);
- weapon.setX(coord[0]);
- weapon.setY(coord[1]);
- }
- attack(b);
- thrown = true;
- //weapon.setX(x);
- //weapon.setY(y);
- } else {
- float xInterval = (coord[0]-weapon.getX())/3;//change 10 to something based off of attackSpeed
- float yInterval = (coord[1]-weapon.getY())/3;
- weapon.changeX(xInterval);
- weapon.changeY(yInterval);
- }
- } else {
- super.throwWeapon(b);
- }
- }
- }
- */
 
 public class wizardMonkey extends Monkey {
   public wizardMonkey(float xcoord, float ycoord) {
     super(70, 80, 1, xcoord, ycoord);
     image = wizard;
     price = 550;
-  }
-
-  void showStats() {
-    text("Wizard Monkey", 220, 665);
-    fill(#CDF2F5);
-    rect(70, 650, 75, 75);
-    image(wizardImg, 70, 650);
-    fill(#C1C8C9, 150);
-    circle(x, y, attackRange*2);
-    sellButton.display();
-    upgradeStrengthButton.display();
-    upgradeThrowButton.display();
-    upgradeSpeedButton.display();
-    upgradeRangeButton.display();
+    name = "Wizard Monkey";
   }
 }
 
@@ -373,26 +309,17 @@ public class waterMonkey extends Monkey {
     weapon = new Weapons(xcoord, ycoord, #56E6F2);
     image = water;
     price = 200;
+    name = "Water Monkey";
   }
-  void showStats() {
-    text("Water Monkey", 220, 665);
-    fill(#CDF2F5);
-    rect(70, 650, 75, 75);
-    image(waterImg, 70, 650);
-    fill(#C1C8C9, 150);
-    circle(x, y, attackRange*2);
-    sellButton.display();
-    upgradeStrengthButton.display();
-    upgradeThrowButton.display();
-    upgradeSpeedButton.display();
-    upgradeRangeButton.display();
-  }
+
   boolean canBePlaced(float xcoord, float ycoord) {
     int dist = 25;
     color c = map.getPath().get((int)xcoord, (int)ycoord);
     boolean result = true;
     if (red(c) == 7 && xcoord < 800 && ycoord <600) {
       result = true;
+    } else {
+      result = false;  
     }
     for (int i = 0; i < monkeys.size(); i ++) {
       int now = monkeys.get(xcoord, ycoord);
@@ -407,33 +334,20 @@ public class waterMonkey extends Monkey {
 
 public class sniperMonkey extends Monkey {
   public sniperMonkey(float xcoord, float ycoord) {
-    super(100, 50, 2, xcoord, ycoord);
+    super(100, 50, 3, xcoord, ycoord);
     image = sniper;
     price = 350;
+    name = "Sniper Monkey";
   }
 
-  void showStats() {
-    text("Sniper Monkey", 220, 665);
-    fill(#CDF2F5);
-    rect(70, 650, 75, 75);
-    image(sniperImg, 70, 650);
-    fill(#C1C8C9, 150);
-    circle(x, y, attackRange*2);
-    sellButton.display();
-    upgradeStrengthButton.display();
-    upgradeThrowButton.display();
-    upgradeSpeedButton.display();
-    upgradeRangeButton.display();
-  }
-
-  float[] findBalloon() {
-    Balloon highest = new Balloon();
+  float[] findBalloon() { //finds strongest balloon
+    Balloon strongest = new Balloon();
     for (int i = 0; i< balloons.size(); i++) {
       Balloon current = balloons.get(i);
-      if (current.getHealth() > highest.getHealth()) {
-        highest = current;
+      if (current.getHealth() > strongest.getHealth()) { //if finds balloon with higher health, will replace strongest with it
+        strongest = current;
       }
     }
-    return new float[]{highest.getCurrentX(), highest.getCurrentY()};
+    return new float[]{strongest.getCurrentX(), strongest.getCurrentY()};
   }
 }
