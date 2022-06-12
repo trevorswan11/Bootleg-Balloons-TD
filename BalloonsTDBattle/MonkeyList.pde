@@ -1,6 +1,7 @@
 public class MonkeyList {
   ArrayList<Monkey> monke;
   int showStats = -1;
+  
   public MonkeyList() {
     monke = new ArrayList<Monkey>();
   }

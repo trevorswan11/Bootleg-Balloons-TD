@@ -22,6 +22,7 @@ Buttons startOver;
 Buttons sellButton;
 Buttons cancelButton;
 Buttons upgradeStrengthButton;
+Buttons upgradeThrowButton;
 
 balloonButtonList balloonButtons;
 monkeyButtonList monkeyButtons;
@@ -46,6 +47,7 @@ void setup() {
   sellButton= new Buttons (350, 650, "SELL", 30, 50, 10, 255);
   cancelButton = new Buttons (850, 650, "CANCEL", 70, 70, 20, 55);
   upgradeStrengthButton = new Buttons (500, 650, "STRENGTH\nUPGRADE", 50, 70, 10, 255);
+  upgradeThrowButton = new Buttons (650, 650, "THROW\nUPGRADE", 50, 70, 10, 255);
 
 
   dart = loadImage("dart.png");
@@ -119,14 +121,16 @@ void mouseClicked() {
       monkeys.setShowStats(-1);
     }
   }
-  println(upgradeStrengthButton.clicked1(mouseX, mouseY));
   int buttonIndex = monkeyButtons.findButtonAt(mouseX, mouseY);
   monkeys.addMonkey(buttonIndex);
-  if(upgradeStrengthButton.clicked1(mouseX, mouseY) == true){
-      float value = monkeys.get(monkeys.showStats).getAttackStrength()*1.1;
-      monkeys.get(monkeys.showStats).setAttackStrength(value);
-      player.changeIncome(100*-1);
-    }
+  if (upgradeStrengthButton.clicked1(mouseX, mouseY) == true) {
+    float value = monkeys.get(monkeys.showStats).getAttackStrength()*1.1;
+    monkeys.get(monkeys.showStats).setAttackStrength(value);
+    player.changeIncome(100*-1);
+  }
+  if (upgradeThrowButton.clicked1(mouseX, mouseY) == true) {
+    monkeys.get(monkeys.showStats).setUpgraded(true);
+  }
   if (monkeys.showStats < monkeys.size() && monkeys.showStats > -1 && sellButton.clicked1(mouseX, mouseY) == true) {
     monkeys.sell(monkeys.showStats);
     monkeys.setShowStats(-1);
@@ -144,9 +148,8 @@ void mouseClicked() {
       monkeys.remove(m1);
       player.changeIncome(m1.getPrice());
     }
-    
   }
-    balloonButtons.spawnBalloon();
+  balloonButtons.spawnBalloon();
 }
 
 
@@ -154,6 +157,12 @@ void mouseClicked() {
 void moving() {
   Monkey m =  monkeys.get(monkeys.get(mouseX, mouseY));
   Weapons w = m.getWeapons();
+  if (m.getUpgraded() == true) {
+    Weapons w2 = m.getWeapons2();
+    Weapons w3 = m.getWeapons3();
+    w2.move();
+    w3.move();
+  }
   w.move();
   m.move();
 }
@@ -179,6 +188,7 @@ void draw() {
     if (!player.isDead()) {
       monkeyButtons.display();
       cancelButton.display();
+
       fill(0);
       text("ROUND: " + (round+1), 845, 30);
       text("HEALTH: " + player.health, 850, 50);
