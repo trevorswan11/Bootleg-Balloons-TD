@@ -23,6 +23,8 @@ Buttons sellButton;
 Buttons cancelButton;
 Buttons upgradeStrengthButton;
 Buttons upgradeThrowButton;
+Buttons upgradeRangeButton;
+Buttons upgradeSpeedButton;
 
 balloonButtonList balloonButtons;
 monkeyButtonList monkeyButtons;
@@ -44,10 +46,12 @@ void setup() {
 
   //images
 
-  sellButton= new Buttons (350, 650, "SELL", 30, 50, 10, 255);
-  cancelButton = new Buttons (850, 650, "CANCEL", 70, 70, 20, 55);
+  sellButton= new Buttons (190, 680, "SELL", 30, 50, 10, 255);
+  cancelButton = new Buttons (900, 650, "CANCEL", 70, 70, 20, 55);
   upgradeStrengthButton = new Buttons (500, 650, "STRENGTH\nUPGRADE", 50, 70, 10, 255);
   upgradeThrowButton = new Buttons (650, 650, "THROW\nUPGRADE", 50, 70, 10, 255);
+  upgradeSpeedButton = new Buttons (350, 650, "SPEED\nUPGRADE", 50, 70, 10, 255);
+  upgradeRangeButton = new Buttons (800, 650, "RANGE\nUPGRADE", 50, 70, 10, 255);
 
 
   dart = loadImage("dart.png");
@@ -123,12 +127,22 @@ void mouseClicked() {
   }
   int buttonIndex = monkeyButtons.findButtonAt(mouseX, mouseY);
   monkeys.addMonkey(buttonIndex);
-  if (upgradeStrengthButton.clicked1(mouseX, mouseY) == true) {
+  if (upgradeStrengthButton.clicked1(mouseX, mouseY) == true && player.getIncome() >= 50) {
     float value = monkeys.get(monkeys.showStats).getAttackStrength()*1.1;
     monkeys.get(monkeys.showStats).setAttackStrength(value);
-    player.changeIncome(100*-1);
+    player.changeIncome(50*-1);
   }
-  if (upgradeThrowButton.clicked1(mouseX, mouseY) == true) {
+  if (upgradeSpeedButton.clicked1(mouseX, mouseY) == true && player.getIncome() >= 50) {
+    float value = monkeys.get(monkeys.showStats).getAttackSpeed()+2;
+    monkeys.get(monkeys.showStats).setAttackSpeed(value);
+    player.changeIncome(50*-1);
+  }
+  if (upgradeRangeButton.clicked1(mouseX, mouseY) == true && player.getIncome() >= 50) {
+    float value = monkeys.get(monkeys.showStats).getAttackRange()*1.1;
+    monkeys.get(monkeys.showStats).setAttackRange(value);
+    player.changeIncome(50*-1);
+  }
+  if (upgradeThrowButton.clicked1(mouseX, mouseY) == true && player.getIncome() >= 100) {
     Weapons w2 = monkeys.get(monkeys.showStats).getWeapons2();
     Weapons w3 = monkeys.get(monkeys.showStats).getWeapons3();
     w2.setX(monkeys.get(monkeys.showStats).getWeapons().getX());
@@ -136,6 +150,7 @@ void mouseClicked() {
     w2.setY(monkeys.get(monkeys.showStats).getWeapons().getY());
     w3.setY(monkeys.get(monkeys.showStats).getWeapons().getY());
     monkeys.get(monkeys.showStats).setUpgraded(true);
+    player.changeIncome(100*-1);
   }
   if (monkeys.showStats < monkeys.size() && monkeys.showStats > -1 && sellButton.clicked1(mouseX, mouseY) == true) {
     monkeys.sell(monkeys.showStats);

@@ -1,7 +1,7 @@
 public class Monkey {
   PImage image; //For creating the monkey image
-  int attackSpeed;
-  int attackRange;
+  float attackSpeed;
+  float attackRange;
   float attackStrength;
   Weapons weapon;
   Weapons weapon2;
@@ -165,6 +165,8 @@ public class Monkey {
     sellButton.display();
     upgradeStrengthButton.display();
     upgradeThrowButton.display();
+    upgradeSpeedButton.display();
+    upgradeRangeButton.display();
   }
 
   public float getX() {
@@ -191,11 +193,11 @@ public class Monkey {
     return weapon3;
   }
 
-  public int getAttackSpeed() {
+  public float getAttackSpeed() {
     return attackSpeed;
   }
 
-  public int getAttackRange() {
+  public float getAttackRange() {
     return attackRange;
   }
 
@@ -204,6 +206,12 @@ public class Monkey {
   }
   void setAttackStrength(float a) {
     attackStrength = a;
+  }
+  void setAttackRange(float a) {
+    attackRange = a;
+  }
+  void setAttackSpeed(float a) {
+    attackSpeed= a;
   }
   public PImage getImage() {
     return image;
@@ -300,6 +308,8 @@ public class ninjaMonkey extends Monkey {
     sellButton.display();
     upgradeStrengthButton.display();
     upgradeThrowButton.display();
+    upgradeSpeedButton.display();
+    upgradeRangeButton.display();
   }
   void throwWeapon(Balloon b) {
     float[] coord = {0, 0};
@@ -345,6 +355,8 @@ public class wizardMonkey extends Monkey {
     sellButton.display();
     upgradeStrengthButton.display();
     upgradeThrowButton.display();
+    upgradeSpeedButton.display();
+    upgradeRangeButton.display();
   }
 }
 
@@ -365,6 +377,8 @@ public class sniperMonkey extends Monkey {
     sellButton.display();
     upgradeStrengthButton.display();
     upgradeThrowButton.display();
+    upgradeSpeedButton.display();
+    upgradeRangeButton.display();
   }
 
   float[] findBalloon() {
