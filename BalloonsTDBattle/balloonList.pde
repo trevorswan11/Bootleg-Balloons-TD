@@ -5,18 +5,14 @@ public class balloonList {
     balloons = new ArrayList<Balloon>();
   }
 
-  void display() {
-    for (int index = 0; index < balloons.size(); index++) {
-      balloons.get(index).display();
-    }
-  }
-
   void processAll() {
     for (int index = 0; index < balloons.size(); index++) {
       if (balloons.get(index).getHealth() > 0) {
         balloons.get(index).followMap();
         if (balloons.get(index).atEnd) {
-          player.decreaseHealth(balloons.get(index).health);
+          if (gameStart) {
+            player.decreaseHealth(balloons.get(index).health);
+          }
           balloons.remove(index);
           index--;
         }
@@ -31,17 +27,6 @@ public class balloonList {
       round++;
       player.roundIncome();
     }
-  }
-
-  int getBalloonAt(float x, float y) {
-    for (int index = 0; index < balloons.size(); index++) {
-      float distance_ = dist(x, y, balloons.get(index).currentX, balloons.get(index).currentY);
-      float size_ = balloons.get(index).size;
-      if (distance_ - size_ <= 0) {
-        return index;
-      }
-    }
-    return -1;
   }
   
   void setNewBalloon(int index) {
@@ -65,7 +50,7 @@ public class balloonList {
           set(index, new rainbowBalloon(balloon));
           add(index, new rainbowBalloon(balloon));
         }
-      } else if (balloon.image == black || balloon.image == white) {
+      } else if ((balloon.image == black || balloon.image == white)) {
         set(index, new pinkBalloon(balloon));
         add(index, new pinkBalloon(balloon));
       } else if (balloon.image == zebra) {
@@ -87,6 +72,23 @@ public class balloonList {
     }
   }
   
+  int getBalloonAt(float x, float y) {
+    for (int index = 0; index < balloons.size(); index++) {
+      float distance_ = dist(x, y, balloons.get(index).currentX, balloons.get(index).currentY);
+      float size_ = balloons.get(index).size;
+      if (distance_ - size_ <= 0) {
+        return index;
+      }
+    }
+    return -1;
+  }
+  
+  void display() {
+    for (int index = 0; index < balloons.size(); index++) {
+      balloons.get(index).display();
+    }
+  }
+
   Balloon get(int index){
     return balloons.get(index);
   }
@@ -96,6 +98,10 @@ public class balloonList {
   void add(int index, Balloon balloon) {
     balloons.add(index, balloon);  
   }
+  //void addFuture(int index, Balloon balloon) {
+  //  float[] futureCords = balloon.getFuture(); 
+  //  balloons.add(index, new Balloon(balloon, futureCords[0], futureCords[1]);
+  //}
   void set(int index, Balloon balloon) {
     balloons.set(index, balloon);  
   }

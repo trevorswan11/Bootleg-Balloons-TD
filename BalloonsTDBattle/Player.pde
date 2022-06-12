@@ -26,8 +26,6 @@ public class Player {
     } else {
       return income += attack;
     } 
- 
-      
   }
   
  int decreaseHealth() {
@@ -52,6 +50,10 @@ public class Player {
  }
  int getIncome(){
    return income;
+ }
+ 
+ void setHealth(int h) {
+   health = h;  
  }
   
 }
