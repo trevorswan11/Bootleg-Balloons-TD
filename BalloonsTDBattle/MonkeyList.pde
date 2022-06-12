@@ -16,15 +16,13 @@ public class MonkeyList {
         current.setTargetBalloon(balloons.getBalloonAt(coord[0], coord[1]));
       } else {
         int index = current.getTargetBalloon();
-        if (index > -1 && index < balloons.size() && balloons.get(index).getTarget() == false && (!(balloons.get(index).getFuture()[0] == -1 && balloons.get(index).getFuture()[0] == -1))) {
+        if (index > -1 && index < balloons.size() && (!(balloons.get(index).getFuture()[0] == -1 && balloons.get(index).getFuture()[0] == -1))) {
           current.throwWeapon(balloons.get(index));
-          balloons.setNewBalloon(index);
         }
         if (current.thrown) {
+          balloons.setNewBalloon(index);
           current.setThrown(false);
           current.setTargetBalloon(-1);
-          //current.weapon.setX(current.getX());
-          //current.weapon.setY(current.getY());
           current.resetTimer();
           current.setTargetBalloon(-1);
         }
@@ -59,12 +57,15 @@ public class MonkeyList {
       }
     }
   }
+  
   void add(Monkey toBeAdded) {
     monke.add(toBeAdded);
   }
+
   void remove(int i) {
     monke.remove(i);
   }
+
   void remove(Monkey e) {
     monke.remove(e);
   }
@@ -85,10 +86,12 @@ public class MonkeyList {
       remove(get(i));
     }
   }
+
   void sell(int index) {
     player.changeIncome((int)(monkeys.get(index).getPrice()*0.795));
     monkeys.remove(index);
   }
+
 
   void sell(Monkey m) {
     player.changeIncome((int)(m.price*0.795));
@@ -98,7 +101,6 @@ public class MonkeyList {
   public Monkey get(int index) {
     return monke.get(index);
   }
-
   public int get(float xcoord, float ycoord) {
     int result = -1;
     for (int i = 0; i < monke.size(); i++) {

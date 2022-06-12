@@ -1,4 +1,3 @@
-int show = 1;
 MonkeyList monkeys = new MonkeyList();
 balloonList balloons = new balloonList();
 
@@ -7,9 +6,16 @@ Monkey m;
 Map map;
 Balloon balloon;
 Rounds rounds;
+
 int showStats = -1;
 boolean gameStart = false;
 boolean freeplayStart = false;
+boolean paused = false;
+boolean roundStart = false;
+boolean roundOver = false;
+boolean locked = false;
+int clickedNum = 0;
+int round = 0;
 
 int balloonSize = 35;
 int monkeySize = 50;
@@ -17,7 +23,6 @@ int imageSize = 75;
 
 Buttons normal;
 Buttons freeplay;
-Buttons nextRound;
 Buttons startOver;
 Buttons sellButton;
 Buttons cancelButton;
@@ -25,18 +30,15 @@ Buttons upgradeStrengthButton;
 Buttons upgradeThrowButton;
 Buttons upgradeRangeButton;
 Buttons upgradeSpeedButton;
+Buttons startRound;
+Buttons pause;
+Buttons quit;
 
 balloonButtonList balloonButtons;
 monkeyButtonList monkeyButtons;
 
 PImage dart, ninja, wizard, sniper, water, ninjaImg, wizardImg, sniperImg, waterImg;
 PImage red, blue, green, yellow, pink, black, white, zebra, lead, rainbow, ceramic;
-boolean roundStart = false;
-boolean roundOver = false;
-boolean locked = false;
-int clickedNum = 0;
-int round = 0;
-
 
 void setup() {
   size(1000, 750);
@@ -45,13 +47,6 @@ void setup() {
   rounds = new Rounds();
 
   //images
-
-  sellButton= new Buttons (190, 680, "SELL", 30, 50, 10, 255);
-  cancelButton = new Buttons (900, 650, "CANCEL", 70, 70, 20, 55);
-  upgradeStrengthButton = new Buttons (500, 650, "STRENGTH\nUPGRADE", 50, 70, 10, 255);
-  upgradeThrowButton = new Buttons (650, 650, "THROW\nUPGRADE", 50, 70, 10, 255);
-  upgradeSpeedButton = new Buttons (350, 650, "SPEED\nUPGRADE", 50, 70, 10, 255);
-  upgradeRangeButton = new Buttons (800, 650, "RANGE\nUPGRADE", 50, 70, 10, 255);
 
 
   dart = loadImage("dart.png");
@@ -96,15 +91,44 @@ void setup() {
   ceramic = loadImage("ceramic_balloon.png");
   ceramic.resize(balloonSize, balloonSize);
 
-
+  //buttons
   normal = new Buttons(width/2-50, height/2 + 100, "NORMAL", 40, 100, 20, 225);
   freeplay = new Buttons(width/2-50, height/2 + 150, "FREEPLAY", 40, 100, 20, 225);
   startOver = new Buttons(width/2-70, height/2 + 110, "START OVER", 40, 140, 20, 225);
+  pause = new Buttons(835, 650, "PAUSE", 30, 130, 20, 225);
+  quit = new Buttons(835, 690, "QUIT", 30, 130, 20, 225);
+  startRound = new Buttons(865, 500, "START", 70, 70, 20, 225);
   balloonButtons = new balloonButtonList();
   monkeyButtons = new monkeyButtonList();
+  sellButton= new Buttons (190, 680, "SELL", 30, 50, 10, 255);
+  cancelButton = new Buttons (865, 400, "CANCEL", 70, 70, 20, 55);
+  upgradeStrengthButton = new Buttons (500, 650, "STRENGTH\nUPGRADE", 50, 70, 10, 255);
+  upgradeThrowButton = new Buttons (650, 650, "THROW\nUPGRADE", 50, 70, 10, 255);
+  upgradeSpeedButton = new Buttons (350, 650, "SPEED\nUPGRADE", 50, 70, 10, 255);
+  upgradeRangeButton = new Buttons (800, 650, "RANGE\nUPGRADE", 50, 70, 10, 255);
+}
+
+void moving() {
+  Monkey m =  monkeys.get(monkeys.get(mouseX, mouseY));
+  Weapons w = m.getWeapons();
+  w.move();
+  m.move();
+}
+
+void restart() {
+  player = new Player();
+  rounds = new Rounds();
+  monkeys = new MonkeyList();
+  balloons = new balloonList();
+  gameStart = false;
+  freeplayStart = false;
+  round = 0;
 }
 
 void mouseClicked() {
+  color c = map.getPath().get(mouseX, mouseY);
+  println(("" + c + " " + red(c) + ", " + blue(c) + ", " + green(c)));
+  
   if (!gameStart && !freeplayStart) {
     if (normal.inRange(mouseX, mouseY)) {
       gameStart = true;
@@ -114,12 +138,7 @@ void mouseClicked() {
     }
   } else if (player.isDead()) {
     if (startOver.inRange(mouseX, mouseY)) {
-      player = new Player();
-      rounds = new Rounds();
-      monkeys = new MonkeyList();
-      balloons = new balloonList();
-      gameStart = false;
-      round = 0;
+      restart();
     }
   } else {
     int index = monkeys.get(mouseX, mouseY);
@@ -175,19 +194,15 @@ void mouseClicked() {
     }
   }
   balloonButtons.spawnBalloon();
-}
-
-
-
-void moving() {
-  Monkey m =  monkeys.get(monkeys.get(mouseX, mouseY));
-  Weapons w = m.getWeapons();
-  w.move();
-  m.move();
-}
-
-void keyPressed() {
-  if (key == ENTER) {
+  if (quit.inRange(mouseX, mouseY)) {
+    restart();
+  } else if (pause.inRange(mouseX, mouseY)) {
+    if (paused == true) {
+      paused = false;
+    } else {
+      paused = true;
+    }
+  } else if (startRound.inRange(mouseX, mouseY)) {
     roundStart = true;
   }
 }
@@ -205,13 +220,18 @@ void draw() {
     background(255);
     textSize(15);
     if (!player.isDead()) {
+      pause.display();
+      quit.display();
+      startRound.display();
       monkeyButtons.display();
       cancelButton.display();
 
       fill(0);
-      text("ROUND: " + (round+1), 845, 30);
-      text("HEALTH: " + player.health, 850, 50);
-      text("INCOME: " + player.income, 850, 70);
+      textSize(15);
+      textAlign(LEFT);
+      text("ROUND: " + (round+1), 830, 30);
+      text("HEALTH: " + player.health, 830, 50);
+      text("INCOME: " + player.income, 830, 70);
       map.display();
       fill(0);
       if (monkeys.showStats != -1) {
@@ -233,10 +253,16 @@ void draw() {
           rounds.runRound();
         }
         balloons.display();
-        balloons.processAll();
-        monkeys.processAll();
+        if (!paused) {
+          balloons.processAll();
+          monkeys.processAll();
+        }
       }
       monkeys.display();
+      if (paused) {
+        fill(0, 200);
+        triangle(360, 200, 360, 400, 560, 300);
+      }
     } else {
       textSize(100);
       textAlign(CENTER);
@@ -248,9 +274,14 @@ void draw() {
     background(255);
     map.display();
     fill(0);
+    pause.display();
+    quit.display();
     balloons.display();
-    balloons.processAll();
-    monkeys.processAll();
+    cancelButton.display();
+    if (!paused) {
+      balloons.processAll();
+      monkeys.processAll();
+    }
     monkeyButtons.display();
     if (monkeys.showStats != -1) {
       monkeys.displayStats();
@@ -271,5 +302,9 @@ void draw() {
       }
     }
     monkeys.display();
+    if (paused) {
+      fill(0, 200);
+      triangle(360, 200, 360, 400, 560, 300);
+    }
   }
 }
