@@ -88,7 +88,7 @@ public class balloonButtonList extends buttonsList {
 
 public class monkeyButtonList extends buttonsList {
   ArrayList<monkeyButton> buttons_;
-  int xValue = 820;
+  int xValue = 830;
   int yValue = 100;
   int spacing = 70;
   int size = 40;

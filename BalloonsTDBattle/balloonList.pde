@@ -16,7 +16,9 @@ public class balloonList {
       if (balloons.get(index).getHealth() > 0) {
         balloons.get(index).followMap();
         if (balloons.get(index).atEnd) {
-          player.decreaseHealth(balloons.get(index).health);
+          if (gameStart) {
+            player.decreaseHealth(balloons.get(index).health);
+          }
           balloons.remove(index);
           index--;
         }

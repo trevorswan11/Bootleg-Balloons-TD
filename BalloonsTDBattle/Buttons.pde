@@ -3,26 +3,11 @@ public class Buttons {
   float y;
   float l;
   float w;
-  int MODE;
   String caption;
-  int modeLimit;
   color c;
   PImage p;
   int size = 10;
   boolean hasImage;
-
-
-  public Buttons (float xcoord, float ycoord, String Caption, int limit, color colors) {
-    x = xcoord;
-    y = ycoord;
-    l = 50;
-    w = 50;
-    MODE = 0;
-    caption = Caption;
-    modeLimit = limit;
-    c = colors;
-    hasImage = false;
-  }
 
   public Buttons (float x_, float y_, String caption_, int l_, int w_, int size_, color colors_) {
     x = x_;
@@ -45,23 +30,10 @@ public class Buttons {
     hasImage = true;
   }
 
-
-  public Buttons (float xcoord, float ycoord, PImage img, int limit, color colors) {
-    x = xcoord;
-    y = ycoord;
-    l = 50;
-    w = 50;
-    MODE = 0;
-    p = img;
-    modeLimit = limit;
-    c = colors;
-    hasImage = true;
-  }
-
   void display() {
     hover(mouseX, mouseY);
     fill(c);
-    rect(x, y, w, l);
+    rect(x, y-size/2, w, l);
     fill(0);
     if (hasImage == false) {
       textAlign(CENTER);
@@ -71,14 +43,7 @@ public class Buttons {
       image(p, x, y);
     }
   }
-  void clicked( int xcoord, int ycoord) {
-    if (xcoord > x && xcoord < x+w && ycoord > y && ycoord<y+l) {
-      MODE++;
-      if (MODE == modeLimit) {
-        MODE = 0;
-      }
-    }
-  }
+
   public boolean clicked1(int xcoord, int ycoord) {
     if (xcoord > x && xcoord < x+w && ycoord > y && ycoord<y+l) {
       return true;
@@ -86,7 +51,6 @@ public class Buttons {
       return false;
     }
   }
-
 
   boolean inRange(int x_, int y_) {
     return (x_ > x && x_ < x+w && y_ > y && y_ < y+l);
@@ -100,9 +64,6 @@ public class Buttons {
     }
   }
 
-  int getMode() {
-    return MODE;
-  }
   PImage getImage() {
     return p;  
   }

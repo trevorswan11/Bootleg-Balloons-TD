@@ -53,5 +53,9 @@ public class Player {
  int getIncome(){
    return income;
  }
+ 
+ void setHealth(int h) {
+   health = h;  
+ }
   
 }
