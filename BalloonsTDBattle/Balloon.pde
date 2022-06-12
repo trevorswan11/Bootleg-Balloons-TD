@@ -3,8 +3,8 @@ public class Balloon {
   int health;
   float speed;
   int size = balloonSize;
-  Boolean atEnd = false;
-  Boolean target = false;
+  Boolean atEnd = false; 
+  Boolean target = false; //indicates if a monkey has it as its target 
 
   int directionsIndex = 1;
   float currentX = 410;
@@ -89,7 +89,7 @@ public class Balloon {
     }
   }
 
-  float[] getFuture() { //combination of move and followmap 
+  float[] getFuture(int constant) { //combination of move and followmap 
     if (directionsIndex+1 >= map.getDirectionsSize()) { //checks if balloon will be off the map when monkey attacks 
       return new float[]{-1, -1};  
     }
@@ -104,7 +104,7 @@ public class Balloon {
     float distanceY_ = nextCords[1]-y_;
     int timer = 0;
 
-    while (timer < 3) { //will find balloon in 3 "frames"
+    while (timer < constant) { //will find balloon in constant "frames"
       if (directionsIndex_ < map.getDirectionsSize()) { //same as followMap()
         if (distanceX_ != 0) { //same as move()
           float sign = distanceSign(distanceX_);
@@ -320,21 +320,6 @@ public class zebraBalloon extends Balloon{
     image = zebra;
     health = 23;
     speed = 1.5;
-  }
-}
-
-public class leadBalloon extends Balloon{
-  leadBalloon() {
-    image = lead;
-    health = 23;
-    speed = 1;
-  }
-
-  leadBalloon(Balloon b) {
-    super(b);
-    image = lead;
-    health = 23;
-    speed = 1;
   }
 }
 

@@ -95,19 +95,19 @@ void setup() {
   normal = new Buttons(width/2-50, height/2 + 100, "NORMAL", 40, 100, 20);
   freeplay = new Buttons(width/2-50, height/2 + 150, "FREEPLAY", 40, 100, 20);
   startOver = new Buttons(width/2-70, height/2 + 110, "START OVER", 40, 140, 20);
-  pause = new Buttons(835, 650, "PAUSE", 30, 130, 20);
-  quit = new Buttons(835, 690, "QUIT", 30, 130, 20);
+  pause = new Buttons(835, 650, "PAUSE", 35, 130, 20);
+  quit = new Buttons(835, 690, "QUIT", 35, 130, 20);
   startRound = new Buttons(865, 500, "START", 70, 70, 20);
   
   balloonButtons = new balloonButtonList();
   monkeyButtons = new monkeyButtonList();
   
-  sellButton= new Buttons (190, 680, "SELL", 30, 50, 10);
-  cancelButton = new Buttons (865, 400, "CANCEL", 70, 70, 20);
-  upgradeSpeedButton = new Buttons (350, 650, "SPEED\nUPGRADE\n$100", 50, 70, 10);
-  upgradeStrengthButton = new Buttons (450, 650, "STRENGTH\nUPGRADE\n$100", 50, 70, 10);
-  upgradeThrowButton = new Buttons (550, 650, "THROW\nUPGRADE\n$100", 50, 70, 10);
-  upgradeRangeButton = new Buttons (650, 650, "RANGE\nUPGRADE\n$100", 50, 70, 10);
+  sellButton = new Buttons (190, 680, "SELL", 30, 50, 15);
+  cancelButton = new Buttons (860, 400, "CANCEL", 80, 80, 20);
+  upgradeSpeedButton = new Buttons (350, 650, "SPEED\nUPGRADE\n$100", 60, 75, 14);
+  upgradeStrengthButton = new Buttons (450, 650, "STRENGTH\nUPGRADE\n$100", 60, 75, 14);
+  upgradeThrowButton = new Buttons (550, 650, "THROW\nUPGRADE\n$100", 60, 75, 14);
+  upgradeRangeButton = new Buttons (650, 650, "RANGE\nUPGRADE\n$100", 60, 75, 14);
 }
 
 void moving() {
@@ -117,6 +117,7 @@ void moving() {
   m.move();
 }
 
+//resets all variables to start a new game 
 void restart() {
   player = new Player();
   rounds = new Rounds();
@@ -125,6 +126,8 @@ void restart() {
   gameStart = false;
   freeplayStart = false;
   round = 0;
+  paused = false;
+  roundStart = false;
 }
 
 void mouseClicked() {  
@@ -260,15 +263,15 @@ void draw() {
         monkeys.displayStats();
       }
       monkeys.display();
-      
+      balloons.display();
+
       if (roundStart) { //runs when round is in motion 
-        if (!roundOver) {
-          rounds.runRound(); //will load in all balloons in the round
-        }
-        balloons.display();
         if (!paused) {
           balloons.processAll();
           monkeys.processAll();
+          if (!roundOver) {
+            rounds.runRound(); //will load in all balloons in the round
+          }
         }
       }
       if (paused) {

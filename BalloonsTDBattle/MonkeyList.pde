@@ -1,6 +1,6 @@
 public class MonkeyList {
   ArrayList<Monkey> monke;
-  int showStats = -1;
+  int showStats = -1; //indicates index of which monkey's stats are being shown, if it's -1 no stats are shown 
 
   public MonkeyList() {
     monke = new ArrayList<Monkey>();
@@ -16,7 +16,7 @@ public class MonkeyList {
         current.setTargetBalloon(balloons.getBalloonAt(coord[0], coord[1]));
       } else {
         int index = current.getTargetBalloon();
-        if (index > -1 && index < balloons.size() && (!(balloons.get(index).getFuture()[0] == -1 && balloons.get(index).getFuture()[0] == -1))) {
+        if (index > -1 && index < balloons.size() && (!(balloons.get(index).getFuture(3)[0] == -1 && balloons.get(index).getFuture(3)[0] == -1))) {
           current.throwWeapon(balloons.get(index));
         }
         if (current.thrown) {
@@ -77,6 +77,7 @@ public class MonkeyList {
   Monkey get(int index) {
     return monke.get(index);
   }
+  
   int get(float xcoord, float ycoord) {
     int result = -1;
     for (int i = 0; i < monke.size(); i++) {

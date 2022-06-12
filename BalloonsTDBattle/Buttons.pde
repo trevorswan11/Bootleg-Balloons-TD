@@ -1,8 +1,8 @@
 public class Buttons {
-  float x;
-  float y;
-  float l;
-  float w;
+  float x; //x cord
+  float y; //y cord
+  float l; //length of the rectangle 
+  float w; //width of the rectangle 
   String caption;
   color c = 255;
   PImage p;
@@ -33,7 +33,7 @@ public class Buttons {
   void display() {
     hover();
     fill(c);
-    rect(x, y-size/2, w, l);
+    rect(x, y, w, l);
     fill(0);
     if (hasImage == false) { 
       textAlign(CENTER);
