@@ -38,7 +38,7 @@ Buttons upgradeSpeedButton;
 balloonButtonList balloonButtons;
 monkeyButtonList monkeyButtons;
 
-PImage dart, ninja, wizard, sniper, water, ninjaImg, wizardImg, sniperImg, waterImg;
+PImage dart, ninja, wizard, sniper, water, ninjaImg, wizardImg, sniperImg, waterImg, beginImage;
 PImage red, blue, green, yellow, pink, black, white, zebra, lead, rainbow, ceramic;
 
 void setup() {
@@ -47,8 +47,8 @@ void setup() {
   player = new Player();
   rounds = new Rounds();
 
-  //load in all images in setup 
-  //monkey images 
+  //load in all images in setup
+  //monkey images
   dart = loadImage("dart.png");
   dart.resize(monkeySize, monkeySize);
   ninja = loadImage("ninja.png");
@@ -59,16 +59,8 @@ void setup() {
   sniper.resize(monkeySize, monkeySize);
   water = loadImage("water.png");
   water.resize(monkeySize, monkeySize);
-  ninjaImg = loadImage("ninja.png");
-  ninjaImg.resize(imageSize, imageSize);
-  wizardImg = loadImage("wizard.png");
-  wizardImg.resize(imageSize, imageSize);
-  sniperImg = loadImage("sniper.png");
-  sniperImg.resize(imageSize, imageSize);
-  waterImg = loadImage("water.png");
-  waterImg.resize(imageSize, imageSize);
 
-  //balloon images 
+  //balloon images
   red = loadImage("red_balloon.png");
   red.resize(balloonSize, balloonSize);
   blue = loadImage("blue_balloon.png");
@@ -79,7 +71,7 @@ void setup() {
   yellow.resize(balloonSize, balloonSize);
   pink = loadImage("pink_balloon.png");
   pink.resize(balloonSize, balloonSize);
-  //black and white png's are different sizes than the rest of the ballooons so they have to be differently sized 
+  //black and white png's are different sizes than the rest of the ballooons so they have to be differently sized
   black = loadImage("black_balloon.png");
   black.resize(balloonSize/2, balloonSize);
   white = loadImage("white_balloon.png");
@@ -100,10 +92,10 @@ void setup() {
   pause = new Buttons(835, 650, "PAUSE", 35, 130, 20);
   quit = new Buttons(835, 690, "QUIT", 35, 130, 20);
   startRound = new Buttons(865, 500, "START", 70, 70, 20);
-  
+
   balloonButtons = new balloonButtonList();
   monkeyButtons = new monkeyButtonList();
-  
+
   sellButton = new Buttons (190, 680, "SELL", 30, 50, 15);
   cancelButton = new Buttons (860, 400, "CANCEL", 80, 80, 20);
   upgradeSpeedButton = new Buttons (350, 650, "SPEED\nUPGRADE\n$100", 60, 75, 14);
@@ -113,13 +105,14 @@ void setup() {
 }
 
 void moving() {
+  //Both monkey and weapon is dragged
   Monkey m =  monkeys.get(monkeys.get(mouseX, mouseY));
   Weapons w = m.getWeapons();
   w.move();
   m.move();
 }
 
-//resets all variables to start a new game 
+//resets all variables to start a new game
 void restart() {
   player = new Player();
   rounds = new Rounds();
@@ -132,9 +125,9 @@ void restart() {
   roundStart = false;
 }
 
-void mouseClicked() {  
-  if (!gameStart && !freeplayStart) { //start menu 
-    if (normal.inRange()) { //starts normal 
+void mouseClicked() {
+  if (!gameStart && !freeplayStart) { //start menu
+    if (normal.inRange()) { //starts normal
       gameStart = true;
     }
     if (freeplay.inRange()) { //starts freeplay
@@ -146,17 +139,20 @@ void mouseClicked() {
     }
   } else {
     int index = monkeys.get(mouseX, mouseY);
+    //if the monkey is not being dragged then show stats 
     if (index > -1 && monkeys.get(index).getMovement()==false) {
       monkeys.setShowStats(index);
+      //if mouse is clicked inside the map then stats disappear
     } else if (mouseX < 800 && mouseY < 600) {
       monkeys.setShowStats(-1);
     }
   }
-  
+
   int buttonIndex = monkeyButtons.findButtonAt();
   monkeys.addMonkey(buttonIndex);
   if (monkeys.showStats != -1) { //if monkey stats are being shown
     if (upgradeStrengthButton.inRange() == true && player.getIncome() >= 100) {
+      // if strength button is pressed then increase strength
       float value = monkeys.get(monkeys.showStats).getAttackStrength()+1;
       monkeys.get(monkeys.showStats).setAttackStrength(value);
       if (gameStart) {
@@ -164,6 +160,7 @@ void mouseClicked() {
       }
     }
     if (upgradeSpeedButton.inRange() == true && player.getIncome() >= 100) {
+      //if speed button is pressed, increase speed
       float value = monkeys.get(monkeys.showStats).getAttackSpeed()-2;
       monkeys.get(monkeys.showStats).setAttackSpeed(value);
       if (gameStart) {
@@ -171,13 +168,15 @@ void mouseClicked() {
       }
     }
     if (upgradeRangeButton.inRange() == true && player.getIncome() >= 100) {
+      //if range button is pressed, increase range
       float value = monkeys.get(monkeys.showStats).getAttackRange()*1.3;
       monkeys.get(monkeys.showStats).setAttackRange(value);
       if (gameStart) {
-      player.changeIncome(75*-1);
+        player.changeIncome(75*-1);
       }
     }
     if (upgradeThrowButton.inRange() == true && player.getIncome() >= 150) {
+      //if the throw upgrade button is pressed then set weapon2 and weapon3 to the monkey and set upgraded boolean to true
       Weapons w2 = monkeys.get(monkeys.showStats).getWeapons2();
       Weapons w3 = monkeys.get(monkeys.showStats).getWeapons3();
       w2.setX(monkeys.get(monkeys.showStats).getWeapons().getX());
@@ -189,27 +188,31 @@ void mouseClicked() {
     }
   }
   if (monkeys.showStats < monkeys.size() && monkeys.showStats > -1 && sellButton.inRange() == true) {
+    //sell button- stops displaying stats
     monkeys.sell(monkeys.showStats);
     monkeys.setShowStats(-1);
   }
   if (monkeys.get(mouseX, mouseY) > -1) {
     Monkey m1 = monkeys.get(monkeys.get(mouseX, mouseY));
     m1.addClickedNum();
+    //if monkey can be placed and is clicked once, then it is being dragged
     if (m1.canBePlaced(mouseX, mouseY) || m1.getClickedNum() == 1) {
       m1.setMovement();
     }
+    //if monkey can be placed and it is clicked a second time, then it is being placed down and locked into place
     if (m1.canBePlaced(mouseX, mouseY) && m1.getClickedNum() > 2) {
       m1.setLocked(true);
     }
+    //if monkey is being dragged and cancel button is clicked then the payment is canceled
     if (cancelButton.inRange() == true && m1.getMovement() == true) {
       monkeys.remove(m1);
       player.changeIncome(m1.getPrice());
     }
   }
-  
-  balloonButtons.spawnBalloon(); //if respective balloon button is clicked it will spawn 
-  
-  //button triggers for quit, pause, and start round 
+
+  balloonButtons.spawnBalloon(); //if respective balloon button is clicked it will spawn
+
+  //button triggers for quit, pause, and start round
   if (quit.inRange()) {
     restart();
   } else if (pause.inRange()) {
@@ -225,54 +228,58 @@ void mouseClicked() {
 
 
 void draw() {
-  if (!gameStart && !freeplayStart) { //displays main menu 
-    background(255);
+  if (!gameStart && !freeplayStart) { //displays main 
+    beginImage = loadImage("home.png");//displays beginning picture
+    beginImage.resize(1000, 750);
+    image(beginImage, 0, 0);
     textSize(100);
     textAlign(CENTER);
-    text("START GAME", width/2, height/2);
     normal.display();
     freeplay.display();
-  } else if (gameStart) { //normal mode 
+  } else if (gameStart) { //normal mode
     background(255);
     map.display();
     textSize(15);
     fill(0);
-    if (!player.isDead()) { 
-      //loads all buttons 
+    if (!player.isDead()) {
+      //loads all buttons
       pause.display();
       quit.display();
       startRound.display();
       monkeyButtons.display();
       cancelButton.display();
-      
-      //displays information 
+
+      //displays information
       textSize(15);
       textAlign(LEFT);
       text("ROUND: " + (round+1), 830, 30);
       text("HEALTH: " + player.health, 830, 50);
       text("INCOME: " + player.income, 830, 70);
-      
+
+      //if monkey is being dragged in the map
       if (monkeys.get(mouseX, mouseY) > -1 && monkeys.get(monkeys.get(mouseX, mouseY)).getLocked() == false && monkeys.get(monkeys.get(mouseX, mouseY)).getMovement() == true) {
-        moving();
+        moving();//monkey and weapon is dragged
         Monkey bob = monkeys.get(monkeys.get(mouseX, mouseY));
         if (bob.canBePlaced(mouseX, mouseY) == true) {
+          //if monkey can be placed then create a green circle that is the size of the monkey's range
           fill(#3DA745, 150);
           circle(mouseX, mouseY, bob.getAttackRange()*2);
         } else {
+          //if monkey cannot be placed, create a red circle
           fill(#B22225, 150);
           circle(mouseX, mouseY, bob.getAttackRange()*2);
         }
       }
-      
-      if (monkeys.showStats != -1) { //will show stats of moneky with showStats index if its not -1 
+
+      if (monkeys.showStats != -1) { //will show stats of moneky with showStats index if its not -1
         monkeys.displayStats();
       }
-      
+
       monkeys.display();
       balloons.display();
 
-      if (roundStart) { //runs when round is in motion 
-        if (!paused) { //if paused monkeys and balloons will stop moving 
+      if (roundStart) { //runs when round is in motion
+        if (!paused) { //if paused monkeys and balloons will stop moving
           balloons.processAll();
           monkeys.processAll();
           if (!roundOver) {
@@ -280,20 +287,19 @@ void draw() {
           }
         }
       }
-      
-      if (paused) { //if paused, will draw triangle 
+
+      if (paused) { //if paused, will draw triangle
         fill(0, 200);
         triangle(360, 200, 360, 400, 560, 300);
       }
-      
-    } else { //game over menu 
+    } else { //game over menu
       textSize(100);
       textAlign(CENTER);
       text("GAME OVER", width/2, height/2);
       startOver.display();
     }
-  } else if (freeplayStart) { //freeplay mode 
-    //loads in all necessary elements 
+  } else if (freeplayStart) { //freeplay mode
+    //loads in all necessary elements
     background(255);
     fill(0);
     map.display();
@@ -303,7 +309,7 @@ void draw() {
     balloons.display();
     cancelButton.display();
 
-    if (!paused) { //if not paused, monkeys and balloons will move 
+    if (!paused) { //if not paused, monkeys and balloons will move
       balloons.processAll();
       monkeys.processAll();
     }
@@ -319,9 +325,9 @@ void draw() {
         circle(mouseX, mouseY, bob.getAttackRange()*2);
       }
     }
-   
-    //will either show balloon buttons or monkey stats based on what is clicked 
-    if (monkeys.showStats != -1) {  
+
+    //will either show balloon buttons or monkey stats based on what is clicked
+    if (monkeys.showStats != -1) {
       monkeys.displayStats();
       balloonButtons.setShown(false);
     } else {
@@ -329,9 +335,9 @@ void draw() {
       balloonButtons.setShown(true);
     }
 
-    monkeys.display(); //displayed down here so circle to show attackRange doesn't overlap it 
+    monkeys.display(); //displayed down here so circle to show attackRange doesn't overlap it
 
-    if (paused) { //if paused, will draw triangle  
+    if (paused) { //if paused, will draw triangle
       fill(0, 200);
       triangle(360, 200, 360, 400, 560, 300);
     }

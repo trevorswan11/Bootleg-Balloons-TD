@@ -7,19 +7,24 @@ public class MonkeyList {
   }
 
   void processAll() {
+    //applies throw weapon and attack to each balloon in the list
     for (int i = 0; i < monke.size(); i++) {
       Monkey current =  monke.get(i);
       if (current.timer != current.attackSpeed) {
         current.increaseTimer();
+        //timer to slow down attacks
       } else if (current.getTargetBalloon() == -1) {
         float coord[] = monke.get(i).findBalloon();
         current.setTargetBalloon(balloons.getBalloonAt(coord[0], coord[1]));
+        //monkey finds each balloon target
       } else {
         int index = current.getTargetBalloon();
         if (index > -1 && index < balloons.size() && (!(balloons.get(index).getFuture(3)[0] == -1 && balloons.get(index).getFuture(3)[0] == -1))) {
           current.throwWeapon(balloons.get(index));
+          //monkey attacks balloon
         }
         if (current.thrown) {
+          //if monkey already threw weapon then it looks for next balloon
           balloons.setNewBalloon(index);
           current.setThrown(false);
           current.setTargetBalloon(-1);
@@ -50,14 +55,6 @@ public class MonkeyList {
       }
     }
   }
-
-  void set(Monkey oldMonkey, Monkey newMonkey) {
-    for (int i = 0; i < monke.size(); i++) {
-      if (monke.get(i) == oldMonkey) {
-        monke.set(i, newMonkey);
-      }
-    }
-  }
   void add(Monkey toBeAdded) {
     monke.add(toBeAdded);
   }
@@ -79,6 +76,7 @@ public class MonkeyList {
   }
   
   int get(float xcoord, float ycoord) {
+    //finds index of balloon based on the xcoordinate and ycoordinate
     int result = -1;
     for (int i = 0; i < monke.size(); i++) {
       float compareX = monke.get(i).getX();

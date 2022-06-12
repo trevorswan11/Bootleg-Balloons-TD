@@ -8,6 +8,7 @@ public class Weapons {
     c = color(random(255), random(255), random(255));
   }
   public Weapons(float xcoord, float ycoord, color colors) {
+    //constructor for picking weapon color
     x = xcoord;
     y = ycoord;
     c = colors;
@@ -31,6 +32,7 @@ public class Weapons {
     return y;
   }
   void move() {
+    //move method so weapons can be dragged along with the monkey
     float dx = mouseX - x;
     x += dx;
     float dy = mouseY - y;
