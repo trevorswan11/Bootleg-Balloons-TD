@@ -137,7 +137,7 @@ void mouseClicked() {
     player.changeIncome(50*-1);
   }
   if (upgradeSpeedButton.clicked1(mouseX, mouseY) == true && player.getIncome() >= 50) {
-    float value = monkeys.get(monkeys.showStats).getAttackSpeed()+2;
+    float value = monkeys.get(monkeys.showStats).getAttackSpeed()-2;
     monkeys.get(monkeys.showStats).setAttackSpeed(value);
     player.changeIncome(50*-1);
   }

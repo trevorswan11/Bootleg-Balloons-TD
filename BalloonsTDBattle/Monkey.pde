@@ -156,7 +156,7 @@ public class Monkey {
     return result;
   }
   void showStats() {
-    text("Wizard Monkey", 220, 665);
+    text("Dart Monkey", 220, 665);
     fill(255);
     rect(70, 650, 75, 75);
     image(image, 70, 650);
@@ -290,6 +290,30 @@ public class Monkey {
   }
 }
 
+public class dartMonkey extends Monkey {
+  public dartMonkey(float xcoord, float ycoord) {
+    //speed, range, power
+    super(50, 100, 1, xcoord, ycoord);
+    image = ninja;
+    price = 200;
+  }
+
+  void showStats() {
+    text("Dart Monkey", 220, 665);
+    fill(#CDF2F5);
+    rect(70, 650, 75, 75);
+    image(dartImg, 70, 650);
+    fill(#C1C8C9, 150);
+    circle(x, y, attackRange*2);
+    sellButton.display();
+    upgradeStrengthButton.display();
+    upgradeThrowButton.display();
+    upgradeSpeedButton.display();
+    upgradeRangeButton.display();
+  }
+}
+/*
+
 public class ninjaMonkey extends Monkey {
   public ninjaMonkey(float xcoord, float ycoord) {
     //speed, range, power
@@ -328,8 +352,8 @@ public class ninjaMonkey extends Monkey {
         }
         attack(b);
         thrown = true;
-        weapon.setX(x);
-        weapon.setY(y);
+        //weapon.setX(x);
+        //weapon.setY(y);
       } else {
         float xInterval = (coord[0]-weapon.getX())/3;//change 10 to something based off of attackSpeed
         float yInterval = (coord[1]-weapon.getY())/3;
@@ -341,7 +365,7 @@ public class ninjaMonkey extends Monkey {
     }
   }
 }
-
+*/
 
 public class wizardMonkey extends Monkey {
   public wizardMonkey(float xcoord, float ycoord) {
