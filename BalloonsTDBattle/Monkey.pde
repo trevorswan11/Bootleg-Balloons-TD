@@ -1,22 +1,22 @@
 public class Monkey {
-  String name = "Monkey"; 
+  String name = "Monkey";
   PImage image; //For creating the monkey image
   float attackSpeed;
   float attackRange;
   float attackStrength;
   float x; // The coordinates of the monkey
   float y;
-  int timer = 0; //used in its attack method to see how much time passed so it can attack again 
+  int timer = 0; //used in its attack method to see how much time passed so it can attack again
   int price;
 
   boolean thrown;
-  boolean locked = false;
-  boolean movement = false;
-  boolean upgraded = false;
-  int clickedNum;
-  int targetBalloon = -1; //shows which balloon the monkey is targeting, if it is -1 it means there is no balloon 
+  boolean locked = false; //Shows whether monkey is locked in its location on the map
+  boolean movement = false; //Shows whether monkey is moving/being dragged
+  boolean upgraded = false; //shows whether the monkey's throw has been upgraded
+  int clickedNum; //Number of times the monkey has been clicked
+  int targetBalloon = -1; //shows which balloon the monkey is targeting, if it is -1 it means there is no balloon
   int weaponsNum = 1;
-  Weapons weapon;
+  Weapons weapon; //Each monkey has 3 weapons but depending on its upgrade, some will only use one of the weapons
   Weapons weapon2;
   Weapons weapon3;
 
@@ -52,7 +52,7 @@ public class Monkey {
     weapon2 =  new Weapons(xcoord, ycoord);
     weapon3 = new Weapons(xcoord, ycoord);
     weapon = new Weapons(xcoord, ycoord);
-    
+
     image = m_.getImage();
     attackSpeed = m_.getAttackSpeed();
     attackStrength =  m_.getAttackStrength();
@@ -63,6 +63,7 @@ public class Monkey {
   }
 
   float[] findBalloon() {
+    //The method loops through the balloon list and if it is in the attack range of the monkey then its coordinates are returned.
     float[]coord = new float[2];
     for (int i = 0; i< balloons.size(); i++) {
       Balloon current = balloons.get(i);
@@ -75,20 +76,23 @@ public class Monkey {
   }
 
   void attack(Balloon b) {
+    //The balloon is damaged
     b.decreaseHealth(attackStrength);
   }
 
   void throwWeaponUpgraded(Balloon b) {
-    Balloon b2 = balloons.get(balloons.getIndex(b)+1);
+    //Similar to throwWeapons except it happens for three balloons at the same time
+    Balloon b2 = balloons.get(balloons.getIndex(b)+1); //The other two balloons are after the original b balloon index
     Balloon b3 = balloons.get(balloons.getIndex(b)+2);
     b.setTarget(true);
     b2.setTarget(true);
     b3.setTarget(true);
-    float[] coord = b.getFuture(3);
+    float[] coord = b.getFuture(3); //finds the future coordinates of the balloons
     float[] coord2 = b2.getFuture(3);
     float[] coord3 = b3.getFuture(3);
-    float range = dist(weapon.getX(), weapon.getY(), coord[0], coord[1]);
+    float range = dist(weapon.getX(), weapon.getY(), coord[0], coord[1]); //Finds the distance between the weapon/monkey and the future balloons
     if (range < 10 && !thrown) {
+      //decreases income, balloon health, and then sets the weapon back to the monkey after it hits the balloon
       player.attackIncome(this, b);
       player.attackIncome(this, b2);
       player.attackIncome(this, b3);
@@ -103,12 +107,14 @@ public class Monkey {
       weapon3.setX(x);
       weapon3.setY(y);
     } else {
+      //what happends if the weapon is being thrown- travels at an interval
       float xInterval = (coord[0]-weapon.getX())/3;//change 10 to something based off of attackSpeed
       float yInterval = (coord[1]-weapon.getY())/3;
       float xInterval2 = (coord2[0]-weapon2.getX())/3;//change 10 to something based off of attackSpeed
       float yInterval2 = (coord2[1]-weapon2.getY())/3;
       float xInterval3 = (coord3[0]-weapon3.getX())/3;//change 10 to something based off of attackSpeed
       float yInterval3 = (coord3[1]-weapon3.getY())/3;
+      //the weapon changes every interval when being thrown
       weapon.changeX(xInterval);
       weapon.changeY(yInterval);
       weapon2.changeX(xInterval2);
@@ -118,6 +124,7 @@ public class Monkey {
     }
   }
   void throwWeapon(Balloon b) {
+    //If there at least 3 balloons in the balloonslist and all three targetted balloons don't go over the balloon size and the monkey is upgraded, then the upgraded throw weapon is triggered.
     if (balloons.getIndex(b)+1 < balloons.size() && balloons.getIndex(b)+2 < balloons.size()  && upgraded == true && balloons.size() > 3) {
       throwWeaponUpgraded(b);
     } else {
@@ -131,7 +138,7 @@ public class Monkey {
         weapon.setX(x);
         weapon.setY(y);
       } else {
-        float xInterval = (coord[0]-weapon.getX())/3; //since getFuture() find next balloon cords in 3 "frames" the weapon has to travel in 3 "frames" as well 
+        float xInterval = (coord[0]-weapon.getX())/3; //since getFuture() find next balloon cords in 3 "frames" the weapon has to travel in 3 "frames" as well
         float yInterval = (coord[1]-weapon.getY())/3;
         weapon.changeX(xInterval);
         weapon.changeY(yInterval);
@@ -140,13 +147,17 @@ public class Monkey {
   }
 
   boolean canBePlaced(float xcoord, float ycoord) {
+    //Monkeys cannot be placed on the path, or in water
     int dist = 25;
+    //finds color of the map path - the path is black, the land is white and the water is blue
     color c = map.getPath().get((int)xcoord, (int)ycoord);
     boolean result = true;
     if (red(c) != 255) {
+      //if the color at the mouse is not white, then the monkey cannot be placed.
       result = false;
     }
     for (int i = 0; i < monkeys.size(); i ++) {
+      //if the monkey is too close to another monkey then it cannot be placed
       int now = monkeys.get(xcoord, ycoord);
       Monkey current = monkeys.get(i);
       if (now != i && dist(xcoord, ycoord, current.getX(), current.getY()) < dist ) {
@@ -155,8 +166,10 @@ public class Monkey {
     }
     return result;
   }
-  
+
   void showStats() {
+    //shows the name, image, and attack range of the monkey through its circle
+    fill(0);
     textAlign(LEFT);
     textSize(15);
     text(name, 190, 665);
@@ -164,15 +177,16 @@ public class Monkey {
     rect(70, 650, monkeySize, monkeySize);
     image(image, 70, 650);
     fill(#C1C8C9, 150);
-    circle(x, y, attackRange*2); //shows attackRange of the monkey 
-    //displays all the buttons 
+    circle(x, y, attackRange*2); //shows attackRange of the monkey
+    //displays all the buttons
     sellButton.display();
     upgradeStrengthButton.display();
     upgradeThrowButton.display();
     upgradeSpeedButton.display();
     upgradeRangeButton.display();
   }
-  
+
+  //acessor and mutator methods
   int increaseTimer() {
     return timer++;
   }
@@ -189,6 +203,9 @@ public class Monkey {
   void setMovement(boolean b) {
     movement = b;
   }
+  boolean getMovement() {
+    return movement;
+  }
   void setLocked(boolean b) {
     locked = b;
   }
@@ -200,6 +217,18 @@ public class Monkey {
   }
   void setAttackSpeed(float a) {
     attackSpeed= a;
+  }
+  float getAttackSpeed() {
+    return attackSpeed;
+  }
+  float getAttackRange() {
+    return attackRange;
+  }
+  float getAttackStrength() {
+    return attackStrength;
+  }
+  PImage getImage() {
+    return image;
   }
   void addClickedNum() {
     clickedNum++;
@@ -234,26 +263,11 @@ public class Monkey {
   Weapons getWeapons3() {
     return weapon3;
   }
-  float getAttackSpeed() {
-    return attackSpeed;
-  }
-  float getAttackRange() {
-    return attackRange;
-  }
-  float getAttackStrength() {
-    return attackStrength;
-  }
-  PImage getImage() {
-    return image;
-  }
   int getClickedNum() {
     return clickedNum;
   }
   boolean getUpgraded() {
     return upgraded;
-  }
-  boolean getMovement() {
-    return movement;
   }
   boolean getLocked() {
     return locked;
@@ -266,6 +280,7 @@ public class Monkey {
   }
 
   void display() {
+    //displays weapon 2 and weapon 3 only if the monkey is upgraded
     weapon.display();
     if (upgraded == true) {
       weapon2.display();
@@ -275,6 +290,7 @@ public class Monkey {
   }
 
   void move() {
+    //Monkey is dragged
     float dx = mouseX - x;
     x += dx;
     float dy = mouseY - y;
@@ -283,6 +299,7 @@ public class Monkey {
 }
 
 public class ninjaMonkey extends Monkey {
+  //ninja monkey-default
   public ninjaMonkey(float xcoord, float ycoord) {
     //speed, range, power
     super(40, 100, 1, xcoord, ycoord);
@@ -293,6 +310,7 @@ public class ninjaMonkey extends Monkey {
 }
 
 public class wizardMonkey extends Monkey {
+  //wizard monkey has a higher speed 
   public wizardMonkey(float xcoord, float ycoord) {
     super(70, 80, 1, xcoord, ycoord);
     image = wizard;
@@ -302,6 +320,7 @@ public class wizardMonkey extends Monkey {
 }
 
 public class waterMonkey extends Monkey {
+  //water monkey can only be placed in water and only has blue weapons
   public waterMonkey(float xcoord, float ycoord) {
     super(50, 100, 2, xcoord, ycoord);
     weapon2 =  new Weapons(xcoord, ycoord, #56E6F2);
@@ -316,10 +335,11 @@ public class waterMonkey extends Monkey {
     int dist = 25;
     color c = map.getPath().get((int)xcoord, (int)ycoord);
     boolean result = true;
+    //can only be placed in areas of the map that are blue - so water only
     if (red(c) == 7 && xcoord < 800 && ycoord <600) {
       result = true;
     } else {
-      result = false;  
+      result = false;
     }
     for (int i = 0; i < monkeys.size(); i ++) {
       int now = monkeys.get(xcoord, ycoord);
@@ -333,6 +353,7 @@ public class waterMonkey extends Monkey {
 }
 
 public class sniperMonkey extends Monkey {
+  //sniper monkey does not have any range and always hits the strongest balloon
   public sniperMonkey(float xcoord, float ycoord) {
     super(100, 50, 3, xcoord, ycoord);
     image = sniper;
