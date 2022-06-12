@@ -29,8 +29,6 @@ public class balloonList {
     }
   }
 
-
-
   void setNewBalloon(int index) {
     Balloon balloon = balloons.get(index);
     int health = balloon.getHealth();

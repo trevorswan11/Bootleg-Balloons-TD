@@ -1,7 +1,8 @@
 public class Map { 
+  //starting, corner, and ending coordiantes in directions 
  final int[][] directions = new int[][]{{410,0},{410, 60},{670,60},{670,225},{270,225},{270,95},{115,95},{115,350},{470,350},{470,440},{220,440},{220,570},{670,570},{670,600}};
  PImage image;
- PImage path;
+ PImage path; //
  
  public Map() {
    image = loadImage("snow_map.jpg");  

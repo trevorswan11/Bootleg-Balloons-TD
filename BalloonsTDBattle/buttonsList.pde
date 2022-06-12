@@ -29,7 +29,7 @@ public class balloonButtonList extends buttonsList {
   
   void spawnBalloon() {
     if (shown) {
-      int i = findButtonAt(mouseX, mouseY); 
+      int i = findButtonAt(); 
       if (i > -1) {
         buttons_.get(i).spawnBalloon();  
       }
@@ -41,13 +41,13 @@ public class balloonButtonList extends buttonsList {
     text("SPAWN BALLOONS", 160, 630);
     for (int i = 0; i < buttons_.size(); i++) {
       buttons_.get(i).display();   
-      buttons_.get(i).hover(mouseX, mouseY);
+      buttons_.get(i).hover();
     }
   }
   
-  int findButtonAt(int x, int y) {
+  int findButtonAt() {
     for (int i = 0; i < buttons_.size(); i++) {
-      if (buttons_.get(i).inRange(x, y)) {
+      if (buttons_.get(i).inRange()) {
         return i;
       }
     }
@@ -85,13 +85,13 @@ public class monkeyButtonList extends buttonsList {
     fill(0);
     for (int i = 0; i < buttons_.size(); i++) {
       buttons_.get(i).display();  
-      buttons_.get(i).hover(mouseX, mouseY);
+      buttons_.get(i).hover();
     }
   }
   
-  int findButtonAt(int x, int y) {
+  int findButtonAt() {
     for (int i = 0; i < buttons_.size(); i++) {
-      if (buttons_.get(i).inRange(x, y)) {
+      if (buttons_.get(i).inRange()) {
         return i;
       }
     }

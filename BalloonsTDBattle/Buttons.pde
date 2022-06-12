@@ -4,38 +4,38 @@ public class Buttons {
   float l;
   float w;
   String caption;
-  color c;
+  color c = 255;
   PImage p;
   int size = 10;
   boolean hasImage;
 
-  public Buttons (float x_, float y_, String caption_, int l_, int w_, int size_, color colors_) {
+  //constructor for button with words
+  public Buttons (float x_, float y_, String caption_, int l_, int w_, int size_) {
     x = x_;
     y = y_;
     l = l_;
     w = w_;
     caption = caption_;
-    c = colors_;
     size = size_;
     hasImage = false;
   }
 
-  public Buttons (float x_, float y_, PImage image_, int l_, int w_, color colors_) {
+  //constructor for button with image 
+  public Buttons (float x_, float y_, PImage image_, int l_, int w_) {
     x = x_;
     y = y_;
     l = l_;
     w = w_;
     p = image_;
-    c = colors_;
     hasImage = true;
   }
 
   void display() {
-    hover(mouseX, mouseY);
+    hover();
     fill(c);
     rect(x, y-size/2, w, l);
     fill(0);
-    if (hasImage == false) {
+    if (hasImage == false) { 
       textAlign(CENTER);
       textSize(size);
       text(caption, x + (w/2), y + (l/2));
@@ -43,25 +43,17 @@ public class Buttons {
       image(p, x, y);
     }
   }
-
-  public boolean clicked1(int xcoord, int ycoord) {
-    if (xcoord > x && xcoord < x+w && ycoord > y && ycoord<y+l) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  boolean inRange(int x_, int y_) {
-    return (x_ > x && x_ < x+w && y_ > y && y_ < y+l);
-  }
-
-  void hover(int x_, int y_) {
-    if (inRange(x_, y_)) {
+  
+  void hover() { //makes button darker if mouse hovers over 
+    if (inRange()) {
       c = 150;
     } else {
       c = 225;
     }
+  }
+
+  boolean inRange() { //if mouse is inside the button, it'll return true 
+    return (mouseX > x && mouseX < x+w && mouseY > y && mouseY < y+l);
   }
 
   void resizeImage(int l, int w) {
@@ -87,22 +79,17 @@ public class Buttons {
   }
 }
 
+//like button class but with extra variable Balloon so it knows what to spawn when clicked 
 public class balloonButton extends Buttons {
   Balloon b;
 
   public balloonButton(int x_, int y_, Balloon b_) {
-    super(x_, y_, b_.getImage(), balloonSize, balloonSize, 255);
+    super(x_, y_, b_.getImage(), balloonSize, balloonSize);
     b = b_;
   }
 
-  public balloonButton(int x_, int y_, Balloon b_, int l_, int w_) {
-    super(x_, y_, b_.getImage(), balloonSize, balloonSize, 255);
-    b = b_;
-    resizeImage(l_, w_);
-  }
-
-  void spawnBalloon() {
-    if (inRange(mouseX, mouseY)) {
+  void spawnBalloon() { //if the button is in range, it'll spawn given balloon 
+    if (inRange()) {
       balloons.add(new Balloon(b));
     }
   }
@@ -110,24 +97,25 @@ public class balloonButton extends Buttons {
   void display() {
     fill(c);
     rect(x, y, w, l);
-    if (b.getImage() == white || b.getImage() == black) {
-      image(p, x+balloonSize/3, y);
+    if (b.getImage() == white || b.getImage() == black) { //white and black pngs different from other balloons
+      image(p, x+balloonSize/3, y); //x+balloonSize/3 to center it 
     } else {
       image(p, x, y);
     }
   }
 }
 
+//like button class but with extra variable Monkey so it knows what to spawn when clicked 
 public class monkeyButton extends Buttons {
   Monkey m; 
   
-   public monkeyButton(int x_, int y_, Monkey m_) {
-    super(x_, y_, m_.getImage(), monkeySize, monkeySize, 255);
+  public monkeyButton(int x_, int y_, Monkey m_) {
+    super(x_, y_, m_.getImage(), monkeySize, monkeySize);
     m = m_;
-   }
+  }
   
   public monkeyButton(int x_, int y_, Monkey m_, int l_, int w_) {
-    super(x_, y_, m_.getImage(), monkeySize, monkeySize, 255);
+    super(x_, y_, m_.getImage(), monkeySize, monkeySize);
     m = m_;
     resizeImage(l_, w_);
   }
@@ -135,15 +123,9 @@ public class monkeyButton extends Buttons {
   Monkey getMonkey() {
     return m;  
   }
-  
-  //void hover() {
-  //  if (inRange(mouseX, mouseY)) {
-  //    //display text of what the monkey does       
-  //  }
-  //}
-  
+    
   void display() {
-    if (m.getPrice() <= player.getIncome()) {
+    if (m.getPrice() <= player.getIncome()) { //will display red button if player can't afford 
       fill(c);
     } else {
       fill(#B22225);  
@@ -151,6 +133,4 @@ public class monkeyButton extends Buttons {
     rect(x, y, w, l);
     image(p, x, y);
   }
-
-  
 }

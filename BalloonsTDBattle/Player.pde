@@ -27,15 +27,7 @@ public class Player {
       return income += attack;
     } 
   }
-  
- int decreaseHealth() {
-   health --;  
-   if (health < 0) {
-     return 0;  
-   }
-   return health;
- }
- 
+   
  int decreaseHealth(int change) {
    health = health - change;
    if (health < 0) {

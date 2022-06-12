@@ -24,15 +24,16 @@ int imageSize = 75;
 Buttons normal;
 Buttons freeplay;
 Buttons startOver;
+Buttons startRound;
+Buttons pause;
+Buttons quit;
+
 Buttons sellButton;
 Buttons cancelButton;
 Buttons upgradeStrengthButton;
 Buttons upgradeThrowButton;
 Buttons upgradeRangeButton;
 Buttons upgradeSpeedButton;
-Buttons startRound;
-Buttons pause;
-Buttons quit;
 
 balloonButtonList balloonButtons;
 monkeyButtonList monkeyButtons;
@@ -46,9 +47,7 @@ void setup() {
   player = new Player();
   rounds = new Rounds();
 
-  //images
-
-
+  //load in all images in setup 
   dart = loadImage("dart.png");
   dart.resize(monkeySize, monkeySize);
   ninja = loadImage("ninja.png");
@@ -78,6 +77,7 @@ void setup() {
   yellow.resize(balloonSize, balloonSize);
   pink = loadImage("pink_balloon.png");
   pink.resize(balloonSize, balloonSize);
+  //black and white png's are different sizes than the rest of the ballooons so they have to be differently sized 
   black = loadImage("black_balloon.png");
   black.resize(balloonSize/2, balloonSize);
   white = loadImage("white_balloon.png");
@@ -91,21 +91,23 @@ void setup() {
   ceramic = loadImage("ceramic_balloon.png");
   ceramic.resize(balloonSize, balloonSize);
 
-  //buttons
-  normal = new Buttons(width/2-50, height/2 + 100, "NORMAL", 40, 100, 20, 225);
-  freeplay = new Buttons(width/2-50, height/2 + 150, "FREEPLAY", 40, 100, 20, 225);
-  startOver = new Buttons(width/2-70, height/2 + 110, "START OVER", 40, 140, 20, 225);
-  pause = new Buttons(835, 650, "PAUSE", 30, 130, 20, 225);
-  quit = new Buttons(835, 690, "QUIT", 30, 130, 20, 225);
-  startRound = new Buttons(865, 500, "START", 70, 70, 20, 225);
+  //initliaize buttons
+  normal = new Buttons(width/2-50, height/2 + 100, "NORMAL", 40, 100, 20);
+  freeplay = new Buttons(width/2-50, height/2 + 150, "FREEPLAY", 40, 100, 20);
+  startOver = new Buttons(width/2-70, height/2 + 110, "START OVER", 40, 140, 20);
+  pause = new Buttons(835, 650, "PAUSE", 30, 130, 20);
+  quit = new Buttons(835, 690, "QUIT", 30, 130, 20);
+  startRound = new Buttons(865, 500, "START", 70, 70, 20);
+  
   balloonButtons = new balloonButtonList();
   monkeyButtons = new monkeyButtonList();
-  sellButton= new Buttons (190, 680, "SELL", 30, 50, 10, 255);
-  cancelButton = new Buttons (865, 400, "CANCEL", 70, 70, 20, 55);
-  upgradeStrengthButton = new Buttons (500, 650, "STRENGTH\nUPGRADE", 50, 70, 10, 255);
-  upgradeThrowButton = new Buttons (650, 650, "THROW\nUPGRADE", 50, 70, 10, 255);
-  upgradeSpeedButton = new Buttons (350, 650, "SPEED\nUPGRADE", 50, 70, 10, 255);
-  upgradeRangeButton = new Buttons (800, 650, "RANGE\nUPGRADE", 50, 70, 10, 255);
+  
+  sellButton= new Buttons (190, 680, "SELL", 30, 50, 10);
+  cancelButton = new Buttons (865, 400, "CANCEL", 70, 70, 20);
+  upgradeSpeedButton = new Buttons (350, 650, "SPEED\nUPGRADE\n$100", 50, 70, 10);
+  upgradeStrengthButton = new Buttons (450, 650, "STRENGTH\nUPGRADE\n$100", 50, 70, 10);
+  upgradeThrowButton = new Buttons (550, 650, "THROW\nUPGRADE\n$100", 50, 70, 10);
+  upgradeRangeButton = new Buttons (650, 650, "RANGE\nUPGRADE\n$100", 50, 70, 10);
 }
 
 void moving() {
@@ -125,19 +127,16 @@ void restart() {
   round = 0;
 }
 
-void mouseClicked() {
-  color c = map.getPath().get(mouseX, mouseY);
-  println(("" + c + " " + red(c) + ", " + blue(c) + ", " + green(c)));
-  
-  if (!gameStart && !freeplayStart) {
-    if (normal.inRange(mouseX, mouseY)) {
+void mouseClicked() {  
+  if (!gameStart && !freeplayStart) { //start menu 
+    if (normal.inRange()) { //starts normal 
       gameStart = true;
     }
-    if (freeplay.inRange(mouseX, mouseY)) {
+    if (freeplay.inRange()) { //starts freeplay
       freeplayStart = true;
     }
   } else if (player.isDead()) {
-    if (startOver.inRange(mouseX, mouseY)) {
+    if (startOver.inRange()) { //restarts
       restart();
     }
   } else {
@@ -148,24 +147,31 @@ void mouseClicked() {
       monkeys.setShowStats(-1);
     }
   }
-  int buttonIndex = monkeyButtons.findButtonAt(mouseX, mouseY);
+  
+  int buttonIndex = monkeyButtons.findButtonAt();
   monkeys.addMonkey(buttonIndex);
-  if (upgradeStrengthButton.clicked1(mouseX, mouseY) == true && player.getIncome() >= 50) {
-    float value = monkeys.get(monkeys.showStats).getAttackStrength()*1.1;
+  if (upgradeStrengthButton.inRange() == true && player.getIncome() >= 100) {
+    float value = monkeys.get(monkeys.showStats).getAttackStrength()+1;
     monkeys.get(monkeys.showStats).setAttackStrength(value);
-    player.changeIncome(50*-1);
+    if (gameStart) {
+      player.changeIncome(100*-1);
+    }
   }
-  if (upgradeSpeedButton.clicked1(mouseX, mouseY) == true && player.getIncome() >= 50) {
+  if (upgradeSpeedButton.inRange() == true && player.getIncome() >= 100) {
     float value = monkeys.get(monkeys.showStats).getAttackSpeed()-2;
     monkeys.get(monkeys.showStats).setAttackSpeed(value);
-    player.changeIncome(50*-1);
+    if (gameStart) {
+      player.changeIncome(100*-1);
+    }
   }
-  if (upgradeRangeButton.clicked1(mouseX, mouseY) == true && player.getIncome() >= 50) {
-    float value = monkeys.get(monkeys.showStats).getAttackRange()*1.1;
+  if (upgradeRangeButton.inRange() == true && player.getIncome() >= 100) {
+    float value = monkeys.get(monkeys.showStats).getAttackRange()*1.3;
     monkeys.get(monkeys.showStats).setAttackRange(value);
-    player.changeIncome(50*-1);
+    if (gameStart) {
+      player.changeIncome(100*-1);
+    }
   }
-  if (upgradeThrowButton.clicked1(mouseX, mouseY) == true && player.getIncome() >= 100) {
+  if (upgradeThrowButton.inRange() == true && player.getIncome() >= 150) {
     Weapons w2 = monkeys.get(monkeys.showStats).getWeapons2();
     Weapons w3 = monkeys.get(monkeys.showStats).getWeapons3();
     w2.setX(monkeys.get(monkeys.showStats).getWeapons().getX());
@@ -173,9 +179,9 @@ void mouseClicked() {
     w2.setY(monkeys.get(monkeys.showStats).getWeapons().getY());
     w3.setY(monkeys.get(monkeys.showStats).getWeapons().getY());
     monkeys.get(monkeys.showStats).setUpgraded(true);
-    player.changeIncome(100*-1);
+    player.changeIncome(150*-1);
   }
-  if (monkeys.showStats < monkeys.size() && monkeys.showStats > -1 && sellButton.clicked1(mouseX, mouseY) == true) {
+  if (monkeys.showStats < monkeys.size() && monkeys.showStats > -1 && sellButton.inRange() == true) {
     monkeys.sell(monkeys.showStats);
     monkeys.setShowStats(-1);
   }
@@ -188,55 +194,56 @@ void mouseClicked() {
     if (m1.canBePlaced(mouseX, mouseY) && m1.getClickedNum() > 2) {
       m1.setLocked(true);
     }
-    if (cancelButton.clicked1(mouseX, mouseY) == true && m1.getMovement() == true) {
+    if (cancelButton.inRange() == true && m1.getMovement() == true) {
       monkeys.remove(m1);
       player.changeIncome(m1.getPrice());
     }
   }
-  balloonButtons.spawnBalloon();
-  if (quit.inRange(mouseX, mouseY)) {
+  
+  balloonButtons.spawnBalloon(); //if respective balloon button is clicked it will spawn 
+  
+  //button triggers for quit, pause, and start round 
+  if (quit.inRange()) {
     restart();
-  } else if (pause.inRange(mouseX, mouseY)) {
+  } else if (pause.inRange()) {
     if (paused == true) {
       paused = false;
     } else {
       paused = true;
     }
-  } else if (startRound.inRange(mouseX, mouseY)) {
+  } else if (startRound.inRange()) {
     roundStart = true;
   }
 }
 
 
 void draw() {
-  if (!gameStart && !freeplayStart) {
+  if (!gameStart && !freeplayStart) { //displays main menu 
     background(255);
     textSize(100);
     textAlign(CENTER);
     text("START GAME", width/2, height/2);
     normal.display();
     freeplay.display();
-  } else if (gameStart) {
+  } else if (gameStart) { 
     background(255);
+    map.display();
     textSize(15);
-    if (!player.isDead()) {
+    fill(0);
+    if (!player.isDead()) { 
+      //loads all buttons 
       pause.display();
       quit.display();
       startRound.display();
       monkeyButtons.display();
       cancelButton.display();
 
-      fill(0);
       textSize(15);
       textAlign(LEFT);
       text("ROUND: " + (round+1), 830, 30);
       text("HEALTH: " + player.health, 830, 50);
       text("INCOME: " + player.income, 830, 70);
-      map.display();
-      fill(0);
-      if (monkeys.showStats != -1) {
-        monkeys.displayStats();
-      }
+      
       if (monkeys.get(mouseX, mouseY) > -1 && monkeys.get(monkeys.get(mouseX, mouseY)).getLocked() == false && monkeys.get(monkeys.get(mouseX, mouseY)).getMovement() == true) {
         moving();
         Monkey bob = monkeys.get(monkeys.get(mouseX, mouseY));
@@ -248,9 +255,15 @@ void draw() {
           circle(mouseX, mouseY, bob.getAttackRange()*2);
         }
       }
-      if (roundStart) {
+      
+      if (monkeys.showStats != -1) {
+        monkeys.displayStats();
+      }
+      monkeys.display();
+      
+      if (roundStart) { //runs when round is in motion 
         if (!roundOver) {
-          rounds.runRound();
+          rounds.runRound(); //will load in all balloons in the round
         }
         balloons.display();
         if (!paused) {
@@ -258,38 +271,32 @@ void draw() {
           monkeys.processAll();
         }
       }
-      monkeys.display();
       if (paused) {
         fill(0, 200);
         triangle(360, 200, 360, 400, 560, 300);
       }
-    } else {
+    } else { //game over menu 
       textSize(100);
       textAlign(CENTER);
       text("GAME OVER", width/2, height/2);
       startOver.display();
-      startOver.hover(mouseX, mouseY);
     }
   } else if (freeplayStart) {
+    //loads in all necessary elements 
     background(255);
-    map.display();
     fill(0);
+    map.display();
+    monkeyButtons.display();
     pause.display();
     quit.display();
     balloons.display();
     cancelButton.display();
+    
     if (!paused) {
       balloons.processAll();
       monkeys.processAll();
     }
-    monkeyButtons.display();
-    if (monkeys.showStats != -1) {
-      monkeys.displayStats();
-      balloonButtons.setShown(false);
-    } else {
-      balloonButtons.display();
-      balloonButtons.setShown(true);
-    }
+
     if (monkeys.get(mouseX, mouseY) > -1 && monkeys.get(monkeys.get(mouseX, mouseY)).getLocked() == false && monkeys.get(monkeys.get(mouseX, mouseY)).getMovement() == true) {
       moving();
       Monkey bob = monkeys.get(monkeys.get(mouseX, mouseY));
@@ -301,7 +308,18 @@ void draw() {
         circle(mouseX, mouseY, bob.getAttackRange()*2);
       }
     }
+   
+    //will either show balloon buttons or monkey stats based on what is clicked 
+    if (monkeys.showStats != -1) {  
+      monkeys.displayStats();
+      balloonButtons.setShown(false);
+    } else {
+      balloonButtons.display();
+      balloonButtons.setShown(true);
+    }
+    
     monkeys.display();
+    
     if (paused) {
       fill(0, 200);
       triangle(360, 200, 360, 400, 560, 300);
