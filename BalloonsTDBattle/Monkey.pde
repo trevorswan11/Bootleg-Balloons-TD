@@ -312,31 +312,36 @@ public class ninjaMonkey extends Monkey {
     upgradeRangeButton.display();
   }
   void throwWeapon(Balloon b) {
-    float[] coord = {0, 0};
-    float range = 0;
-    for (int i = 0; i < 3; i++) {
-      int index = balloons.getIndex(b) + i;
-      b = balloons.get(index);
-      if (i == 0) {
-        b.setTarget(true);
-        coord = b.getFuture();
-        range = dist(weapon.getX(), weapon.getY(), coord[0], coord[1]);
-      }
+    Balloon b2 = balloons.get(balloons.getIndex(b)+1);
+    Balloon b3 = balloons.get(balloons.getIndex(b)+2);
+    if (balloons.getIndex(b)+1 < balloons.size() && balloons.getIndex(b)+2 < balloons.size()  && upgraded == true && balloons.size() > 3) {
+      throwWeaponUpgraded(b);
+    }else if ( balloons.getIndex(b)< balloons.size() && balloons.getIndex(b)+1 < balloons.size() && balloons.getIndex(b)+2 < balloons.size() && balloons.size() > 3){
+      b.setTarget(true);
+      float[] coord = b.getFuture();
+      float range = dist(weapon.getX(), weapon.getY(), coord[0], coord[1]);
       if (range < 10 && !thrown) {
-        player.attackIncome(this, b);
+        for (int i = balloons.getIndex(b); i<3; i++) {
+          player.attackIncome(this, b);
+          weapon.setX(coord[0]);
+          weapon.setY(coord[1]);
+        }
         attack(b);
         thrown = true;
+        //weapon.setX(x);
+        //weapon.setY(y);
       } else {
         float xInterval = (coord[0]-weapon.getX())/3;//change 10 to something based off of attackSpeed
         float yInterval = (coord[1]-weapon.getY())/3;
         weapon.changeX(xInterval);
         weapon.changeY(yInterval);
       }
+    }else{
+      super.throwWeapon(b);
     }
-    //weapon.setX(x);
-    //weapon.setY(y);
   }
 }
+
 
 public class wizardMonkey extends Monkey {
   public wizardMonkey(float xcoord, float ycoord) {
@@ -346,7 +351,7 @@ public class wizardMonkey extends Monkey {
   }
 
   void showStats() {
-    text("Monkey", 220, 665);
+    text("Wizard Monkey", 220, 665);
     fill(#CDF2F5);
     rect(70, 650, 75, 75);
     image(wizardImg, 70, 650);
