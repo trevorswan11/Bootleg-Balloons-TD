@@ -12,7 +12,7 @@ public class Monkey {
   int price;
   boolean movement = false;
   int clickedNum;
-  int targetBalloon = -1; 
+  int targetBalloon = -1;
 
   public Monkey(float xcoord, float ycoord) {
     //Default values for monkey stats except for x and y since those have to be determiend
@@ -37,7 +37,7 @@ public class Monkey {
     y = ycoord;
     price = 550;
   }
-  
+
   public Monkey(Monkey m_, float xcoord, float ycoord) {
     weapon = new Weapons(xcoord, ycoord);
     image = m_.getImage();
@@ -61,7 +61,7 @@ public class Monkey {
     }
     return coord;
   }
-  
+
   void attack(Balloon b) {
     b.decreaseHealth(attackStrength);
   }
@@ -98,7 +98,6 @@ public class Monkey {
     }
     return result;
   }
-
   void showStats() {
     text("Wizard Monkey", 220, 665);
     fill(255);
@@ -182,12 +181,12 @@ public class Monkey {
   }
   void setThrown(boolean b) {
     thrown = b;
-  } 
+  }
   void setTargetBalloon(int b) {
-    targetBalloon = b;   
+    targetBalloon = b;
   }
   int getTargetBalloon() {
-    return targetBalloon;  
+    return targetBalloon;
   }
 
   void display() {
@@ -203,36 +202,66 @@ public class Monkey {
   }
 }
 
-public class dartMonkey extends Monkey{
-  public dartMonkey(float xcoord,float ycoord) {
+public class dartMonkey extends Monkey {
+  public dartMonkey(float xcoord, float ycoord) {
     //speed, range, power
-    super(50, 100, 1, xcoord, ycoord); 
+    super(50, 100, 1, xcoord, ycoord);
     image = dart;
-    price = 200; 
+    price = 200;
+  }
+
+  void showStats() {
+    text("Dart Monkey", 220, 665);
+    fill(#CDF2F5);
+    rect(70, 650, 75, 75);
+    image(dartImg, 70, 650);
+    fill(#C1C8C9, 150);
+    circle(x, y, attackRange*2);
+    sellButton.display();
   }
 }
 
-public class wizardMonkey extends Monkey{
-  public wizardMonkey(float xcoord,float ycoord) {
-    super(70, 80, 1, xcoord, ycoord); 
+public class wizardMonkey extends Monkey {
+  public wizardMonkey(float xcoord, float ycoord) {
+    super(70, 80, 1, xcoord, ycoord);
     image = wizard;
     price = 550;
   }
+
+  void showStats() {
+    text("Monkey", 220, 665);
+    fill(#CDF2F5);
+    rect(70, 650, 75, 75);
+    image(wizardImg, 70, 650);
+    fill(#C1C8C9, 150);
+    circle(x, y, attackRange*2);
+    sellButton.display();
+  }
 }
 
-public class sniperMonkey extends Monkey{
-  public sniperMonkey(float xcoord,float ycoord) {
-    super(100, 50, 2, xcoord, ycoord); 
+public class sniperMonkey extends Monkey {
+  public sniperMonkey(float xcoord, float ycoord) {
+    super(100, 50, 2, xcoord, ycoord);
     image = sniper;
-    price = 350; 
+    price = 350;
   }
-  
+
+  void showStats() {
+    text("Sniper Monkey", 220, 665);
+    fill(#CDF2F5);
+    rect(70, 650, 75, 75);
+    image(sniperImg, 70, 650);
+    fill(#C1C8C9, 150);
+    circle(x, y, attackRange*2);
+    sellButton.display();
+  }
+
   float[] findBalloon() {
     Balloon highest = new Balloon();
     for (int i = 0; i< balloons.size(); i++) {
       Balloon current = balloons.get(i);
       if (current.getHealth() > highest.getHealth()) {
-        highest = current; 
+        highest = current;
       }
     }
     return new float[]{highest.getCurrentX(), highest.getCurrentY()};

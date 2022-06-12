@@ -13,6 +13,7 @@ boolean freeplayStart = false;
 
 int balloonSize = 35;
 int monkeySize = 50;
+int imageSize = 75;
 
 Buttons normal;
 Buttons freeplay;
@@ -24,7 +25,7 @@ Buttons cancelButton;
 balloonButtonList balloonButtons;
 monkeyButtonList monkeyButtons;
 
-PImage dart, wizard, sniper;
+PImage dart, wizard, sniper, dartImg, wizardImg, sniperImg;
 PImage red, blue, green, yellow, pink, black, white, zebra, lead, rainbow, ceramic;
 boolean roundStart = false;
 boolean roundOver = false;
@@ -42,7 +43,7 @@ void setup() {
   //images
 
   sellButton= new Buttons (350, 650, "SELL", 30, 50, 10, 255);
-  cancelButton = new Buttons (800, 650, "CANCEL", 70, 70, 20, 55);
+  cancelButton = new Buttons (850, 650, "CANCEL", 70, 70, 20, 55);
 
 
   dart = loadImage("dart.png");
@@ -51,6 +52,12 @@ void setup() {
   wizard.resize(monkeySize, monkeySize);
   sniper = loadImage("sniper.png");
   sniper.resize(monkeySize, monkeySize);
+  dartImg = loadImage("dart.png");
+  dartImg.resize(imageSize, imageSize);
+  wizardImg = loadImage("wizard.png");
+  wizardImg.resize(imageSize, imageSize);
+  sniperImg = loadImage("sniper.png");
+  sniperImg.resize(imageSize, imageSize);
 
   red = loadImage("red_balloon.png");
   red.resize(balloonSize, balloonSize);
@@ -126,7 +133,7 @@ void mouseClicked() {
     }
     if (cancelButton.clicked1(mouseX, mouseY) == true && m1.getMovement() == true) {
       monkeys.remove(m1);
-      player.changeIncome();
+      player.changeIncome(m1.getPrice());
     }
 
     balloonButtons.spawnBalloon();
