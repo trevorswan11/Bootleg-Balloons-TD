@@ -1,5 +1,9 @@
-# Bootleg-Balloons-TD-Battle
+# Bootleg-Balloons-TD
+This is an adapted version of April Li's BTD game, written in C++, it will be worked on over the next few months as I learn how to use C++ and OpenGL. Most (previously implemented) game mechanics will remain unchanged, but the techniques to handle game events will most likely change quite a bit. I also intend on implementing more mechanics to better reflect BTD5 (BTD6 is slightly more advanced than I have the time for currently).
 
+## Original README
+```md
+# Bootleg-Balloons-TD-Battle
 **Double L:** April Li and Nicole Liu
 
 Our project is a bootleg version of the popular mini-game, Bloons TD Battle. The game will have a predetermined path on which balloons will travel. The purpose of the game will be to prevent the balloons from reaching the end of the path by setting down monkeys to pop the balloons. If the balloons do reach the end, then the player’s health will decrease based on the balloon’s value. Once the health reaches 0, the player will lose and the game will end. However, the more balloons that the player pops, the more income that the player receives, which they can then use to buy monkeys that will shoot at the balloons to pop them. As the player progresses through the levels, they will unlock different types of monkeys, each with a different set of skills and characteristics. Once placed on the map, these monkeys can be sold to earn back income. At the end of each round, the player will have the opportunity to buy upgrades for their monkeys. The round ends when all of the balloons disappear, and the rounds will get progressively more difficult.
@@ -45,3 +49,4 @@ Our project is a bootleg version of the popular mini-game, Bloons TD Battle. The
 * 6/10/22: I worked on the dragging and creating the monkey methods and made it so that a circle would appear around the monkey while it was being dragged and made locking mechanisms.
 * 6/11/22: I worked on creating upgrades and the cancel and sell button.
 * 6/12/22: I created the waterMonkey and made comments and cleaned up sone code.
+```
