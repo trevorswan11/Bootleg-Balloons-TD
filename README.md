@@ -1,5 +1,5 @@
 # Bootleg-Balloons-TD
-This is an adapted version of April Li's BTD game, written in C++, it will be worked on over the next few months as I learn how to use C++ and OpenGL. Most (previously implemented) game mechanics will remain unchanged, but the techniques to handle game events will most likely change quite a bit. I also intend on implementing more mechanics to better reflect BTD5 (BTD6 is slightly more advanced than I have the time for currently).
+This is an adapted version of April Li's BTD game, written in C++, it will be worked on over the next few months as I learn how to use C++ and OpenGL. Most (previously implemented) game mechanics will remain unchanged, but the techniques to handle game events will most likely change quite a bit. I also intend on implementing more mechanics to better reflect BTD5 (BTD6 is slightly more advanced than I have the time for currently, but there will be hints of BTD6 in this implementation).
 
 ## Original README
 ```md
