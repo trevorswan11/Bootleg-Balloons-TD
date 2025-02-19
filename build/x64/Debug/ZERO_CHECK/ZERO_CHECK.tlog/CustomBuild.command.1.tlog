@@ -1,0 +1,10 @@
+^C:\USERS\TREVOR\ONEDRIVE\DOCUMENTS\CWRU\PROJECTS\BOOTLEG-BALLOONS-TD\BUILD\CMAKEFILES\360D458A12E9F03B741C1885E8A244B0\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD -BC:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/BloonsTD.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
