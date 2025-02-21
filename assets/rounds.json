@@ -1,0 +1,319 @@
+{
+	"rounds": {
+		"description": "Format as: [count, type, modifier]",
+		"round_1": [
+			[20, "red_balloon"]
+		],
+		"round_2": [
+			[35, "red_balloon"]
+		],
+		"round_3": [
+			[25, "red_balloon"],
+			[5, "blue_balloon"]
+		],
+		"round_4": [
+			[35, "red_balloon"],
+			[18, "blue_balloon"]
+		],
+		"round_5": [
+			[5, "red_balloon"],
+			[27, "blue_balloon"]
+		],
+		"round_6": [
+			[15, "red_balloon"],
+			[15, "blue_balloon"],
+			[4, "green_balloon"]
+		],
+		"round_7": [
+			[20, "red_balloon"],
+			[20, "blue_balloon"],
+			[5, "green_balloon"]
+		],
+		"round_8": [
+			[10, "red_balloon"],
+			[20, "blue_balloon"],
+			[14, "green_balloon"]
+		],
+		"round_9": [
+			[30, "green_balloon"]
+		],
+		"round_10": [
+			[102, "blue_balloon"]
+		],
+		"round_11": [
+			[10, "red_balloon"],
+			[10, "blue_balloon"],
+			[12, "green_balloon"],
+			[3, "yellow_balloon"]
+		],
+		"round_12": [
+			[15, "blue_balloon"],
+			[10, "green_balloon"],
+			[5, "yellow_balloon"]
+		],
+		"round_13": [
+			0
+		],
+		"round_14": [
+			0
+		],
+		"round_15": [
+			0
+		],
+		"round_16": [
+			0
+		],
+		"round_17": [
+			0
+		],
+		"round_18": [
+			0
+		],
+		"round_19": [
+			0
+		],
+		"round_20": [
+			0
+		],
+		"round_21": [
+			0
+		],
+		"round_22": [
+			0
+		],
+		"round_23": [
+			0
+		],
+		"round_24": [
+			0
+		],
+		"round_25": [
+			0
+		],
+		"round_26": [
+			0
+		],
+		"round_27": [
+			0
+		],
+		"round_28": [
+			0
+		],
+		"round_29": [
+			0
+		],
+		"round_30": [
+			0
+		],
+		"round_31": [
+			0
+		],
+		"round_32": [
+			0
+		],
+		"round_33": [
+			0
+		],
+		"round_34": [
+			0
+		],
+		"round_35": [
+			0
+		],
+		"round_36": [
+			0
+		],
+		"round_37": [
+			0
+		],
+		"round_38": [
+			0
+		],
+		"round_39": [
+			0
+		],
+		"round_40": [
+			0
+		],
+		"round_41": [
+			0
+		],
+		"round_42": [
+			0
+		],
+		"round_43": [
+			0
+		],
+		"round_44": [
+			0
+		],
+		"round_45": [
+			0
+		],
+		"round_46": [
+			0
+		],
+		"round_47": [
+			0
+		],
+		"round_48": [
+			0
+		],
+		"round_49": [
+			0
+		],
+		"round_50": [
+			0
+		],
+		"round_51": [
+			0
+		],
+		"round_52": [
+			0
+		],
+		"round_53": [
+			0
+		],
+		"round_54": [
+			0
+		],
+		"round_55": [
+			0
+		],
+		"round_56": [
+			0
+		],
+		"round_57": [
+			0
+		],
+		"round_58": [
+			0
+		],
+		"round_59": [
+			0
+		],
+		"round_60": [
+			0
+		],
+		"round_61": [
+			0
+		],
+		"round_62": [
+			0
+		],
+		"round_63": [
+			0
+		],
+		"round_64": [
+			0
+		],
+		"round_65": [
+			0
+		],
+		"round_66": [
+			0
+		],
+		"round_67": [
+			0
+		],
+		"round_68": [
+			0
+		],
+		"round_69": [
+			0
+		],
+		"round_70": [
+			0
+		],
+		"round_71": [
+			0
+		],
+		"round_72": [
+			0
+		],
+		"round_73": [
+			0
+		],
+		"round_74": [
+			0
+		],
+		"round_75": [
+			0
+		],
+		"round_76": [
+			0
+		],
+		"round_77": [
+			0
+		],
+		"round_78": [
+			0
+		],
+		"round_79": [
+			0
+		],
+		"round_80": [
+			0
+		],
+		"round_81": [
+			0
+		],
+		"round_82": [
+			0
+		],
+		"round_83": [
+			0
+		],
+		"round_84": [
+			0
+		],
+		"round_85": [
+			0
+		],
+		"round_86": [
+			0
+		],
+		"round_87": [
+			0
+		],
+		"round_88": [
+			0
+		],
+		"round_89": [
+			0
+		],
+		"round_90": [
+			0
+		],
+		"round_91": [
+			0
+		],
+		"round_92": [
+			0
+		],
+		"round_93": [
+			0
+		],
+		"round_94": [
+			0
+		],
+		"round_95": [
+			0
+		],
+		"round_96": [
+			0
+		],
+		"round_97": [
+			0
+		],
+		"round_98": [
+			0
+		],
+		"round_99": [
+			0
+		],
+		"round_100": [
+			0
+		]
+	}
+}
