@@ -1,8 +1,9 @@
 cmake_minimum_required(VERSION 3.10)
 project(BloonsTD)
 
-# Set C++ standard
+# Set C++ standard and build system
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_TOOLCHAIN_FILE "C:/Users/Trevor/vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE STRING "Vcpkg toolchain file")
 
 # Find required packages
 find_package(OpenGL REQUIRED)
