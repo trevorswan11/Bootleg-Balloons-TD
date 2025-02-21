@@ -4,6 +4,9 @@
     <ClCompile Include="C:\Users\Trevor\OneDrive\Documents\CWRU\Projects\Bootleg-Balloons-TD\src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\Trevor\OneDrive\Documents\CWRU\Projects\Bootleg-Balloons-TD\utils\Logger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Users\Trevor\OneDrive\Documents\CWRU\Projects\Bootleg-Balloons-TD\CMakeLists.txt" />

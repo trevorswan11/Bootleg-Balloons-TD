@@ -1,12 +1,16 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
+#include <Logger.hpp>
+#include <string>
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
     glViewport(0, 0, width, height);
 }
 
 int main() {
+    Logger::init();
+    Logger::logInfo("Hello, World!");
     if (!glfwInit()) {
         std::cerr << "Failed to initialize GLFW\n";
         return -1;

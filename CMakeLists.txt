@@ -11,7 +11,11 @@ find_package(glfw3 REQUIRED)
 find_package(GLEW REQUIRED)
 
 # Add source files
-add_executable(BloonsTD src/main.cpp)
+add_executable(BloonsTD
+    src/main.cpp
+    utils/Logger.cpp    
+)
 
 # Link libraries
 target_link_libraries(BloonsTD OpenGL::GL glfw GLEW::GLEW)
+include_directories(${CMAKE_SOURCE_DIR}/utils)
