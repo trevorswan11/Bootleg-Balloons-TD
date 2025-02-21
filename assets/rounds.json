@@ -216,163 +216,231 @@
 		],
 		"round_49": [
 			["balloons", 343, "green_balloon", "base", 50],
-			["balloons", 100, "yellow_balloon", "base", 50],
+			["balloons", 20, "zebra_balloon", "base", 50],
 			["balloons", 20, "rainbow_balloon", "base", 50],
-			["balloons", 10, "rainbow_balloon", "regrow", 50]
-
+			["balloons", 10, "rainbow_balloon", "regrow", 50],
+			["balloons", 18, "ceramic_balloon", "base", 50]
 		],
 		"round_50": [
-			0
+			["balloons", 20, "red_balloon", "base", 50],
+			["balloons", 8, "lead_balloon", "fortified", 50],
+			["balloons", 20, "ceramic_balloon", "base", 50],
+			["moabs", 2, "moab", "base", 50]
 		],
 		"round_51": [
-			0
+			["balloons", 10, "rainbow_balloon", "regrow", 50],
+			["balloons", 15, "ceramic_balloon", "camo", 50]
 		],
 		"round_52": [
-			0
+			["balloons", 25, "rainbow_balloon", "base", 50],
+			["balloons", 10, "ceramic_balloon", "base", 50],
+			["moabs", 2, "moab", "base", 50]
 		],
 		"round_53": [
-			0
+			["balloons", 80, "pink_balloon", "camo", 50],
+			["moabs", 3, "moab", "base", 50]
 		],
 		"round_54": [
-			0
+			["balloons", 35, "ceramic_balloon", "base", 50],
+			["moabs", 2, "moab", "base", 50]
 		],
 		"round_55": [
-			0
+			["balloons", 45, "ceramic_balloon", "base", 50],
+			["moabs", 1, "moab", "base", 50]
 		],
 		"round_56": [
-			0
+			["balloons", 40, "rainbow_balloon", "camo", 50],
+			["moabs", 1, "moab", "base", 50]
 		],
 		"round_57": [
-			0
+			["balloons", 40, "rainbow_balloon", "base", 50],
+			["moabs", 4, "moab", "base", 50]
 		],
 		"round_58": [
-			0
+			["balloons", 15, "ceramic_balloon", "base", 50],
+			["balloons", 10, "ceramic_balloon", "fortified", 50],
+			["moabs", 5, "moab", "base", 50]
 		],
 		"round_59": [
-			0
+			["balloons", 50, "lead_balloon", "fortified", 50],
+			["balloons", 20, "ceramic_balloon", "base", 50],
+			["balloons", 10, "ceramic_balloon", "regrow", 50]
 		],
 		"round_60": [
-			0
+			["moabs", 1, "bfb", "base", 50]
 		],
 		"round_61": [
-			0
+			["balloons", 150, "zebra_balloon", "regrow", 50],
+			["moabs", 5, "moab", "base", 50]
 		],
 		"round_62": [
-			0
+			["balloons", 250, "purple_balloon", "base", 50],
+			["balloons", 15, "rainbow_balloon", "regrow-camo", 50],
+			["moabs", 5, "moab", "base", 50],
+			["moabs", 2, "moab", "fortified", 50]
 		],
 		"round_63": [
-			0
+			["balloons", 75, "lead_balloon", "base", 50],
+			["balloons", 122, "ceramic_balloon", "base", 50]
 		],
 		"round_64": [
-			0
+			["moabs", 6, "moab", "base", 50],
+			["moabs", 3, "moab", "fortified", 50]
 		],
 		"round_65": [
-			0
+			["balloons", 100, "zebra_balloon", "base", 50],
+			["balloons", 70, "rainbow_balloon", "base", 50],
+			["balloons", 50, "ceramic_balloon", "regrow", 50],
+			["moabs", 3, "moab", "base", 50],
+			["moabs", 2, "bfb", "base", 50]
 		],
 		"round_66": [
-			0
+			["moabs", 8, "moab", "base", 50],
+			["moabs", 3, "moab", "fortified", 50]
 		],
 		"round_67": [
-			0
+			["balloons", 13, "ceramic_balloon", "fortified-regrow-camo", 50],
+			["moabs", 8, "moab", "base", 50]
 		],
 		"round_68": [
-			0
+			["moabs", 4, "moab", "base", 50],
+			["moabs", 1, "bfb", "base", 50]
 		],
 		"round_69": [
-			0
+			["balloons", 40, "black_balloon", "regrow", 50],
+			["balloons", 40, "lead_balloon", "fortified", 50],
+			["balloons", 50, "ceramic_balloon", "base", 50]
 		],
 		"round_70": [
-			0
+			["balloons", 120, "white_balloon", "regrow-camo", 50],
+			["balloons", 200, "rainbow_balloon", "base", 50],
+			["moabs", 4, "moab", "base", 50]
 		],
 		"round_71": [
-			0
+			["balloons", 30, "ceramic_balloon", "base", 50],
+			["moabs", 10, "moab", "base", 50]
 		],
 		"round_72": [
-			0
+			["balloons", 38, "ceramic_balloon", "regrow", 50],
+			["moabs", 2, "bfb", "base", 50]
 		],
 		"round_73": [
-			0
+			["moabs", 8, "moab", "base", 50],
+			["moabs", 2, "bfb", "base", 50]
 		],
 		"round_74": [
-			0
+			["balloons", 50, "ceramic_balloon", "base", 50],
+			["balloons", 60, "ceramic_balloon", "fortified", 50],
+			["balloons", 25, "ceramic_balloon", "fortified-regrow-camo", 50],
+			["moabs", 1, "bfb", "base", 50]
 		],
 		"round_75": [
-			0
+			["balloons", 14, "lead_balloon", "base", 50],
+			["balloons", 14, "lead_balloon", "fortified", 50],
+			["moabs", 3, "moab", "fortified", 50],
+			["moabs", 7, "bfb", "base", 50]
 		],
 		"round_76": [
-			0
+			["balloons", 60, "ceramic_balloon", "regrow", 10]
 		],
 		"round_77": [
-			0
+			["moabs", 11, "moab", "base", 50],
+			["moabs", 5, "bfb", "base", 50]
 		],
 		"round_78": [
-			0
+			["balloons", 80, "purple_balloon", "base", 50],
+			["balloons", 150, "rainbow_balloon", "base", 50],
+			["balloons", 75, "ceramic_balloon", "base", 50],
+			["balloons", 72, "ceramic_balloon", "camo", 50],
+			["moabs", 1, "bfb", "base", 50]
 		],
 		"round_79": [
-			0
+			["balloons", 500, "rainbow_balloon", "regrow", 50],
+			["moabs", 4, "bfb", "base", 50],
+			["moabs", 2, "bfb", "fortified", 50]
 		],
 		"round_80": [
-			0
+			["moabs", 1, "zomg", "base", 50]
 		],
 		"round_81": [
-			0
+			["moabs", 17, "bfb", "base", 50]
 		],
 		"round_82": [
-			0
+			["moabs", 10, "bfb", "base", 50],
+			["moabs", 5, "bfb", "fortified", 50]
 		],
 		"round_83": [
-			0
+			["balloons", 40, "ceramic_balloon", "base", 50],
+			["balloons", 40, "ceramic_balloon", "regrow", 50],
+			["balloons", 40, "ceramic_balloon", "fortified", 50],
+			["moabs", 30, "moab", "base", 50]
 		],
 		"round_84": [
-			0
+			["moabs", 50, "moab", "base", 50],
+			["moabs", 10, "bfb", "base", 50]
 		],
 		"round_85": [
-			0
+			["moabs", 2, "zomg", "base", 50]
 		],
 		"round_86": [
-			0
+			["moabs", 5, "bfb", "fortified", 50]
 		],
 		"round_87": [
-			0
+			["moabs", 4, "zomg", "base", 50]
 		],
 		"round_88": [
-			0
+			["moabs", 18, "moab", "base", 50],
+			["moabs", 8, "bfb", "base", 50],
+			["moabs", 2, "zomg", "base", 50]
 		],
 		"round_89": [
-			0
+			["moabs", 20, "moab", "fortified", 50],
+			["moabs", 8, "bfb", "fortified", 50]
 		],
 		"round_90": [
-			0
+			["balloons", 50, "lead_balloon", "fortified-regrow-camo", 50],
+			["moabs", 3, "ddt", "base", 50]
 		],
 		"round_91": [
-			0
+			["balloons", 100, "ceramic_balloon", "fortified", 50],
+			["moabs", 20, "bfb", "fortified", 50]
 		],
 		"round_92": [
-			0
+			["moabs", 50, "moab", "fortified", 50],
+			["moabs", 4, "zomg", "base", 50]
 		],
 		"round_93": [
-			0
+			["moabs", 10, "bfb", "fortified", 50],
+			["moabs", 6, "ddt", "base", 50]
 		],
 		"round_94": [
-			0
+			["moabs", 25, "bfb", "base", 50],
+			["moabs", 6, "zomg", "base", 50]
 		],
 		"round_95": [
-			0
+			["balloons", 500, "purple_balloon", "regrow-camo", 50],
+			["balloons", 250, "lead_balloon", "fortified-regrow-camo", 50],
+			["moabs", 50, "moab", "fortified", 50],
+			["moabs", 30, "ddt", "base", 50]
 		],
 		"round_96": [
-			0
+			["moabs", 40, "moab", "fortified", 50],
+			["moabs", 30, "bfb", "base", 50],
+			["moabs", 6, "zomg", "base", 50]
 		],
 		"round_97": [
-			0
+			["moabs", 2, "zomg", "fortified", 50]
 		],
 		"round_98": [
-			0
+			["moabs", 30, "bfb", "fortified", 50],
+			["moabs", 8, "zomg", "base", 50]
 		],
 		"round_99": [
-			0
+			["moabs", 60, "moab", "base", 50],
+			["moabs", 9, "ddt", "fortified", 50]
 		],
 		"round_100": [
-			0
+			["moabs", 1, "bad", "base", 50]
 		]
 	}
 }
