@@ -24,7 +24,7 @@ events:
       The output was:
       0
       MSBuild version 17.12.12+1cce77968 for .NET Framework
-      Build started 2/19/2025 11:36:01 AM.
+      Build started 2/21/2025 10:52:42 AM.
       
       Project "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\3.31.5\\CompilerIdC\\CompilerIdC.vcxproj" on node 1 (default targets).
       PrepareForBuild:
@@ -53,7 +53,7 @@ events:
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:00.64
+      Time Elapsed 00:00:00.62
       
       
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
@@ -79,7 +79,7 @@ events:
       The output was:
       0
       MSBuild version 17.12.12+1cce77968 for .NET Framework
-      Build started 2/19/2025 11:36:02 AM.
+      Build started 2/21/2025 10:52:43 AM.
       
       Project "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\3.31.5\\CompilerIdCXX\\CompilerIdCXX.vcxproj" on node 1 (default targets).
       PrepareForBuild:
@@ -108,7 +108,7 @@ events:
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:00.58
+      Time Elapsed 00:00:00.66
       
       
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -127,8 +127,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-m27ovv"
-      binary: "C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-m27ovv"
+      source: "C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-hnwjab"
+      binary: "C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-hnwjab"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
       CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
@@ -141,40 +141,40 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-m27ovv'
+        Change Dir: 'C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-hnwjab'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_3fb07.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_a9fe5.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.12.12+1cce77968 for .NET Framework
-        Build started 2/19/2025 11:36:03 AM.
+        Build started 2/21/2025 10:52:44 AM.
         
-        Project "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-m27ovv\\cmTC_3fb07.vcxproj" on node 1 (default targets).
+        Project "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hnwjab\\cmTC_a9fe5.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_3fb07.dir\\Debug\\".
+          Creating directory "cmTC_a9fe5.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-m27ovv\\Debug\\".
-          Creating directory "cmTC_3fb07.dir\\Debug\\cmTC_3fb07.tlog\\".
+          Creating directory "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hnwjab\\Debug\\".
+          Creating directory "cmTC_a9fe5.dir\\Debug\\cmTC_a9fe5.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_3fb07.dir\\Debug\\cmTC_3fb07.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_3fb07.dir\\Debug\\cmTC_3fb07.tlog\\unsuccessfulbuild".
+          Creating "cmTC_a9fe5.dir\\Debug\\cmTC_a9fe5.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_a9fe5.dir\\Debug\\cmTC_a9fe5.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_3fb07.dir\\Debug\\\\" /Fd"cmTC_3fb07.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.31\\Modules\\CMakeCCompilerABI.c"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_a9fe5.dir\\Debug\\\\" /Fd"cmTC_a9fe5.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.31\\Modules\\CMakeCCompilerABI.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34435 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_3fb07.dir\\Debug\\\\" /Fd"cmTC_3fb07.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.31\\Modules\\CMakeCCompilerABI.c"
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_a9fe5.dir\\Debug\\\\" /Fd"cmTC_a9fe5.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.31\\Modules\\CMakeCCompilerABI.c"
           CMakeCCompilerABI.c
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-m27ovv\\Debug\\cmTC_3fb07.exe" /INCREMENTAL /ILK:"cmTC_3fb07.dir\\Debug\\cmTC_3fb07.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-m27ovv/Debug/cmTC_3fb07.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-m27ovv/Debug/cmTC_3fb07.lib" /MACHINE:X64  /machine:x64 cmTC_3fb07.dir\\Debug\\CMakeCCompilerABI.obj
-          cmTC_3fb07.vcxproj -> C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-m27ovv\\Debug\\cmTC_3fb07.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hnwjab\\Debug\\cmTC_a9fe5.exe" /INCREMENTAL /ILK:"cmTC_a9fe5.dir\\Debug\\cmTC_a9fe5.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-hnwjab/Debug/cmTC_a9fe5.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-hnwjab/Debug/cmTC_a9fe5.lib" /MACHINE:X64  /machine:x64 cmTC_a9fe5.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_a9fe5.vcxproj -> C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hnwjab\\Debug\\cmTC_a9fe5.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_3fb07.dir\\Debug\\cmTC_3fb07.tlog\\unsuccessfulbuild".
-          Touching "cmTC_3fb07.dir\\Debug\\cmTC_3fb07.tlog\\cmTC_3fb07.lastbuildstate".
-        Done Building Project "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-m27ovv\\cmTC_3fb07.vcxproj" (default targets).
+          Deleting file "cmTC_a9fe5.dir\\Debug\\cmTC_a9fe5.tlog\\unsuccessfulbuild".
+          Touching "cmTC_a9fe5.dir\\Debug\\cmTC_a9fe5.tlog\\cmTC_a9fe5.lastbuildstate".
+        Done Building Project "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hnwjab\\cmTC_a9fe5.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.56
+        Time Elapsed 00:00:00.61
         
       exitCode: 0
   -
@@ -214,8 +214,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-lf61xz"
-      binary: "C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-lf61xz"
+      source: "C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-nn60f7"
+      binary: "C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-nn60f7"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
@@ -229,40 +229,40 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-lf61xz'
+        Change Dir: 'C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-nn60f7'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_e2e9d.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_1539a.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.12.12+1cce77968 for .NET Framework
-        Build started 2/19/2025 11:36:04 AM.
+        Build started 2/21/2025 10:52:45 AM.
         
-        Project "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-lf61xz\\cmTC_e2e9d.vcxproj" on node 1 (default targets).
+        Project "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-nn60f7\\cmTC_1539a.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_e2e9d.dir\\Debug\\".
+          Creating directory "cmTC_1539a.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-lf61xz\\Debug\\".
-          Creating directory "cmTC_e2e9d.dir\\Debug\\cmTC_e2e9d.tlog\\".
+          Creating directory "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-nn60f7\\Debug\\".
+          Creating directory "cmTC_1539a.dir\\Debug\\cmTC_1539a.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_e2e9d.dir\\Debug\\cmTC_e2e9d.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_e2e9d.dir\\Debug\\cmTC_e2e9d.tlog\\unsuccessfulbuild".
+          Creating "cmTC_1539a.dir\\Debug\\cmTC_1539a.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_1539a.dir\\Debug\\cmTC_1539a.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_e2e9d.dir\\Debug\\\\" /Fd"cmTC_e2e9d.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.31\\Modules\\CMakeCXXCompilerABI.cpp"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_1539a.dir\\Debug\\\\" /Fd"cmTC_1539a.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.31\\Modules\\CMakeCXXCompilerABI.cpp"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34435 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_e2e9d.dir\\Debug\\\\" /Fd"cmTC_e2e9d.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.31\\Modules\\CMakeCXXCompilerABI.cpp"
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_1539a.dir\\Debug\\\\" /Fd"cmTC_1539a.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.31\\Modules\\CMakeCXXCompilerABI.cpp"
           CMakeCXXCompilerABI.cpp
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-lf61xz\\Debug\\cmTC_e2e9d.exe" /INCREMENTAL /ILK:"cmTC_e2e9d.dir\\Debug\\cmTC_e2e9d.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-lf61xz/Debug/cmTC_e2e9d.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-lf61xz/Debug/cmTC_e2e9d.lib" /MACHINE:X64  /machine:x64 cmTC_e2e9d.dir\\Debug\\CMakeCXXCompilerABI.obj
-          cmTC_e2e9d.vcxproj -> C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-lf61xz\\Debug\\cmTC_e2e9d.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-nn60f7\\Debug\\cmTC_1539a.exe" /INCREMENTAL /ILK:"cmTC_1539a.dir\\Debug\\cmTC_1539a.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-nn60f7/Debug/cmTC_1539a.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-nn60f7/Debug/cmTC_1539a.lib" /MACHINE:X64  /machine:x64 cmTC_1539a.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_1539a.vcxproj -> C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-nn60f7\\Debug\\cmTC_1539a.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_e2e9d.dir\\Debug\\cmTC_e2e9d.tlog\\unsuccessfulbuild".
-          Touching "cmTC_e2e9d.dir\\Debug\\cmTC_e2e9d.tlog\\cmTC_e2e9d.lastbuildstate".
-        Done Building Project "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-lf61xz\\cmTC_e2e9d.vcxproj" (default targets).
+          Deleting file "cmTC_1539a.dir\\Debug\\cmTC_1539a.tlog\\unsuccessfulbuild".
+          Touching "cmTC_1539a.dir\\Debug\\cmTC_1539a.tlog\\cmTC_1539a.lastbuildstate".
+        Done Building Project "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-nn60f7\\cmTC_1539a.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.60
+        Time Elapsed 00:00:00.58
         
       exitCode: 0
   -
@@ -308,8 +308,8 @@ events:
     checks:
       - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
     directories:
-      source: "C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-zx9diu"
-      binary: "C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-zx9diu"
+      source: "C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-adkzn9"
+      binary: "C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-adkzn9"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
       CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
@@ -322,35 +322,35 @@ events:
       variable: "CMAKE_HAVE_LIBC_PTHREAD"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-zx9diu'
+        Change Dir: 'C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-adkzn9'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_27ffb.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_d86df.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.12.12+1cce77968 for .NET Framework
-        Build started 2/19/2025 11:36:05 AM.
+        Build started 2/21/2025 10:52:46 AM.
         
-        Project "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-zx9diu\\cmTC_27ffb.vcxproj" on node 1 (default targets).
+        Project "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-adkzn9\\cmTC_d86df.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_27ffb.dir\\Debug\\".
+          Creating directory "cmTC_d86df.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-zx9diu\\Debug\\".
-          Creating directory "cmTC_27ffb.dir\\Debug\\cmTC_27ffb.tlog\\".
+          Creating directory "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-adkzn9\\Debug\\".
+          Creating directory "cmTC_d86df.dir\\Debug\\cmTC_d86df.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_27ffb.dir\\Debug\\cmTC_27ffb.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_27ffb.dir\\Debug\\cmTC_27ffb.tlog\\unsuccessfulbuild".
+          Creating "cmTC_d86df.dir\\Debug\\cmTC_d86df.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_d86df.dir\\Debug\\cmTC_d86df.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_27ffb.dir\\Debug\\\\" /Fd"cmTC_27ffb.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-zx9diu\\src.c"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_d86df.dir\\Debug\\\\" /Fd"cmTC_d86df.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-adkzn9\\src.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34435 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_27ffb.dir\\Debug\\\\" /Fd"cmTC_27ffb.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-zx9diu\\src.c"
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_d86df.dir\\Debug\\\\" /Fd"cmTC_d86df.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-adkzn9\\src.c"
           src.c
-        C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-zx9diu\\src.c(1,10): error C1083: Cannot open include file: 'pthread.h': No such file or directory [C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-zx9diu\\cmTC_27ffb.vcxproj]
-        Done Building Project "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-zx9diu\\cmTC_27ffb.vcxproj" (default targets) -- FAILED.
+        C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-adkzn9\\src.c(1,10): error C1083: Cannot open include file: 'pthread.h': No such file or directory [C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-adkzn9\\cmTC_d86df.vcxproj]
+        Done Building Project "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-adkzn9\\cmTC_d86df.vcxproj" (default targets) -- FAILED.
         
         Build FAILED.
         
-        "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-zx9diu\\cmTC_27ffb.vcxproj" (default target) (1) ->
+        "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-adkzn9\\cmTC_d86df.vcxproj" (default target) (1) ->
         (ClCompile target) -> 
-          C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-zx9diu\\src.c(1,10): error C1083: Cannot open include file: 'pthread.h': No such file or directory [C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-zx9diu\\cmTC_27ffb.vcxproj]
+          C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-adkzn9\\src.c(1,10): error C1083: Cannot open include file: 'pthread.h': No such file or directory [C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-adkzn9\\cmTC_d86df.vcxproj]
         
             0 Warning(s)
             1 Error(s)
@@ -372,8 +372,8 @@ events:
     checks:
       - "Looking for pthread_create in pthreads"
     directories:
-      source: "C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-rc9ac5"
-      binary: "C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-rc9ac5"
+      source: "C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-akwwp0"
+      binary: "C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-akwwp0"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
       CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
@@ -386,42 +386,42 @@ events:
       variable: "CMAKE_HAVE_PTHREADS_CREATE"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-rc9ac5'
+        Change Dir: 'C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-akwwp0'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_6b5dd.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_20792.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.12.12+1cce77968 for .NET Framework
-        Build started 2/19/2025 11:36:06 AM.
+        Build started 2/21/2025 10:52:47 AM.
         
-        Project "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-rc9ac5\\cmTC_6b5dd.vcxproj" on node 1 (default targets).
+        Project "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-akwwp0\\cmTC_20792.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_6b5dd.dir\\Debug\\".
+          Creating directory "cmTC_20792.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-rc9ac5\\Debug\\".
-          Creating directory "cmTC_6b5dd.dir\\Debug\\cmTC_6b5dd.tlog\\".
+          Creating directory "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-akwwp0\\Debug\\".
+          Creating directory "cmTC_20792.dir\\Debug\\cmTC_20792.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_6b5dd.dir\\Debug\\cmTC_6b5dd.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_6b5dd.dir\\Debug\\cmTC_6b5dd.tlog\\unsuccessfulbuild".
+          Creating "cmTC_20792.dir\\Debug\\cmTC_20792.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_20792.dir\\Debug\\cmTC_20792.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_6b5dd.dir\\Debug\\\\" /Fd"cmTC_6b5dd.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-rc9ac5\\CheckFunctionExists.c"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_20792.dir\\Debug\\\\" /Fd"cmTC_20792.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-akwwp0\\CheckFunctionExists.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34435 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_6b5dd.dir\\Debug\\\\" /Fd"cmTC_6b5dd.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-rc9ac5\\CheckFunctionExists.c"
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_20792.dir\\Debug\\\\" /Fd"cmTC_20792.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-akwwp0\\CheckFunctionExists.c"
           CheckFunctionExists.c
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-rc9ac5\\Debug\\cmTC_6b5dd.exe" /INCREMENTAL /ILK:"cmTC_6b5dd.dir\\Debug\\cmTC_6b5dd.ilk" /NOLOGO pthreads.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-rc9ac5/Debug/cmTC_6b5dd.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-rc9ac5/Debug/cmTC_6b5dd.lib" /MACHINE:X64  /machine:x64 cmTC_6b5dd.dir\\Debug\\CheckFunctionExists.obj
-        LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-rc9ac5\\cmTC_6b5dd.vcxproj]
-        Done Building Project "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-rc9ac5\\cmTC_6b5dd.vcxproj" (default targets) -- FAILED.
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-akwwp0\\Debug\\cmTC_20792.exe" /INCREMENTAL /ILK:"cmTC_20792.dir\\Debug\\cmTC_20792.ilk" /NOLOGO pthreads.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-akwwp0/Debug/cmTC_20792.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-akwwp0/Debug/cmTC_20792.lib" /MACHINE:X64  /machine:x64 cmTC_20792.dir\\Debug\\CheckFunctionExists.obj
+        LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-akwwp0\\cmTC_20792.vcxproj]
+        Done Building Project "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-akwwp0\\cmTC_20792.vcxproj" (default targets) -- FAILED.
         
         Build FAILED.
         
-        "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-rc9ac5\\cmTC_6b5dd.vcxproj" (default target) (1) ->
+        "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-akwwp0\\cmTC_20792.vcxproj" (default target) (1) ->
         (Link target) -> 
-          LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-rc9ac5\\cmTC_6b5dd.vcxproj]
+          LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-akwwp0\\cmTC_20792.vcxproj]
         
             0 Warning(s)
             1 Error(s)
         
-        Time Elapsed 00:00:00.48
+        Time Elapsed 00:00:00.42
         
       exitCode: 1
   -
@@ -438,8 +438,8 @@ events:
     checks:
       - "Looking for pthread_create in pthread"
     directories:
-      source: "C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-ildyfq"
-      binary: "C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-ildyfq"
+      source: "C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-kf7tc9"
+      binary: "C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-kf7tc9"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
       CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
@@ -452,42 +452,42 @@ events:
       variable: "CMAKE_HAVE_PTHREAD_CREATE"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-ildyfq'
+        Change Dir: 'C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-kf7tc9'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_41cf9.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_d2508.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.12.12+1cce77968 for .NET Framework
-        Build started 2/19/2025 11:36:08 AM.
+        Build started 2/21/2025 10:52:48 AM.
         
-        Project "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ildyfq\\cmTC_41cf9.vcxproj" on node 1 (default targets).
+        Project "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-kf7tc9\\cmTC_d2508.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_41cf9.dir\\Debug\\".
+          Creating directory "cmTC_d2508.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ildyfq\\Debug\\".
-          Creating directory "cmTC_41cf9.dir\\Debug\\cmTC_41cf9.tlog\\".
+          Creating directory "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-kf7tc9\\Debug\\".
+          Creating directory "cmTC_d2508.dir\\Debug\\cmTC_d2508.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_41cf9.dir\\Debug\\cmTC_41cf9.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_41cf9.dir\\Debug\\cmTC_41cf9.tlog\\unsuccessfulbuild".
+          Creating "cmTC_d2508.dir\\Debug\\cmTC_d2508.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_d2508.dir\\Debug\\cmTC_d2508.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_41cf9.dir\\Debug\\\\" /Fd"cmTC_41cf9.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ildyfq\\CheckFunctionExists.c"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_d2508.dir\\Debug\\\\" /Fd"cmTC_d2508.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-kf7tc9\\CheckFunctionExists.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.42.34435 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_41cf9.dir\\Debug\\\\" /Fd"cmTC_41cf9.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ildyfq\\CheckFunctionExists.c"
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_d2508.dir\\Debug\\\\" /Fd"cmTC_d2508.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-kf7tc9\\CheckFunctionExists.c"
           CheckFunctionExists.c
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ildyfq\\Debug\\cmTC_41cf9.exe" /INCREMENTAL /ILK:"cmTC_41cf9.dir\\Debug\\cmTC_41cf9.ilk" /NOLOGO pthread.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-ildyfq/Debug/cmTC_41cf9.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-ildyfq/Debug/cmTC_41cf9.lib" /MACHINE:X64  /machine:x64 cmTC_41cf9.dir\\Debug\\CheckFunctionExists.obj
-        LINK : fatal error LNK1104: cannot open file 'pthread.lib' [C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ildyfq\\cmTC_41cf9.vcxproj]
-        Done Building Project "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ildyfq\\cmTC_41cf9.vcxproj" (default targets) -- FAILED.
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-kf7tc9\\Debug\\cmTC_d2508.exe" /INCREMENTAL /ILK:"cmTC_d2508.dir\\Debug\\cmTC_d2508.ilk" /NOLOGO pthread.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-kf7tc9/Debug/cmTC_d2508.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/Trevor/OneDrive/Documents/CWRU/Projects/Bootleg-Balloons-TD/build/CMakeFiles/CMakeScratch/TryCompile-kf7tc9/Debug/cmTC_d2508.lib" /MACHINE:X64  /machine:x64 cmTC_d2508.dir\\Debug\\CheckFunctionExists.obj
+        LINK : fatal error LNK1104: cannot open file 'pthread.lib' [C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-kf7tc9\\cmTC_d2508.vcxproj]
+        Done Building Project "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-kf7tc9\\cmTC_d2508.vcxproj" (default targets) -- FAILED.
         
         Build FAILED.
         
-        "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ildyfq\\cmTC_41cf9.vcxproj" (default target) (1) ->
+        "C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-kf7tc9\\cmTC_d2508.vcxproj" (default target) (1) ->
         (Link target) -> 
-          LINK : fatal error LNK1104: cannot open file 'pthread.lib' [C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ildyfq\\cmTC_41cf9.vcxproj]
+          LINK : fatal error LNK1104: cannot open file 'pthread.lib' [C:\\Users\\Trevor\\OneDrive\\Documents\\CWRU\\Projects\\Bootleg-Balloons-TD\\build\\CMakeFiles\\CMakeScratch\\TryCompile-kf7tc9\\cmTC_d2508.vcxproj]
         
             0 Warning(s)
             1 Error(s)
         
-        Time Elapsed 00:00:00.43
+        Time Elapsed 00:00:00.45
         
       exitCode: 1
 ...

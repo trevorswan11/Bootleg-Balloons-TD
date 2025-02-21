@@ -1,166 +1,225 @@
 {
 	"rounds": {
-		"description": "Format as: [count, type, modifier]",
+		"description": "Format as: [parent, count, type, modifier, delay (ms)]",
 		"round_1": [
-			[20, "red_balloon"]
+			["balloons", 20, "red_balloon", "base", 50]
 		],
 		"round_2": [
-			[35, "red_balloon"]
+			["balloons", 35, "red_balloon", "base", 50]
 		],
 		"round_3": [
-			[25, "red_balloon"],
-			[5, "blue_balloon"]
+			["balloons", 25, "red_balloon", "base", 50],
+			["balloons", 5, "blue_balloon", "base", 50]
 		],
 		"round_4": [
-			[35, "red_balloon"],
-			[18, "blue_balloon"]
+			["balloons", 35, "red_balloon", "base", 50],
+			["balloons", 18, "blue_balloon", "base", 50]
 		],
 		"round_5": [
-			[5, "red_balloon"],
-			[27, "blue_balloon"]
+			["balloons", 5, "red_balloon", "base", 50],
+			["balloons", 27, "blue_balloon", "base", 50]
 		],
 		"round_6": [
-			[15, "red_balloon"],
-			[15, "blue_balloon"],
-			[4, "green_balloon"]
+			["balloons", 15, "red_balloon", "base", 50],
+			["balloons", 15, "blue_balloon", "base", 50],
+			["balloons", 4, "green_balloon", "base", 50]
 		],
 		"round_7": [
-			[20, "red_balloon"],
-			[20, "blue_balloon"],
-			[5, "green_balloon"]
+			["balloons", 20, "red_balloon", "base", 50],
+			["balloons", 20, "blue_balloon", "base", 50],
+			["balloons", 5, "green_balloon", "base", 50]
 		],
 		"round_8": [
-			[10, "red_balloon"],
-			[20, "blue_balloon"],
-			[14, "green_balloon"]
+			["balloons", 10, "red_balloon", "base", 50],
+			["balloons", 20, "blue_balloon", "base", 50],
+			["balloons", 14, "green_balloon", "base", 50]
 		],
 		"round_9": [
-			[30, "green_balloon"]
+			["balloons", 30, "green_balloon", "base", 50]
 		],
 		"round_10": [
-			[102, "blue_balloon"]
+			["balloons", 102, "blue_balloon", "base", 50]
 		],
 		"round_11": [
-			[10, "red_balloon"],
-			[10, "blue_balloon"],
-			[12, "green_balloon"],
-			[3, "yellow_balloon"]
+			["balloons", 10, "red_balloon", "base", 50],
+			["balloons", 10, "blue_balloon", "base", 50],
+			["balloons", 12, "green_balloon", "base", 50],
+			["balloons", 3, "yellow_balloon", "base", 50]
 		],
 		"round_12": [
-			[15, "blue_balloon"],
-			[10, "green_balloon"],
-			[5, "yellow_balloon"]
+			["balloons", 15, "blue_balloon", "base", 50],
+			["balloons", 10, "green_balloon", "base", 50],
+			["balloons", 5, "yellow_balloon", "base", 50]
 		],
 		"round_13": [
-			0
+			["balloons", 50, "yellow_balloon", "base", 50],
+			["balloons", 23, "green_balloon", "base", 50]
 		],
 		"round_14": [
-			0
+			["balloons", 49, "red_balloon", "base", 50],
+			["balloons", 15, "blue_balloon", "base", 50],
+			["balloons", 10, "green_balloon", "base", 50],
+			["balloons", 9, "yellow_balloon", "base", 50]
 		],
 		"round_15": [
-			0
+			["balloons", 20, "red_balloon", "base", 50],
+			["balloons", 15, "blue_balloon", "base", 50],
+			["balloons", 12, "green_balloon", "base", 50],
+			["balloons", 10, "yellow_balloon", "base", 50],
+			["balloons", 5, "pink_balloon", "base", 50]
 		],
 		"round_16": [
-			0
+			["balloons", 40, "green_balloon", "base", 50],
+			["balloons", 8, "yellow_balloon", "base", 50]
 		],
 		"round_17": [
-			0
+			["balloons", 12, "yellow_balloon", "regrow", 50]
 		],
 		"round_18": [
-			0
+			["balloons", 80, "green_balloon", "base", 50]
 		],
 		"round_19": [
-			0
+			["balloons", 10, "green_balloon", "base", 50],
+			["balloons", 4, "yellow_balloon", "base", 50],
+			["balloons", 5, "yellow_balloon", "regrow", 50],
+			["balloons", 15, "pink_balloon", "base", 50]
 		],
 		"round_20": [
-			0
+			["balloons", 6, "black_balloon", "base", 50]
 		],
 		"round_21": [
-			0
+			["balloons", 40, "yellow_balloon", "base", 50],
+			["balloons", 14, "pink_balloon", "base", 50]
 		],
 		"round_22": [
-			0
+			["balloons", 16, "white_balloon", "base", 50]
 		],
 		"round_23": [
-			0
+			["balloons", 7, "black_balloon", "base", 50],
+			["balloons", 7, "white_balloon", "base", 50]
 		],
 		"round_24": [
-			0
+			["balloons", 20, "blue_balloon", "base", 50],
+			["balloons", 1, "green_balloon", "camo", 50]
 		],
 		"round_25": [
-			0
+			["balloons", 25, "yellow_balloon", "regrow", 50],
+			["balloons", 10, "purple_balloon", "base", 50]
 		],
 		"round_26": [
-			0
+			["balloons", 23, "pink_balloon", "base", 50],
+			["balloons", 4, "zebra_balloon", "base", 50]
 		],
 		"round_27": [
-			0
+			["balloons", 100, "red_balloon", "base", 50],
+			["balloons", 60, "blue_balloon", "base", 50],
+			["balloons", 45, "green_balloon", "base", 50],
+			["balloons", 45, "yellow_balloon", "base", 50]
 		],
 		"round_28": [
-			0
+			["balloons", 6, "lead_balloon", "base", 50]
 		],
 		"round_29": [
-			0
+			["balloons", 50, "yellow_balloon", "base", 50],
+			["balloons", 15, "yellow_balloon", "regrow", 50]
 		],
 		"round_30": [
-			0
+			["balloons", 9, "lead_balloon", "base", 50]
 		],
 		"round_31": [
-			0
+			["balloons", 8, "black_balloon", "base", 50],
+			["balloons", 8, "white_balloon", "base", 50],
+			["balloons", 8, "zebra_balloon", "base", 50],
+			["balloons", 2, "zebra_balloon", "regrow", 50]
 		],
 		"round_32": [
-			0
+			["balloons", 15, "black_balloon", "base", 50],
+			["balloons", 20, "white_balloon", "base", 50],
+			["balloons", 10, "purple_balloon", "base", 50]
 		],
 		"round_33": [
-			0
+			["balloons", 20, "red_balloon", "camo", 50],
+			["balloons", 13, "yellow_balloon", "camo", 50]
 		],
 		"round_34": [
-			0
+			["balloons", 160, "yellow_balloon", "base", 50],
+			["balloons", 6, "zebra_balloon", "base", 50]
 		],
 		"round_35": [
-			0
+			["balloons", 35, "pink_balloon", "base", 50],
+			["balloons", 30, "black_balloon", "base", 50],
+			["balloons", 25, "white_balloon", "base", 50],
+			["balloons", 5, "rainbow_balloon", "base", 50]
 		],
 		"round_36": [
-			0
+			["balloons", 140, "pink_balloon", "base", 50],
+			["balloons", 20, "green_balloon", "regrow-camo", 50]
 		],
 		"round_37": [
-			0
+			["balloons", 25, "black_balloon", "base", 50],
+			["balloons", 25, "white_balloon", "base", 50],
+			["balloons", 7, "white_balloon", "camo", 50],
+			["balloons", 10, "zebra_balloon", "base", 50],
+			["balloons", 15, "lead_balloon", "base", 50]
 		],
 		"round_38": [
-			0
+			["balloons", 42, "pink_balloon", "base", 50],
+			["balloons", 17, "white_balloon", "base", 50],
+			["balloons", 10, "zebra_balloon", "base", 50],
+			["balloons", 14, "lead_balloon", "base", 50],
+			["balloons", 2, "ceramic_balloon", "base", 50]
 		],
 		"round_39": [
-			0
+			["balloons", 10, "black_balloon", "base", 50],
+			["balloons", 10, "white_balloon", "base", 50],
+			["balloons", 20, "zebra_balloon", "base", 50],
+			["balloons", 18, "rainbow_balloon", "base", 50],
+			["balloons", 2, "rainbow_balloon", "regrow", 50]		
 		],
 		"round_40": [
-			0
+			["moabs", 1, "moab", "base", 50]
 		],
 		"round_41": [
-			0
+			["balloons", 60, "black_balloon", "base", 50],
+			["balloons", 60, "zebra_balloon", "base", 50]
 		],
 		"round_42": [
-			0
+			["balloons", 6, "rainbow_balloon", "regrow", 50],
+			["balloons", 5, "rainbow_balloon", "camo", 50]
 		],
 		"round_43": [
-			0
+			["balloons", 10, "rainbow_balloon", "base", 50],
+			["balloons", 7, "ceramic_balloon", "base", 50]
 		],
 		"round_44": [
-			0
+			["balloons", 50, "zebra_balloon", "base", 50]
 		],
 		"round_45": [
-			0
+			["balloons", 180, "pink_balloon", "base", 50],
+			["balloons", 10, "purple_balloon", "camo", 50],
+			["balloons", 4, "lead_balloon", "fortified", 50],
+			["balloons", 25, "rainbow_balloon", "base", 50]
 		],
 		"round_46": [
-			0
+			["balloons", 6, "ceramic_balloon", "fortified", 50]
 		],
 		"round_47": [
-			0
+			["balloons", 70, "pink_balloon", "camo", 50],
+			["balloons", 12, "ceramic_balloon", "base", 50]
 		],
 		"round_48": [
-			0
+			["balloons", 40, "pink_balloon", "base", 50],
+			["balloons", 30, "purple_balloon", "regrow-camo", 50],
+			["balloons", 40, "rainbow_balloon", "base", 50],
+			["balloons", 3, "ceramic_balloon", "fortified", 50]
+
 		],
 		"round_49": [
-			0
+			["balloons", 343, "green_balloon", "base", 50],
+			["balloons", 100, "yellow_balloon", "base", 50],
+			["balloons", 20, "rainbow_balloon", "base", 50],
+			["balloons", 10, "rainbow_balloon", "regrow", 50]
+
 		],
 		"round_50": [
 			0
