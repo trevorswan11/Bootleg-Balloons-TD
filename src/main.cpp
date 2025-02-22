@@ -9,8 +9,6 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
 }
 
 int main() {
-    Logger::init();
-    Logger::logInfo("Hello, World!");
     if (!glfwInit()) {
         std::cerr << "Failed to initialize GLFW\n";
         return -1;
@@ -19,6 +17,8 @@ int main() {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+    Logger::logWarning("Logger called from main.");
 
     GLFWwindow* window = glfwCreateWindow(800, 600, "OpenGL Window", nullptr, nullptr);
     if (!window) {
