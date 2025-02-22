@@ -9,6 +9,8 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
 }
 
 int main() {
+    Logger::init();
+    Logger::logInfo("Initializing Logger...");
     if (!glfwInit()) {
         std::cerr << "Failed to initialize GLFW\n";
         return -1;
